@@ -22,7 +22,7 @@ public class LoginAction extends BaseAction{
 	public String execute() throws Exception{
 		
 		userService.checkUser(username, password) ;
-		System.out.println("good");
+		System.out.println("good!!!");
 		return SUCCESS ;
 	}
 
