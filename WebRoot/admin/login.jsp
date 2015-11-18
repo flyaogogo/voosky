@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>voosky login</title>
 <link href="css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jsMgr/login.js"></script>
 
 </head>
 
@@ -21,14 +22,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="vslogo"></div>
   <div>
     <ul>
-      <li class="inpLi"><b>用户名：</b><input type="text" name="user_name" class="inpLogin"></li>
-      <li class="inpLi"><b>密码：</b><input type="password" name="password" class="inpLogin"></li>
+      <li class="inpLi"><b>用户名：</b><input type="text" name="user_name" class="inpLogin" id="login-username-id"></li>
+      <li class="inpLi"><b>密码：</b><input type="password" name="password" class="inpLogin" id="login-pwd-id"></li>
       <li class="captchaPic">
         <div class="inpLi"><b>验证码：</b><input type="text" name="captcha" class="captcha"></div>
         <img id="vcode" src="images/code.png">
       </li>
     
-      <li class="sub"><input type="submit" name="submit" class="btn" value="登陆"></li> 
+      <li class="sub"><input type="submit" name="submit" class="btn login-btn" value="登陆"></li> 
       <li class="action"><a href="#">忘记密码？</a> | <a href="#">返回首页</a></li> 
      </ul>
   </div>
