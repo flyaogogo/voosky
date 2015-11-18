@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="audit">
+
+	<typeAlias alias="Audit"
+		type="com.tmwrk.voosky.database.vo.Audit" />
+
+	<resultMap id="auditMap" class="Audit">
+		<result property="logId" column="log_id" />
+		<result property="operModel" column="oper_model" />
+		<result property="operUser" column="oper_user" />
+		<result property="operNote" column="oper_note" />
+		<result property="operTime" column="oper_time" />
+		<result property="ip" column="ip" />
+	</resultMap>
+	
+</sqlMap>

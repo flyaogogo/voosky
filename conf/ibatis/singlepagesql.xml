@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="singlePage">
+
+	<typeAlias alias="SinglePage"
+		type="com.tmwrk.voosky.database.vo.SinglePage" />
+
+	<resultMap id="singlePageMap" class="SinglePage">
+		<result property="pageId" column="page_id" />
+		<result property="uniqueName" column="unique_name" />
+		<result property="pageName" column="page_name" />
+		<result property="keywords" column="keywords" />
+		<result property="desc" column="description" />
+		<result property="navId" column="nav_id" />
+	</resultMap>
+	
+</sqlMap>

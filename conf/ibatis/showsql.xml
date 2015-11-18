@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="show">
+
+	<typeAlias alias="Show"
+		type="com.tmwrk.voosky.database.vo.Show" />
+
+	<resultMap id="showMap" class="Show">
+		<result property="id" column="id" />
+		<result property="showName" column="show_name" />
+		<result property="showLink" column="show_link" />
+		<result property="showImg" column="show_img" />
+		<result property="vtype" column="vtype" />
+		<result property="vsort" column="vsort" />
+	</resultMap>
+	
+</sqlMap>

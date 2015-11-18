@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="user">
+
+<typeAlias alias="User"
+		type="com.tmwrk.voosky.database.vo.User" />
+
+	<resultMap id="userMap" class="User">
+		<result property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="pwd" column="pwd" />
+		<result property="userEmail" column="user_email" />
+		<result property="addTime" column="add_time" />
+		<result property="lastLoginTime" column="last_login_time" />
+		<result property="removedTime" column="removed_time" />
+		<result property="userState" column="user_state" />
+		<result property="lastLoginIp" column="last_login_ip" />
+	</resultMap>
+	
+	<select id="checkUser" parameterClass="User"
+		resultClass="int">
+		select count(id) from user where user_name=#userName# and pwd=#pwd#
+	</select>
+	
+	
+</sqlMap>
