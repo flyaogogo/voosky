@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="login">
   <div class="vslogo"></div>
   <div>
-    <ul>  
+    <ul>
       <li class="inpLi"><b>用户名：</b><input type="text" name="user_name" class="inpLogin"></li>
       <li class="inpLi"><b>密码：</b><input type="password" name="password" class="inpLogin"></li>
       <li class="captchaPic">
