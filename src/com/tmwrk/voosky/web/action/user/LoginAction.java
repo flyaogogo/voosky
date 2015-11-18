@@ -21,8 +21,8 @@ public class LoginAction extends BaseAction{
 	@Override
 	public String execute() throws Exception{
 		
+		System.out.println("good!!!username:" + username + ",password:" + password);
 		userService.checkUser(username, password) ;
-		System.out.println("good!!!");
 		return SUCCESS ;
 	}
 

@@ -9,9 +9,8 @@ import com.tmwrk.voosky.database.dao.BaseDao;
 import com.tmwrk.voosky.database.vo.User;
 
 @Repository("userDao")
-public class UserDaoImpl extends BaseDao<User> implements IUser{
+public class UserDaoImpl extends BaseDao<User> {
 
-	@Override
 	public boolean checkUser(User user) {
 		boolean flag = false ;
 		int count = (Integer)getSqlMapClientTemplate().queryForObject("user.checkUser", user) ;
@@ -22,27 +21,28 @@ public class UserDaoImpl extends BaseDao<User> implements IUser{
 	}
 
 	@Override
-	public User add(User params) {
-		// TODO Auto-generated method stub
+	public User add(User user) {
+		getSqlMapClientTemplate().insert("user.insertUser",user) ;
 		return null;
 	}
 
 	@Override
-	public User update(User params) {
-		// TODO Auto-generated method stub
+	public User update(User user) {
+		getSqlMapClientTemplate().update("user.updateUserById", user) ;
 		return null;
 	}
 
 	@Override
 	public User findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		User u = (User)getSqlMapClientTemplate().queryForObject("user.getUserInfoById", params) ;
+		return u ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> userList = (List<User>)getSqlMapClientTemplate().queryForList("user.getAllUserInfo") ;
+		return userList; 
 	}
 
 }

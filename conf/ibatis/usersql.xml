@@ -21,8 +21,35 @@
 	
 	<select id="checkUser" parameterClass="User"
 		resultClass="int">
-		select count(id) from user where user_name=#userName# and pwd=#pwd#
+		select count(user_id) from vs_admin where user_name=#userName# and pwd=#pwd#
 	</select>
 	
+	<select id="getAllUserInfo" resultMap="userMap">
+		select user_id,user_name,pwd,user_email,add_time,last_login_time,
+			removed_time,user_state,last_login_ip from vs_admin
+	</select>
 	
+	<select id="getUserInfoById" parameterClass="userId" resultMap="userMap">
+		select user_id,user_name,pwd,user_email,add_time,last_login_time,
+			removed_time,user_state,last_login_ip from vs_admin where user_id=#userId#
+	</select>
+	
+	<insert id="insertUser" parameterClass="User">
+		<selectKey keyProperty="user_id" resultClass="string">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into vs_admin(user_name,pwd,user_email,add_time,last_login_time,removed_time,user_state,last_login_ip) 
+		values (#userName#,#pwd#,#userEmail#,#addTime#,#lastLoginTime#,#removedTime#,#userState#,#lastLoginIp#)
+	
+	</insert>
+	
+	<update id="updateUserById" parameterClass="User">
+		update from vs_admin set user_name=#userName#,pwd=#pwd#,user_email=#userEmail#,add_time=#addTime#,
+			last_login_time=#lastLoginTime#,user_state=#userState#,last_login_ip=#lastLoginIp# 
+				where user_id = #userId#
+	</update>
+	
+	<delete id="deleteUserById" parameterMap="java.util.HashMap">
+		update from vs_admin set removed_time=#removedTime# where user_id = #userId#
+	</delete>
 </sqlMap>

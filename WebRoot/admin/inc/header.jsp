@@ -7,7 +7,7 @@
 <body>
  <div id="vsHead">
    <div id="head">
-    <div class="logo"><a href="index.php"><img src="images/vslogo.gif" alt="logo"></a></div>
+    <div class="logo"><a href="index.php"><img src="${ctx}/admin/images/vslogo.gif" alt="logo"></a></div>
     <div class="nav">
      <ul>
       <li class="M"><a href="#" class="topAdd">快速导航</a></li>
