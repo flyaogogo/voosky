@@ -6,8 +6,13 @@
 			<result name="success">/admin/index.jsp</result>
 		</action>
 		
-		<action name="">
+		<action name="listUserInfo" method="listUserInfo" class="com.tmwrk.voosky.web.action.user.UserAction">
+			<result name="success">/admin/manager.jsp</result>
+		</action>
 		
+		<action name="addUserAction" method="addUser" class="com.tmwrk.voosky.web.action.user.UserAction">
+			<result name="success">/admin/manager.jsp</result>
+			<result name="json"></result>
 		</action>
 		
 	</package>

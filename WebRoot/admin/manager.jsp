@@ -10,8 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>article category</title>
-<link href="css/public.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 
 </head>
 
@@ -36,16 +36,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <th align="center">最后登录时间</th>
       <th align="center">操作</th>
      </tr>
-
+     
+	<s:iterator value="puList" var="u">
      <tr>
-      <td align="center">001</td>
-      <td>admin</td>
-      <td align="center">hexiunan@163.com</td>
-      <td align="center">2015-11-07</td>
-      <td align="center">2015-11-15 10:18:21</td>
+      <td align="center"><s:property value="#u.userId"/></td>
+      <td><s:property value="#u.userName"/></td>
+      <td align="center"><s:property value="#u.userEmail"/></td>
+      <td align="center"><s:property value="#u.addTime"/></td>
+      <td align="center"><s:property value="#u.lastLoginTime"/></td>
       <td align="center"><a href="http://127.0.0.1/dhphp/admin/manager.php?rec=edit&id=1">编辑</a> | <a href="http://127.0.0.1/dhphp/admin/manager.php?rec=del&id=1">删除</a></td>
      </tr>
-
+	</s:iterator>
     </table>
 
     <form action="manager.php?rec=insert" method="post">

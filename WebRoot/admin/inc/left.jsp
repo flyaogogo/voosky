@@ -29,7 +29,7 @@
      </ul>
  
      <ul>
-        <li class="cur"><a href="${ctx}/admin/manager.jsp"><i class="manager"></i><em>网站管理员</em></a></li>
+        <li class="cur"><a href="${ctx}/account/listUserInfo.html"><i class="manager"></i><em>网站管理员</em></a></li>
    
      </ul>
      <ul class="bot">

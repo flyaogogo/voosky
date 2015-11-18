@@ -1,6 +1,8 @@
 package com.tmwrk.voosky.web.action.user;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,11 +28,7 @@ public class UserAction extends BaseAction {
 	private String userName ;
 	private String pwd ;
 	private String userEmail ;
-	private String addTime ;
-	private String lastLoginTime ;
-	private String removedTime ;
 	private int userState ;
-	private String lastLoginIp ;
 	
 	/**
 	 * 列出所有用户信息
@@ -54,10 +52,46 @@ public class UserAction extends BaseAction {
 		u.setAddTime("2015-11-18 22:42:20");
 		u.setUserEmail(userEmail);
 		u.setUserState(userState);
+		
+		userService.addUser(u);
+		
 		return SUCCESS ;
 	}
 	
+	public String updateUser(){
+		User u = new User() ;
+		u.setUserName(userId);
+		u.setUserName(userName);
+		u.setPwd(pwd); 
+		u.setUserEmail(userEmail);
+		u.setLastLoginTime("2015-11-18 23:52:20");
+		
+		userService.updateUserById(u);
+		return SUCCESS ;
+	}
 	
+	/**
+	 * 移除用户
+	 * @return
+	 */
+	public String removeUserById(){
+		Map<String, String> param = new HashMap<String, String>() ;
+		param.put("userId", userId) ;
+		param.put("removedTime", "2015-11-18 23:52:20") ;
+		userService.removedUser(param);
+		return SUCCESS ;
+	}
+	
+	/**
+	 * 通过用户Id获取用户信息
+	 * @return
+	 */
+	public String getUserInfoById(){
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		param.put("userId", userId) ;
+		user = userService.getUserInfoById(param) ;
+		return SUCCESS ;
+	}
 	public List<User> getPuList() {
 		return puList;
 	}
@@ -106,29 +140,6 @@ public class UserAction extends BaseAction {
 		this.userEmail = userEmail;
 	}
 
-	public String getAddTime() {
-		return addTime;
-	}
-
-	public void setAddTime(String addTime) {
-		this.addTime = addTime;
-	}
-
-	public String getLastLoginTime() {
-		return lastLoginTime;
-	}
-
-	public void setLastLoginTime(String lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
-	}
-
-	public String getRemovedTime() {
-		return removedTime;
-	}
-
-	public void setRemovedTime(String removedTime) {
-		this.removedTime = removedTime;
-	}
 
 	public int getUserState() {
 		return userState;
@@ -136,14 +147,6 @@ public class UserAction extends BaseAction {
 
 	public void setUserState(int userState) {
 		this.userState = userState;
-	}
-
-	public String getLastLoginIp() {
-		return lastLoginIp;
-	}
-
-	public void setLastLoginIp(String lastLoginIp) {
-		this.lastLoginIp = lastLoginIp;
 	}
 
 }

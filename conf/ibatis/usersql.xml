@@ -29,7 +29,7 @@
 			removed_time,user_state,last_login_ip from vs_admin
 	</select>
 	
-	<select id="getUserInfoById" parameterClass="userId" resultMap="userMap">
+	<select id="getUserInfoById" parameterClass="java.util.HashMap" resultMap="userMap">
 		select user_id,user_name,pwd,user_email,add_time,last_login_time,
 			removed_time,user_state,last_login_ip from vs_admin where user_id=#userId#
 	</select>
@@ -49,7 +49,7 @@
 				where user_id = #userId#
 	</update>
 	
-	<delete id="deleteUserById" parameterMap="java.util.HashMap">
+	<delete id="deleteUserById" parameterClass="java.util.HashMap">
 		update from vs_admin set removed_time=#removedTime# where user_id = #userId#
 	</delete>
 </sqlMap>

@@ -28,15 +28,26 @@ public class UserService {
 	}
 	
 	
+
 	public List<User> getAllUserInfo(Map<String,Object> params){
 		List<User> uList = userDao.findAll(params) ;
 		
 		return uList ;
 	}
-
+	public User getUserInfoById(Map<String,Object> params){
+		User u = userDao.findById(params) ;
+		
+		return u ;
+	}
 	public void addUser(User u){
 		
 		userDao.add(u) ;
-		
+	}
+	
+	public void updateUserById(User u){
+		userDao.update(u) ;
+	}
+	public void removedUser(Map<String, String> param){
+		userDao.removedUserById(param);
 	}
 }

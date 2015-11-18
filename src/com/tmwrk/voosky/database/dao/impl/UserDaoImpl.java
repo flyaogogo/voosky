@@ -44,5 +44,10 @@ public class UserDaoImpl extends BaseDao<User> {
 		List<User> userList = (List<User>)getSqlMapClientTemplate().queryForList("user.getAllUserInfo") ;
 		return userList; 
 	}
+	public void removedUserById(Map<String, String> params) {
+		
+		getSqlMapClientTemplate().delete("user.deleteUserById",params) ;
+	}
 
+	
 }
