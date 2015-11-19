@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>article category</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/userManager.js"></script>
 
 </head>
 
@@ -25,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="vsMain">
    <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
    <div id="manager" class="mainBox" style="{$workspace.height}">
-    <h3><a href="" class="actionBtn">添加管理员</a>网站管理员</h3>
+    <h3><a href="javascript:void(0)" class="actionBtn">添加管理员</a>网站管理员</h3>
  
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
@@ -48,19 +49,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </tr>
 	</s:iterator>
     </table>
-
-    <form action="manager.php?rec=insert" method="post">
+	
+	<div class="vs-admin-insert-cls" style="display: none;">
+    <form id="adduserFormId" action="${ctx }/account/addUserAction.html" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="100" align="right">管理员名称</td>
        <td>
-        <input type="text" name="user_name" size="40" class="inpMain" />
+        <input type="text" name="userName" size="40" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td width="100" align="right">E-mail地址</td>
        <td>
-        <input type="text" name="email" size="40" class="inpMain" />
+        <input type="text" name="userEmail" size="40" class="inpMain" />
        </td>
       </tr>
       <tr>
@@ -78,12 +80,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td></td>
        <td>
-        <input type="submit" name="submit" class="btn" value="提交" />
+        <input type="submit" name="submit" class="btn" value="提交" onclick="return addUserSubmit();"/>
        </td>
       </tr>
      </table>
     </form>
-
+	</div>
+	
+	<div class="vs-admin-update" style="display: none;">
     <form action="manager.php?rec=update" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
@@ -127,7 +131,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
      </table>
     </form>
-
+	</div>
+	
+	<div class="vs-admin-log-show" style="display: none;">
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
       <th width="30" align="center">编号</th>
@@ -146,6 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </tr>
 
     </table>
+    </div>
   
    </div>
   </div>

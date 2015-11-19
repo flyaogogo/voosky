@@ -10,7 +10,6 @@ $(function(){
 		post(url,param) ;
 	})
 	
-	
 //	$.ajax({
 //		url:ctx+"/rdsinstance/listOracleSpecialKeyword.htm",
 //		type:"post",

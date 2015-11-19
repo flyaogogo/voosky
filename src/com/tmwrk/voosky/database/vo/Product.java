@@ -1,5 +1,7 @@
 package com.tmwrk.voosky.database.vo;
 
+import java.math.BigDecimal;
+
 /**
  * 商品  实体类
  * @author wfluo 2015-11-17
@@ -11,7 +13,7 @@ public class Product {
 	private String title ;
 	private String isRecommend ;
 	private String content ;
-	private float price ;
+	private BigDecimal price ;
 	private String thumbUrl ;
 	private String keywords ;
 	private String desc ;
@@ -48,10 +50,10 @@ public class Product {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	public String getThumbUrl() {

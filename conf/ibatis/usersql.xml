@@ -35,12 +35,12 @@
 	</select>
 	
 	<insert id="insertUser" parameterClass="User">
-		<selectKey keyProperty="user_id" resultClass="string">
+		<!-- <selectKey keyProperty="userId" resultClass="string">
 			select LAST_INSERT_ID()
-		</selectKey>
-		insert into vs_admin(user_name,pwd,user_email,add_time,last_login_time,removed_time,user_state,last_login_ip) 
-		values (#userName#,#pwd#,#userEmail#,#addTime#,#lastLoginTime#,#removedTime#,#userState#,#lastLoginIp#)
-	
+		</selectKey> -->
+		insert into vs_admin(user_id,user_name,pwd,user_email,add_time,last_login_time,removed_time,user_state,last_login_ip) 
+		values ((select LPAD(max(CAST(tvs.user_id as SIGNED)+1),3,'0') from vs_admin tvs),#userName#,#pwd#,#userEmail#,#addTime#,#lastLoginTime#,#removedTime#,#userState#,#lastLoginIp#)
+		
 	</insert>
 	
 	<update id="updateUserById" parameterClass="User">

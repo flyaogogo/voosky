@@ -11,9 +11,11 @@
 		</action>
 		
 		<action name="addUserAction" method="addUser" class="com.tmwrk.voosky.web.action.user.UserAction">
-			<result name="success">/admin/manager.jsp</result>
-			<result name="json"></result>
+			<result name="success" type="chain" >listUserInfo</result>
 		</action>
+<!-- 		<action name="addUserAction" method="addUser" class="com.tmwrk.voosky.web.action.user.UserAction"/> -->
+
+		
 		
 	</package>
 </struts>

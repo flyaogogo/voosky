@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tmwrk.voosky.database.vo.User;
+import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.user.UserService;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -26,7 +27,7 @@ public class UserAction extends BaseAction {
 	
 	private String userId ;
 	private String userName ;
-	private String pwd ;
+	private String password ;
 	private String userEmail ;
 	private int userState ;
 	
@@ -47,13 +48,17 @@ public class UserAction extends BaseAction {
 	public String addUser(){
 		User u = new User() ;
 		u.setUserName(userName);
-		u.setPwd(pwd); 
+		u.setPwd(password); 
 		u.setLastLoginIp(getIpAddr());
-		u.setAddTime("2015-11-18 22:42:20");
+		u.setAddTime(DateUtil.converNowDate());
 		u.setUserEmail(userEmail);
-		u.setUserState(userState);
-		
-		userService.addUser(u);
+		u.setUserState(0);
+		try {
+			
+			userService.addUser(u);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return SUCCESS ;
 	}
@@ -62,7 +67,7 @@ public class UserAction extends BaseAction {
 		User u = new User() ;
 		u.setUserName(userId);
 		u.setUserName(userName);
-		u.setPwd(pwd); 
+		u.setPwd(password); 
 		u.setUserEmail(userEmail);
 		u.setLastLoginTime("2015-11-18 23:52:20");
 		
@@ -124,12 +129,12 @@ public class UserAction extends BaseAction {
 		this.userName = userName;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String pwd) {
+		this.password = pwd;
 	}
 
 	public String getUserEmail() {
