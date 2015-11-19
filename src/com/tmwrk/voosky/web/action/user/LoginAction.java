@@ -2,7 +2,6 @@ package com.tmwrk.voosky.web.action.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tmwrk.voosky.database.vo.User;
 import com.tmwrk.voosky.service.user.UserService;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -23,7 +22,8 @@ public class LoginAction extends BaseAction{
 	public String execute() throws Exception{
 		
 		System.out.println("good!!!username:" + username + ",password:" + password);
-		User user = userService.checkUser(username, password) ;
+		//User user = 
+				userService.checkUser(username, password) ;
 		return SUCCESS ;
 	}
 
