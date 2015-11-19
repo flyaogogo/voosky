@@ -50,6 +50,7 @@ public class UserAction extends BaseAction {
 		u.setUserName(userName);
 		u.setPwd(password); 
 		u.setLastLoginIp(getIpAddr());
+		System.out.println("ip:" + getIpAddr());
 		u.setAddTime(DateUtil.converNowDate());
 		u.setUserEmail(userEmail);
 		u.setUserState(0);
@@ -65,13 +66,17 @@ public class UserAction extends BaseAction {
 	
 	public String updateUser(){
 		User u = new User() ;
-		u.setUserName(userId);
+		u.setUserId(userId);
 		u.setUserName(userName);
 		u.setPwd(password); 
 		u.setUserEmail(userEmail);
-		u.setLastLoginTime("2015-11-18 23:52:20");
-		
-		userService.updateUserById(u);
+//		u.setLastLoginTime("2015-11-18 23:52:20");
+		try {
+			
+			userService.updateUserById(u);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return SUCCESS ;
 	}
 	
@@ -82,7 +87,7 @@ public class UserAction extends BaseAction {
 	public String removeUserById(){
 		Map<String, String> param = new HashMap<String, String>() ;
 		param.put("userId", userId) ;
-		param.put("removedTime", "2015-11-18 23:52:20") ;
+		param.put("removedTime", DateUtil.converNowDate()) ;
 		userService.removedUser(param);
 		return SUCCESS ;
 	}
@@ -95,6 +100,9 @@ public class UserAction extends BaseAction {
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("userId", userId) ;
 		user = userService.getUserInfoById(param) ;
+		
+//		JSONObject jo = new JSONObject();
+//		jo.containsValue(user) ;
 		return SUCCESS ;
 	}
 	public List<User> getPuList() {

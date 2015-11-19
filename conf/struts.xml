@@ -13,7 +13,7 @@
 
 	<include file="struts/*.xml"/>
 	
-	<package name="tmwrk-default" extends="struts-default" namespace="/">
+	<package name="tmwrk-default" extends="struts-default,json-default" namespace="/">
 	    <!-- 拦截器 -->
 	    <interceptors>
 			<interceptor name="loginInterceptor" class="com.tmwrk.voosky.module.interceptor.LoginInterceptor" />

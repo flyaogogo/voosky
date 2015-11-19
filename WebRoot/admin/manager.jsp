@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div id="manager" class="mainBox" style="{$workspace.height}">
     <h3><a href="javascript:void(0)" class="actionBtn">添加管理员</a>网站管理员</h3>
  
-    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic show-user-table">
      <tr>
       <th width="30" align="center">编号</th>
       <th align="left">管理员名称</th>
@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <td align="center"><s:property value="#u.userEmail"/></td>
       <td align="center"><s:property value="#u.addTime"/></td>
       <td align="center"><s:property value="#u.lastLoginTime"/></td>
-      <td align="center"><a href="http://127.0.0.1/dhphp/admin/manager.php?rec=edit&id=1">编辑</a> | <a href="http://127.0.0.1/dhphp/admin/manager.php?rec=del&id=1">删除</a></td>
+      <td align="center"><a href="javascript:void(0)" class="vs-admin-update-btn-cls">编辑</a> | <a href="javascript:void(0)" class="vs-admin-removed-btn-cls">删除</a></td>
      </tr>
 	</s:iterator>
     </table>
@@ -88,18 +88,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	
 	<div class="vs-admin-update" style="display: none;">
-    <form action="manager.php?rec=update" method="post">
+    <form action="${ctx }/account/updateUserAction.html" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="100" align="right">管理员名称</td>
        <td>
-        <input type="text" name="user_name" value="" size="40" class="inpMain" >
+       	<input type="hidden" name="userId"/>
+        <input type="text" name="userName" value="" size="40" class="inpMain" >
        </td>
       </tr>
       <tr>
        <td width="100" align="right">E-mail地址</td>
        <td>
-        <input type="text" name="email" value="" size="40" class="inpMain" />
+        <input type="text" name="userEmail" value="" size="40" class="inpMain" />
        </td>
       </tr>
     
@@ -107,6 +108,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td align="right">旧密码</td>
        <td>
         <input type="password" name="old_password" size="40" class="inpMain" />
+        <input type="hidden" name="hidden_old_password" value=""/>
+        
        </td>
       </tr>
       <!-- {/if} -->
@@ -126,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td></td>
        <td>
     
-        <input type="submit" name="submit" class="btn" value="提交" />
+        <input type="submit" name="submit" class="btn" value="提交" onclick="return updateUserSubmit();"/>
        </td>
       </tr>
      </table>

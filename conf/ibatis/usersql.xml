@@ -19,14 +19,14 @@
 		<result property="lastLoginIp" column="last_login_ip" />
 	</resultMap>
 	
-	<select id="checkUser" parameterClass="User"
-		resultClass="int">
-		select count(user_id) from vs_admin where user_name=#userName# and pwd=#pwd#
+	<select id="checkUser" parameterClass="User" resultMap="userMap">
+		select user_id,user_name,pwd,user_email,add_time,last_login_time,removed_time,user_state,last_login_ip 
+			from vs_admin where user_name=#userName# and pwd=#pwd# and user_state=0 and removed_time is null
 	</select>
 	
 	<select id="getAllUserInfo" resultMap="userMap">
 		select user_id,user_name,pwd,user_email,add_time,last_login_time,
-			removed_time,user_state,last_login_ip from vs_admin
+			removed_time,user_state,last_login_ip from vs_admin where removed_time is null
 	</select>
 	
 	<select id="getUserInfoById" parameterClass="java.util.HashMap" resultMap="userMap">
@@ -35,21 +35,26 @@
 	</select>
 	
 	<insert id="insertUser" parameterClass="User">
-		<!-- <selectKey keyProperty="userId" resultClass="string">
-			select LAST_INSERT_ID()
-		</selectKey> -->
-		insert into vs_admin(user_id,user_name,pwd,user_email,add_time,last_login_time,removed_time,user_state,last_login_ip) 
-		values ((select LPAD(max(CAST(tvs.user_id as SIGNED)+1),3,'0') from vs_admin tvs),#userName#,#pwd#,#userEmail#,#addTime#,#lastLoginTime#,#removedTime#,#userState#,#lastLoginIp#)
-		
+		insert into vs_admin(user_id,user_name,pwd,user_email,add_time,user_state) 
+		values ((select ifnull(LPAD(max(CAST(tvs.user_id as SIGNED)+1),4,'0'),'0001') from vs_admin tvs),
+					#userName#,#pwd#,#userEmail#,#addTime#,#userState#)
 	</insert>
 	
 	<update id="updateUserById" parameterClass="User">
-		update from vs_admin set user_name=#userName#,pwd=#pwd#,user_email=#userEmail#,add_time=#addTime#,
-			last_login_time=#lastLoginTime#,user_state=#userState#,last_login_ip=#lastLoginIp# 
-				where user_id = #userId#
+		update vs_admin set user_name=#userName#,pwd=#pwd#,user_email=#userEmail# where user_id = #userId#
 	</update>
 	
-	<delete id="deleteUserById" parameterClass="java.util.HashMap">
-		update from vs_admin set removed_time=#removedTime# where user_id = #userId#
-	</delete>
+	<update id="deleteUserById" parameterClass="java.util.HashMap">
+		update vs_admin set removed_time=#removedTime# where user_id = #userId#
+	</update>
+	
+	<update id="updateUserLastlogin" parameterClass="java.util.HashMap">
+		update vs_admin set last_login_time=#lastLoginTime# , last_login_ip=#lastLoginIp# where user_id = #userId#
+	</update>
+	
+	<update id="updateUserStatus" parameterClass="java.util.HashMap">
+		update vs_admin set user_state=#userState# where user_id = #userId#
+	</update>
+	
+	
 </sqlMap>

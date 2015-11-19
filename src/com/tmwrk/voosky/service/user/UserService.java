@@ -17,7 +17,7 @@ public class UserService {
 	@Autowired
 	private UserDaoImpl userDao ;
 	
-	public boolean checkUser(String username,String pwd){
+	public User checkUser(String username,String pwd){
 		User user = new User() ;
 		user.setUserName(username);
 		user.setPwd(pwd);

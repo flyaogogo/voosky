@@ -14,7 +14,19 @@
 			<result name="success" type="chain" >listUserInfo</result>
 		</action>
 <!-- 		<action name="addUserAction" method="addUser" class="com.tmwrk.voosky.web.action.user.UserAction"/> -->
-
+		<action name="removedUserAction" method="removeUserById" class="com.tmwrk.voosky.web.action.user.UserAction">
+			<result name="success" type="chain" >listUserInfo</result>
+		</action>
+		<action name="updateUserAction" method="updateUser" class="com.tmwrk.voosky.web.action.user.UserAction">
+			<result name="success" type="chain" >listUserInfo</result>
+		</action>
+		
+		<action name="getUserByIdAction" method="getUserInfoById" class="com.tmwrk.voosky.web.action.user.UserAction">
+			<result name="success" type="json">
+				<param name="root">user</param>
+			</result>
+		</action>
+		
 		
 		
 	</package>

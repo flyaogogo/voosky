@@ -11,13 +11,9 @@ import com.tmwrk.voosky.database.vo.User;
 @Repository("userDao")
 public class UserDaoImpl extends BaseDao<User> {
 
-	public boolean checkUser(User user) {
-		boolean flag = false ;
-		int count = (Integer)getSqlMapClientTemplate().queryForObject("user.checkUser", user) ;
-		if(count>0){
-			flag = true ;
-		}
-		return flag;
+	public User checkUser(User user) {
+		User u = (User)getSqlMapClientTemplate().queryForObject("user.checkUser", user) ;
+		return u ;
 	}
 
 	@Override
@@ -44,9 +40,19 @@ public class UserDaoImpl extends BaseDao<User> {
 		List<User> userList = (List<User>)getSqlMapClientTemplate().queryForList("user.getAllUserInfo") ;
 		return userList; 
 	}
+	
 	public void removedUserById(Map<String, String> params) {
 		
-		getSqlMapClientTemplate().delete("user.deleteUserById",params) ;
+		getSqlMapClientTemplate().update("user.deleteUserById",params) ;
+	}
+	
+	/**
+	 * 用户最后登陆信息修改
+	 * @param params
+	 */
+	public void updateUserLastlogin(Map<String, String> params) {
+		
+		getSqlMapClientTemplate().update("user.updateUserLastlogin",params) ;
 	}
 
 	
