@@ -36,3 +36,7 @@ function post(URL, PARAMS) {
 	temp.submit();
 	return temp;
 }
+
+function refresh() {
+document.getElementById("authImg").src="authImg?now="+new Date();//使用时间作为参数避免浏览器从缓存取图片
+}

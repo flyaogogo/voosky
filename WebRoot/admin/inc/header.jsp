@@ -17,9 +17,9 @@
       <li class="noRight"><a href="#">vsPHP+</a></li>
      </ul>
      <ul class="navRight">
-      <li class="M noLeft"><a href="#">您好，admin</a>
+      <li class="M noLeft"><a href="#">您好，${sessionScope.user.userName }</a>
       </li>
-      <li class="noRight"><a href="#">退出</a></li>
+      <li class="noRight"><a href="${ctx}/account/logout.html">退出</a></li>
       </ul>
     </div>
    </div>

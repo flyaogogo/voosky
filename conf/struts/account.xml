@@ -4,6 +4,11 @@
 	<package name="account" extends="tmwrk-default" namespace="/account">
 		<action name="verifyAccount" class="com.tmwrk.voosky.web.action.user.LoginAction">
 			<result name="success">/admin/index.jsp</result>
+			<result name="error">/admin/login.jsp</result>
+		</action>
+		
+		<action name="logout" method="logOut" class="com.tmwrk.voosky.web.action.user.LoginAction">
+			<result name="success">/admin/login.jsp</result>
 		</action>
 		
 		<action name="listUserInfo" method="listUserInfo" class="com.tmwrk.voosky.web.action.user.UserAction">
