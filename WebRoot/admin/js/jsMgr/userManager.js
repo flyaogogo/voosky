@@ -1,8 +1,14 @@
 $(function(){
 	
 	//展示添加用户界面
-	$(".actionBtn").bind("click",function(){
+	$(".vs-admin-add-btn-cls").bind("click",function(){
+		$(".show-user-table").css("display", "none");
 		$(".vs-admin-insert-cls").css("display", "block");
+		
+	});
+	//返回管理员列表
+	$(".returnActionBtn").bind("click",function(){
+		window.location.href=ctx+"/account/listUserInfo.html" ;
 	});
 	//展示修改用户界面
 	$(".vs-admin-update-btn-cls").bind("click",function(){
@@ -25,6 +31,7 @@ $(function(){
 		
 		
 		$(".vs-admin-update").css("display", "block");
+		$(".show-user-table").css("display", "none");
 	});
 	
 	//删除用户数据

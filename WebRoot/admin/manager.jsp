@@ -26,9 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="vsMain">
    <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
    <div id="manager" class="mainBox" style="{$workspace.height}">
-    <h3><a href="javascript:void(0)" class="actionBtn">添加管理员</a>网站管理员</h3>
+   	<div class="show-user-table">
+    <h3><a href="javascript:void(0)" class="actionBtn vs-admin-add-btn-cls">添加管理员</a>网站管理员</h3>
  
-    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic show-user-table">
+    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
       <th width="30" align="center">编号</th>
       <th align="left">管理员名称</th>
@@ -49,8 +50,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </tr>
 	</s:iterator>
     </table>
+	</div>
 	
 	<div class="vs-admin-insert-cls" style="display: none;">
+	<h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">返回列表</a>网站管理员</h3>
     <form id="adduserFormId" action="${ctx }/account/addUserAction.html" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
@@ -88,6 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	
 	<div class="vs-admin-update" style="display: none;">
+	<h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">返回列表</a>网站管理员</h3>
     <form action="${ctx }/account/updateUserAction.html" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
