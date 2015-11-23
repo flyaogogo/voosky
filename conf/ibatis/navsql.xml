@@ -18,4 +18,27 @@
 		<result property="vsort" column="vsort" />
 	</resultMap>
 	
+	<select id="getNavigationsByType" parameterClass="java.util.HashMap" resultMap="navMap">
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where vtype=#navType#;
+	</select>
+	<select id="getNavigationByTypeId" parameterClass="java.util.HashMap" resultMap="navMap">
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where nav_id=#navId#;
+	</select>
+	<select id="getNavigationsByParentId" parameterClass="java.util.HashMap" resultMap="navMap">
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#parentId#;
+	</select>
+	
+	<insert id="addNav" parameterClass="Navigation">
+		insert into vs_nav(nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort) values 
+			((select ifnull(max(vsn.nav_id)+1,1) from vs_nav vsn),#module#,#navName#,#guideAliases#,#moduleUrl#,#parentId#,#vtype#,#vsort#)
+	</insert>
+	
+	<update id="updateNav" parameterClass="Navigation">
+		update vs_nav set module=#module#,nav_name=#navName#,guide=#guideAliases#,parent_id=#parentId#,vtype=#vtype#,vsort=#vsort# 
+			where nav_id=#navId#; 
+	</update>
+	
+	<delete id="deleteNavByNavId" parameterClass="Navigation">
+		delete from vs_nav where nav_id=#navId#;
+	</delete>
 </sqlMap>

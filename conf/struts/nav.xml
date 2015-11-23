@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="nav" extends="tmwrk-default" namespace="/nav">
+		<action name="listNavsInfo" class="com.tmwrk.voosky.web.action.nav.NavAction">
+			<result name="success">/admin/custom_nav.jsp</result>
+		</action>
+		
+		<action name="addNavAction" method="addNav" class="com.tmwrk.voosky.web.action.nav.NavAction">
+			<result name="success" type="chain" >listNavsInfo</result>
+		</action>
+		<action name="updateNavByIdAction" method="updateNav" class="com.tmwrk.voosky.web.action.nav.NavAction">
+			<result name="success" type="chain" >listNavsInfo</result>
+		</action>
+		<action name="deleteNavByIdAction" method="deleteNavByNavId" class="com.tmwrk.voosky.web.action.nav.NavAction">
+			<result name="success" type="chain" >listNavsInfo</result>
+		</action>
+		
+		
+	</package>
+	
+</struts>

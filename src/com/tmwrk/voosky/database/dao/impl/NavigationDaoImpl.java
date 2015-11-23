@@ -13,26 +13,58 @@ public class NavigationDaoImpl extends BaseDao<Navigation>{
 
 	@Override
 	public Navigation add(Navigation params) {
-		// TODO Auto-generated method stub
-		return null;
+		getSqlMapClientTemplate().insert("navigation.addNav",params) ;
+		return null ;
 	}
 
 	@Override
 	public Navigation update(Navigation params) {
-		// TODO Auto-generated method stub
-		return null;
+		getSqlMapClientTemplate().update("navigation.updateNav", params) ;
+		return null ;
 	}
 
 	@Override
 	public Navigation findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Navigation nav = (Navigation)getSqlMapClientTemplate().queryForObject("navigation.getNavigationByTypeId", params) ;
+		return nav ;
 	}
 
 	@Override
 	public List<Navigation> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return null ;
+	}
+	/**
+	 * 通过导航Id删除导航
+	 * @param params
+	 * @return
+	 */
+	public Navigation delete(Navigation params) {
+		getSqlMapClientTemplate().delete("navigation.deleteNavByNavId", params) ;
+		return null ;
+	}
+	/**
+	 * 通过导航类型找到相关信息
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked" })
+	public List<Navigation> getNavigationsByType(Map<String, String> params) {
+		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getNavigationsByType", params) ;
+		
+		return navList ;
+	}
+	
+	/**
+	 * 通过父类找到相关子类
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked" })
+	public List<Navigation> getNavigationsByParentId(Map<String, Object> params) {
+		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getNavigationsByParentId", params) ;
+		
+		return navList ;
 	}
 
 }
