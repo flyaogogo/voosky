@@ -26,6 +26,7 @@ public class NavAction extends BaseAction {
 	private String navName ;
 	private String navMenu ;
 	private String navAlise ;
+	private String module ;
 	private String moduleUrl ;
 	private String parentId ;
 	private String sort ;
@@ -44,17 +45,33 @@ public class NavAction extends BaseAction {
 		return SUCCESS ;
 	}
 	/**
+	 * 通过导航Id获取相关信息
+	 * @return
+	 */
+	public String listNavById(){
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("navId", navId) ;
+		nav = navService.getNavByNavId(params) ;
+		
+		return SUCCESS ;
+	}
+	/**
 	 * 添加
 	 * @return
 	 */
 	public String addNav(){
 		Navigation navs = new Navigation() ;
 		navs.setNavName(navName);
-		navMenu = (navMenu==null)?"urnavMenurl":navMenu ;
-		navs.setModule(navMenu) ;
-		moduleUrl = (moduleUrl==null)?"url-url":moduleUrl ;
+		if(navMenu!=null){
+			//说明是通过  站内导航添加
+			String[] menus = navMenu.split("|") ; 
+			module = menus[0] ;
+			moduleUrl = menus[1] ;
+		}
+		navs.setModule(module) ;
 		navs.setModuleUrl(moduleUrl);
 		navs.setGuideAliases(navAlise);
+		parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
 		navs.setParentId(parentId);
 		navs.setVtype(navType);
 		navs.setVsort(Integer.parseInt(sort));
@@ -75,9 +92,17 @@ public class NavAction extends BaseAction {
 		Navigation navs = new Navigation() ;
 		navs.setNavId(Integer.parseInt(navId));
 		navs.setNavName(navName);
-		navs.setModule(navMenu) ;
+		if(navMenu!=null){
+			//说明是通过  站内导航添加
+			String[] menus = navMenu.split("|") ; 
+			module = menus[0] ;
+			moduleUrl = menus[1] ;
+		}
+		navs.setModule(module) ;
 		navs.setModuleUrl(moduleUrl);
 		navs.setGuideAliases(navAlise);
+		parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
+		navs.setParentId(parentId);
 		navs.setVtype(navType);
 		navs.setVsort(Integer.parseInt(sort));
 		navService.updateNavByNavId(navs) ;
@@ -125,6 +150,12 @@ public class NavAction extends BaseAction {
 	}
 	public void setNavAlise(String navAlise) {
 		this.navAlise = navAlise;
+	}
+	public String getModule() {
+		return module;
+	}
+	public void setModule(String module) {
+		this.module = module;
 	}
 	public String getModuleUrl() {
 		return moduleUrl;

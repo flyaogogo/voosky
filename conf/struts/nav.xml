@@ -5,6 +5,11 @@
 		<action name="listNavsInfo" class="com.tmwrk.voosky.web.action.nav.NavAction">
 			<result name="success">/admin/custom_nav.jsp</result>
 		</action>
+		<action name="listNavInfoById" method="listNavById" class="com.tmwrk.voosky.web.action.nav.NavAction">
+			<result name="success" type="json">
+				<param name="root">nav</param>
+			</result>
+		</action>
 		
 		<action name="addNavAction" method="addNav" class="com.tmwrk.voosky.web.action.nav.NavAction">
 			<result name="success" type="chain" >listNavsInfo</result>

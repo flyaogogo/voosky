@@ -54,6 +54,17 @@ public class NavigationDaoImpl extends BaseDao<Navigation>{
 		
 		return navList ;
 	}
+	/**
+	 * 获取所有的导航
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked" })
+	public List<Navigation> getAllNavigations(Map<String, String> params) {
+		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getAllNavigations", params) ;
+		
+		return navList ;
+	}
 	
 	/**
 	 * 通过父类找到相关子类

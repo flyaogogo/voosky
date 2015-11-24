@@ -27,7 +27,7 @@ public class NavServiceMgr {
 		return true ;
 	}
 	public boolean deteleNavByNavId(Navigation nav){
-		navDao.update(nav) ;
+		navDao.delete(nav) ;
 		return true ;
 	}
 	
@@ -37,6 +37,20 @@ public class NavServiceMgr {
 	}
 	public List<Navigation> getNavsByParentId(Map<String, Object> params){
 		List<Navigation> navList = navDao.getNavigationsByParentId(params) ;
+		return navList ;
+	}
+	/**
+	 * 组装树型结构
+	 * @param params
+	 * @return
+	 */
+	public List<Navigation> getAllNavigations(Map<String, String> params){
+		List<Navigation> navList = navDao.getAllNavigations(null) ;
+		
+		//TODO
+		
+		
+		
 		return navList ;
 	}
 	public Navigation getNavByNavId(Map<String, Object> params){
