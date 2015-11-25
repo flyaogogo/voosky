@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="singlepage" extends="tmwrk-default" namespace="/singlepage">
+		<action name="listAllSPInfo" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
+			<result name="success">/admin/singlepage.jsp</result>
+		</action>
+		<action name="listSPInfoById" method="findSinglePageInfoById" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
+			<result name="success" type="json">
+				<param name="root">singlePage</param>
+			</result>
+		</action>
+		
+		<action name="addSPAction" method="insertSinglePage" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
+			<result name="success" type="chain" >listAllSPInfo</result>
+		</action>
+		<action name="updateSPAction" method="updateSinglePage" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
+			<result name="success" type="chain" >listAllSPInfo</result>
+		</action>
+		<action name="deleteSPAction" method="deleteSinglePageById" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
+			<result name="success" type="chain" >listAllSPInfo</result>
+		</action>
+		
+	</package>
+</struts>

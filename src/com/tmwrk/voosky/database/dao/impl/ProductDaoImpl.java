@@ -13,26 +13,31 @@ public class ProductDaoImpl extends BaseDao<Product> {
 
 	@Override
 	public Product add(Product params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert("product.addProduct", params) ;
 		return null;
 	}
 
 	@Override
 	public Product update(Product params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("product.updateById", params) ;
 		return null;
 	}
 
 	@Override
 	public Product findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Product p = (Product)getSqlMapClientTemplate().queryForObject("product.getProductById", params) ;
+		return p ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Product> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Product> prList = (List<Product>)getSqlMapClientTemplate().queryForList("product.getAllProducts", params) ;
+		return prList;
 	}
 
+	public boolean deleteProductById(Product p){
+		getSqlMapClientTemplate().delete("product.deleteById", p) ;
+		return true ;
+	}
 }

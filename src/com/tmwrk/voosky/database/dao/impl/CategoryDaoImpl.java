@@ -13,26 +13,32 @@ public class CategoryDaoImpl extends BaseDao<Category> {
 
 	@Override
 	public Category add(Category params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert("category.insertCategory", params) ;
 		return null;
 	}
 
 	@Override
 	public Category update(Category params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("category.updateCateById", params) ;
 		return null;
 	}
 
 	@Override
 	public Category findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Category c = (Category)getSqlMapClientTemplate().queryForObject("category.findCategoryById", params) ;
+		return c ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Category> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Category> cateList = (List<Category>)getSqlMapClientTemplate().queryForList("category.findCategoryByStatus", params) ;
+		return cateList;
+	}
+
+	public boolean deleteCateById(Category c){
+		getSqlMapClientTemplate().delete("category.deleteCateById", c) ;
+		return true ;
 	}
 
 }

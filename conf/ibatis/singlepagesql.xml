@@ -7,13 +7,36 @@
 	<typeAlias alias="SinglePage"
 		type="com.tmwrk.voosky.database.vo.SinglePage" />
 
-	<resultMap id="singlePageMap" class="SinglePage">
+	<resultMap id="singleMap" class="SinglePage">
 		<result property="pageId" column="page_id" />
 		<result property="uniqueName" column="unique_name" />
 		<result property="pageName" column="page_name" />
+		<result property="content" column="content" />
 		<result property="keywords" column="keywords" />
 		<result property="desc" column="description" />
 		<result property="navId" column="nav_id" />
 	</resultMap>
 	
+	<select id="findAllSinglePages" parameterClass="java.util.HashMap" resultMap="singleMap">
+		select page_id,unique_name,page_name,content,keywords,description,nav_id from vs_singlepage
+	</select>
+	
+	<select id="findSiglePageById" parameterClass="java.util.HashMap" resultMap="singleMap">
+		select page_id,unique_name,page_name,content,keywords,description,nav_id 
+			from vs_singlepage where page_id = #pageId#
+	</select>
+	
+	<insert id="insertSinglePage" parameterClass="SinglePage">
+		insert into vs_singlepage(page_id,unique_name,page_name,content,keywords,description,nav_id) values 
+			((select ifnull(max(vsp.page_id)+1,1) from vs_singlepage vsp),#uniqueName#,#pageName#,#content#,#keywords#,#desc#,#navId#)
+	</insert>
+	
+	<update id="update" parameterClass="SinglePage">
+		update vs_singlepage set unique_name=#uniqueName#,page_name=#pageName#,content=#content#,keywords=#keywords#,
+			description=#desc#,nav_id=#navId# where page_id = #pageId#
+	</update>
+	
+	<delete id="deleteSinglePageById" parameterClass="SinglePage">
+		delete from vs_singlepage where page_id = #pageId#
+	</delete>
 </sqlMap>

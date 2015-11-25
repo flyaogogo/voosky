@@ -11,6 +11,12 @@ public class ConstantArgs {
 	public enum Nav{
 		middle,top,bottom
 	}
-	
-	
+	/**
+	 * 区分分类
+	 * @author wfluo
+	 *
+	 */
+	public enum Category{
+		article,product
+	}
 }

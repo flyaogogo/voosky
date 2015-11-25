@@ -13,26 +13,31 @@ public class ArticleDaoImpl extends BaseDao<Article>{
 
 	@Override
 	public Article add(Article params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert("article.addArticle", params) ;
 		return null;
 	}
 
 	@Override
 	public Article update(Article params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("article.updateById", params) ;
 		return null;
 	}
 
 	@Override
 	public Article findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Article p = (Article)getSqlMapClientTemplate().queryForObject("article.getArticleById", params) ;
+		return p ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Article> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Article> prList = (List<Article>)getSqlMapClientTemplate().queryForList("article.getAllArticles", params) ;
+		return prList;
 	}
-
+	
+	public boolean deleteArticleById(Article p){
+		getSqlMapClientTemplate().delete("article.deleteById", p) ;
+		return true ;
+	}
 }

@@ -21,4 +21,28 @@
 		<result property="vsort" column="vsort" />
 	</resultMap>
 	
+	<select id="getAllArticles" parameterClass="java.util.HashMap" resultMap="articleMap">
+		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum
+			add_time,vsort from vs_article 
+	</select>
+	<select id="getArticleById" parameterClass="java.util.HashMap" resultMap="articleMap">
+		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum
+			add_time,vsort from vs_article where id=#id#
+	</select>
+	
+	<insert id="addArticle" parameterClass="Article">
+		insert into vs_article(id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,add_time,vsort) 
+		values ((select ifnull(max(vsp.id)+1,1) from vs_article vsp),#cateId#,#title#,#isRecommend#,#content#,#thumbUrl#,
+			#keywords#,#desc#,#clickNum#,#addTime#,#vsort#)
+	</insert>
+	
+	<update id="updateById" parameterClass="Article">
+		update vs_article set cat_id=#cateId#,title=#title#,is_recommend=#isRecommend#,content=#content#,thumb_url=#thumbUrl#,
+			keywords=#keywords#,description=#desc#,clicknum=#clickNum#,add_time=#addTime#,vsort=#vsort# where id=#id#
+	</update>
+	
+	<delete id="deleteById" parameterClass="Article">
+		delete from vs_article where id=#id#
+	</delete>
+	
 </sqlMap>

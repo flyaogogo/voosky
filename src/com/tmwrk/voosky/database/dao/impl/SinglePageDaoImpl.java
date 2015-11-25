@@ -13,26 +13,32 @@ public class SinglePageDaoImpl extends BaseDao<SinglePage> {
 
 	@Override
 	public SinglePage add(SinglePage params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert("singlePage.insertSinglePage",params) ;
 		return null;
 	}
 
 	@Override
 	public SinglePage update(SinglePage params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("singlePage.update", params) ;
 		return null;
 	}
 
 	@Override
 	public SinglePage findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		SinglePage sp = (SinglePage)getSqlMapClientTemplate().queryForObject("singlePage.findSiglePageById", params) ;
+		return sp ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<SinglePage> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<SinglePage> spList = (List<SinglePage>)getSqlMapClientTemplate().queryForList("singlePage.findAllSinglePages", params) ;
+		return spList ;
+	}
+	
+	public boolean deleteSinglePageById(SinglePage sp){
+		getSqlMapClientTemplate().delete("singlePage.deleteSinglePageById", sp) ;
+		return true ;
 	}
 
 }

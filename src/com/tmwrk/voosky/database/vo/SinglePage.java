@@ -8,6 +8,7 @@ public class SinglePage {
 	private int pageId ;
 	private String uniqueName ;
 	private String pageName ;
+	private String content ;
 	private String keywords ;
 	private String desc ;
 	private int navId ;
@@ -30,6 +31,12 @@ public class SinglePage {
 	}
 	public void setPageName(String pageName) {
 		this.pageName = pageName;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getKeywords() {
 		return keywords;
