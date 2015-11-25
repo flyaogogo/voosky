@@ -31,10 +31,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@ include file="./inc/left.jsp" %>
 <!-- VSMENU 结束 -->
   <div id="vsMain">
-   <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
+   <div id="vsHere">VsPHP 管理中<b></b><strong>系统设置</strong></div>
    <div class="mainBox" style="{$workspace.height}">
-    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">添加单页面</a>单页面列表</h3>
-    <div class="page">
+    <div class="spage">
+     <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">添加单页面</a>单页面列表</h3>
       <dl>
         <dt><strong>公司简介</strong><p>about</p></dt>
         <dd><a href="javascript:void(0)" class="vs-sp-update-cls">编辑</a> | <a href="javascript:void(0)" class="vs-sp-delete-cls">删除</a></dd>
