@@ -1,6 +1,6 @@
 /*(C) 2012-2013 Voosky Inc.*/
 
-/* 全局通用
+/* 鍏ㄥ眬閫氱敤
 ----------------------------------------------- */
 body {
  background-color: #EEEEEE;
@@ -103,7 +103,7 @@ p.cue {
 #vcode {
  cursor: pointer;
 }
-/* 用户登录
+/* 鐢ㄦ埛鐧诲綍
 ----------------------------------------------- */
 #login {
  margin: 0px auto;
@@ -147,7 +147,7 @@ p.cue {
  width: 280px;
 }
 #login .inpLi .captcha {
- width: 198px;
+ width: 188px;
  text-transform: uppercase;
 }
 #login .captchaPic {
@@ -155,7 +155,7 @@ p.cue {
 }
 #login .captchaPic .inpLi {
  float: left;
- width: 288px;
+ width: 280px;
 }
 #login .captchaPic #vcode {
  float: right;
@@ -181,7 +181,7 @@ p.cue {
 #login .reset .inpLi .inpLogin {
  width: 250px;
 }
-/* 主体框架
+/* 涓讳綋妗嗘灦
 ----------------------------------------------- */
 #vsWrap {
  width: 100%;
@@ -213,7 +213,7 @@ p.cue {
  background-color:#EEEEEE;
 }
 
-/* 公共顶部
+/* 鍏叡椤堕儴
 ----------------------------------------------- */
 #head .logo {
  border-right: 1px solid #0065B0;
@@ -265,7 +265,7 @@ p.cue {
  border-right: 0;
 }
 
-/* 公共管理菜单
+/* 鍏叡绠＄悊鑿滃崟
 ----------------------------------------------- */
 #menu {
  margin-right: -1px;
@@ -401,7 +401,7 @@ p.cue {
 #menu li i.download {
  background-position: 13px -959px;
 }
-/* 底部样式
+/* 搴曢儴鏍峰紡
 ----------------------------------------------- */
 #footer {
  margin-top: -1px;
@@ -421,7 +421,7 @@ p.cue {
   font-size:12px;
 }
 
-/* 当前位置
+/* 褰撳墠浣嶇疆
 ----------------------------------------------- */
 #vsHere {
  background-color:#F5F5F5;
@@ -437,7 +437,7 @@ p.cue {
 #vsHere b {
  margin: 0 13px;
 }
-/* 公共主区域
+/* 鍏叡涓诲尯鍩�
 ----------------------------------------------- */
 .mainBox {
  border-left: 1px solid #FFF;
@@ -490,7 +490,7 @@ p.cue {
  padding: 10px;
  margin-bottom: 20px;
 }
-/* 网站管理员
+/* 缃戠珯绠＄悊鍛�
 ----------------------------------------------- */
 #manager .cloudAccount {
  background: url(../images/icon_cloud_account.png) no-repeat center top;
@@ -514,7 +514,7 @@ p.cue {
  color:#60BBFF;
 }
 
-/* 首页
+/* 棣栭〉
 ----------------------------------------------- */
 #index .indexBox {
  margin-bottom: 20px;
@@ -587,7 +587,7 @@ p.cue {
 }
 
 /*
-  System管理页面
+  System绠＄悊椤甸潰
 */
 /*- tab -*/
 .tab {
@@ -694,7 +694,7 @@ select {
  padding: 5px 5px 5px 2px;
 }
 
-/* 单页面
+/* 鍗曢〉闈�
 ----------------------------------------------- */
 /**/
 .spage dl {
@@ -732,7 +732,7 @@ select {
 .spage dd a {
  color: #999;
 }
-/* 手机版
+/* 鎵嬫満鐗�
 ----------------------------------------------- */
 #mobileBox {
  background-color:#F5F5F5;
@@ -770,7 +770,7 @@ select {
 }
 
 /*
-  voosky系统后台页样式列表
+  voosky绯荤粺鍚庡彴椤垫牱寮忓垪琛�
 */
 html,body{margin:auto 0;padding:0px;}
 .v_log_ver{

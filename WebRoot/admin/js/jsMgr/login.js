@@ -2,10 +2,11 @@ $(function(){
 	$(".login-btn").bind("click",function(){
 		var username = $("#login-username-id").val();
 		var password = $("#login-pwd-id").val();
+		var code = $(".captcha").val();
 		//alert(username);
 		var url = ctx + "/account/verifyAccount.htm" ;
 		
-		var param = {username:username,password:password} ;
+		var param = {username:username,password:password,code:code} ;
 		
 		post(url,param) ;
 	})
@@ -48,5 +49,5 @@ function isCode(obj) {
 }
 
 function refresh() {
-	document.getElementById("authImg").src="authImg?now="+new Date();//使用时间作为参数避免浏览器从缓存取图片
+	document.getElementById("vcode").src=ctx+"/authImg?now="+new Date();//使用时间作为参数避免浏览器从缓存取图片
 }

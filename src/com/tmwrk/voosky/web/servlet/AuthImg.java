@@ -60,7 +60,7 @@ public class AuthImg extends HttpServlet
 		response.setDateHeader("Expires", 0);
 		response.setContentType("image/jpeg");
 		// 指定图形验证码图片的大小
-		int width = 80, height = 20;
+		int width = 80, height = 35;
 		// 生成一张新图片
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		// 在图片中绘制内容
@@ -91,7 +91,15 @@ public class AuthImg extends HttpServlet
 			g.drawLine(x, y, x - x1, y - y1);
 		}
 
-		// 该变量用来保存系统生成的随机字符串
+//		//封状文本
+//        StringFormat srFormat = new StringFormat(StringFormatFlags.NoClip);
+//        //设置文本垂直居中
+//        srFormat.Alignment = StringAlignment.Center;
+//        //设置文本水平居中
+//        srFormat.LineAlignment = StringAlignment.Center;
+//		// 该变量用来保存系统生成的随机字符串
+        
+        
 		String sRand = "";
 		for (int i = 0; i < 4; i++)
 		{
@@ -106,6 +114,7 @@ public class AuthImg extends HttpServlet
 			// 将系统生成的随机字符添加到图形验证码图片上
 			g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
 			g.drawString(tmp, 15 * i + 10, 15);
+//			srGraph.DrawString(srchars[i].ToString(), srFont, srBrush, 1, 1, srFormat);
 		}
 
 		// 取得用户Session
