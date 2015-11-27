@@ -12,7 +12,9 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.tmwrk.voosky.database.vo.User;
 import com.tmwrk.voosky.module.util.CommonUtil;
 
 /**
@@ -81,7 +83,14 @@ public class BaseAction extends ActionSupport implements ServletRequestAware, Se
 	{
 		this.response = response;
 	}
-
+	
+	/**
+	 * 在Session中获取用户信息
+	 * @return
+	 */
+	protected User getSessionUser(){
+		return (User) ActionContext.getContext().getSession().get("user");
+	}
 	//获取远程用户IP
 	public String getIpAddr() {
 		

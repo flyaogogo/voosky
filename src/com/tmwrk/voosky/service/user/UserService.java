@@ -48,4 +48,9 @@ public class UserService {
 	public void removedUser(Map<String, String> param){
 		userDao.removedUserById(param);
 	}
+	
+	public boolean updateUserLastLoginInfo(Map<String, String> params){
+		userDao.updateUserLastlogin(params);
+		return true ;
+	}
 }

@@ -37,6 +37,16 @@ function post(URL, PARAMS) {
 	return temp;
 }
 
+//===验证码空验证====
+function isCode(obj) {
+	if ($(".code").val() == "") {
+		$(".code-lv").show();
+		$(".code-lv .login-validation-font").html(notNull);
+	} else  {
+		$(".code-lv").hide();
+	}
+}
+
 function refresh() {
-document.getElementById("authImg").src="authImg?now="+new Date();//使用时间作为参数避免浏览器从缓存取图片
+	document.getElementById("authImg").src="authImg?now="+new Date();//使用时间作为参数避免浏览器从缓存取图片
 }

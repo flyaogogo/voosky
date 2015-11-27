@@ -25,10 +25,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <li class="inpLi"><b>用户名：</b><input type="text" name="user_name" class="inpLogin" id="login-username-id"></li>
       <li class="inpLi"><b>密码：</b><input type="password" name="password" class="inpLogin" id="login-pwd-id"></li>
       <li class="captchaPic">
-        <div class="inpLi"><b>验证码：</b><input type="text" name="captcha" class="captcha"></div>
+        <div class="inpLi"><b>验证码：</b><input type="text" name="captcha" class="captcha" onblur="isCode(this.value)"></div>
         <!-- <img id="vcode" src="images/code.png"> -->
-        <img alt="" src="authImg" mce_src="authImg" id="authImg" align="absmiddle">
-        <a href="javascript:void(0);" mce_href="#" onclick="refresh()" class="refesh-pic"><s:text name="refresh.verification.code"/></a>
+        <a href="javascript:void(0);" mce_href="javascript:void(0);" onclick="refresh()" class="refesh-pic">
+        <img alt="看不清，重刷新！" src="authImg" mce_src="authImg" id="authImg" align="absmiddle">
+        </a>
       </li>
     
       <li class="sub"><input type="submit" name="submit" class="btn login-btn" value="登陆"></li> 

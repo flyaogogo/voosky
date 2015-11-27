@@ -1,5 +1,8 @@
 package com.tmwrk.voosky.web.action.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.tmwrk.voosky.database.vo.User;
+import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.user.UserService;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -27,25 +31,46 @@ public class LoginAction extends BaseAction{
 	private String password;
 	
 	private String code ;
-	
-//	private User user ;
+	private String msg ;
 	
 	@Autowired
 	private UserService userService;
 
 	@Override
 	public String execute() throws Exception{
-		
-		User user = userService.checkUser(username, password) ;
-		
-		if(user != null){
-			ActionContext context = ActionContext.getContext();
-			// 将用户信息存入session中
-			context.getSession().put("user", user) ;
-			
-			return SUCCESS ;
+		if (code == null && username == null && password == null){
+			msg = "请输入正确的信息！";
 		}
-		return ERROR ;
+		
+		ActionContext context = ActionContext.getContext();
+		
+		// 校验验证码
+		String _code = (String) context.getSession().get("rand");
+		if (_code == null || _code.equals("")) {
+			msg = "验证码失效！" ;
+			return "login";
+		}else{
+			if (_code.equalsIgnoreCase(code)){
+				User user = userService.checkUser(username, password) ;
+				
+				if(user != null){
+					
+					// 将用户信息存入session中
+					context.getSession().put("user", user) ;
+					//修改用户登陆信息
+					Map<String, String> params = new HashMap<String, String>() ;
+					params.put("userId", user.getUserId()) ;
+					params.put("lastLoginTime", DateUtil.converNowDate()) ;
+					params.put("lastLoginIp", getIpAddr()) ;
+					userService.updateUserLastLoginInfo(params) ;
+					
+					return SUCCESS ;
+				}
+			}else{
+				msg = "验证码输入错误！" ;
+			}
+		}
+		return "login" ;
 	}
 
 	
@@ -62,16 +87,6 @@ public class LoginAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-//	public User getUser() {
-//		return user;
-//	}
-//
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
-
-
 	public String getUsername() {
 		return username;
 	}
@@ -94,6 +109,14 @@ public class LoginAction extends BaseAction{
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 }
