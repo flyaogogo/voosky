@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </ul>
       <div class="items">
         <div id="nav_add">
-         <form action="${ctx }/nav/addNavAction.html" method="post">
+         <form action="${ctx }/nav/addNavAction.htm" method="post">
           <table width="100%" border="0" cellpadding="5" cellspacing="1" class="tableBasic">
            <tr>
             <td width="80" height="35" align="right">导航模板</td>
@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </form>
         </div>
         <div id="nav_defined" style="display: none;">
-         <form action="${ctx }/nav/addNavAction.html" method="post">
+         <form action="${ctx }/nav/addNavAction.htm" method="post">
           <table width="100%" border="0" cellpadding="5" cellspacing="1" class="tableBasic">
            <tr>
             <td width="80" height="35" align="right">模板名称</td>
@@ -206,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div class="vs-nav-update-data" style="display: none;">
 	<h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">返回列表</a>自定义导航栏-修改</h3>
-    <form action="${ctx }/nav/updateNavByIdAction.html" method="post">
+    <form action="${ctx }/nav/updateNavByIdAction.htm" method="post">
      <table width="100%" border="0" cellpadding="5" cellspacing="1" class="tableBasic">
            <tr>
             <td width="80" height="35" align="right">导航模板</td>

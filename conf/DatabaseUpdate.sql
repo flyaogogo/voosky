@@ -113,7 +113,7 @@ create table vs_singlepage(
 	page_id		int not null,
 	unique_name	varchar(50) not null,
 	page_name varchar(50) not null,
-	context varchar(3000) not null,
+	content varchar(3000) not null,
 	keywords varchar(254),
 	description	varchar(254),
 	nav_id int not null,

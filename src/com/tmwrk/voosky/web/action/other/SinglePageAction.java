@@ -37,7 +37,7 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 	public String findSinglePageInfoById() throws Exception{
 		Map<String, Object> params = new HashMap<String, Object>() ;
 		params.put("pageId", singlePage.getPageId()) ;
-		singlePage = singlePageService.getSinglePageById(params) ;
+		sp = singlePageService.getSinglePageById(params) ;
 		return SUCCESS ;
 	}
 	

@@ -8,14 +8,14 @@ $(function(){
 	});
 	//返回管理员列表
 	$(".returnActionBtn").bind("click",function(){
-		window.location.href=ctx+"/account/listUserInfo.html" ;
+		window.location.href=ctx+"/account/listUserInfo.htm" ;
 	});
 	//展示修改用户界面
 	$(".vs-admin-update-btn-cls").bind("click",function(){
 		var userId = $(this).parent().parent().children().eq(0).html();
 		var param = {userId: userId} ;
 		$.ajax({
-			url:ctx + "/account/getUserByIdAction.html",
+			url:ctx + "/account/getUserByIdAction.htm",
 			type:"post",
 			data:param,
 			dataType:"json",

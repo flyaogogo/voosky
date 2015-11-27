@@ -7,7 +7,7 @@
 		</action>
 		<action name="listSPInfoById" method="findSinglePageInfoById" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
 			<result name="success" type="json">
-				<param name="root">singlePage</param>
+				<param name="root">sp</param>
 			</result>
 		</action>
 		

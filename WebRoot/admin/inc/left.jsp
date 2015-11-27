@@ -12,9 +12,9 @@
      </ul>
      <ul>
       <li class="cur"><a href="${ctx}/admin/system.jsp"><i class="system"></i><em>系统设置</em></a></li>
-      <li class="cur"><a href="${ctx}/nav/listNavsInfo.html?navType=middle"><i class="nav"></i><em>自定义导航</em></a></li>
+      <li class="cur"><a href="${ctx}/nav/listNavsInfo.htm?navType=middle"><i class="nav"></i><em>自定义导航</em></a></li>
         <li class="cur"><a href="${ctx}/admin/show.jsp"><i class="show"></i><em>幻灯片管理</em></a></li>
-        <li class="cur"><a href="${ctx}/singlepage/listAllSPInfo.html"><i class="page"></i><em>单页面管理</em></a></li>
+        <li class="cur"><a href="${ctx}/singlepage/listAllSPInfo.htm"><i class="page"></i><em>单页面管理</em></a></li>
      </ul>
      <ul>
         <li class="cur"><a href="${ctx}/admin/product_category.jsp"><i class="productCat"></i><em>商品分类</em></a></li>
@@ -29,7 +29,7 @@
      </ul>
  
      <ul>
-        <li class="cur"><a href="${ctx}/account/listUserInfo.html"><i class="manager"></i><em>网站管理员</em></a></li>
+        <li class="cur"><a href="${ctx}/account/listUserInfo.htm"><i class="manager"></i><em>网站管理员</em></a></li>
    
      </ul>
      <ul class="bot">

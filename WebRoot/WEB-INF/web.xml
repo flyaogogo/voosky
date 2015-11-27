@@ -27,10 +27,16 @@
 		<url-pattern>*.htm</url-pattern>
 	</filter-mapping> -->
 	
+	<!-- 
 	<filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-    </filter>
+    </filter> 
+    -->
+	<filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>com.tmwrk.voosky.web.filter.EditorStrutsFilter</filter-class>
+    </filter> 
  
     <filter-mapping>
         <filter-name>struts2</filter-name>
@@ -39,7 +45,7 @@
     
     <!-- <filter>
 		<filter-name>JspsFilter</filter-name>
-		<filter-class>com.travelsky.monitor.web.filter.JspsFilter</filter-class>
+		<filter-class>com.tmwrk.voosky.web.filter.JspsFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>JspsFilter</filter-name>

@@ -19,7 +19,7 @@
      <ul class="navRight">
       <li class="M noLeft"><a href="#">您好，${sessionScope.user.userName }</a>
       </li>
-      <li class="noRight"><a href="${ctx}/account/logout.html">退出</a></li>
+      <li class="noRight"><a href="${ctx}/account/logout.htm">退出</a></li>
       </ul>
     </div>
    </div>

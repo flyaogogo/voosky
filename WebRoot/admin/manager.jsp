@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div class="vs-admin-insert-cls" style="display: none;">
 	<h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">返回列表</a>网站管理员</h3>
-    <form id="adduserFormId" action="${ctx }/account/addUserAction.html" method="post">
+    <form id="adduserFormId" action="${ctx }/account/addUserAction.htm" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="100" align="right">管理员名称</td>
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div class="vs-admin-update" style="display: none;">
 	<h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">返回列表</a>网站管理员</h3>
-    <form action="${ctx }/account/updateUserAction.html" method="post">
+    <form action="${ctx }/account/updateUserAction.htm" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="100" align="right">管理员名称</td>

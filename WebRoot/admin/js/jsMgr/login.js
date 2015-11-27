@@ -3,7 +3,7 @@ $(function(){
 		var username = $("#login-username-id").val();
 		var password = $("#login-pwd-id").val();
 		//alert(username);
-		var url = ctx + "/account/verifyAccount.html" ;
+		var url = ctx + "/account/verifyAccount.htm" ;
 		
 		var param = {username:username,password:password} ;
 		

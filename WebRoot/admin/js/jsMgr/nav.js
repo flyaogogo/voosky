@@ -11,12 +11,12 @@ $(function(){
 	
 	//返回自定义导航列表
 	$(".returnActionBtn").bind("click",function(){
-		window.location.href=ctx+"/nav/listNavsInfo.html?navType=middle" ;
+		window.location.href=ctx+"/nav/listNavsInfo.htm?navType=middle" ;
 	});
 	
 	//主导航
 	$(".vs-nav-main-tab").click(function() {
-		window.location.href=ctx+"/nav/listNavsInfo.html?navType=middle" ;
+		window.location.href=ctx+"/nav/listNavsInfo.htm?navType=middle" ;
 		
 //		$(".vs-nav-main-tab").addClass("selected");
 //		$(".vs-nav-top-tab").removeClass("selected");
@@ -26,7 +26,7 @@ $(function(){
 	});
 	//顶部
 	$(".vs-nav-top-tab").click(function() {
-		window.location.href=ctx+"/nav/listNavsInfo.html?navType=top" ;
+		window.location.href=ctx+"/nav/listNavsInfo.htm?navType=top" ;
 		
 //		$(".vs-nav-main-tab").removeClass("selected");
 //		$(".vs-nav-top-tab").addClass("selected");
@@ -34,7 +34,7 @@ $(function(){
 	});
 	//底部
 	$(".vs-nav-bottom-tab").click(function() {
-		window.location.href=ctx+"/nav/listNavsInfo.html?navType=bottom" ;
+		window.location.href=ctx+"/nav/listNavsInfo.htm?navType=bottom" ;
 		
 //		$(".vs-nav-top-tab").removeClass("selected");
 //		$(".vs-nav-main-tab").removeClass("selected");
@@ -74,7 +74,7 @@ $(function(){
 		
 		var param = {navId: navId} ;
 		$.ajax({
-			url:ctx+"/nav/listNavInfoById.html",
+			url:ctx+"/nav/listNavInfoById.htm",
 			type:"post",
 			data:param,
 			dataType:"json",
@@ -98,7 +98,7 @@ $(function(){
 		
 		var navId = $(this).parent().parent().children().find("input[name='navId']").val();
 //		alert(navId);
-		window.location.href=ctx+"/nav/deleteNavByIdAction.html?navId=" + navId ;
+		window.location.href=ctx+"/nav/deleteNavByIdAction.htm?navId=" + navId ;
 	});
 })
 
@@ -106,7 +106,7 @@ $(function(){
 function getNavAjaxFun(vtype){
 	var param = {navType: vtype} ;
 	$.ajax({
-		url:ctx+"/nav/listNavsInfo.html",
+		url:ctx+"/nav/listNavsInfo.htm",
 		type:"post",
 		data:param,
 		dataType:"json",
