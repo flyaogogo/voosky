@@ -17,14 +17,14 @@
         <li class="cur"><a href="${ctx}/singlepage/listAllSPInfo.htm"><i class="page"></i><em>单页面管理</em></a></li>
      </ul>
      <ul>
-        <li class="cur"><a href="${ctx}/admin/product_category.jsp"><i class="productCat"></i><em>商品分类</em></a></li>
+        <li class="cur"><a href="${ctx}/category/listCategorysInfo.htm?cateStatus=product"><i class="productCat"></i><em>商品分类</em></a></li>
      
         <li class="cur"><a href="${ctx}/admin/product.jsp"><i class="product"></i><em>商品列表</em></a></li>
      
      </ul>
   
      <ul>
-        <li class="cur"><a href="${ctx}/admin/article_category.jsp"><i class="articleCat"></i><em>文章分类</em></a></li>
+        <li class="cur"><a href="${ctx}/category/listCategorysInfo.htm?cateStatus=article"><i class="articleCat"></i><em>文章分类</em></a></li>
         <li class="cur"><a href="${ctx}/admin/article.jsp"><i class="article"></i><em>文章列表</em></a></li>
      </ul>
  

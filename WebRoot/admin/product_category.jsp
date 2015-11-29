@@ -10,8 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>article category</title>
-<link href="css/public.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/category.js"></script>
 
 </head>
 
@@ -25,8 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="vsMain">
    <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
    <div class="mainBox" style="{$workspace.height}">
- 
-    <h3><a href="" class="actionBtn add">添加分类</a>商品分类</h3>
+ 	<div class="vs-category-show-cls">
+ 	
+    <h3><a href="javascript:void(0)" class="actionBtn vs-category-add-btn-cls">添加分类</a>商品分类</h3>
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
         <th width="120" align="left">分类名称	</th>
@@ -36,36 +38,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <th width="80" align="center">操作</th>
      </tr>
      
-      <tr>
-        <td align="left">电子数码</td>
-        <td>digital</td>
-        <td>电子产品销售</td>
-        <td align="center">10</td>
-        <td align="center"><a href="http://127.0.0.1/dhphp/admin/product_category.php?rec=edit&cat_id=1">编辑</a> | <a href="http://127.0.0.1/dhphp/admin/product_category.php?rec=del&cat_id=1">删除</a></td>
-     </tr>
-   
+	<s:iterator value="cateList" var="cl">
+	      <tr>
+	        <td align="left"><input type="hidden" name="cateId" value="<s:property value="#cl.cateId"/>"/><s:property value="#cl.cateName"/></td>
+	        <td><s:property value="#cl.uniqueName"/></td>
+	        <td><s:property value="#cl.desc"/></td>
+	        <td align="center"><s:property value="#cl.vsort"/></td>
+	        <td align="center"><a href="javascript:void(0)" class="vs-category-update-btn-cls">编辑</a> | <a href="javascript:void(0)" class="vs-category-delete-btn-cls">删除</a></td>
+	     </tr>
+	  </s:iterator>
+	   	
     </table>
-   
+    </div>
+   <div class="vs-category-type-btn-cls" style="display: none;">
     <!-- 分类添加或编辑 -->
-    <h3><a href="#" class="actionBtn">商品分类</a>添加商品分类</h3>
-    <form action="product_category.php?rec={$form_action}" method="post">
+    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">商品分类</a><span class="vs-category-title-name-cls">添加</span>商品分类</h3>
+    <form name="category-type-form" action="${ctx }/category/insertCateAction.htm" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="80" align="right">分类名称</td>
        <td>
-        <input type="text" name="cat_name" value="" size="40" class="inpMain" />
+         <input type="hidden" name="cateId"/>
+         <input type="hidden" name="cateStatus" value="article" class="vs-category-hidden-input-val"/>
+        <input type="text" name="cateName" value="" size="40" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td align="right">别名</td>
        <td>
-        <input type="text" name="unique_id" value="" size="40" class="inpMain" />
+        <input type="text" name="uniqueName" value="" size="40" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td align="right">上级分类</td>
        <td>
-        <select name="parent_id">
+        <select name="navId">
          <option value="0">无</option>
          <option value="{$cate.cat_id}" selected="selected">空</option>
         </select>
@@ -80,13 +87,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">简单描述</td>
        <td>
-        <textarea name="description" cols="60" rows="4" class="textArea"></textarea>
+        <textarea name="desc" cols="60" rows="4" class="textArea"></textarea>
        </td>
       </tr>
       <tr>
        <td align="right">排序</td>
        <td>
-        <input type="text" name="sort" value="" size="5" class="inpMain" />
+        <input type="text" name="vsort" value="" size="5" class="inpMain" />
        </td>
       </tr>
       <tr>
@@ -98,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
      </table>
     </form>
+  </div>
   
    </div>
   </div>
