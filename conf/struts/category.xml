@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="category" extends="tmwrk-default" namespace="/category">
+		<action name="listCategorysInfo" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="article">/admin/article_category.jsp</result>
+			<result name="product">/admin/product_category.jsp</result>
+		</action>
+		
+		<action name="listCategoryInfoById" method="findCategoryInfoById" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="success" type="json">
+				<param name="root">ctgry</param>
+			</result>
+		</action>
+		
+		<action name="insertCateAction" method="insertCategory" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="success" type="chain" >
+				<param name="actionName">listCategorysInfo</param>
+				<param name="param">${cateStatus}</param>
+			</result>
+		</action>
+		<action name="updateCategory" method="updateCategory" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="success" type="chain" >
+				<param name="actionName">listCategorysInfo</param>
+				<param name="param">${cateStatus}</param>
+			</result>
+		</action>
+		<action name="deleteByIdAction" method="deleteCategoryById" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="success" type="chain" >
+				<param name="actionName">listCategorysInfo</param>
+				<param name="param">${cateStatus}</param>
+			</result>
+		</action>
+		
+		
+	</package>
+</struts>

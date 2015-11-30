@@ -15,6 +15,7 @@ public class Category {
 	private String desc ;
 	private String cateStatus ;
 	private int navId ;
+	private int vsort ;
 	
 	public String getCateId() {
 		return cateId;
@@ -58,6 +59,12 @@ public class Category {
 	}
 	public void setNavId(int navId) {
 		this.navId = navId;
+	}
+	public int getVsort() {
+		return vsort;
+	}
+	public void setVsort(int vsort) {
+		this.vsort = vsort;
 	}
 	
 }

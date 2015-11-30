@@ -19,6 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div id="login">
+  
+	<s:if test="msg!=null||msg!=''">
+		<s:property value="msg"/>
+	</s:if>
   <div class="vslogo"></div>
   <div>
     <ul>
@@ -28,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="inpLi"><b>验证码：</b><input type="text" name="captcha" class="captcha" onblur="isCode(this.value)"></div>
         <!-- <img id="vcode" src="images/code.png"> -->
         <a href="javascript:void(0);" mce_href="javascript:void(0);" onclick="refresh()" class="refesh-pic">
-        <img alt="看不清，重刷新！" src="authImg" mce_src="authImg" id="authImg" align="absmiddle">
+        <img id="vcode" alt="看不清，重刷新！" src="${ctx}/authImg" mce_src="authImg" id="vcode" align="absmiddle">
         </a>
       </li>
     
