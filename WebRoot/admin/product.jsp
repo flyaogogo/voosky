@@ -10,8 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>article category</title>
-<link href="css/public.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/product.js"></script>
 
 </head>
 
@@ -25,7 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="vsMain">
    <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
    <div class="mainBox" style="{$workspace.height}">
-    <h3><a href="" class="actionBtn add">添加商品</a>商品列表</h3>
+   <div class="vs-product-show-cls">
+    <h3><a href="javascript:void(0)" class="actionBtn vs-product-add-href-cls">添加商品</a>商品列表</h3>
     <div class="filter">
     <form action="product.php" method="post">
      <select name="cat_id">
@@ -36,13 +38,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
     <span>
-    <a class="btnGray" href="product.php?rec=re_thumb">更新商品缩略图</a>
-    <a class="btnGray" href="product.php?rec=sort">开始筛选首页商品</a>
+    <a class="btnGray" href="javascript:void(0)">更新商品缩略图</a>
+    <a class="btnGray" href="javascript:void(0)">开始筛选首页商品</a>
     </span>
     </div>
  
     <div>
-    <form name="action" method="post" action="">
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
         <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
@@ -53,23 +54,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <th width="80" align="center">操作</th>
       </tr>
    
+   		<s:iterator value="proList" var="pro">
       <tr>
-        <td align="center"><input type="checkbox" name="checkbox[]" value="{$product.id}" /></td>
-        <td align="center">15</td>
-        <td><a href="http://127.0.0.1/dhphp/admin/product.php?rec=edit&id=15">亨氏Heinz金装粒粒面鳕鱼胡萝卜面</a><a href="product.php?rec=edit&id={$product.id}"></a></td>
-        <td align="center"><!-- {if $product.cat_name} --><a href="http://127.0.0.1/dhphp/admin/product.php?cat_id=3">母婴用品</a><!-- {/if} --></td>
-        <td align="center">2013-06-26</td>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="<s:property value="#pro.id"/>" /></td>
+        <td align="center"><s:property value="#pro.id"/></td>
+        <td><a href="javascript:void(0)" class="vs-product-title-href-cls"><s:property value="#pro.title"/></a></td>
+        <td align="center"><a href="javascript:void(0)" class="vs-product-query-href-cls"><s:property value="#pro.cateId"/></a></td>
+        <td align="center"><s:property value="#pro.addTime"/></td>
         <td align="center">
-         <!-- {if $if_sort} --><a href="http://127.0.0.1/dhphp/admin/product.php?rec=set_sort&id=15">首页显示</a><!-- {/if} -->
+        	<a href="javascript:void(0)" class="vs-product-edit-href-cls">编辑 | </a>
+        	<a href="javascript:void(0)" class="vs-product-delete-href-cls">删除</a>
+         	<!-- {if $if_sort} --><a href="javascript:void(0)" class="vs-product-first-title-href-cls">首页显示</a><!-- {/if} -->
         </td>
       </tr>
-      <!-- {/foreach} -->
+      </s:iterator>
     </table>
-    </form>
     </div>
+    
+    </div>
+    
+    <div class="vs-product-type-oper-cls" style="display: none;">
     <div class="clear"></div>
-    <h3><a href="" class="actionBtn">商品列表</a>添加商品</h3>
-    <form action="" method="post" enctype="multipart/form-data">
+    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">商品列表</a>添加商品</h3>
+    <form name="product-type-form" action="" method="post" enctype="multipart/form-data">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="90" align="right">商品名称</td>
@@ -149,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
      </table>
     </form>
-
+	</div>
   
    </div>
   </div>

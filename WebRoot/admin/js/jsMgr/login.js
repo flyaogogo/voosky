@@ -22,6 +22,13 @@ $(function(){
 //	});
 });
 
+
+$("body").keydown(function(event) {
+    if (event.keyCode == "13") {//keyCode=13是回车键
+    	validataLog();
+    }
+});
+
 function post(URL, PARAMS) {
 	var temp = document.createElement("form");
 	temp.action = URL;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="product" extends="tmwrk-default" namespace="/product">
+		<action name="listProductsInfo" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success">/admin/product.jsp</result>
+		</action>
+		<action name="listProductInfoById" method="findProductInfoById" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success" type="json">
+				<param name="root">pro</param>
+			</result>
+		</action>
+		<action name="instProductAction" method="insertProduct" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success" type="chain" >listProductsInfo</result>
+		</action>
+		<action name="updateProductAction" method="updateProduct" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success" type="chain" >listProductsInfo</result>
+		</action>
+		<action name="deleteProById" method="deleteProductById" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success" type="chain" >listProductsInfo</result>
+		</action>
+	</package>
+</struts>

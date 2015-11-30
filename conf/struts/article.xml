@@ -2,8 +2,24 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="article" extends="tmwrk-default" namespace="/article">
-		<action name="verifyAccount" class="com.tmwrk.voosky.web.action.article.ArticleAction">
-			<result name="success">/person_info.jsp</result>
+		<action name="listArticlesInfo" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success">/admin/article.jsp</result>
 		</action>
+		
+		<action name="listArticleInfoById" method="findArticleInfoById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success" type="json">
+				<param name="root">article</param>
+			</result>
+		</action>
+		<action name="insrtArtAction" method="insertArticle" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success" type="chain" >listArticlesInfo</result>
+		</action>
+		<action name="updateArtAction" method="updateArticle" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success" type="chain" >listArticlesInfo</result>
+		</action>
+		<action name="delArtById" method="deleteArticleById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success" type="chain" >listArticlesInfo</result>
+		</action>
+		
 	</package>
 </struts>
