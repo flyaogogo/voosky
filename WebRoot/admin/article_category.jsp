@@ -52,14 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
    <div class="vs-category-type-btn-cls" style="display: none;">
     <!-- 分类添加或编辑 -->
-    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">文章分类</a><span class="vs-category-title-name-cls">添加</span>文章分类</h3>
+    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">返回文章分类</a><span class="vs-category-title-name-cls">添加</span>文章分类</h3>
     <form name="category-type-form" action="${ctx }/category/insertCateAction.htm" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="80" align="right">分类名称</td>
        <td>
-        <input type="hidden" name="cateId"/>
-        <input type="hidden" name="cateStatus" value="article" class="vs-category-hidden-input-val">
+        <input type="hidden" name="cateId" />
+        <input type="hidden" name="cateStatus" value="article" class="vs-category-hidden-input-val" />
         <input type="text" name="cateName" value="" size="40" class="inpMain" />
        </td>
       </tr>
@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td>
         <select name="navId">
          <option value="0">无</option>
-         <option value="{$cate.cat_id}" selected="selected">空</option>
+         <option value="" selected="selected">空</option>
         </select>
        </td>
       </tr>

@@ -19,12 +19,14 @@
 				<param name="param">${cateStatus}</param>
 			</result>
 		</action>
+		
 		<action name="updateCategory" method="updateCategory" class="com.tmwrk.voosky.web.action.category.CategoryAction">
 			<result name="success" type="chain" >
 				<param name="actionName">listCategorysInfo</param>
 				<param name="param">${cateStatus}</param>
 			</result>
 		</action>
+		
 		<action name="deleteByIdAction" method="deleteCategoryById" class="com.tmwrk.voosky.web.action.category.CategoryAction">
 			<result name="success" type="chain" >
 				<param name="actionName">listCategorysInfo</param>

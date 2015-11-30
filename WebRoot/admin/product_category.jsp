@@ -37,19 +37,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <th width="60" align="center">排序</th>
         <th width="80" align="center">操作</th>
      </tr>
-     
+	
 	<s:iterator value="cateList" var="cl">
-	      <tr>
+		<tr>
 	        <td align="left"><input type="hidden" name="cateId" value="<s:property value="#cl.cateId"/>"/><s:property value="#cl.cateName"/></td>
 	        <td><s:property value="#cl.uniqueName"/></td>
 	        <td><s:property value="#cl.desc"/></td>
 	        <td align="center"><s:property value="#cl.vsort"/></td>
-	        <td align="center"><a href="javascript:void(0)" class="vs-category-update-btn-cls">编辑</a> | <a href="javascript:void(0)" class="vs-category-delete-btn-cls">删除</a></td>
-	     </tr>
-	  </s:iterator>
-	   	
+			<td align="center"><a href="javascript:void(0)" class="vs-category-update-btn-cls">编辑</a> | <a href="javascript:void(0)" class="vs-category-delete-btn-cls">删除</a></td>
+		</tr>
+	</s:iterator>
     </table>
     </div>
+    
    <div class="vs-category-type-btn-cls" style="display: none;">
     <!-- 分类添加或编辑 -->
     <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">商品分类</a><span class="vs-category-title-name-cls">添加</span>商品分类</h3>
@@ -58,8 +58,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td width="80" align="right">分类名称</td>
        <td>
-         <input type="hidden" name="cateId"/>
-         <input type="hidden" name="cateStatus" value="article" class="vs-category-hidden-input-val"/>
+        <input type="hidden" name="cateId" />
+        <input type="hidden" name="cateStatus" value="product" class="vs-category-hidden-input-val" />
         <input type="text" name="cateName" value="" size="40" class="inpMain" />
        </td>
       </tr>
@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td>
         <select name="navId">
          <option value="0">无</option>
-         <option value="{$cate.cat_id}" selected="selected">空</option>
+         <option value="" selected="selected">空</option>
         </select>
        </td>
       </tr>
@@ -99,7 +99,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td></td>
        <td>
-       
         <input name="submit" class="btn" type="submit" value="提交" />
        </td>
       </tr>

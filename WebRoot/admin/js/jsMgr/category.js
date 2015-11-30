@@ -36,6 +36,7 @@ $(function(){
 				$(".vs-category-type-btn-cls input[name='uniqueName']").val(data.uniqueName) ;
 				$(".vs-category-type-btn-cls select[name='navId']").val(data.navId) ;
 				$(".vs-category-type-btn-cls input[name='keywords']").val(data.keywords) ;
+				$(".vs-category-type-btn-cls textarea[name='desc']").val(data.desc) ;
 				$(".vs-category-type-btn-cls input[name='vsort']").val(data.vsort) ;
 				
 			}
@@ -46,7 +47,8 @@ $(function(){
 	//删除
 	$(".vs-category-delete-btn-cls").bind("click",function(){
 		var cateId = $(this).parent().parent().children().find("input[name='cateId']").val();
-		window.location.href=ctx+"/category/deleteByIdAction.htm?cateId=" + cateId ;
+		var type = $(".vs-category-hidden-input-val").val() ;
+		window.location.href=ctx+"/category/deleteByIdAction.htm?cateId=" + cateId + "&cateStatus=" + type ;
 	});
 	
 	

@@ -39,7 +39,7 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		//param.put("cateStatus", category.getCateStatus()) ;
 		param.put("cateId", category.getCateId()) ;
 		
-		category = categoryService.findCategoryById(param) ;
+		ctgry = categoryService.findCategoryById(param) ;
 		return SUCCESS ;
 	}
 	
