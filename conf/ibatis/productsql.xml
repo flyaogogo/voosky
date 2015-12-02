@@ -39,7 +39,7 @@
 	
 	<update id="updateById" parameterClass="Product">
 		update vs_product set cat_id=#cateId#,title=#title#,is_recommend=#isRecommend#,content=#content#,price=#price#,
-			thumb_url=#thumbUrl#,keywords=#keywords#,description=#desc#,clicknum=#clickNum#,add_time=#addTime#,vsort=#vsort# where id=#id#
+			thumb_url=#thumbUrl#,keywords=#keywords#,description=#desc#,vsort=#vsort# where id=#id#
 	</update>
 	
 	<delete id="deleteById" parameterClass="Product">
