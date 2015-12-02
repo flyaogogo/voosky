@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Product;
+import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.product.ProductServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -47,12 +48,15 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	 */
 	public String findProductInfoById() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
-		param.put("id", pro.getId()) ;
+		param.put("id", product.getId()) ;
 		pro = productService.findProductInfoById(param) ;
 		return SUCCESS ;
 	}
 	
 	public String insertProduct() throws Exception{
+		product.setAddTime(DateUtil.converNowDate());
+		String is = (product.getIsRecommend()==null)?"false":"true" ;
+		product.setIsRecommend(is);
 		productService.insertProduct(product);
 		return SUCCESS ;
 	}

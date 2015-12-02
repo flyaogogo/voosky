@@ -91,7 +91,7 @@ create table vs_product(
 	is_recommend	varchar(10) not null,
 	price	decimal(10,2) not null,
 	content		Varchar(3000) ,
-	thumb_url	Varchar(15) ,
+	thumb_url	Varchar(254) ,
 	keywords	varchar(254) ,
 	description	varchar(254) ,
 	clicknum	int not null,

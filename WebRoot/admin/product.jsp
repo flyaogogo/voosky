@@ -14,6 +14,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/product.js"></script>
 
+<!-- Baidu Ueditor -->
+<!-- 配置文件 -->
+<script type="text/javascript" src="${ctx }/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="${ctx }/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/lang/zh-cn/zh-cn.js"></script>
+
 </head>
 
 
@@ -51,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <th align="left">商品名称	</th>
         <th width="150" align="center">商品分类</th>
        <th width="80" align="center">添加日期</th>
-        <th width="80" align="center">操作</th>
+        <th width="120" align="center">操作</th>
       </tr>
    
    		<s:iterator value="proList" var="pro">
@@ -62,9 +69,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td align="center"><a href="javascript:void(0)" class="vs-product-query-href-cls"><s:property value="#pro.cateId"/></a></td>
         <td align="center"><s:property value="#pro.addTime"/></td>
         <td align="center">
-        	<a href="javascript:void(0)" class="vs-product-edit-href-cls">编辑 | </a>
-        	<a href="javascript:void(0)" class="vs-product-delete-href-cls">删除</a>
-         	<!-- {if $if_sort} --><a href="javascript:void(0)" class="vs-product-first-title-href-cls">首页显示</a><!-- {/if} -->
+        	<a href="javascript:void(0)" class="vs-product-edit-href-cls">编辑 |</a> 
+        	<a href="javascript:void(0)" class="vs-product-delete-href-cls">删除 |</a> 
+        	<s:if test="isRecommend=='true'">
+         		<a href="javascript:void(0)" class="vs-product-first-title-href-cls">首页显示</a>
+        	</s:if>
+        	<s:else>
+         		<a href="javascript:void(0)" class="vs-product-first-title-href-cls">后台显示</a>
+        	</s:else>
         </td>
       </tr>
       </s:iterator>
@@ -74,66 +86,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     
     <div class="vs-product-type-oper-cls" style="display: none;">
-    <div class="clear"></div>
-    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">商品列表</a>添加商品</h3>
-    <form name="product-type-form" action="" method="post" enctype="multipart/form-data">
+    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">商品列表</a><span class="vs-pro-span-type-cls">添加</span>商品</h3>
+    <form name="product-type-form" action="${ctx }/product/instProductAction.htm" method="post" enctype="multipart/form-data">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="90" align="right">商品名称</td>
        <td>
-        <input type="text" name="name" value="" size="80" class="inpMain" />
+        <input type="hidden" name="id" />
+        <input type="text" name="title" value="" size="80" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td align="right">商品分类</td>
        <td>
-        <select name="cat_id">
+        <select name="cateId">
          <option value="0"></option>
-         <option value="{$cate.cat_id}" selected="selected"></option>
+         <option value="1" selected="selected"></option>
         </select>
        </td>
       </tr>
       <tr>
        <td align="right">商品价格</td>
        <td>
-        <input type="text" name="price" value="" size="40" class="inpMain" />
+        <input type="text" name="price" value="" size="20" class="inpMain" />
        </td>
-      </tr>
-      <tr>
-       <td align="right" valign="top">商品价格</td>
-       <td>
-        <textarea name="defined" id="defined" cols="50" class="textAreaAuto"></textarea>
-        <script type="text/javascript">
-         {literal}
-         $("#defined").autoTextarea({maxHeight:300});
-         {/literal}
-        </script>
-        </td>
       </tr>
 
       <tr>
        <td align="right" valign="top">商品描述</td>
        <td>
-        <!-- KindEditor -->
-        <script charset="utf-8" src="include/kindeditor/kindeditor.js"></script>
-        <script charset="utf-8" src="include/kindeditor/lang/zh_CN.js"></script>
-        <script>
-        {literal}
-         var editor;
-         KindEditor.ready(function(K) {
-             editor = K.create('#content');
-         });
-        {/literal}
-        </script>
-        <!-- /KindEditor -->
+        <!-- 实例化编辑器 -->
+	    <script type="text/javascript">
+	    	UEDITOR_CONFIG.UEDITOR_HOME_URL = '../ueditor/'; //一定要用这句话，否则你需要去ueditor.config.js修改路径的配置信息
+	        var ue = UE.getEditor('content');
+	    </script>
         <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea"></textarea>
        </td>
       </tr>
       <tr>
        <td align="right">缩略图</td>
        <td>
-        <input type="file" name="image" size="38" class="inpFlie" />
-        <img src="images/icon_no.png"></td>
+        <input type="file" name="thumbUrl" size="38" class="inpFlie" />
+        <img src="${ctx }/admin/images/icon_no.png"></td>
       </tr>
       <tr>
        <td align="right">关键字</td>
@@ -144,9 +138,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">简单描述</td>
        <td>
-        <input type="text" name="description" value="" size="50" class="inpMain" />
+        <input type="text" name="desc" value="" size="50" class="inpMain" />
        </td>
       </tr>
+      <tr>
+            <td height="35" align="right">排序</td>
+            <td>
+             <input type="text" name="vsort" value="50" size="5" class="inpMain" />
+            </td>
+       </tr>
+      <tr>
+            <td height="35" align="right">是否推荐</td>
+            <td>
+             <input id="vs-pro-checkbox-is-recommend" type="checkbox" name="isRecommend" value='check'/>
+            </td>
+       </tr>
       <tr>
        <td></td>
        <td>
