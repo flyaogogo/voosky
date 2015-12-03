@@ -24,7 +24,16 @@
 	
 	<select id="getAllProducts" parameterClass="java.util.HashMap" resultMap="productMap">
 		select id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,
-			add_time,vsort from vs_product 
+			add_time,vsort from vs_product where 1=1
+			<isNotNull property="isRecommend">
+				and is_recommend = #isRecommend#
+			</isNotNull>
+			<isNotNull property="cateId">
+				and cat_id = #cateId#
+			</isNotNull>
+			<isNotNull property="title">
+				and title like concat('%', #title#, '%')
+			</isNotNull>
 	</select>
 	<select id="getProductById" parameterClass="java.util.HashMap" resultMap="productMap">
 		select id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,
@@ -40,6 +49,9 @@
 	<update id="updateById" parameterClass="Product">
 		update vs_product set cat_id=#cateId#,title=#title#,is_recommend=#isRecommend#,content=#content#,price=#price#,
 			thumb_url=#thumbUrl#,keywords=#keywords#,description=#desc#,vsort=#vsort# where id=#id#
+	</update>
+	<update id="updateShowFirstPageById" parameterClass="Product">
+		update vs_product set is_recommend=#isRecommend# where id=#id#
 	</update>
 	
 	<delete id="deleteById" parameterClass="Product">

@@ -22,6 +22,11 @@ public class ProductDaoImpl extends BaseDao<Product> {
 		getSqlMapClientTemplate().update("product.updateById", params) ;
 		return null;
 	}
+	
+	public Product updateShowFirstPageById(Product params) {
+		getSqlMapClientTemplate().update("product.updateShowFirstPageById", params) ;
+		return null;
+	}
 
 	@Override
 	public Product findById(Map<String, Object> params) {

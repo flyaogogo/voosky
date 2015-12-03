@@ -36,17 +36,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="vs-product-show-cls">
     <h3><a href="javascript:void(0)" class="actionBtn vs-product-add-href-cls">添加商品</a>商品列表</h3>
     <div class="filter">
-    <form action="product.php" method="post">
-     <select name="cat_id">
-      <option value="0">未分类</option>
-      <option value="{$cate.cat_id}" selected="selected">电子</option>
+    <form action="${ctx }/product/listProductsInfo.htm" method="post">
+     <select name="cateId">
+      <option value="all" selected="selected">未分类</option>
+      <s:iterator value="cateList" var="ctl">
+      	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
+      </s:iterator>
      </select>
-     <input name="keyword" type="text" class="inpMain" value="" size="20" />
+     <input name="title" type="text" class="inpMain" value="" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
     <span>
     <a class="btnGray" href="javascript:void(0)">更新商品缩略图</a>
-    <a class="btnGray" href="javascript:void(0)">开始筛选首页商品</a>
+    <a href="javascript:void(0)" class="btnGray vs-product-select-firstpro-href-cls">开始筛选首页商品</a>
     </span>
     </div>
  
@@ -72,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<a href="javascript:void(0)" class="vs-product-edit-href-cls">编辑 |</a> 
         	<a href="javascript:void(0)" class="vs-product-delete-href-cls">删除 |</a> 
         	<s:if test="isRecommend=='true'">
-         		<a href="javascript:void(0)" class="vs-product-first-title-href-cls">首页显示</a>
+         		<a href="javascript:void(0)" class="vs-product-first-title-href-cls first-page">首页显示</a>
         	</s:if>
         	<s:else>
          		<a href="javascript:void(0)" class="vs-product-first-title-href-cls">后台显示</a>
@@ -100,8 +102,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td align="right">商品分类</td>
        <td>
         <select name="cateId">
-         <option value="0"></option>
-         <option value="1" selected="selected"></option>
+          <option value="all" selected="selected">未分类</option>
+	      <s:iterator value="cateList" var="ctl">
+	      	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
+	      </s:iterator>
         </select>
        </td>
       </tr>

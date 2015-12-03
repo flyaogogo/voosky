@@ -16,6 +16,9 @@
 		<action name="updateProductAction" method="updateProduct" class="com.tmwrk.voosky.web.action.product.ProductAction">
 			<result name="success" type="chain" >listProductsInfo</result>
 		</action>
+		<action name="showPageAction" method="updateShowFirstPageById" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success" type="chain" >listProductsInfo</result>
+		</action>
 		<action name="deleteProById" method="deleteProductById" class="com.tmwrk.voosky.web.action.product.ProductAction">
 			<result name="success" type="chain" >listProductsInfo</result>
 		</action>

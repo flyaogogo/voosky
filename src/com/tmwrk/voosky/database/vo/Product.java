@@ -1,6 +1,7 @@
 package com.tmwrk.voosky.database.vo;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 商品  实体类
@@ -20,6 +21,9 @@ public class Product {
 	private int clickNum ;
 	private String addTime ;
 	private int vsort ;
+
+	private List<Category> cateList ;
+	
 	public int getId() {
 		return id;
 	}
@@ -91,6 +95,12 @@ public class Product {
 	}
 	public void setVsort(int vsort) {
 		this.vsort = vsort;
+	}
+	public List<Category> getCateList() {
+		return cateList;
+	}
+	public void setCateList(List<Category> cateList) {
+		this.cateList = cateList;
 	}
 	
 }

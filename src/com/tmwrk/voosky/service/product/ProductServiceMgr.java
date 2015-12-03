@@ -18,7 +18,6 @@ public class ProductServiceMgr {
 	@Qualifier("productDao")
 	private ProductDaoImpl productDao ;
 	
-	
 	public List<Product> findAllProductsInfo(Map<String, Object> param){
 		List<Product> prList = productDao.findAll(param) ;
 		return prList ;
@@ -41,5 +40,12 @@ public class ProductServiceMgr {
 	
 	public boolean deleteProductById(Product p){
 		return productDao.deleteProductById(p) ;
+	}
+	/**
+	 * 更新是否在首页显示
+	 * @param params
+	 */
+	public void updateShowFirstPageById(Product params) {
+		productDao.updateShowFirstPageById(params) ;
 	}
 }

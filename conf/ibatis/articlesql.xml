@@ -22,11 +22,11 @@
 	</resultMap>
 	
 	<select id="getAllArticles" parameterClass="java.util.HashMap" resultMap="articleMap">
-		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum
+		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,
 			add_time,vsort from vs_article 
 	</select>
 	<select id="getArticleById" parameterClass="java.util.HashMap" resultMap="articleMap">
-		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum
+		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,
 			add_time,vsort from vs_article where id=#id#
 	</select>
 	
@@ -38,7 +38,7 @@
 	
 	<update id="updateById" parameterClass="Article">
 		update vs_article set cat_id=#cateId#,title=#title#,is_recommend=#isRecommend#,content=#content#,thumb_url=#thumbUrl#,
-			keywords=#keywords#,description=#desc#,clicknum=#clickNum#,add_time=#addTime#,vsort=#vsort# where id=#id#
+			keywords=#keywords#,description=#desc#,add_time=#addTime#,vsort=#vsort# where id=#id#
 	</update>
 	
 	<delete id="deleteById" parameterClass="Article">
