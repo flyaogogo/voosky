@@ -38,7 +38,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	
 	private List<Product> proList ;
 	
-	private List<Category> cateList ;
+	private List<Category> ctgryList ;
 	
 	//关键字查询
 	private String keywords ;
@@ -57,7 +57,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		}
 		proList = productService.findAllProductsInfo(param) ;
 		
-		cateList = getProductCategory() ;
+		ctgryList = getProductCategory() ;
 		
 		return SUCCESS ;
 	}
@@ -138,12 +138,12 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		this.proList = proList;
 	}
 
-	public List<Category> getCateList() {
-		return cateList;
+	public List<Category> getCtgryList() {
+		return ctgryList;
 	}
 
-	public void setCateList(List<Category> cateList) {
-		this.cateList = cateList;
+	public void setCtgryList(List<Category> ctgryList) {
+		this.ctgryList = ctgryList;
 	}
 
 	public String getKeywords() {

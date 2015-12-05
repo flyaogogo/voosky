@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <form action="${ctx }/product/listProductsInfo.htm" method="post">
      <select name="cateId">
       <option value="all" selected="selected">未分类</option>
-      <s:iterator value="cateList" var="ctl">
+      <s:iterator value="ctgryList" var="ctl">
       	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
       </s:iterator>
      </select>
@@ -74,10 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<a href="javascript:void(0)" class="vs-product-edit-href-cls">编辑 |</a> 
         	<a href="javascript:void(0)" class="vs-product-delete-href-cls">删除 |</a> 
         	<s:if test="isRecommend=='true'">
-         		<a href="javascript:void(0)" class="vs-product-first-title-href-cls first-page">首页显示</a>
+         		<a href="javascript:void(0)" class="vs-product-update-first-title-href-cls first-page">首页显示</a>
         	</s:if>
         	<s:else>
-         		<a href="javascript:void(0)" class="vs-product-first-title-href-cls">后台显示</a>
+         		<a href="javascript:void(0)" class="vs-product-update-first-title-href-cls">后台显示</a>
         	</s:else>
         </td>
       </tr>
@@ -103,9 +103,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td>
         <select name="cateId">
           <option value="all" selected="selected">未分类</option>
-	      <s:iterator value="cateList" var="ctl">
-	      	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
-	      </s:iterator>
+	      <s:iterator value="ctgryList" var="ctl">
+      		<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
+      	 </s:iterator>
         </select>
        </td>
       </tr>

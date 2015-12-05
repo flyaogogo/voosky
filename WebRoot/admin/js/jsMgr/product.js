@@ -46,7 +46,6 @@ $(function(){
 			    ue.setContent(data.content);
 				$(".vs-product-type-oper-cls input[name='id']").val(data.id) ;
 				$(".vs-product-type-oper-cls input[name='title']").val(data.title) ;
-//				$(".vs-product-type-oper-cls input[name='cateId']").val(data.cateId) ;
 				
 				//console.log(data.cateList);
 				$(data.cateList).each(function() {
@@ -69,9 +68,7 @@ $(function(){
 				console.log(isrecomm);
 				if(isrecomm==true){
 					$(".vs-product-type-oper-cls input[name='isRecommend']").prop("checked",true) ;
-					
 				}
-				//alert($("#content"));
 			}
 		});
 		
@@ -83,15 +80,21 @@ $(function(){
 		window.location.href=ctx+"/category/deleteByIdAction.htm?id=" + proId ;
 	});
 	
-	//设置首页商品
+	//显示首页商品
 	$(".vs-product-select-firstpro-href-cls").bind("click",function(){
-		alert(1111);
+		window.location.href=ctx+"/product/listProductsInfo.htm?isRecommend=true" ;
+	});
+	
+	//设置首页商品
+	$(".vs-product-update-first-title-href-cls").bind("click",function(){
+		var proId = $(this).parent().parent().children().eq(1).html();
+		var isrec = false ;
 		if($(this).hasClass("first-page")){
-			alert(1);
+			isrec = "false" ;
 		}else{
-			alert(2) ;
+			isrec = "true" ;
 		}
-//		window.location.href=ctx+"/product/showPageAction.htm?isRecommend=true" ;
+		window.location.href=ctx+"/product/showPageAction.htm?id=" +proId +"&isRecommend=" + isrec ;
 	});
 	
 })
