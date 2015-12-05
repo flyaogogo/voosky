@@ -23,6 +23,11 @@ public class ArticleDaoImpl extends BaseDao<Article>{
 		return null;
 	}
 
+	public Article updateShowFirstPageById(Article params) {
+		getSqlMapClientTemplate().update("article.updateShowFirstPageById", params) ;
+		return null;
+	}
+	
 	@Override
 	public Article findById(Map<String, Object> params) {
 		Article p = (Article)getSqlMapClientTemplate().queryForObject("article.getArticleById", params) ;

@@ -25,7 +25,7 @@
   
      <ul>
         <li class="cur"><a href="${ctx}/category/listCategorysInfo.htm?cateStatus=article"><i class="articleCat"></i><em>文章分类</em></a></li>
-        <li class="cur"><a href="${ctx}/admin/article.jsp"><i class="article"></i><em>文章列表</em></a></li>
+        <li class="cur"><a href="${ctx}/article/listArticlesInfo.htm"><i class="article"></i><em>文章列表</em></a></li>
      </ul>
  
      <ul>

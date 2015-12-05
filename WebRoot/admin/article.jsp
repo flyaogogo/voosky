@@ -14,6 +14,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/article.js"></script>
 
+<!-- Baidu Ueditor -->
+<!-- 配置文件 -->
+<script type="text/javascript" src="${ctx }/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="${ctx }/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/lang/zh-cn/zh-cn.js"></script>
+
 </head>
 
 
@@ -26,24 +33,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="vsMain">
    <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
    <div class="mainBox" style="{$workspace.height}">
-    <h3><a href="" class="actionBtn add">添加文章</a>文章文章列表</h3>
+   <div class="vs-article-show-cls">
+    <h3><a href="javascript:void(0)" class="actionBtn vs-article-add-href-cls">添加文章</a>文章列表</h3>
     <div class="filter">
-    <form action="product.php" method="post">
-     <select name="cat_id">
-      <option value="0">未分类</option>
-      <option value="{$cate.cat_id}" selected="selected">企业咨询</option>
+    <form action="${ctx }/article/listArticlesInfo.htm" method="post">
+     <select name="cateId">
+      <option value="all" selected="selected">未分类</option>
+      <s:iterator value="ctgryList" var="ctl">
+      	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
+      </s:iterator>
      </select>
-     <input name="keyword" type="text" class="inpMain" value="" size="20" />
+     <input name="title" type="text" class="inpMain" value="" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
     <span>
-    <a class="btnGray" href="product.php?rec=re_thumb">更新商品缩略图</a>
-    <a class="btnGray" href="product.php?rec=sort">开始筛选首页商品</a>
+    <a class="btnGray" href="javascript:void(0)">更新商品缩略图</a>
+    <a href="javascript:void(0)" class="btnGray vs-article-select-firstpro-href-cls">开始筛选首页商品</a>
     </span>
     </div>
  
     <div>
-    <form name="action" method="post" action="">
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
         <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
@@ -51,39 +60,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <th align="left">文章名称	</th>
         <th width="150" align="center">企业分类</th>
        <th width="80" align="center">添加日期</th>
-        <th width="80" align="center">操作</th>
+        <th width="120" align="center">操作</th>
       </tr>
    
+      <s:iterator value="artList" var="art">
       <tr>
-        <td align="center"><input type="checkbox" name="checkbox[]" value="{$product.id}" /></td>
-        <td align="center">15</td>
-        <td><a href="http://127.0.0.1/dhphp/admin/product.php?rec=edit&id=15">亨氏Heinz金装粒粒面鳕鱼胡萝卜面</a><a href="product.php?rec=edit&id={$product.id}"></a></td>
-        <td align="center"><!-- {if $product.cat_name} -->企业咨询</td>
-        <td align="center">2013-06-26</td>
+        <td align="center"><input type="checkbox" name="checkbox[]" value="<s:property value="#art.id"/>" /></td>
+        <td align="center"><s:property value="#art.id"/></td>
+        <td><a href="javascript:void(0)" class="vs-article-title-href-cls"><s:property value="#art.title"/></a></td>
+        <td align="center"><a href="javascript:void(0)" class="vs-article-query-href-cls"><s:property value="#art.cateId"/></a></td>
+        <td align="center"><s:property value="#art.addTime"/></td>
         <td align="center">
-         <!-- {if $if_sort} --><a href="http://127.0.0.1/dhphp/admin/product.php?rec=set_sort&id=15">首页显示</a><!-- {/if} -->
+        	<a href="javascript:void(0)" class="vs-article-edit-href-cls">编辑 |</a> 
+        	<a href="javascript:void(0)" class="vs-article-delete-href-cls">删除 |</a> 
+        	<s:if test="isRecommend=='true'">
+         		<a href="javascript:void(0)" class="vs-article-update-first-title-href-cls first-page">首页显示</a>
+        	</s:if>
+        	<s:else>
+         		<a href="javascript:void(0)" class="vs-article-update-first-title-href-cls">后台显示</a>
+        	</s:else>
         </td>
       </tr>
-      <!-- {/foreach} -->
+      </s:iterator>
     </table>
-    </form>
     </div>
-    <div class="clear"></div>
-    <h3><a href="" class="actionBtn">文章列表</a>添加、编辑文章</h3>
-    <form action="" method="post" enctype="multipart/form-data">
+    
+    </div>
+    
+    <div class="vs-article-type-oper-cls" style="display: none;">
+    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">文章列表</a><span class="vs-pro-span-type-cls">添加</span>-文章</h3>
+    <form name="article-type-form" action="${ctx }/article/insrtArtAction.htm" method="post" enctype="multipart/form-data">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="90" align="right">文章名称</td>
        <td>
-        <input type="text" name="name" value="" size="80" class="inpMain" />
+        <input type="hidden" name="id" />
+        <input type="text" name="title" value="" size="80" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td align="right">分类</td>
        <td>
-        <select name="cat_id">
-         <option value="0"></option>
-         <option value="{$cate.cat_id}" selected="selected"></option>
+        <select name="cateId">
+          <option value="all" selected="selected">未分类</option>
+	      <s:iterator value="ctgryList" var="ctl">
+      		<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
+      	 </s:iterator>
         </select>
        </td>
       </tr>
@@ -91,26 +113,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
         <td align="right" valign="top">文章内容</td>
         <td>
-          <!-- KindEditor -->
-          <script charset="utf-8" src="include/kindeditor/kindeditor.js"></script>
-          <script charset="utf-8" src="include/kindeditor/lang/zh_CN.js"></script>
-          <script>
-        {literal}
-         var editor;
-         KindEditor.ready(function(K) {
-             editor = K.create('#content');
-         });
-        {/literal}
-        </script>
-          <!-- /KindEditor -->
+          <!-- 实例化编辑器 -->
+		    <script type="text/javascript">
+		    	UEDITOR_CONFIG.UEDITOR_HOME_URL = '../ueditor/'; //一定要用这句话，否则你需要去ueditor.config.js修改路径的配置信息
+		        var ue = UE.getEditor('content');
+		    </script>
           <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea"></textarea>
           </td>
       </tr>
       <tr>
        <td align="right">缩略图</td>
        <td>
-        <input type="file" name="image" size="38" class="inpFlie" />
-        <img src="images/icon_no.png"></td>
+        <input type="file" name="thumbUrl" size="38" class="inpFlie" />
+        <img src="${ctx }/admin/images/icon_no.png"></td>
       </tr>
       <tr>
        <td align="right">关键字</td>
@@ -121,9 +136,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">简单描述</td>
        <td>
-        <input type="text" name="description" value="" size="50" class="inpMain" />
+        <input type="text" name="desc" value="" size="50" class="inpMain" />
        </td>
       </tr>
+      <tr>
+            <td height="35" align="right">排序</td>
+            <td>
+             <input type="text" name="vsort" value="50" size="5" class="inpMain" />
+            </td>
+       </tr>
+      <tr>
+            <td height="35" align="right">是否推荐</td>
+            <td>
+             <input id="vs-art-checkbox-is-recommend" type="checkbox" name="isRecommend" value='check'/>
+            </td>
+       </tr>
       <tr>
        <td></td>
        <td>
@@ -133,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </tr>
      </table>
     </form>
-
+	</div>
   
    </div>
   </div>

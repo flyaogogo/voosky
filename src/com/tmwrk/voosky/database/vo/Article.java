@@ -1,5 +1,7 @@
 package com.tmwrk.voosky.database.vo;
 
+import java.util.List;
+
 /**
  * 文章实体类
  * @author wfluo 2015-11-17
@@ -19,6 +21,7 @@ public class Article {
 	private String addTime ;
 	private int vsort ;
 	
+	private List<Category> cateList ;
 	
 	public int getId() {
 		return id;
@@ -85,6 +88,12 @@ public class Article {
 	}
 	public void setVsort(int vsort) {
 		this.vsort = vsort;
+	}
+	public List<Category> getCateList() {
+		return cateList;
+	}
+	public void setCateList(List<Category> cateList) {
+		this.cateList = cateList;
 	}
 	
 }

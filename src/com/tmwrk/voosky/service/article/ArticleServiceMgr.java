@@ -43,4 +43,12 @@ public class ArticleServiceMgr {
 	public boolean deleteArticleById(Article p){
 		return articleDao.deleteArticleById(p) ;
 	}
+	
+	/**
+	 * 更新是否在首页显示
+	 * @param params
+	 */
+	public void updateShowFirstPageById(Article params) {
+		articleDao.updateShowFirstPageById(params) ;
+	}
 }

@@ -77,12 +77,7 @@ $(function(){
 	//删除
 	$(".vs-product-delete-href-cls").bind("click",function(){
 		var proId = $(this).parent().parent().children().eq(1).html();
-		window.location.href=ctx+"/category/deleteByIdAction.htm?id=" + proId ;
-	});
-	
-	//显示首页商品
-	$(".vs-product-select-firstpro-href-cls").bind("click",function(){
-		window.location.href=ctx+"/product/listProductsInfo.htm?isRecommend=true" ;
+		window.location.href=ctx+"/product/deleteProById.htm?id=" + proId ;
 	});
 	
 	//设置首页商品

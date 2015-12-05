@@ -17,6 +17,10 @@
 		<action name="updateArtAction" method="updateArticle" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success" type="chain" >listArticlesInfo</result>
 		</action>
+		<action name="setShowPageAction" method="updateShowFirstPageById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success" type="chain" >listArticlesInfo</result>
+		</action>
+		
 		<action name="delArtById" method="deleteArticleById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success" type="chain" >listArticlesInfo</result>
 		</action>
