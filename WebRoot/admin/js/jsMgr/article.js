@@ -57,16 +57,21 @@ $(function(){
 					}
 				});
 				
-				$(".vs-article-type-oper-cls textarea[name='content']").val(ue) ;
+				$(".vs-article-type-oper-cls textarea[name='content']").val(ue.getAllHtml()) ;
 				
 //				$(".vs-article-type-oper-cls input[name='thumbUrl']").val(data.thumbUrl) ;
 				$(".vs-article-type-oper-cls input[name='keywords']").val(data.keywords) ;
 				$(".vs-article-type-oper-cls input[name='desc']").val(data.desc) ;
 				$(".vs-article-type-oper-cls input[name='vsort']").val(data.vsort) ;
 				var isrecomm = data.isRecommend ;
-				console.log(isrecomm);
+				//console.log(isrecomm);
+				//alert(isrecomm);
 				if(isrecomm==true){
-					$(".vs-article-type-oper-cls input[name='isRecommend']").prop("checked",true) ;
+					
+//					$(".vs-article-type-oper-cls checkbox[name='isRecommend']").prop("checked",true) ;
+					$(".vs-article-type-oper-cls checkbox[name='isRecommend']").prop("checked") ;
+//					$(".vs-article-type-oper-cls checkbox[name='isRecommend']").attr("checked","checked");
+					//$(".vs-article-type-oper-cls input[name='isRecommend']").attr("value","true");
 				}
 			}
 		});

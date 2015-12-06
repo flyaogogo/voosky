@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
             <td height="35" align="right">是否推荐</td>
             <td>
-             <input id="vs-art-checkbox-is-recommend" type="checkbox" name="isRecommend" value='check'/>
+             <input id="vs-art-checkbox-is-recommend" type="checkbox" name="isRecommend" value="false"/>
             </td>
        </tr>
       <tr>
