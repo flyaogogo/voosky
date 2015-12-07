@@ -19,7 +19,7 @@
      <ul>
         <li class="cur"><a href="${ctx}/category/listCategorysInfo.htm?cateStatus=product"><i class="productCat"></i><em>商品分类</em></a></li>
      
-        <li class="cur"><a href="${ctx}//product/listProductsInfo.htm"><i class="product"></i><em>商品列表</em></a></li>
+        <li class="cur"><a href="${ctx}/product/listProductsInfo.htm"><i class="product"></i><em>商品列表</em></a></li>
      
      </ul>
   

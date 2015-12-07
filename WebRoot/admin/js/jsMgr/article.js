@@ -57,7 +57,8 @@ $(function(){
 					}
 				});
 				
-				$(".vs-article-type-oper-cls textarea[name='content']").val(ue.getAllHtml()) ;
+				$(".vs-article-type-oper-cls script[name='content']").val(ue.getContent()) ;
+//				$(".vs-article-type-oper-cls textarea[name='content']").val(ue.getAllHtml()) ;
 				
 //				$(".vs-article-type-oper-cls input[name='thumbUrl']").val(data.thumbUrl) ;
 				$(".vs-article-type-oper-cls input[name='keywords']").val(data.keywords) ;

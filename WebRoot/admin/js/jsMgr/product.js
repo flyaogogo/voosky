@@ -58,7 +58,8 @@ $(function(){
 				});
 				
 				$(".vs-product-type-oper-cls input[name='price']").val(data.price) ;
-				$(".vs-product-type-oper-cls textarea[name='content']").val(ue) ;
+				$(".vs-product-type-oper-cls script[name='content']").val(ue.getContent()) ;
+//				$(".vs-product-type-oper-cls textarea[name='content']").val(ue) ;
 				
 //				$(".vs-product-type-oper-cls input[name='thumbUrl']").val(data.thumbUrl) ;
 				$(".vs-product-type-oper-cls input[name='keywords']").val(data.keywords) ;

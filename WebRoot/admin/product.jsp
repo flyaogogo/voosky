@@ -124,7 +124,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	UEDITOR_CONFIG.UEDITOR_HOME_URL = '../ueditor/'; //一定要用这句话，否则你需要去ueditor.config.js修改路径的配置信息
 	        var ue = UE.getEditor('content');
 	    </script>
-        <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea"></textarea>
+	    <!-- 加载编辑器的容器 -->
+	    <script id="content" name="content" type="text/plain" style="width:780px;height:400px;"></script>
+        <!-- <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea"></textarea> -->
        </td>
       </tr>
       <tr>
