@@ -289,9 +289,11 @@ p.cue {
  height: 38px;
  overflow: hidden;
 }
-/*#menu li.cur {
+#menu li.cur {
  background: #60BBFF url(../images/menu_cur.gif) no-repeat right 50%;
-}*/
+}
+
+
 #menu li.cur a {
  color:#000;
 }
@@ -300,11 +302,11 @@ p.cue {
  height: 38px;
  line-height: 38px;
 }
-#menu li a:hover,a:visited{
+/* #menu li a:hover,a:visited{
 	background: #60BBFF url(../images/menu_cur.gif) no-repeat right 50%;
 	color:#FFF;
 	
-	}
+	} */
 #menu li i {
  background:url(../images/icon_menu.png) no-repeat 13px 0;
  float: left;

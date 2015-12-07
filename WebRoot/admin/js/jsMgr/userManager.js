@@ -1,4 +1,6 @@
 $(function(){
+	//左导航样式
+	$("#vsLeft .vs-manager").addClass("cur");
 	
 	//展示添加用户界面
 	$(".vs-admin-add-btn-cls").bind("click",function(){

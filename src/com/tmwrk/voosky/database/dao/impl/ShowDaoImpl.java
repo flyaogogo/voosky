@@ -13,26 +13,31 @@ public class ShowDaoImpl extends BaseDao<Show> {
 
 	@Override
 	public Show add(Show params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert("show.addSlide",params) ;
 		return null;
 	}
 
 	@Override
 	public Show update(Show params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("show.updateSlide", params) ;
 		return null;
 	}
 
 	@Override
 	public Show findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Show sp = (Show)getSqlMapClientTemplate().queryForObject("show.listAllslideById", params) ;
+		return sp ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Show> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Show> spList = (List<Show>)getSqlMapClientTemplate().queryForList("show.listAllslides", params) ;
+		return spList ;
 	}
-
+	
+	public boolean deleteSlideById(Show sp){
+		getSqlMapClientTemplate().delete("show.deleteSlideById", sp) ;
+		return true ;
+	}
 }

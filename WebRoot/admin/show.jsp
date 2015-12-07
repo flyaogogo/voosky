@@ -10,8 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>article category</title>
-<link href="css/public.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/slide.js"></script>
 
 </head>
 
@@ -28,28 +29,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h3>首页幻灯广告</h3>
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
     <tr>
-       <th>添加幻灯</th>
+       <th><span class="vs-slide-span-type-oper-cls">添加幻灯 </span></th>
        <th>幻灯列表</th>
      </tr>
      <tr>
       <td width="350" valign="top">
-       <form action="" class="formEdit"  method="post" enctype="multipart/form-data">
+      <div class="vs-slide-type-oper-cls">
+       <form name="slide-type-form" action="${ctx }/slide/addSlideAction.htm" class="formEdit"  method="post" enctype="multipart/form-data">
         <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableOnebor">
          <tr>
-          <td><strong>幻灯名称</strong><input type="text" name="show_name" value="" size="20" class="inpMain" />
+          <td><strong>幻灯名称</strong>
+          <input type="hidden" name="id" />
+          <input type="text" name="showName" value="" size="20" class="inpMain" />
           </td>
          </tr>
          <tr>
           <td><strong>幻灯图片</strong>
-            <input type="file" name="show_img" class="inpFlie" />
+            <input type="file" name="showImg" class="inpFlie" />
           </td>
          </tr>
          <tr>
-          <td><strong>链接地址</strong><br><input type="text" name="show_link" value="" size="40" class="inpMain" />
+          <td><strong>链接地址</strong><br><input type="text" name="showLink" value="" size="40" class="inpMain" />
           </td>
          </tr>
          <tr>
-          <td><strong>排序</strong><input type="text" name="sort" value="" size="20" class="inpMain" />
+          <td><strong>排序</strong><input type="text" name="vsort" value="" size="20" class="inpMain" />
           </td>
          </tr>
          <tr>
@@ -59,6 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </tr>
         </table>
        </form>
+       </div>
       </td>
       <td valign="top">
        <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableOnebor">
@@ -68,13 +73,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <td width="80" align="center">操作</td>
         </tr>
         
-        <tr>
-         <td width="100"><a href="" target="_blank"><img src="#" width="100" /></a></td>
-         <td>广告图片01</td>
-         <td align="center">1</td>
-         <td align="center"><a href="http://127.0.0.1/dhphp/admin/show.php?rec=edit&id=1">编辑</a> | <a href="http://127.0.0.1/dhphp/admin/show.php?rec=del&id=1">删除</a></td>
-        </tr>
-        <!-- {/foreach} -->
+        <s:iterator value="slideList" var="sld">
+	        <tr>
+	         <td width="100"><a href="javascript:void(0)" target="_blank"><img src="<s:property value="#sld.showImg"/>" width="100" /></a></td>
+	         <td><s:property value="#sld.showName"/></td>
+	         <td align="center"><s:property value="#sld.vsort"/></td>
+	         <td align="center">
+	         <input type="hidden" name="slideId" value="<s:property value="#sld.id"/>" />
+	         <a href="javascript:void(0)" class="vs-slide-edit-oper-cls">编辑</a> | <a href="javascript:void(0)" class="vs-slide-delete-oper-cls">删除</a></td>
+	        </tr>
+        </s:iterator>
        </table>
       </td>
      </tr>

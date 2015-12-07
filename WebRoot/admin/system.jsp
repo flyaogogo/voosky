@@ -10,8 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>article category</title>
-<link href="css/public.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/system.js"></script>
 
 </head>
 
@@ -26,22 +27,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div id="vsHere">VsPHP 管理中<b>></b><strong>系统设置</strong></div>
    <div class="mainBox" style="{$workspace.height}">
     <h3>系统设置</h3>
-    <script type="text/javascript">
-     {literal}
-     $(function(){ $(".idTabs").idTabs(); });
-     {/literal}
-    </script>
     <div class="idTabs">
       <ul class="tab">
-        <li><a href="#main">常规设置</a></li>
-        <li><a href="#display">显示设置</a></li>
-        <li><a href="#defined">自定义</a></li>
-        <!-- {if $cfg_list_mail} -->
-        <li><a href="#mail">邮件服务器</a></li>
-       <!-- {/if} -->
+        <li><a href="javascript:void(0)" class="vs-system-tab-main-cls selected">常规设置</a></li>
+        <li><a href="javascript:void(0)" class="vs-system-tab-display-cls">显示设置</a></li>
+        <li><a href="javascript:void(0)" class="vs-system-tab-defined-cls">自定义</a></li>
+        <li><a href="javascript:void(0)" class="vs-system-tab-mail-cls">邮件服务器</a></li>
       </ul>
       <div class="items">
        <form action="" method="post" enctype="multipart/form-data">
+       	<input type="hidden" name="tabvalue" value="main" />
         <div id="main">
           <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
           	<tr>
@@ -49,81 +44,81 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <th>内容</th>
             </tr>
             <tr>
-              <td>站点名称</td>
+              <td align="right">站点名称</td>
               <td>
-                <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+                <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>站点标题</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">站点标题</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>站点关键字</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">站点关键字</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>站点描述</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">站点描述</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>站点标志</td>
+              <td align="right">站点标志</td>
               <td><input name="" type="file">&nbsp;</td>
             </tr>
             <tr>
-              <td>公司地址</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">公司地址</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>是否关闭网站</td>
+              <td align="right">是否关闭网站</td>
               <td><input name="" type="radio" value="是">是<input name="" type="radio" value="否">否</td>
             </tr>
             <tr>
-              <td>ICP备案证书号</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">ICP备案证书号</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>客服电话</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">客服电话</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>传真</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">传真</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>客服QQ号码</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">客服QQ号码</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>邮件地址</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">邮件地址</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>系统语言</td>
-              <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td align="right">系统语言</td>
+              <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td>URL 重写</td>
+              <td align="right">URL 重写</td>
               <td><input name="" type="radio" value="是" checked>是<input name="" type="radio" value="否">否</td>
             </tr>
             <tr>
-              <td>启用站点地图</td>
+              <td align="right">启用站点地图</td>
               <td><input name="" type="radio" value="是" checked>是<input name="" type="radio" value="否">否</td>
             </tr>
             <tr>
-              <td>启用验证码</td>
+              <td align="right">启用验证码</td>
               <td><input name="" type="radio" value="是" checked>是<input name="" type="radio" value="否">否</td>
             </tr>
             <tr>
-              <td>留言板强制中文输入</td>
+              <td align="right">留言板强制中文输入</td>
               <td><input name="" type="radio" value="是" checked>是<input name="" type="radio" value="否">否</td>
             </tr>
             <tr>
-              <td>统计/客服代码调用</td>
-              <td><textarea name="sitename" cols="80" rows="60" id="textfield" style="border:1px solid #CCC; height:80px; vertical-align:middle; color:#999;">VOOSKY轻量级企业网站管理系统</textarea></td>
+              <td align="right">统计/客服代码调用</td>
+              <td><textarea name="sitename" cols="80" rows="60" id="textfield" style="border:1px solid #CCC; height:80px; vertical-align:middle; color:#999;"></textarea></td>
             </tr>
           </table>
         </div>
-        <div id="display">
+        <div id="display" style="display: none;">
         <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
          <tr>
            <th width="131">名称</th>
@@ -133,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <tr>
            <td align="right">缩略图宽度</td>
            <td>
-            <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+            <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           
            </td>
           </tr>
@@ -141,42 +136,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <tr>
           <td align="right">缩略图高度</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           </td>
          </tr>
          <tr>
           <td align="right">商品价格保留小数位数</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           </td>
          </tr>
          <tr>
           <td align="right">文章列表数量</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           </td>
          </tr>
          <tr>
           <td align="right">首页展示文章数量</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           </td>
          </tr><tr>
           <td align="right">商品列表数量</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           </td>
          </tr>
          <tr>
           <td align="right">首页展示商品数量</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
           </td>
          </tr>
          
         </table>
         </div>
-        <div id="defined">
+        <div id="defined" style="display: none;">
         <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
          <tr>
            <th width="131">名称</th>
@@ -193,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </table>
              <br></td>
            <td>
-            <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+            <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
             
              <p class="cue">如"颜色,尺寸,型号"中间以英文逗号隔开</p>
            </td>
@@ -202,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <tr>
           <td align="right">商品自定义属性</td>
           <td>
-           <input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+           <input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
             <p class="cue">如"颜色,尺寸,型号"中间以英文逗号隔开</p>
       
           </td>
@@ -210,8 +205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         </table>
         </div>
-        <!-- {if $cfg_list_mail} -->
-        <div id="mail">
+        <div id="mail" style="display: none;">
         <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
          <tr>
            <th width="131">名称</th>
@@ -229,11 +223,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </tr>
          <tr>
            <td align="right">SMTP服务器</td>
-           <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+           <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
          </tr>
          <tr>
            <td align="right">服务器端口</td>
-           <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+           <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
          </tr>
          <tr>
            <td align="right">是否使用SSL安全协议</td>
@@ -241,11 +235,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <input type="radio" name="" id="" value="1" checked="true"> 是</td></tr>
           <tr>
            <td align="right">发件邮箱</td>
-           <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+           <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
          </tr>
          <tr>
            <td align="right">发件邮箱密码</td>
-           <td><input name="sitename" type="text" id="textfield" value="VOOSKY轻量级企业网站管理系统" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+           <td><input name="sitename" type="text" id="textfield" value="" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
          </tr>
      
         </table>

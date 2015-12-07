@@ -12,8 +12,29 @@
 		<result property="showName" column="show_name" />
 		<result property="showLink" column="show_link" />
 		<result property="showImg" column="show_img" />
-		<result property="vtype" column="vtype" />
 		<result property="vsort" column="vsort" />
 	</resultMap>
+	
+	<select id="listAllslides" parameterClass="java.util.HashMap" resultMap="showMap">
+		select id,show_name,show_link,show_img,vsort from vs_show
+	</select>
+	
+	<select id="listAllslideById" parameterClass="java.util.HashMap" resultMap="showMap">
+		select id,show_name,show_link,show_img,vsort from vs_show where id=#id#
+	</select>
+	
+	<insert id="addSlide" parameterClass="Show">
+		insert into vs_show(id,show_name,show_link,show_img,vsort) values 
+			((select ifnull(max(vsn.id)+1,1) from vs_show vsn),#showName#,#showLink#,#showImg#,#vsort#)
+	</insert>
+	
+	<update id="updateSlide" parameterClass="Show">
+		update vs_show set show_name=#showName#,show_link=#showLink#,show_img=#showImg#,vsort=#vsort# 
+			where id=#id#; 
+	</update>
+	
+	<delete id="deleteSlideById" parameterClass="Show">
+		delete from vs_show where id=#id#;
+	</delete>
 	
 </sqlMap>

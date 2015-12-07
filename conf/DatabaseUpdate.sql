@@ -127,7 +127,7 @@ create table vs_show(
 	show_name varchar(50) not null,
 	show_link varchar(254) not null,
 	show_img varchar(254) not null,
-	vtype varchar(25) not null,
+	vtype varchar(25),
 	vsort int,
 	PRIMARY KEY (id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;

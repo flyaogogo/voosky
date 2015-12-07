@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="slide" extends="tmwrk-default" namespace="/slide">
+		<action name="listAllSlides" class="com.tmwrk.voosky.web.action.other.SlideManAction">
+			<result name="success">/admin/show.jsp</result>
+		</action>
+		
+		<action name="listSlideById" method="getSlideById" class="com.tmwrk.voosky.web.action.other.SlideManAction">
+			<result name="success" type="json">
+				<param name="root">slide</param>
+			</result>
+		</action>
+		
+		<action name="addSlideAction" method="insertSlide" class="com.tmwrk.voosky.web.action.other.SlideManAction">
+			<result name="success" type="chain" >listAllSlides</result>
+		</action>
+		<action name="updtSlideAction" method="updateSlide" class="com.tmwrk.voosky.web.action.other.SlideManAction">
+			<result name="success" type="chain" >listAllSlides</result>
+		</action>
+		<action name="delSlideAction" method="deleteSlideById" class="com.tmwrk.voosky.web.action.other.SlideManAction">
+			<result name="success" type="chain" >listAllSlides</result>
+		</action>
+		
+		
+	</package>
+</struts>

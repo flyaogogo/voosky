@@ -15,7 +15,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/category.js"></script>
 
 </head>
-
+<script type="text/javascript">
+$(function(){
+	//左导航样式
+	$("#vsLeft .vs-pcate").addClass("cur");
+})
+</script>
 
 <body>
 <div id="vsWrap">

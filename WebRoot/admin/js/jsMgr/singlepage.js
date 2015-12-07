@@ -1,4 +1,7 @@
 $(function(){
+	//左导航样式
+	$("#vsLeft .vs-spage").addClass("cur");
+	
 	//展示添加界面
 	$(".vs-sp-add-cls").bind("click",function(){
 		$(".spage").css("display", "none");

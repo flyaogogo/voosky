@@ -1,4 +1,6 @@
 $(function(){
+	//左导航样式
+	$("#vsLeft .vs-nav").addClass("cur");
 	
 	//展示自定义导航界面
 	$(".vs-nav-add-btn-cls").bind("click",function(){

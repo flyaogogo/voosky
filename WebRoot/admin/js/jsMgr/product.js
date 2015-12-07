@@ -1,4 +1,6 @@
 $(function(){
+	//左导航样式
+	$("#vsLeft .vs-product").addClass("cur");
 	//添加按钮，弹出界面
 	$(".vs-product-add-href-cls").bind("click",function(){
 		$(".vs-product-show-cls").css("display", "none");
