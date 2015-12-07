@@ -1,16 +1,13 @@
 $(function(){
 	$(".login-btn").bind("click",function(){
-		var username = $("#login-username-id").val();
-		var password = $("#login-pwd-id").val();
-		var code = $(".captcha").val();
-		//alert(username);
-		var url = ctx + "/account/verifyAccount.htm" ;
-		
-		var param = {username:username,password:password,code:code} ;
-		
-		post(url,param) ;
+		login() ;
 	})
 	
+	$("body").keydown(function(event) {
+	    if (event.keyCode == "13") {//keyCode=13是回车键
+	    	login();
+	    }
+	});
 //	$.ajax({
 //		url:ctx+"/rdsinstance/listOracleSpecialKeyword.htm",
 //		type:"post",
@@ -22,13 +19,26 @@ $(function(){
 //	});
 });
 
+/**
+ * 登陆操作
+ */
+function login(){
+	var username = $("#login-username-id").val();
+	var password = $("#login-pwd-id").val();
+	var code = $(".captcha").val();
+	var url = ctx + "/account/verifyAccount.htm" ;
+	
+	var param = {username:username,password:password,code:code} ;
+	
+	post(url,param) ;
+}
 
-$("body").keydown(function(event) {
-    if (event.keyCode == "13") {//keyCode=13是回车键
-    	validataLog();
-    }
-});
-
+/**
+ * 模拟Form的Post请求
+ * @param URL
+ * @param PARAMS
+ * @returns {___anonymous793_796}
+ */
 function post(URL, PARAMS) {
 	var temp = document.createElement("form");
 	temp.action = URL;
