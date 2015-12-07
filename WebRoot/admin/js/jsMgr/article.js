@@ -65,13 +65,9 @@ $(function(){
 				$(".vs-article-type-oper-cls input[name='vsort']").val(data.vsort) ;
 				var isrecomm = data.isRecommend ;
 				//console.log(isrecomm);
-				//alert(isrecomm);
-				if(isrecomm==true){
-					
-//					$(".vs-article-type-oper-cls checkbox[name='isRecommend']").prop("checked",true) ;
-					$(".vs-article-type-oper-cls checkbox[name='isRecommend']").prop("checked") ;
-//					$(".vs-article-type-oper-cls checkbox[name='isRecommend']").attr("checked","checked");
-					//$(".vs-article-type-oper-cls input[name='isRecommend']").attr("value","true");
+				if(isrecomm=='true'){
+					$(".vs-article-type-oper-cls input[name='isRecommend']").prop("checked",true) ;
+					$(".vs-article-type-oper-cls input[name='isRecommend']").attr("value","true");
 				}
 			}
 		});

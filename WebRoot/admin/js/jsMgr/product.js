@@ -65,9 +65,10 @@ $(function(){
 				$(".vs-product-type-oper-cls input[name='desc']").val(data.desc) ;
 				$(".vs-product-type-oper-cls input[name='vsort']").val(data.vsort) ;
 				var isrecomm = data.isRecommend ;
-				console.log(isrecomm);
-				if(isrecomm==true){
+				//console.log(isrecomm);
+				if(isrecomm=='true'){
 					$(".vs-product-type-oper-cls input[name='isRecommend']").prop("checked",true) ;
+					$(".vs-product-type-oper-cls input[name='isRecommend']").attr("value","true");
 				}
 			}
 		});
