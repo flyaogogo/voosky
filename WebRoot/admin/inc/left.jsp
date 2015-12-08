@@ -40,7 +40,7 @@ $(function(){
    
      </ul>
      <ul class="bot">
-      <li class="vs-backup"><a href="${ctx}/admin/backup.jsp"><i class="backup"></i><em>数据库备份</em></a></li>
+      <li class="vs-backup"><a href="${ctx}/backup/listBksInfo.htm"><i class="backup"></i><em>数据库备份</em></a></li>
       <li class="vs-mobile"><a href="${ctx}/admin/mobile.jsp"><i class="mobile"></i><em>手机版</em></a></li>
       <li class="vs-theme"><a href="${ctx}/admin/theme.jsp"><i class="theme"></i><em>设置模板</em></a></li>
       <li class="vs-manlog"><a href="managerLog.html"><i class="managerLog"></i><em>操作记录</em></a></li>

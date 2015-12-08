@@ -7,33 +7,45 @@ import org.springframework.stereotype.Repository;
 
 import com.tmwrk.voosky.database.dao.BaseDao;
 import com.tmwrk.voosky.database.vo.Backup;
+import com.tmwrk.voosky.database.vo.VSTable;
 
 @Repository("backupDao")
 public class BackupDaoImpl extends BaseDao<Backup> {
 
 	@Override
 	public Backup add(Backup params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().insert("backup.addBackup",params) ;
 		return null;
 	}
 
 	@Override
 	public Backup update(Backup params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("backup.updateBackup", params) ;
 		return null;
 	}
 
 	@Override
 	public Backup findById(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		Backup sp = (Backup)getSqlMapClientTemplate().queryForObject("backup.listbackupById", params) ;
+		return sp ;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Backup> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Backup> buList = (List<Backup>)getSqlMapClientTemplate().queryForList("backup.listAllbackups", params) ;
+		return buList ;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<VSTable> listAllTableBydb(Map<String, Object> params) {
+		List<VSTable> buList = (List<VSTable>)getSqlMapClientTemplate().queryForList("backup.listAllTableBydb", params) ;
+		return buList ;
 	}
 
+	public boolean deleteBackupById(Backup sp){
+		getSqlMapClientTemplate().delete("backup.deleteBackupById", sp) ;
+		return true ;
+	}
 
 }

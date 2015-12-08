@@ -6,6 +6,8 @@
 
 	<typeAlias alias="Backup"
 		type="com.tmwrk.voosky.database.vo.Backup" />
+	<typeAlias alias="vstable"
+		type="com.tmwrk.voosky.database.vo.VSTable" />
 
 	<resultMap id="backupMap" class="Backup">
 		<result property="id" column="id" />
@@ -13,9 +15,43 @@
 		<result property="fileSize" column="file_size" />
 		<result property="slaveTime" column="slave_time" />
 	</resultMap>
+	<!-- 
+	<resultMap id="tabMap" class="vstable">
+		<result property="tName" column="TABLE_NAME" />
+		<result property="type" column="ENGINE" />
+		<result property="tTows" column="TABLE_ROWS" />
+		<result property="dataSize" column="DATA_LENGTH" />
+		<result property="indexLength" column="INDEX_LENGTH" />
+		<result property="dataFree" column="DATA_FREE" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="updateTime" column="UPDATE_TIME" />
+	</resultMap>
 	
-	<select id="listAllTableBydb" parameterClass="string" resultClass="java.util.HashMap">
-	SELECT TABLE_NAME,TABLE_ROWS,DATA_LENGTH,INDEX_LENGTH,DATA_FREE 
-		FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA ='voosky';
+	<select id="listAllTableBydb" parameterClass="java.util.HashMap" resultClass="tabMap">
+		SELECT TABLE_NAME,ENGINE,TABLE_ROWS,DATA_LENGTH,INDEX_LENGTH,DATA_FREE,CREATE_TIME,UPDATE_TIME 
+			FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA ='voosky'
+	</select> -->
+	
+	<select id="listAllbackups" parameterClass="java.util.HashMap" resultMap="backupMap">
+		select id,file_name,file_size,slave_time from vs_backup
 	</select>
+	<select id="listbackupById" parameterClass="java.util.HashMap" resultMap="backupMap">
+		select id,file_name,file_size,slave_time from vs_backup where id=#id#
+	</select>
+	
+	<insert id="addBackup" parameterClass="Backup">
+		insert into vs_backup(id,file_name,file_size,slave_time) values 
+			((select ifnull(max(vsn.id)+1,1) from vs_backup vsn),#fileName#,#fileSize#,#slaveTime#)
+	</insert>
+	
+	<update id="updateBackup" parameterClass="Backup">
+		update vs_backup set file_name=#fileName#,file_size=#fileSize#,slave_time=#slaveTime#
+			where id=#id#; 
+	</update>
+	
+	<delete id="deleteBackupById" parameterClass="Backup">
+		delete from vs_backup where id=#id#;
+	</delete>
+	
+	
 </sqlMap>

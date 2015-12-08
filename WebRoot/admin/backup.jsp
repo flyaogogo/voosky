@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>article category</title>
+<title>DB backup category</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/backup.js"></script>
@@ -29,7 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h3><a href="" class="actionBtn">恢复数据</a>数据库备份</h3>
   
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
-     <form name="myform" method="post" action="">
       <tr>
        <th align="center">
         <input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check' checked>
@@ -42,16 +41,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <th align="center">碎片</th>
       </tr>
 
+	<s:iterator value="tabList" var="tab">
       <tr>
-       <td align="center"><input type=checkbox name=tables[] value={$tables.Name} checked></td>
-       <td align="left">VS_admin</td>
-       <td align="center">sql</td>
-       <td align="center">21</td>
-       <td align="center">123</td>
-       <td align="center">12</td>
-       <td align="center">1</td>
+       <td align="center"><input type=checkbox name=tables[] value="<s:property value="#tab.tName"/>" checked></td>
+       <td align="left"><s:property value="#tab.tName"/></td>
+       <td align="center"><s:property value="#tab.type"/></td>
+       <td align="center"><s:property value="#tab.tTows"/></td>
+       <td align="center"><s:property value="#tab.dataSize"/></td>
+       <td align="center"><s:property value="#tab.indexLength"/></td>
+       <td align="center"><s:property value="#tab.dataFree"/></td>
       </tr>
-      <!-- {/foreach} -->
+	</s:iterator>
       <tr>
        <td colspan="7" align="right">数据库占用 118 KB</td>
       </tr>
@@ -71,9 +71,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="submit" name="submit" class="btn" value="确定备份"  onClick="">
        </td>
       </tr>
-     </form>
     </table>
 
+	<div class="vs-backup-show-cls">
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
       <th width="" align="left">文件名</th>
@@ -81,15 +81,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <th width="160">备份日期</th>
       <th width="140">操作</th>
      </tr>
-   
+   <s:iterator value="bkList" var="bk">
      <tr>
-      <td align="left">VS20151115T155002.sql</td>
-      <td align="center">1234</td>
-      <td align="center">2015-11-15 15:50:10</td>
-      <td align="center"><!-- {if $file.number le 1} --><a href="">导入</a> | <a href="l">下载</a> | <a href="">删除</a></td>
+      <td align="left"><s:property value="#bk.fileName"/></td>
+      <td align="center"><s:property value="#bk.fileSize"/></td>
+      <td align="center"><s:property value="#bk.slaveTime"/></td>
+      <td align="center">
+      <input type="hidden" name="vs-bk-id" value="<s:property value="#bk.id"/>" />
+      <a href="" class="vs-backup-import-href-cls">导入</a> | <a href="l" class="vs-backup-download-href-cls">下载</a> | <a href="" class="vs-backup-del-href-cls">删除</a></td>
      </tr>
-   
+   </s:iterator>
     </table>
+  	</div>
   
    </div>
   </div>

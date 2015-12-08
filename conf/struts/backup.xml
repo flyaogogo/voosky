@@ -2,8 +2,24 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="backup" extends="tmwrk-default" namespace="/backup">
-		<action name="verifyAccount" class="com.tmwrk.voosky.web.action.article.ArticleAction">
-			<result name="success">/person_info.jsp</result>
+		<action name="listBksInfo" class="com.tmwrk.voosky.web.action.other.BkDatabaseAction">
+			<result name="success">/admin/backup.jsp</result>
 		</action>
+		<action name="getBkInfo" method="getBkById" class="com.tmwrk.voosky.web.action.other.BkDatabaseAction">
+			<result name="success" type="json">
+				<param name="root">bk</param>
+			</result>
+		</action>
+		
+		<action name="addBkAction" method="addBackup" class="com.tmwrk.voosky.web.action.other.BkDatabaseAction">
+			<result name="success" type="chain" >listBksInfo</result>
+		</action>
+		<action name="updtBkAction" method="updateBackup" class="com.tmwrk.voosky.web.action.other.BkDatabaseAction">
+			<result name="success" type="chain" >listBksInfo</result>
+		</action>
+		<action name="dltBkAction" method="deleteBkById" class="com.tmwrk.voosky.web.action.other.BkDatabaseAction">
+			<result name="success" type="chain" >listBksInfo</result>
+		</action>
+		
 	</package>
 </struts>
