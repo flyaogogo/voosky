@@ -6,8 +6,7 @@
 
 	<typeAlias alias="Backup"
 		type="com.tmwrk.voosky.database.vo.Backup" />
-	<typeAlias alias="vstable"
-		type="com.tmwrk.voosky.database.vo.VSTable" />
+	
 
 	<resultMap id="backupMap" class="Backup">
 		<result property="id" column="id" />
@@ -15,22 +14,28 @@
 		<result property="fileSize" column="file_size" />
 		<result property="slaveTime" column="slave_time" />
 	</resultMap>
-	<!-- 
+	<!--  
+	<typeAlias alias="vstable"
+		type="com.tmwrk.voosky.database.vo.SystemTable" />
 	<resultMap id="tabMap" class="vstable">
-		<result property="tName" column="TABLE_NAME" />
+		<result property="tabName" column="TABLE_NAME" />
 		<result property="type" column="ENGINE" />
-		<result property="tTows" column="TABLE_ROWS" />
+		<result property="tabTows" column="TABLE_ROWS" />
 		<result property="dataSize" column="DATA_LENGTH" />
 		<result property="indexLength" column="INDEX_LENGTH" />
 		<result property="dataFree" column="DATA_FREE" />
 		<result property="createTime" column="CREATE_TIME" />
 		<result property="updateTime" column="UPDATE_TIME" />
 	</resultMap>
+	-->
+	<select id="listAllTableBydb" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		select table_name,engine,table_rows,data_length,index_length,data_free,create_time,update_time 
+			from information_schema.tables where table_schema ='voosky'
+	</select>
 	
-	<select id="listAllTableBydb" parameterClass="java.util.HashMap" resultClass="tabMap">
-		SELECT TABLE_NAME,ENGINE,TABLE_ROWS,DATA_LENGTH,INDEX_LENGTH,DATA_FREE,CREATE_TIME,UPDATE_TIME 
-			FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA ='voosky'
-	</select> -->
+	<select id="countCurrentTableSize" parameterClass="java.util.HashMap" resultClass="string">
+		select concat(round(sum(DATA_LENGTH/1024),2),' KB') as data from information_schema.tables where table_schema ='voosky'
+	</select>
 	
 	<select id="listAllbackups" parameterClass="java.util.HashMap" resultMap="backupMap">
 		select id,file_name,file_size,slave_time from vs_backup

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Backup;
-import com.tmwrk.voosky.database.vo.VSTable;
+import com.tmwrk.voosky.database.vo.SystemTable;
 import com.tmwrk.voosky.service.other.BackupServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -28,13 +28,15 @@ public class BkDatabaseAction extends BaseAction implements ModelDriven<Backup> 
 	
 	private List<Backup> bkList ;
 	
-	private List<VSTable> tabList ;
+	private List<SystemTable> tabList ;
+	
+	private String tabTotal ;
 
 	@Override
 	public String execute() throws Exception{
 		bkList = backupService.listAllBackups(null) ;
 		tabList = backupService.listAllDbTable(null) ;
-		
+		tabTotal = backupService.countCurrentTableSize(null) ;
 		return SUCCESS ;
 	}
 	
@@ -78,12 +80,20 @@ public class BkDatabaseAction extends BaseAction implements ModelDriven<Backup> 
 		this.bkList = bkList;
 	}
 
-	public List<VSTable> getTabList() {
+	public List<SystemTable> getTabList() {
 		return tabList;
 	}
 
-	public void setTabList(List<VSTable> tabList) {
+	public void setTabList(List<SystemTable> tabList) {
 		this.tabList = tabList;
+	}
+
+	public String getTabTotal() {
+		return tabTotal;
+	}
+
+	public void setTabTotal(String tabTotal) {
+		this.tabTotal = tabTotal;
 	}
 	
 }

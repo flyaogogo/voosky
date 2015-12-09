@@ -43,17 +43,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<s:iterator value="tabList" var="tab">
       <tr>
-       <td align="center"><input type=checkbox name=tables[] value="<s:property value="#tab.tName"/>" checked></td>
-       <td align="left"><s:property value="#tab.tName"/></td>
+       <td align="center"><input type=checkbox name=tables[] value="<s:property value="#tab.tabName"/>" checked></td>
+       <td align="left"><s:property value="#tab.tabName"/></td>
        <td align="center"><s:property value="#tab.type"/></td>
-       <td align="center"><s:property value="#tab.tTows"/></td>
+       <td align="center"><s:property value="#tab.tabTows"/></td>
        <td align="center"><s:property value="#tab.dataSize"/></td>
        <td align="center"><s:property value="#tab.indexLength"/></td>
        <td align="center"><s:property value="#tab.dataFree"/></td>
       </tr>
 	</s:iterator>
       <tr>
-       <td colspan="7" align="right">数据库占用 118 KB</td>
+       <td colspan="7" align="right">数据库占用 <s:property value="tabTotal"/></td>
       </tr>
       <tr>
        <td colspan="7" align="center">分卷备份设置</td>

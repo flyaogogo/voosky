@@ -1,11 +1,11 @@
 package com.tmwrk.voosky.database.vo;
 
-public class VSTable {
+public class SystemTable {
 
 	private int id ;
-	private String tName ;
+	private String tabName ;
 	private String type ;
-	private int tTows ;
+	private long tabTows ;
 	private long dataSize ;
 	private long indexLength ;
 	private long dataFree ;
@@ -18,23 +18,23 @@ public class VSTable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String gettName() {
-		return tName;
+	public String getTabName() {
+		return tabName;
 	}
-	public void settName(String tName) {
-		this.tName = tName;
+	public void setTabName(String tabName) {
+		this.tabName = tabName;
+	}
+	public long getTabTows() {
+		return tabTows;
+	}
+	public void setTabTows(long tabTows) {
+		this.tabTows = tabTows;
 	}
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public int gettTows() {
-		return tTows;
-	}
-	public void settTows(int tTows) {
-		this.tTows = tTows;
 	}
 	public long getDataSize() {
 		return dataSize;

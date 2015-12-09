@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.tmwrk.voosky.database.dao.BaseDao;
 import com.tmwrk.voosky.database.vo.Backup;
-import com.tmwrk.voosky.database.vo.VSTable;
 
 @Repository("backupDao")
 public class BackupDaoImpl extends BaseDao<Backup> {
@@ -38,14 +37,25 @@ public class BackupDaoImpl extends BaseDao<Backup> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<VSTable> listAllTableBydb(Map<String, Object> params) {
-		List<VSTable> buList = (List<VSTable>)getSqlMapClientTemplate().queryForList("backup.listAllTableBydb", params) ;
-		return buList ;
+	public List<Map<String, Object>> listAllTableBydb(Map<String, Object> params) {
+//		List<SystemTable> buList = (List<SystemTable>)getSqlMapClientTemplate().queryForList("backup.listAllTableBydb", params) ;
+		List<Map<String, Object>> map = (List<Map<String, Object>>)getSqlMapClientTemplate().queryForList("backup.listAllTableBydb", params) ;
+		return map ;
 	}
 
 	public boolean deleteBackupById(Backup sp){
 		getSqlMapClientTemplate().delete("backup.deleteBackupById", sp) ;
 		return true ;
 	}
-
+	
+	/**
+	 * 返回大小为KB
+	 * @param params
+	 * @return
+	 */
+	public String countCurrentTableSize(Map<String, Object> params){
+		String sizeStr = (String)getSqlMapClientTemplate().queryForObject("backup.countCurrentTableSize", params) ;
+		return sizeStr ;
+	}
+	
 }
