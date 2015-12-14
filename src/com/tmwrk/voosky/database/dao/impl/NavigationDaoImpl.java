@@ -77,5 +77,17 @@ public class NavigationDaoImpl extends BaseDao<Navigation>{
 		
 		return navList ;
 	}
+	
+	/**
+	 * 通过模板名称找到相关的信息
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked" })
+	public List<Navigation> getNavigationsByModule(Map<String, Object> params) {
+		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getNavigationsByModule", params) ;
+		
+		return navList ;
+	}
 
 }

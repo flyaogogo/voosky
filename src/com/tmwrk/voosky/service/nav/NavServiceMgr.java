@@ -53,8 +53,26 @@ public class NavServiceMgr {
 		
 		return navList ;
 	}
+	
 	public Navigation getNavByNavId(Map<String, Object> params){
 		Navigation nav = navDao.findById(params) ;
 		return nav ;
+	}
+	
+	/**
+	 * 根据模板名称找到相关信息
+	 * @param params
+	 * @return
+	 */
+	public List<Navigation> getNavigationsByModule(Map<String, Object> params) {
+		
+		List<Navigation> navList = navDao.getNavigationsByModule(params) ;
+		return navList ;
+	}
+	
+	public List<Navigation> getNavTree(String initParentId) {
+		List<Navigation> navTrees = null ;
+		
+		return navTrees ;
 	}
 }

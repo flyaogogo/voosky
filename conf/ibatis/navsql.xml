@@ -30,6 +30,9 @@
 	<select id="getNavigationsByParentId" parameterClass="java.util.HashMap" resultMap="navMap">
 		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#parentId#;
 	</select>
+	<select id="getNavigationsByModule" parameterClass="java.util.HashMap" resultMap="navMap">
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#module#;
+	</select>
 	
 	<insert id="addNav" parameterClass="Navigation">
 		insert into vs_nav(nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort) values 
