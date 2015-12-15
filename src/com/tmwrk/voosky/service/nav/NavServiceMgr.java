@@ -1,5 +1,6 @@
 package com.tmwrk.voosky.service.nav;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tmwrk.voosky.database.dao.impl.NavigationDaoImpl;
 import com.tmwrk.voosky.database.vo.Navigation;
+import com.tmwrk.voosky.module.util.TreeNode;
 
 @Service("navService")
 @Transactional
@@ -46,11 +48,6 @@ public class NavServiceMgr {
 	 */
 	public List<Navigation> getAllNavigations(Map<String, String> params){
 		List<Navigation> navList = navDao.getAllNavigations(null) ;
-		
-		//TODO
-		
-		
-		
 		return navList ;
 	}
 	
@@ -70,9 +67,23 @@ public class NavServiceMgr {
 		return navList ;
 	}
 	
-	public List<Navigation> getNavTree(String initParentId) {
-		List<Navigation> navTrees = null ;
+	public List<TreeNode> getNavTree(String initParentId) {
+		List<TreeNode> trees = new ArrayList<TreeNode>() ;
+		List<Navigation> navList = getAllNavigations(null) ;
 		
-		return navTrees ;
+		TreeNode node = null ;
+		
+		for(Navigation nav : navList){
+			node = new TreeNode() ;
+			
+			node.setId(nav.getNavId());
+			node.setpId(Integer.parseInt(nav.getParentId()));
+			node.setName(nav.getNavName());
+			node.setModule(nav.getModule());
+//			node.setUrl(nav.getModuleUrl());
+			
+			trees.add(node);
+		}
+		return trees ;
 	}
 }

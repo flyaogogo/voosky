@@ -13,6 +13,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/nav.js"></script>
+<%-- 
+<link href="${ctx}/admin/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${ctx}/admin/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/treenode.js"></script>
+ --%>
+
+<script type="text/javascript" src="${ctx}/admin/js/TreeSelector.js"></script>
 
 </head>
 
@@ -87,10 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td width="80" height="35" align="right">导航模板</td>
             <td>
-             <select name="navMenu" onchange="change('nav_name', this)">
-              <option value="">请选择你链接的项目</option>
+             <select id="selectTree-add-module" name="navMenu" onchange="change('selectTree-add-module',this);">
+             <option value="">请选择你链接的项目</option>
          
-              <option value="企业简介" selected="selected" title="企业简介">企业简介</option>
+              <!--  <option value="企业简介" selected="selected" title="企业简介">企业简介</option> -->
            
              </select>
             </td>
@@ -118,9 +125,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td height="35" align="right">上级分类</td>
             <td id="parent">
-             <select name="parentId">
-              <option value="0">无</option>
-              <option value="{$list.id}">简介</option>
+             <select id="selectTree-add-parent" name="parentId" >
+             	<option value="">无</option>
+             	<!-- <option value="{$list.id}">简介</option> -->
              </select>
             </td>
            </tr>
@@ -177,10 +184,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td height="35" align="right">上级分类</td>
             <td id="parent_external">
-             <select name="parentId">
-              <option value="0">无</option>
+             <select id="selectTree-defined-parent" name="parentId">
+              <option value="">无</option>
              
-              <option value="{$list.id}">简介</option>
+              <!-- <option value="{$list.id}">简介</option> -->
              
              </select>
             </td>
@@ -212,10 +219,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td width="80" height="35" align="right">导航模板</td>
             <td>
              <input type="hidden" name="navId"/>
-             <select name="navMenu" onchange="change('nav_name', this)">
+             <select id="selectTree-update-module" name="navMenu" onchange="change('nav_name', this)">
               <option value="">请选择你链接的项目</option>
          
-              <option value="企业简介" selected="selected" title="企业简介">企业简介</option>
+              <!-- <option value="企业简介" selected="selected" title="企业简介">企业简介</option> -->
            
              </select>
             </td>
@@ -243,9 +250,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td height="35" align="right">上级分类</td>
             <td id="parent">
-             <select name="parentId">
-              <option value="0">无</option>
-              <option value="{$list.id}">简介</option>
+             <select id="selectTree-update-parent" name="parentId">
+              <option value="">无</option>
+             <!--  <option value="{$list.id}">简介</option> -->
              </select>
             </td>
            </tr>
@@ -265,6 +272,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </table>
     </form>
     </div>
+    
+    <!-- <div id="tree" class="ztree"></div> -->
     <!-- {/if} -->
    </div>
   </div>
