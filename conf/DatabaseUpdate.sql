@@ -140,3 +140,42 @@ create table vs_backup(
 	slave_time	varchar(25) not null,
 	PRIMARY KEY (id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
+
+
+insert into vs_config values(1,"main.site.name","voosky",50);
+insert into vs_config values(2,"main.site.title","长空",50);
+insert into vs_config values(3,"main.site.keywords","长空 飞翔",50);
+insert into vs_config values(4,"main.site.description","长空技术有限公司",50);
+insert into vs_config values(5,"main.site.mark","image mark",50);
+insert into vs_config values(6,"main.site.address","北京嘉兴",50);
+insert into vs_config values(7,"main.site.whether.close","false",50);
+insert into vs_config values(8,"main.site.ICP.record.Certificate.No","© 2013-2015 ",50);
+insert into vs_config values(9,"main.site.consumer.hotline","137462672",50);
+insert into vs_config values(10,"main.site.fax","0756-828292294",50);
+insert into vs_config values(11,"main.site.mail.address","voosky@vsky.com",50);
+insert into vs_config values(12,"main.site.system.language","cn",50);
+insert into vs_config values(13,"main.site.URL.Rewrite","true",50);
+insert into vs_config values(14,"main.site.enable.map","true",50);
+insert into vs_config values(15,"main.site.captcha","true",50);
+insert into vs_config values(16,"main.site.Message.boards.forced.chinese.input","true",50);
+insert into vs_config values(17,"main.site.statistics.or.service.code.calls","voosky",50);
+
+insert into vs_config values(18,"display.thumb.width","30",50);
+insert into vs_config values(19,"display.thumb.height","40",50);
+insert into vs_config values(20,"display.prices.decimal.places","2",50);
+insert into vs_config values(21,"display.number.of.articles","10",50);
+insert into vs_config values(22,"display.home.shows.number.art","30",50);
+insert into vs_config values(23,"display.number.of.product","30",50);
+insert into vs_config values(24,"display.home.shows.number.product","30",50);
+
+insert into vs_config values(25,"defined.article.attributes","30",50);
+insert into vs_config values(26,"defined.product.attributes","30",50);
+
+
+insert into vs_config values(27,"mail.service","stmp",50);
+insert into vs_config values(28,"mail.smtp.service","stmp",50);
+insert into vs_config values(29,"mail.smtp.port","2342",50);
+insert into vs_config values(30,"mail.SSL.security.protocol","2342",50);
+insert into vs_config values(31,"mail.outbox.mailboxes","ss@163.com",50);
+insert into vs_config values(32,"mail.outbox.mail.password","1234567",50);
+
