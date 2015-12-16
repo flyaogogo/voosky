@@ -20,8 +20,9 @@
 		<action name="deleteNavByIdAction" method="deleteNavByNavId" class="com.tmwrk.voosky.web.action.nav.NavAction">
 			<result name="success" type="chain" >listNavsInfo</result>
 		</action>
+		<!-- 
 		<action name="treenode" method="treeNodeData" class="com.tmwrk.voosky.web.action.nav.NavAction" />
-		
+		 -->
 		<action name="listAllNavInfo" method="allNodeData" class="com.tmwrk.voosky.web.action.nav.NavAction">
 			<result name="success" type="json">
 				<param name="root">navList</param>

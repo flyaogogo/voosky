@@ -5,10 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.json.JSONArray;
-
 import com.tmwrk.voosky.database.vo.Navigation;
-import com.tmwrk.voosky.module.util.TreeNode;
 import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -130,12 +127,13 @@ public class NavAction extends BaseAction {
 	 * @throws IOException 
 	 * 
 	 */
+	/*
 	public void treeNodeData() throws IOException{
 		List<TreeNode> trees = navService.getNavTree(null) ;
 		response.setCharacterEncoding("UTF-8");  
 		//利用Json插件将Array转换成Json格式   
         response.getWriter().print(JSONArray.fromObject(trees).toString()); 
-	}
+	}*/
 	
 	public String allNodeData(){
 		navList = navService.getAllNavigations(null) ;
