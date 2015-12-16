@@ -65,9 +65,11 @@ public class NavAction extends BaseAction {
 		navs.setNavName(navName);
 		if(navMenu!=null){
 			//说明是通过  站内导航添加
-			String[] menus = navMenu.split("|") ; 
-			module = menus[0] ;
-			moduleUrl = menus[1] ;
+			String[] menus = navMenu.split("@") ; 
+			if(menus.length==2){
+				module = "m" ;
+				moduleUrl = menus[1] ;
+			}
 		}
 		navs.setModule(module) ;
 		navs.setModuleUrl(moduleUrl);
@@ -95,9 +97,11 @@ public class NavAction extends BaseAction {
 		navs.setNavName(navName);
 		if(navMenu!=null){
 			//说明是通过  站内导航添加
-			String[] menus = navMenu.split("|") ; 
-			module = menus[0] ;
-			moduleUrl = menus[1] ;
+			String[] menus = navMenu.split("@") ; 
+			if(menus.length==2){
+				module = "m" ;
+				moduleUrl = menus[1] ;
+			}
 		}
 		navs.setModule(module) ;
 		navs.setModuleUrl(moduleUrl);

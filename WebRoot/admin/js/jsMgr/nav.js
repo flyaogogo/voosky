@@ -83,7 +83,7 @@ $(function(){
 			async:true,
 			success:function(data){
 				$(".vs-nav-update-data input[name='navId']").val(data.navId) ;
-				$(".vs-nav-update-data select[name='navMenu']").val(data.module) ;
+				$(".vs-nav-update-data select[name='navMenu']").val(data.navId+"@"+data.moduleUrl) ;
 				$(".vs-nav-update-data input[name='navName']").val(data.navName) ;
 				$(".vs-nav-update-data input:radio[name='navType'][value='" + data.vtype + "']").attr('checked', 'checked');
 				$(".vs-nav-update-data select[name='parentId']").val(data.parentId) ;

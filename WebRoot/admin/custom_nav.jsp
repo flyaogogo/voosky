@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td width="80" height="35" align="right">导航模板</td>
             <td>
-             <select id="selectTree-add-module" name="navMenu" onchange="change('selectTree-add-module',this);">
+             <select id="selectTree-add-module" name="navMenu" >
              <option value="">请选择你链接的项目</option>
          
               <!--  <option value="企业简介" selected="selected" title="企业简介">企业简介</option> -->
