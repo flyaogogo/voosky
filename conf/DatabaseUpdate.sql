@@ -179,3 +179,4 @@ insert into vs_config values(30,"mail.SSL.security.protocol","2342",50);
 insert into vs_config values(31,"mail.outbox.mailboxes","ss@163.com",50);
 insert into vs_config values(32,"mail.outbox.mail.password","1234567",50);
 
+commit ;
