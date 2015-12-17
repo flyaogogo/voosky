@@ -54,15 +54,17 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	}
 
 	public String insertSlide() throws Exception{
+		String fileName = show.getShowImg() ;
+		String imageFileName = new Date().getTime() + getExtention(fileName);
+//        File imageFile = new File(.getRealPath( " /UploadImages " ) + " / " + imageFileName);
+//        copy(myFile, imageFile);
+		
 		showService.addSlide(show);
 		return SUCCESS ;
 	}
 	
 	public String updateSlide() throws Exception{
-		String fileName = show.getShowImg() ;
-		String imageFileName = new Date().getTime() + getExtention(fileName);
-//        File imageFile = new File(.getRealPath( " /UploadImages " ) + " / " + imageFileName);
-//        copy(myFile, imageFile);
+		
         
 		showService.updateSlide(show);
 		return SUCCESS ;
@@ -105,7 +107,7 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
    } 
    
     private static String getExtention(String fileName) {
-        int pos = fileName.lastIndexOf( " . " );
+        int pos = fileName.lastIndexOf( "." );
         return fileName.substring(pos);
    } 
     
