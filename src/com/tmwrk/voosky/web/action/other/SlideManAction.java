@@ -12,8 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Show;
 import com.tmwrk.voosky.service.other.ShowServiceMgr;
@@ -56,6 +62,7 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	public String insertSlide() throws Exception{
 		String fileName = show.getShowImg() ;
 		String imageFileName = new Date().getTime() + getExtention(fileName);
+		InputStream is = request.getInputStream() ;
 //        File imageFile = new File(.getRealPath( " /UploadImages " ) + " / " + imageFileName);
 //        copy(myFile, imageFile);
 		
@@ -111,6 +118,62 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
         return fileName.substring(pos);
    } 
     
+	private void uploadImage() throws Exception {
+		// 1. 创建工厂类
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		// 2. 创建FileUpload对象
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		// 3. 判断是否是上传表单
+		boolean b = upload.isMultipartContent(request);
+		if (!b) {
+			// 不是文件上传
+			request.setAttribute("message", "对不起，不是文件上传表单！");
+			request.getRequestDispatcher("/message.jsp").forward(request,
+					response);
+			return;
+		}
+		// 是文件上传表单
+		// 4. 解析request，获得FileItem项
+		List<FileItem> fileitems = upload.parseRequest(request);
+		// 5. 遍历集合
+		for (FileItem item : fileitems) {
+			// 判断是不是普通字段
+			if (item.isFormField()) {
+				String name = item.getFieldName();
+				String value = item.getString();
+				// 手工的转换了
+				value = new String(value.getBytes("iso-8859-1"), "utf-8");
+				System.out.println(name + "=" + value);
+			} else {
+				// 文件上传字段
+				// 获得文件名
+				String filename = item.getName();
+				System.out.println(filename);
+				filename = filename.substring(filename.lastIndexOf("\\") + 1);
+
+				System.out.println(filename);
+				// 创建文件
+				ServletContext context = request.getSession()
+						.getServletContext();
+				// ServletContext context = getServletContext();
+				String dir = context.getRealPath("WEN-INF/upload");
+				File file = new File(dir, filename);
+				file.createNewFile();
+
+				// 获得流，读取数据写入文件
+				InputStream in = item.getInputStream();
+				FileOutputStream fos = new FileOutputStream(file);
+
+				int len;
+				byte[] buffer = new byte[1024];
+				while ((len = in.read(buffer)) > 0)
+					fos.write(buffer, 0, len);
+				fos.close();
+				in.close();
+				item.delete(); // 删除临时文件
+			}
+		}
+	}
 	@Override
 	public Show getModel() {
 		return show;
