@@ -14,6 +14,9 @@
 		
 		<action name="addSlideAction" method="insertSlide" class="com.tmwrk.voosky.web.action.other.SlideManAction">
 			<result name="success" type="chain" >listAllSlides</result>
+			<result name="error" type="json" >
+				<param name="root">slide</param>
+			</result>
 		</action>
 		<action name="updtSlideAction" method="updateSlide" class="com.tmwrk.voosky.web.action.other.SlideManAction">
 			<result name="success" type="chain" >listAllSlides</result>

@@ -33,7 +33,7 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	
 	private List<Show> slideList ;
 	
-	private File imageFile ;
+	private String msg ;
 	
 	@Override
 	public String execute() throws Exception{
@@ -53,40 +53,9 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	}
 
 	public String insertSlide() throws Exception{
-
-		/* Copy file to a safe location */
-		// String destPath = "/upload/imange/";
-		String myFileFileName = "image_" + System.currentTimeMillis() + ".jpg";
-
-		try {
-			//System.out.println("Src File name: " + imageFile);
-			//System.out.println("Dst File name: " + myFileFileName);
-
-			// 创建文件
-			ServletContext context = request.getSession().getServletContext();
-			String destPath = context.getRealPath("WEB-INF/upload/");
-			System.out.println("Dst File path: " + destPath);
-//			System.out.println(imageFile);
-			File destFile = new File(destPath, myFileFileName);
-			if (!destFile.exists()) {
-				boolean exiFlag = true ;
-				if(!new File(destPath).exists()){
-					exiFlag = new File(destPath).mkdirs() ;
-				}
-				if(!exiFlag){
-					return ERROR ;
-				}
-				destFile.createNewFile() ;
-			}
-			System.out.println(destFile.getPath());
-			// File destFile = new File(destPath, myFileFileName);
-			
-			FileUtils.copyFile(imageFile, destFile);
-			
-			show.setShowImg(destFile.getPath().replace("\\", "/"));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return ERROR;
+		String state = dealUploadInfo(false) ;
+		if(ERROR.equals(state)){
+			return ERROR ;
 		}
 		
 		showService.addSlide(show);
@@ -95,7 +64,11 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	
 	public String updateSlide() throws Exception{
 		
-        
+		String state = dealUploadInfo(true) ;
+		if(ERROR.equals(state)){
+			return ERROR ;
+		}
+		
 		showService.updateSlide(show);
 		return SUCCESS ;
 	}
@@ -106,6 +79,64 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 		return SUCCESS ;
 	}
 	
+	/**
+	 * 上传文件
+	 * @param isUpdate
+	 * @return
+	 */
+	private String dealUploadInfo(boolean isUpdate){
+		/* Copy file to a safe location */
+		// String destPath = "/upload/imange/";
+		String myFileFileName = "image_" + show.getImageFileFileName() ;
+
+		try {
+//			System.out.println("Src File name: " + imageFileFileName);
+//			System.out.println("Src File Content Type: " + imageFileContentType);
+			//正则式过滤非指定格式
+			String specifiedFormat = "image/jpeg,image/gif,image/png,image/bmp,image/jpg" ;
+			if(!specifiedFormat.contains(show.getImageFileContentType())){
+				msg = "请上传指定范围内的图片（jpeg,gif,png,bmp,jpg）!" ;
+				return ERROR ;
+			}
+			// 创建文件
+			ServletContext context = request.getSession().getServletContext();
+			String destPath = context.getRealPath("WEB-INF/upload/");
+//			System.out.println("Dst File path: " + destPath);
+//			System.out.println(imageFile);
+			File destFile = new File(destPath, myFileFileName);
+			if (destFile.exists()) {
+				if(isUpdate){
+					show.setShowImg(destFile.getPath().replace("\\", "/"));
+					return SUCCESS ;
+				}else{
+					destFile.delete() ;
+				}
+				
+			}else{
+				boolean exiFlag = true ;
+				if(!new File(destPath).exists()){
+					exiFlag = new File(destPath).mkdirs() ;
+				}
+				if(!exiFlag){
+					msg = "创建目录失败！或请手动在WEB-INF下创建upload目录！" ;
+					return ERROR ;
+				}
+			}
+			destFile.createNewFile() ;
+//			System.out.println(destFile.getPath());
+			// File destFile = new File(destPath, myFileFileName);
+			
+			FileUtils.copyFile(show.getImageFile(), destFile);
+			
+			show.setShowImg(destFile.getPath().replace("\\", "/"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			msg = "图片上传失败！" ;
+			return ERROR;
+		}
+		return SUCCESS ;
+	}
 	@Override
 	public Show getModel() {
 		return show;
@@ -127,12 +158,36 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 		this.slideList = slideList;
 	}
 
-	public File getImageFile() {
+	/*public File getImageFile() {
 		return imageFile;
 	}
 
 	public void setImageFile(File imageFile) {
 		this.imageFile = imageFile;
+	}
+
+	public String getImageFileFileName() {
+		return imageFileFileName;
+	}
+
+	public void setImageFileFileName(String imageFileFileName) {
+		this.imageFileFileName = imageFileFileName;
+	}
+
+	public String getImageFileContentType() {
+		return imageFileContentType;
+	}
+
+	public void setImageFileContentType(String imageFileContentType) {
+		this.imageFileContentType = imageFileContentType;
+	}*/
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 }
