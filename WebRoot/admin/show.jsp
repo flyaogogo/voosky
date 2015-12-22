@@ -45,7 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </tr>
          <tr>
           <td><strong>幻灯图片</strong>
-            <input type="file" name="showImg" class="inpFlie" />
+            <input type="file" name="imageFile" class="inpFlie" onchange="extensionOnchange(this)" accept="image/jpeg,image/gif,image/png,image/bmp,image/jpg" />
+<!--             <input type="file" name="imageFile" class="inpFlie" accept=".jpeg,.gif,.png,.bmp,.jpg"/> -->
           </td>
          </tr>
          <tr>
@@ -75,7 +76,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         <s:iterator value="slideList" var="sld">
 	        <tr>
-	         <td width="100"><a href="javascript:void(0)" target="_blank"><img src="<s:property value="#sld.showImg"/>" width="100" /></a></td>
+	         <td width="100"><a href="javascript:void(0)" target="_blank"><img src="WEB-INF/upload/abc.jpg" width="100" /></a></td>
+<%-- 	         <td width="100"><a href="javascript:void(0)" target="_blank"><img src="<s:property value="#sld.showImg"/>" width="100" /></a></td> --%>
 	         <td><s:property value="#sld.showName"/></td>
 	         <td align="center"><s:property value="#sld.vsort"/></td>
 	         <td align="center">

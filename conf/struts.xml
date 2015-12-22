@@ -30,7 +30,10 @@
                 <interceptor-ref name="debugging"/>
                 <interceptor-ref name="scopedModelDriven"/>
                 <interceptor-ref name="modelDriven"/>
-                <interceptor-ref name="fileUpload"/>
+                <!-- <interceptor-ref name="fileUpload"/> -->
+                <interceptor-ref name="fileUpload">
+					<param name="allowedTypes">image/jpeg,image/gif,image/png,image/bmp,image/jpg</param>
+				</interceptor-ref>
                 <interceptor-ref name="checkbox"/>
                 <interceptor-ref name="multiselect"/>
                 <interceptor-ref name="staticParams"/>
@@ -45,6 +48,7 @@
                 <interceptor-ref name="workflow">
                     <param name="excludeMethods">input,back,cancel,browse</param>
                 </interceptor-ref>
+				
             </interceptor-stack>
 			
 			<interceptor-stack name="tmwrkDefaultStack">

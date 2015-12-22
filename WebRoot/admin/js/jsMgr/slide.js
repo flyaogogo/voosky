@@ -36,3 +36,21 @@ $(function(){
 	
 	
 })
+
+/**
+ * 
+ * @param o
+ * @returns {Boolean}
+ */
+function extensionOnchange(o){
+	//alert(o.value);
+	//o.value就是你选择的文件的完整路径,然后你可以自己过滤
+    if (o.value.indexOf('.txt') > -1){
+    	
+    	//alert('txt');
+    	return false ;
+    } else{
+    	//alert('other');
+    	return true ;
+    }
+}

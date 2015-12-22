@@ -1,25 +1,16 @@
 package com.tmwrk.voosky.web.action.other;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Date;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Show;
 import com.tmwrk.voosky.service.other.ShowServiceMgr;
@@ -42,6 +33,8 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	
 	private List<Show> slideList ;
 	
+	private File imageFile ;
+	
 	@Override
 	public String execute() throws Exception{
 //		SmartUpload su = new  SmartUpload();
@@ -60,11 +53,41 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	}
 
 	public String insertSlide() throws Exception{
-		String fileName = show.getShowImg() ;
-		String imageFileName = new Date().getTime() + getExtention(fileName);
-		InputStream is = request.getInputStream() ;
-//        File imageFile = new File(.getRealPath( " /UploadImages " ) + " / " + imageFileName);
-//        copy(myFile, imageFile);
+
+		/* Copy file to a safe location */
+		// String destPath = "/upload/imange/";
+		String myFileFileName = "image_" + System.currentTimeMillis() + ".jpg";
+
+		try {
+			//System.out.println("Src File name: " + imageFile);
+			//System.out.println("Dst File name: " + myFileFileName);
+
+			// 创建文件
+			ServletContext context = request.getSession().getServletContext();
+			String destPath = context.getRealPath("WEB-INF/upload/");
+			System.out.println("Dst File path: " + destPath);
+//			System.out.println(imageFile);
+			File destFile = new File(destPath, myFileFileName);
+			if (!destFile.exists()) {
+				boolean exiFlag = true ;
+				if(!new File(destPath).exists()){
+					exiFlag = new File(destPath).mkdirs() ;
+				}
+				if(!exiFlag){
+					return ERROR ;
+				}
+				destFile.createNewFile() ;
+			}
+			System.out.println(destFile.getPath());
+			// File destFile = new File(destPath, myFileFileName);
+			
+			FileUtils.copyFile(imageFile, destFile);
+			
+			show.setShowImg(destFile.getPath().replace("\\", "/"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 		
 		showService.addSlide(show);
 		return SUCCESS ;
@@ -83,97 +106,6 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 		return SUCCESS ;
 	}
 	
-	/**
-	 * http://zhidao.baidu.com/link?url=CpybbvI6AKrU20IMogmsXlezqp0FRGE9bnLcyrXAh77JZ4-fCBiw02oQoVOx4rIDMBlXpcFGFxZ3kPB4mqDQxq
-	 * @param src
-	 * @param dst
-	 */
-	private static final int BUFFER_SIZE = 16 * 1024 ;
-	private static void copy(File src, File dst) {
-        try {
-           InputStream in = null ;
-           OutputStream out = null ;
-            try {                
-               in = new BufferedInputStream( new FileInputStream(src), BUFFER_SIZE);
-               out = new BufferedOutputStream( new FileOutputStream(dst), BUFFER_SIZE);
-                byte [] buffer = new byte [BUFFER_SIZE];
-                while (in.read(buffer) > 0 ) {
-                   out.write(buffer);
-               } 
-           } finally {
-                if ( null != in) {
-                   in.close();
-               } 
-                if ( null != out) {
-                   out.close();
-               } 
-           } 
-       } catch (Exception e) {
-           e.printStackTrace();
-       } 
-   } 
-   
-    private static String getExtention(String fileName) {
-        int pos = fileName.lastIndexOf( "." );
-        return fileName.substring(pos);
-   } 
-    
-	private void uploadImage() throws Exception {
-		// 1. 创建工厂类
-		DiskFileItemFactory factory = new DiskFileItemFactory();
-		// 2. 创建FileUpload对象
-		ServletFileUpload upload = new ServletFileUpload(factory);
-		// 3. 判断是否是上传表单
-		boolean b = upload.isMultipartContent(request);
-		if (!b) {
-			// 不是文件上传
-			request.setAttribute("message", "对不起，不是文件上传表单！");
-			request.getRequestDispatcher("/message.jsp").forward(request,
-					response);
-			return;
-		}
-		// 是文件上传表单
-		// 4. 解析request，获得FileItem项
-		List<FileItem> fileitems = upload.parseRequest(request);
-		// 5. 遍历集合
-		for (FileItem item : fileitems) {
-			// 判断是不是普通字段
-			if (item.isFormField()) {
-				String name = item.getFieldName();
-				String value = item.getString();
-				// 手工的转换了
-				value = new String(value.getBytes("iso-8859-1"), "utf-8");
-				System.out.println(name + "=" + value);
-			} else {
-				// 文件上传字段
-				// 获得文件名
-				String filename = item.getName();
-				System.out.println(filename);
-				filename = filename.substring(filename.lastIndexOf("\\") + 1);
-
-				System.out.println(filename);
-				// 创建文件
-				ServletContext context = request.getSession()
-						.getServletContext();
-				// ServletContext context = getServletContext();
-				String dir = context.getRealPath("WEN-INF/upload");
-				File file = new File(dir, filename);
-				file.createNewFile();
-
-				// 获得流，读取数据写入文件
-				InputStream in = item.getInputStream();
-				FileOutputStream fos = new FileOutputStream(file);
-
-				int len;
-				byte[] buffer = new byte[1024];
-				while ((len = in.read(buffer)) > 0)
-					fos.write(buffer, 0, len);
-				fos.close();
-				in.close();
-				item.delete(); // 删除临时文件
-			}
-		}
-	}
 	@Override
 	public Show getModel() {
 		return show;
@@ -193,6 +125,14 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 
 	public void setSlideList(List<Show> slideList) {
 		this.slideList = slideList;
+	}
+
+	public File getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(File imageFile) {
+		this.imageFile = imageFile;
 	}
 
 }
