@@ -76,6 +76,9 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	public String deleteSlideById() throws Exception{
 		
 		showService.deleteSlideById(show);
+		
+		//TODO 同步删除 相关图片
+		
 		return SUCCESS ;
 	}
 	
@@ -89,7 +92,15 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 		// String destPath = "/upload/imange/";
 		String myFileFileName = "image_" + show.getImageFileFileName() ;
 
+		String slideFilePathStr = "upload/slide/" ;
+		
+		String imageFilePath = slideFilePathStr + myFileFileName;
 		try {
+//			System.out.println("request.getpathinfo():" + request.getPathInfo());
+//			System.out.println("request.getrequesturl():" + request.getRequestURL());
+//			System.out.println("request.getrequesturi():" + request.getRequestURI());
+//			System.out.println("request.getservletpath():" + request.getServletPath());
+//			System.out.println("request.getquerystring():" + request.getQueryString());
 //			System.out.println("Src File name: " + imageFileFileName);
 //			System.out.println("Src File Content Type: " + imageFileContentType);
 			//正则式过滤非指定格式
@@ -100,13 +111,14 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 			}
 			// 创建文件
 			ServletContext context = request.getSession().getServletContext();
-			String destPath = context.getRealPath("WEB-INF/upload/");
-//			System.out.println("Dst File path: " + destPath);
+			String destPath = context.getRealPath("/") + slideFilePathStr ;
+			//System.out.println("Dst File path: " + destPath);
 //			System.out.println(imageFile);
 			File destFile = new File(destPath, myFileFileName);
 			if (destFile.exists()) {
 				if(isUpdate){
-					show.setShowImg(destFile.getPath().replace("\\", "/"));
+					//System.out.println("input database image path:" + imageFilePath);
+					show.setShowImg(imageFilePath.replace("\\", "/"));
 					return SUCCESS ;
 				}else{
 					destFile.delete() ;
@@ -128,7 +140,8 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 			
 			FileUtils.copyFile(show.getImageFile(), destFile);
 			
-			show.setShowImg(destFile.getPath().replace("\\", "/"));
+			//System.out.println("input database image path:" + imageFilePath);
+			show.setShowImg(imageFilePath.replace("\\", "/"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -137,6 +150,8 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 		}
 		return SUCCESS ;
 	}
+	
+	
 	@Override
 	public Show getModel() {
 		return show;

@@ -75,9 +75,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </tr>
         
         <s:iterator value="slideList" var="sld">
+        	
 	        <tr>
-	         <td width="100"><a href="javascript:void(0)" target="_blank"><img src="WEB-INF/upload/abc.jpg" width="100" /></a></td>
-<%-- 	         <td width="100"><a href="javascript:void(0)" target="_blank"><img src="<s:property value="#sld.showImg"/>" width="100" /></a></td> --%>
+	         <%-- <td width="100"><a href="javascript:void(0)" target="_blank"><img src="images/image_mon_pub_table.jpg" width="100" /></a></td> --%>
+			 <td width="100"><a href="javascript:void(0)" target="_blank"><img src="../<s:property value="#sld.showImg"/>" width="100" /></a></td>
 	         <td><s:property value="#sld.showName"/></td>
 	         <td align="center"><s:property value="#sld.vsort"/></td>
 	         <td align="center">

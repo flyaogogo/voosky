@@ -6,7 +6,7 @@ $(function(){
 	$(".vs-slide-edit-oper-cls").bind("click",function(){
 		var updateurl = ctx+"/slide/updtSlideAction.htm" ;
 		$(".vs-slide-span-type-oper-cls").html("修改幻灯片");
-		$("form[name='vs-slide-type-oper-cls']").attr("action",updateurl) ;
+		$("form[name='slide-type-form']").attr("action",updateurl) ;
 		
 		var slideId = $(this).parent().find("input[name='slideId']").val();
 		
