@@ -18,7 +18,7 @@ $(function(){
       <li class="vs-home"><a href="${ctx}/admin/index.jsp"><i class="home"></i><em>管理首页</em></a></li>
      </ul>
      <ul>
-      <li class="vs-system"><a href="${ctx}/admin/system.jsp"><i class="system"></i><em>系统设置</em></a></li>
+      <li class="vs-system"><a href="${ctx}/sysconfig/listSysConfigByTye.htm"><i class="system"></i><em>系统设置</em></a></li>
       <li class="vs-nav"><a href="${ctx}/nav/listNavsInfo.htm?navType=middle"><i class="nav"></i><em>自定义导航</em></a></li>
       <li class="vs-show"><a href="${ctx}/slide/listAllSlides.htm"><i class="show"></i><em>幻灯片管理</em></a></li>
       <li class="vs-spage"><a href="${ctx}/singlepage/listAllSPInfo.htm"><i class="page"></i><em>单页面管理</em></a></li>

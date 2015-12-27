@@ -63,3 +63,23 @@ $(function(){
 	
 	
 })
+
+function defaultLoad(){
+	var nameType = "" ;
+	
+	$.ajax({
+		url:ctx+"/sysconfig/listSlideById.htm",
+		type:"post",
+		data:param,
+		dataType:"json",
+		async:true,
+		success:function(data){
+			$(".vs-slide-type-oper-cls input[name='id']").val(data.id) ;
+			$(".vs-slide-type-oper-cls input[name='showName']").val(data.showName) ;
+//			$(".vs-slide-type-oper-cls input[name='showImg']").val(data.showImg) ;
+			$(".vs-slide-type-oper-cls input[name='showLink']").val(data.showLink) ;
+			$(".vs-slide-type-oper-cls input[name='vsort']").val(data.vsort) ;
+		}
+	});
+	
+}

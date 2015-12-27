@@ -14,4 +14,26 @@
 		<result property="vsort" column="vsort" />
 	</resultMap>
 	
+	<select id="listAllConfig" parameterClass="java.util.HashMap" resultMap="configMap">
+		select id,name,value,vsort from vs_config where 1=1
+		<isNotNull property="name">
+			and name like '$name$%'
+		</isNotNull>
+		
+	</select>
+	
+	<update id="update" parameterClass="Config">
+		update vs_config set value=#value#,vsort=#vsort# where name=#name#
+	</update>
+	<update id="batchUpdate" parameterClass="list">
+		begin
+		<iterate conjunction="">
+			update vs_config set
+			value=#[].value#,
+			vsort =#[].vsort#,
+			where name = #[].name#;
+		</iterate>
+		end;
+	</update>
+    
 </sqlMap>

@@ -90,8 +90,9 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	private String dealUploadInfo(boolean isUpdate){
 		/* Copy file to a safe location */
 		// String destPath = "/upload/imange/";
+//		String myFileFileName = "image_" + URLEncoder.encode(show.getImageFileFileName()) ;
 		String myFileFileName = "image_" + show.getImageFileFileName() ;
-
+		
 		String slideFilePathStr = "upload/slide/" ;
 		
 		String imageFilePath = slideFilePathStr + myFileFileName;
@@ -130,7 +131,7 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 					exiFlag = new File(destPath).mkdirs() ;
 				}
 				if(!exiFlag){
-					msg = "创建目录失败！或请手动在WEB-INF下创建upload目录！" ;
+					msg = "创建目录失败！或请手动创建upload/slide目录！" ;
 					return ERROR ;
 				}
 			}
@@ -172,30 +173,6 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	public void setSlideList(List<Show> slideList) {
 		this.slideList = slideList;
 	}
-
-	/*public File getImageFile() {
-		return imageFile;
-	}
-
-	public void setImageFile(File imageFile) {
-		this.imageFile = imageFile;
-	}
-
-	public String getImageFileFileName() {
-		return imageFileFileName;
-	}
-
-	public void setImageFileFileName(String imageFileFileName) {
-		this.imageFileFileName = imageFileFileName;
-	}
-
-	public String getImageFileContentType() {
-		return imageFileContentType;
-	}
-
-	public void setImageFileContentType(String imageFileContentType) {
-		this.imageFileContentType = imageFileContentType;
-	}*/
 
 	public String getMsg() {
 		return msg;

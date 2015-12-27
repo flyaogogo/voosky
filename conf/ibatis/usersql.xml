@@ -21,7 +21,7 @@
 	
 	<select id="checkUser" parameterClass="User" resultMap="userMap">
 		select user_id,user_name,pwd,user_email,add_time,last_login_time,removed_time,user_state,last_login_ip 
-			from vs_admin where user_name=#userName# and pwd=#pwd# and user_state=0 and removed_time is null
+			from vs_admin where user_name=#userName# and pwd=#pwd# and user_state=0 and (removed_time is null or removed_time = '')
 	</select>
 	
 	<select id="getAllUserInfo" resultMap="userMap">
