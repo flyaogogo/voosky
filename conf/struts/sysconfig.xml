@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="sysconfig" extends="tmwrk-default" namespace="/sysconfig">
+		<action name="listSysConfigByTye" class="com.tmwrk.voosky.web.action.other.SystemConfigAction">
+			<result name="success">/admin/system.jsp</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,5 +1,6 @@
 package com.tmwrk.voosky.database.dao.impl;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class ConfigDaoImpl extends BaseDao<Config> {
 
 	@Override
 	public Config update(Config params) {
-		// TODO Auto-generated method stub
+		getSqlMapClientTemplate().update("config.update", params) ;
 		return null;
 	}
 
@@ -29,10 +30,18 @@ public class ConfigDaoImpl extends BaseDao<Config> {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Config> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Config> cfList = (List<Config>)getSqlMapClientTemplate().queryForList("config.listAllConfig", params) ;
+		return cfList ;
 	}
 
+	/**
+	 * 批量更新系统配置文件
+	 * @param cfList
+	 */
+	public void batchUpdateSysConfig(List<Config> cfList) throws IOException {
+		getSqlMapClientTemplate().update("config.batchUpdate", cfList) ;
+	}
 }
