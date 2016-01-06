@@ -26,7 +26,7 @@
 	
 	<select id="getAllUserInfo" resultMap="userMap">
 		select user_id,user_name,pwd,user_email,add_time,last_login_time,
-			removed_time,user_state,last_login_ip from vs_admin where removed_time is null
+			removed_time,user_state,last_login_ip from vs_admin where removed_time is null or removed_time = ''
 	</select>
 	
 	<select id="getUserInfoById" parameterClass="java.util.HashMap" resultMap="userMap">

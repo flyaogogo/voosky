@@ -30,6 +30,7 @@ create table vs_admin(
 	PRIMARY KEY (user_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
 
+INSERT INTO `vs_admin` VALUES ('0001', 'admin', 'a', 'admin@t.com', '2015-11-19 23:05:13', '2015-12-27 16:17:38', '', '0', '192.168.1.100');
 
 create table vs_admin_log(
 	log_id int not null,

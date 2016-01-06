@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<project name="ROOT" default="war" basedir=".">
+	<property file="build.properties" />
+
+	<property name="webcontext" value="vooskycms" />
+	<property name="warfile" value="${webcontext}.war" />
+	<property name="dir.lib" value="${basedir}/WebRoot/WEB-INF/lib" />
+		
+	<property name="dir.classes" value="${basedir}/WebRoot/WEB-INF/classes" />
+	<property name="conf" value="${basedir}/conf" />
+	
+	
+	<!--
+	<property name="dir.test.classes" value="${basedir}/test/classes" />
+	-->
+<!--
+	<property name="tomcat.home" value="/D:/javaproject/apache-tomcat-6.0.18" />
+	<property name="server.userId" value="administrator"/>
+	<property name="server.password" value="Dota6.0"/>
+	<property name="server.serverIp" value="192.168.10.45"/>
+	<property name="server.dest" value="/C:/monitor/"/>
+ -->
+	
+	
+	<property name="report.junit" value="${basedir}/report/junit/" />
+	
+	<path id="project-cp">
+		<fileset dir="${dir.lib}" includes="**" />
+	</path>
+
+	<target name="clean" description="Remove all build artifacts">
+		<delete dir="${dir.classes}" />
+		<delete file="target/${warfile}.war" />
+	</target>
+	<!--编译java源文件 ,并把配置文件拷贝到classes中-->
+	<target name="compile" description="Compile java source">
+		<mkdir dir="${dir.classes}" />
+		
+		<mkdir dir="${report.junit}"/>
+		<!-- 
+		<mkdir dir="${dir.test.classes}"/>
+		-->
+		
+		<echo message="complie src java..." />
+		
+		<javac srcdir="src" destdir="${dir.classes}" debug="on" includeAntRuntime="false">
+			<classpath refid="project-cp" />
+			<classpath location="${dir.classes}"></classpath>
+			<compilerarg line="-encoding UTF-8" />
+		</javac>
+		
+		<copy todir="${dir.classes}">
+			<fileset dir="conf">
+				<include name="**/*.properties"/>
+				<include name="**/*.xml"/>
+				<include name="*.xml"/>
+				<include name="*.properties"/>
+				<include name="*.tld"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="copy_web.xml" description="Build and package portal.war">
+		<echo message="fight war package..." />
+		<mkdir dir="target" />
+		<war destfile="target/${warfile}">
+			<fileset dir="${basedir}/WebRoot" excludes="META-INF" />
+			<lib dir="${dir.lib}">
+				<exclude name="junit*.jar" />
+				<exclude name="servlet-api.jar" />
+			</lib>
+			<classes dir="${dir.classes}" />
+		</war>
+	</target>
+
+	<target name="_tomcat_init">
+		<fail unless="tomcat.home" message="Missing property: 'tomcat.home'.  You probably haven't set it in your build.properties file." />
+		<property name="contextdir" value="${tomcat.home}/webapps/${webcontext}" />
+	</target>
+
+	<target name="deploy" depends="_tomcat_init, war" description="Copy the war file to Tomcat's webapps directory.  Requires tomcat.home be set in bulid.properties.">
+		<echo message="deploy to tomcat..." />
+		<copy file="target/${warfile}" todir="${tomcat.home}/webapps" />
+	</target>
+
+	<target name="undeploy" depends="_tomcat_init" description="Deletes the war file and webapp folder in Tomcat's webapps directory.  Requires tomcat.home be set in bulid.properties.">
+		<delete dir="${contextdir}" />
+		<delete file="${contextdir}/${warfile}" />
+	</target>
+
+	<target name="copyweb" depends="_tomcat_init" description="Copies web artifacts (jsp's, js's, etc.) to the deployed web context.">
+		<echo message="copy web to tomcat..." />
+		<copy todir="${contextdir}">
+			<fileset dir="${basedir}/webRoot">
+				<exclude name="META-INF/**" />
+				<exclude name="WEB-INF/**" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="copy_web.xml" depends="compile">
+		<copy todir="${basedir}/WebRoot/WEB-INF/">
+			<fileset dir="conf">
+				<include name="web.xml"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="remote-deploy"  depends="war" description="发布到远程服务器">
+		<echo message="deploy war to remote server..." />
+		<scp todir="${server.userId}@${server.serverIp}:${server.dest}" password="${server.password}" trust="true" verbose="true" >
+			<fileset dir="target">
+				<include name="ROOT.war"/>
+			 </fileset>
+		</scp>
+	</target>
+	
+	
+
+
+	<!--
+	
+	<target name="junit" depends="compile">
+		<junit printsummary="yes" fork="yes">
+			
+			<classpath location="${dir.test.classes}"></classpath>
+			<classpath location="${dir.classes}"></classpath>
+			<classpath refid="project-cp"></classpath>
+			
+			<formatter type="xml"/>
+			<batchtest fork="yes" todir="${report.junit}">
+				<fileset dir="${basedir}/test/">
+					<patternset>
+						<include name="**/*Test*.java"/>
+					</patternset>
+				</fileset>
+			</batchtest>
+
+		</junit>
+	</target>
+	
+	
+	<target name="junitreport" depends="junit">
+			<junitreport tofile="report/junit/junitresult.xml">
+				<fileset dir="${report.junit}">
+					<include name="TEST-*.xml"/>
+				</fileset>
+			</junitreport>
+		</target>
+		-->
+
+	
+	
+</project>
