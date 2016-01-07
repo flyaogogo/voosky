@@ -30,7 +30,6 @@ public class SystemConfigAction extends BaseAction implements ModelDriven<Config
 	
 	private Map<String,String> mapSysConf ;
 	
-	
 	@Override
 	public String execute() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
