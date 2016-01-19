@@ -25,13 +25,10 @@
 	<update id="update" parameterClass="Config">
 		update vs_config set value=#value#,vsort=#vsort# where name=#name#
 	</update>
-	<update id="batchUpdate" parameterClass="list">
+	<update id="batchUpdate" parameterClass="java.util.List">
 		begin
 		<iterate conjunction="">
-			update vs_config set
-			value=#[].value#,
-			vsort =#[].vsort#,
-			where name = #[].name#;
+			update vs_config set value=#cfList[].value#,vsort=#cfList[].vsort# where name = #cfList[].name#
 		</iterate>
 		end;
 	</update>

@@ -6,5 +6,16 @@
 			<result name="success">/admin/system.jsp</result>
 		</action>
 		
+		<action name="updateSysConfig" method="updateSysConfig" class="com.tmwrk.voosky.web.action.other.SystemConfigAction">
+			<!-- <result name="success" type="json" >
+				<param name="root">retStatus</param>
+			</result> -->
+			<result name="success" type="chain" >listSysConfigByTye</result>
+		</action>
+		<action name="updateMarkConfig" method="updateMarkConfig" class="com.tmwrk.voosky.web.action.other.SystemConfigAction">
+			<result name="success" type="json" >
+				<param name="root">uplFileBase</param>
+			</result>
+		</action>
 	</package>
 </struts>

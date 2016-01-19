@@ -26,7 +26,7 @@ public class ConfigServiceMgr {
 	}
 	
 	public void batchUpdateSysConf(List<Config> confList) throws IOException {
-		configDao.batchUpdateSysConfig(confList);
+		configDao.batchUpdate(confList);
 	}
 	
 	public void updateSysConfig(Config conf){

@@ -151,3 +151,26 @@ function douRemove(target) {
 function change(id, choose) {
     document.getElementById(id).value = choose.options[choose.selectedIndex].title;
 }
+
+/**
+ * 模拟Form的Post请求
+ * @param URL
+ * @param PARAMS
+ * @returns {___anonymous793_796}
+ */
+function post(URL, PARAMS) {
+	var temp = document.createElement("form");
+	temp.action = URL;
+	temp.method = "post";
+	temp.enctype = "multipart/form-data";
+	temp.style.display = "none";
+	for ( var x in PARAMS) {
+		var opt = document.createElement("textarea");
+		opt.name = x;
+		opt.value = PARAMS[x];
+		temp.appendChild(opt);
+	}
+	document.body.appendChild(temp);
+	temp.submit();
+	return temp;
+}

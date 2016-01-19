@@ -1,13 +1,12 @@
 package com.tmwrk.voosky.database.vo;
 
-import java.io.File;
 
 /**
  * 图片展示，或者说 幻灯片   实体类
  * @author wfluo 2015-11-17
  *
  */
-public class Show {
+public class Show extends UploadFileBase{
 
 	
 	private int id ;
@@ -17,13 +16,6 @@ public class Show {
 	private String vtype ;
 	private int vsort ;
 	
-	// 上传file要在action中定义,三者缺一不可。
-	private File imageFile;
-
-	private String imageFileFileName;
-
-	private String imageFileContentType;
-
 	public int getId() {
 		return id;
 	}
@@ -59,24 +51,6 @@ public class Show {
 	}
 	public void setVsort(int vsort) {
 		this.vsort = vsort;
-	}
-	public File getImageFile() {
-		return imageFile;
-	}
-	public void setImageFile(File imageFile) {
-		this.imageFile = imageFile;
-	}
-	public String getImageFileFileName() {
-		return imageFileFileName;
-	}
-	public void setImageFileFileName(String imageFileFileName) {
-		this.imageFileFileName = imageFileFileName;
-	}
-	public String getImageFileContentType() {
-		return imageFileContentType;
-	}
-	public void setImageFileContentType(String imageFileContentType) {
-		this.imageFileContentType = imageFileContentType;
 	}
 	
 }

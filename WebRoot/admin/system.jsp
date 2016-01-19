@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>article category</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/system.js"></script>
 
 </head>
@@ -35,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a href="javascript:void(0)" class="vs-system-tab-mail-cls">邮件服务器</a></li>
       </ul>
       <div class="items">
-       <form action="" method="post" enctype="multipart/form-data">
+       <!-- <form action="#" method="post" enctype="multipart/form-data"> -->
        	<input type="hidden" name="tabvalue" value="main" />
         <div id="main">
           <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
@@ -61,8 +62,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td><input name="sitedesc" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.description']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
-              <td align="right">站点标志</td>
-              <td><input name="msmark" type="file">&nbsp;</td>
+	              <td align="right">站点标志</td>
+	              <td><input name="msmark" type="file" id="upload_file">&nbsp;<div class="upload_file_mark_msg_cls"></div></td>
             </tr>
             <tr>
               <td align="right">公司地址</td>
@@ -97,11 +98,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             <tr>
               <td align="right">邮件地址</td>
-              <td><input name="sitename" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.mail.address']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td><input name="sitemail" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.mail.address']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
               <td align="right">系统语言</td>
-              <td><input name="sitename" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.system.language']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td><input name="sitelanguage" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.system.language']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
               <td align="right">URL 重写</td>
@@ -255,6 +256,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         </table>
         </div>
+        
+        
         <div id="mail" style="display: none;">
         <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
          <tr>
@@ -313,12 +316,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td width="131"></td>
           <td>
          
-           <input name="submit" class="btn" type="submit" value="提交" />
+           <input name="submit" class="btn sys-config-update-cls" type="submit" value="提交" />
           </td>
          </tr>
         </table>
-        </form>
-      </div>
+        <!-- </form> -->
+      </div>-
     </div>
    </div>
   </div>

@@ -1,11 +1,12 @@
 package com.tmwrk.voosky.database.vo;
 
+
 /**
  * 自定义配置 实体类
  * @author wfluo 2015-11-17
  *
  */
-public class Config {
+public class Config extends UploadFileBase{
 	private int id ;
 	private String name ;
 	private String value ;
