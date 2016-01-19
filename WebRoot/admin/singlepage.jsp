@@ -44,10 +44,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="mainBox" style="{$workspace.height}">
     <div class="spage">
      <h3><a href="javascript:void(0)" class="actionBtn vs-sp-add-cls">添加单页面</a>单页面列表</h3>
-      <dl>
-        <dt><strong>公司简介</strong><p>about</p></dt>
-        <dd><a href="javascript:void(0);" class="vs-sp-update-cls">编辑</a> | <a href="javascript:void(0)" class="vs-sp-delete-cls">删除</a></dd>
-      </dl>
+      <s:if test="spList.size<1">
+	      <dl>
+	        <dt><strong>公司简介</strong><p>about</p></dt>
+	        <dd><a href="javascript:void(0);" class="vs-sp-update-cls">编辑</a> | <a href="javascript:void(0)" class="vs-sp-delete-cls">删除</a></dd>
+	      </dl>
+      </s:if>
+      
       <s:iterator value="spList" var="sp">
 	      <dl class="child1">
 	      	
