@@ -9,8 +9,22 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
+/**
+ * 
+ * 首先，设置mysql的环境变量（在path中添加%MYSQL_HOME%\bin），重启电脑。
+ * 
+ * http://www.blogjava.net/Supershen/archive/2007/12/07/166017.html
+ * 
+ * @author Administrator
+ *
+ */
 public class MySQLDatabaseBackup {
+	private static String MYSQL_PATH = "C:\\Program Files (x86)\\MySQL\\MySQL Server 5.5\\bin" ;
+	
+	private static String WIN_MYSQL_COMMAND = "cmd /c " + MYSQL_PATH + ">" ;
 	/**
+	 * 
+	 * 
 	 * 
 	 * @param hostIP MySQL数据库所在服务器地址IP
 	 * @param dbUserName 进入数据库所需要的用户名
@@ -30,10 +44,13 @@ public class MySQLDatabaseBackup {
 			if (!savePath.endsWith(File.separator)) {
 				savePath = savePath + File.separator;
 			}
-			  
+			
+			savePath = savePath + fileName ;
+			
 			Runtime rt = Runtime.getRuntime();
 			//mysqldump -u用户名 -p密码 -R -c --set-charset=utf8 数据库名
 			String cmd = "mysqldump -h " + hostIP + " -u " + dbUserName + " -p" + dbPwd + " -R -c --set-charset=utf8 " + dbName ;
+//			cmd = cmd.replace("/", "\\") ;
 			Process child = rt.exec(cmd);
 
 			InputStream in = child.getInputStream();
@@ -96,5 +113,18 @@ public class MySQLDatabaseBackup {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) {
+		String hostIP = "192.168.0.101" ;
+		String dbUserName = "root" ;
+		String dbPwd = "123456" ;
+		String dbName = "voosky" ;
+		String savePath = "D:/temp" ;
+		String fileName = "voosky-2016-01-21.sql" ;
+		
+		backupDB(hostIP, dbUserName, dbPwd, dbName, savePath, fileName);
+		
+		
 	}
 }
