@@ -3,8 +3,12 @@
 <struts>
 	<package name="account" extends="tmwrk-default" namespace="/account">
 		<action name="verifyAccount" class="com.tmwrk.voosky.web.action.user.LoginAction">
-			<result name="success">/admin/index.jsp</result>
+			<result name="success" type="chain" >listConsoleManager</result>
 			<result name="login">/admin/login.jsp</result>
+		</action>
+		
+		<action name="listConsoleManager" class="com.tmwrk.voosky.web.action.other.WebConsoleAction">
+			<result name="success">/admin/index.jsp</result>
 		</action>
 		
 		<action name="logout" method="logOut" class="com.tmwrk.voosky.web.action.user.LoginAction">

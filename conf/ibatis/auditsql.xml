@@ -16,4 +16,34 @@
 		<result property="ip" column="ip" />
 	</resultMap>
 	
+	<select id="getAllAudits" parameterClass="java.util.HashMap" resultMap="auditMap">
+		select log_id,oper_model,oper_user,oper_note,oper_time,ip from vs_admin_log where 1=1 
+		<isNotNull property="operModel">
+			and oper_model = #oper_model#
+		</isNotNull>
+		<isNotNull property="operUser">
+			and oper_user = #operUser#
+		</isNotNull>
+		<isNotNull property="ip">
+			and ip = #ip#
+		</isNotNull>
+		<isNotNull property="keywords">
+			and (oper_model like concat('%', #keywords#, '%') or oper_user like concat('%', #keywords#, '%') 
+				or oper_note like concat('%', #keywords#, '%') or ip like concat('%', #keywords#, '%') )
+		</isNotNull>
+		    ORDER BY log_id 
+		<isNotNull property="start">
+			limit #start#,#end#
+		</isNotNull>
+	</select>
+	
+	<insert id="insertLog" parameterClass="Audit">
+		insert into vs_admin_log(log_id,oper_model,oper_user,oper_note,oper_time,ip) 
+		values ((select ifnull(max(vsal.log_id)+1,1) from vs_admin_log vsal),#operModel#,#operUser#,#operNote#,#operTime#,#ip#)
+	</insert>
+	
+	<delete id="deleteLogId" parameterClass="Audit">
+		delete from vs_admin_log where log_id = #logId#
+	</delete>
+	
 </sqlMap>

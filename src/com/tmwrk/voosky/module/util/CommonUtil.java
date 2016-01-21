@@ -32,6 +32,8 @@ public class CommonUtil
 {
 
 	private static final Log log = LogFactory.getLog(CommonUtil.class);
+	
+	private static final String LOCAL_IP = "0:0:0:0:0:0:0:1" ;
 
 	/**
 	 * 
@@ -118,8 +120,7 @@ public class CommonUtil
 		String rip = request.getRemoteAddr();
 		String xff = request.getHeader("X-Forwarded-For");
 		String ip;
-		if (xff != null && xff.length() != 0)
-		{
+		if (xff != null && xff.length() != 0) {
 			int px = xff.indexOf(',');
 			if (px != -1)
 			{
@@ -129,10 +130,11 @@ public class CommonUtil
 			{
 				ip = xff;
 			}
-		}
-		else
-		{
+		} else {
 			ip = rip;
+		}
+		if(LOCAL_IP.equals(ip.trim())){
+			ip = "127.0.0.1" ;
 		}
 		return ip.trim();
 	}

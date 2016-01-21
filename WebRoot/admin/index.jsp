@@ -52,34 +52,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <table width="100%" border="0" cellspacing="0" cellpadding="7" class="tableBasic">
                <tr>
                 <td width="120">单页面数：</td>
-                <td><strong>6</strong></td>
+                <td><strong><s:property value="console.spNum"/></strong></td>
                 <td width="100">文章总数：</td>
-                <td><strong>10</strong></td>
+                <td><strong><s:property value="console.artNum"/></strong></td>
                </tr>
                <tr>
                 <td>商品总数：</td>
-                <td><strong>15</strong></td>
+                <td><strong><s:property value="console.productNum"/></strong></td>
                 <td>系统语言：</td>
-                <td><strong>zh_cn</strong></td>
+                <td><strong><s:property value="console.sysconfMap['main.site.system.language']"/></strong></td>
                </tr>
                <tr>
                 <td>URL 重写：</td>
-                <td><strong><!-- {if $site.rewrite} -->关闭<a href="system.php" class="cueRed ml">（点击开启</a> 
-                 <!-- {/if} -->）</strong></td>
+                <td><strong>
+                	<s:if test="console.sysconfMap['main.site.URL.Rewrite']=='true'">
+                	开启（<a href="javascript:void(0)" class="cueRed ml console-manager-rewrite-cls">点击关闭</a>）
+                	</s:if>
+                	<s:else>
+                	关闭（<a href="javascript:void(0)" class="cueRed ml console-manager-rewrite-cls">点击开启</a>）
+                	</s:else>
+                	</strong></td>
                 <td>编码：</td>
                 <td><strong>UTF-8</strong></td>
                </tr>
                <tr>
                 <td>站点地图：</td>
-                <td><strong><!-- {if $site.sitemap} -->开启<!-- {/if} --></strong></td>
+                <td><strong>
+					<s:if test="console.sysconfMap['main.site.enable.map']=='true'">
+                	启用
+                	</s:if>
+                	<s:else>
+                	停用
+                	</s:else>
+					</strong></td>
                 <td>站点模板：</td>
                 <td><strong>default</strong></td>
                </tr>
                <tr>
-                <td>vsPHP版本：</td>
-                <td><strong>v1.3 Release 20151102</strong></td>
+                <td>Java版本：</td>
+                <td><strong>v1.0 Release 20160121</strong></td>
                 <td>安装日期：</td>
-                <td><strong>2015-11-07</strong></td>
+                <td><strong>2016-01-21</strong></td>
                </tr>
             </table>
            </ul>
@@ -87,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </td>
          <td valign="top" class="pl">
           <div class="indexBox">
-           <div class="boxTitle">管理员 登录记录</div>
+           <div class="boxTitle">管理员 上一次登录记录</div>
            <ul>
             <table width="100%" border="0" cellspacing="0" cellpadding="7" class="tableBasic">
              <tr>
@@ -96,8 +109,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </tr>
              <!-- {foreach from=$log_list item=log_list} -->
              <tr>
-              <td align="center">127.0.0.1</td>
-              <td align="center">2015-11-15 10:18:21</td>
+              <td align="center"><s:property value="console.user.lastLoginIp"/></td>
+              <td align="center"><s:property value="console.user.lastLoginTime"/></td>
              </tr>
              <!-- {/foreach} -->
             </table>
@@ -111,8 +124,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <ul>
      <table width="100%" border="0" cellspacing="0" cellpadding="7" class="tableBasic">
       <tr>
-       <td width="120" valign="top">PHP 版本：</td>
-       <td valign="top">5.3.10 </td>
+       <td width="120" valign="top">Java JDK版本：</td>
+       <td valign="top">1.6 + </td>
        <td width="100" valign="top">MySQL 版本：</td>
        <td valign="top">5.5.20-log</td>
        <td width="100" valign="top">服务器操作系统：</td>
@@ -124,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td valign="top">GD 库支持：</td>
        <td valign="top">是</td>
        <td valign="top">Web 服务器：</td>
-       <td valign="top">Apache/2.2.21 (Win32) PHP/5.3.10</td>
+       <td valign="top">Apache Tomcat6.x</td>
       </tr>
      </table>
     </ul>

@@ -15,7 +15,7 @@ $(function(){
 <div id="vsLeft">
    <div id="menu">
      <ul class="top">
-      <li class="vs-home"><a href="${ctx}/admin/index.jsp"><i class="home"></i><em>管理首页</em></a></li>
+      <li class="vs-home"><a href="${ctx}/account/listConsoleManager.htm"><i class="home"></i><em>管理首页</em></a></li>
      </ul>
      <ul>
       <li class="vs-system"><a href="${ctx}/sysconfig/listSysConfigByTye.htm"><i class="system"></i><em>系统设置</em></a></li>

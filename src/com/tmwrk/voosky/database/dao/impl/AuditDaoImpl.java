@@ -12,8 +12,8 @@ import com.tmwrk.voosky.database.vo.Audit;
 public class AuditDaoImpl extends BaseDao<Audit>{
 
 	@Override
-	public Audit add(Audit params) {
-		// TODO Auto-generated method stub
+	public Audit add(Audit log) {
+		getSqlMapClientTemplate().insert("audit.insertLog", log) ;
 		return null;
 	}
 
@@ -29,10 +29,16 @@ public class AuditDaoImpl extends BaseDao<Audit>{
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Audit> findAll(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Audit> prList = (List<Audit>)getSqlMapClientTemplate().queryForList("audit.getAllAudits", params) ;
+		return prList;
+	}
+	
+	public boolean deleteArticleById(Audit log){
+		getSqlMapClientTemplate().delete("audit.deleteLogId", log) ;
+		return true ;
 	}
 
 }
