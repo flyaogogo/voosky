@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<%@ include file="./inc/taglibs.jsp" %>
+<%@ include file="../../admin/inc/taglibs.jsp" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,44 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div id="wrapper">
-    <div id="top">
-     <div class="wrap">
-      <ul class="topNav">
-       <li><a href="" target="_blank">手机</a><s></s></li>
-       <li><a href="javascript:AddFavorite('', '')">收藏</a></li>
-      </ul>
-     </div>
-    </div>
-    <div id="header">
-     <div class="wrap clearfix">
-      <ul class="logo">
-       <a href=""><img src="images/logo.gif" alt="" title="" /></a>
-      </ul>
-      <ul class="searchBox">
-       <form name="search" id="search" method="get" action="">
-        <label for="keyword">产品搜索</label>
-        <input name="s" type="text" class="keyword" title="" autocomplete="off" maxlength="128" value="" onclick="">
-        <input type="submit" class="btnSearch" value="">
-       </form>
-      </ul>
-     </div>
-
-    <div id="mainNav">
-     <ul class="wrap">
-      <li class="cur"><a href="index.html" class="first">首页</a></li>
-      <li class="cur hover"><a href="page.html" target="_blank">公司简介</a> </li>
-      <li class="cur hover"><a href="product_category.html" target="_blank">产品中心</a> </li>
-      <li class="cur hover"><a href="article_category.html" target="_blank">文章中心</a> </li>
-      <li class="cur hover"><a href="page.html" target="_blank">营销网络</a> </li>
-      <li class="cur hover"><a href="page.html" target="_blank">企业荣誉</a> </li>
-      <li class="cur hover"><a href="page.html" target="_blank">人才招聘</a> </li>
-      <li class="cur hover"><a href="page.html" class="last" target="_blank">联系我们</a> </li>
-      <div class="clear"></div>
-     </ul>
-    </div>
-  </div>
-  
-  
+	<!-- 头部 -->
+    <%@ include file="./inc/pheader.jsp" %>
   
  <div id="index" class="wrap mb"> 
       <div class="slideShow">
@@ -64,16 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </ul>
       </div>
       <script type="text/javascript">
-      {literal}
-      $(document).ready(function(){
-       $('.slides').bxSlider({
-         mode: 'fade'
-       });
-      })
-      {/literal}
       </script>
      
-  <div id="indexLeft"> 
+  	<div id="indexLeft"> 
 
          <div class="incBox">
        <h3><a href="">产品展示</a></h3>
@@ -114,6 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
       </div>
     </div>
+    
   <div id="indexRight">
      <div class="incBox">
        <h3><a href="">新闻中心</a></h3>
@@ -138,22 +96,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div>
     </div>
     
-    
   </div>
+  
   <div class="clear"></div>
  </div>
  
-<div id="footer">
- <div class="wrap">
- <div class="link"> 
-公司简介|营销网络|企业荣誉|人才招聘|联系我们|手机版
- </div>
-</div>
- <div class="wrap">
-  <div class="footNav"><a href="">© vsjsp轻量级企业网站管理系统 2015 All Rights Reserved. Powered by vs</a></div>
-  
-  </div>
-</div>
+ 	<!-- 底部 -->
+  <%@ include file="./inc/pfooter.jsp" %>
 
 
  </div>
