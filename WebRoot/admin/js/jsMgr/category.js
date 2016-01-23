@@ -53,3 +53,54 @@ $(function(){
 	
 	
 })
+
+//页面打开时  加载  树节点
+window.onload = function(selectId) {
+	
+	//var dataList = categoryList ;
+	
+	/*
+	var dataList ;
+	var type = $(".vs-category-hidden-input-val").val() ;
+	
+	var param = {cateStatus: type} ;
+	$.ajax({
+		async:false,
+		data:param,
+		type : 'POST',
+		dataType : "json",
+		url : ctx+"/category/listAllTreeInfoByCate.htm",//请求的action路径   
+		error : function() {//请求失败处理函数   
+			alert('请求失败');
+		},
+		success : function(data) { //请求成功后处理函数。
+			dataList = data ;
+			//console.log(dataList );
+		}
+	});*/
+	
+	//id,父id,名称,跳转到url
+	selectLoadData("selectTree-parent-category-Id",dataList,"p",0,"cat") ;
+	
+	//判断添加或修改中的上级分类是否存在
+	if($("#selectTree-parent-category-oper-Id").size()>0){
+		selectLoadData("selectTree-parent-category-oper-Id",dataList,"p",0,"cat") ;
+	}
+	
+}
+
+
+function changeListObjToJson(productList){
+	
+//	$.each(productList,function(index,data){ 
+//		console.log(index+" "+data); 
+//	})
+//	for (var key in productList) {
+//		console.log(key.cateName );
+//	}
+	
+	for(var i=0;i<productList.length;i++){
+	    console.log(productList[i]);//ID为假设的属性
+	}
+	
+}

@@ -23,16 +23,16 @@
 	</resultMap>
 	
 	<select id="getAllProducts" parameterClass="java.util.HashMap" resultMap="productMap">
-		select id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,
-			add_time,vsort from vs_product where 1=1
+		select vsp.id,vsc.cat_name as cat_id,vsp.title,vsp.is_recommend,vsp.content,vsp.price,vsp.thumb_url,vsp.keywords,vsp.description,vsp.clicknum,
+			vsp.add_time,vsp.vsort from vs_product vsp,vs_category vsc where vsp.cat_id=vsc.cat_id 
 			<isNotNull property="isRecommend">
-				and is_recommend = #isRecommend#
+				and vsp.is_recommend = #isRecommend#
 			</isNotNull>
 			<isNotNull property="cateId">
-				and cat_id = #cateId#
+				and vsp.cat_id = #cateId#
 			</isNotNull>
 			<isNotNull property="title">
-				and title like concat('%', #title#, '%')
+				and vsp.title like concat('%', #title#, '%')
 			</isNotNull>
 	</select>
 	<select id="getProductById" parameterClass="java.util.HashMap" resultMap="productMap">

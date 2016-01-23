@@ -1,8 +1,8 @@
 //创建TreeSelector对象
-function TreeSelector(item) {
+function TreeSelector(item,rootid) {
 	this._data = new Array();
 	this._item = document.getElementById(item);
-	this._rootId = 0;// 规定根节点-1
+	this._rootId = rootid ;// 规定根节点-1
 }
 // 增加一个节点
 TreeSelector.prototype.add = function(_id, _pid, _text,_module, _url,_status) {
@@ -34,9 +34,9 @@ TreeSelector.prototype.createSubOption = function(level, current) {
 		blank += "├-";
 	}
 	if(current.status=="m"){
-		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.url));// 添加Option选项
+		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.url));// 添加Option选项    
 	}else if(current.status=="p"){
-		this._item.options.add(new Option(blank + current.text, current.id));// 添加Option选项
+		this._item.options.add(new Option(blank + current.text, current.id));// 添加Option选项  上级分类
 	}
 
 	for ( var j = 0; j < this._data.length; j++) {
@@ -47,7 +47,8 @@ TreeSelector.prototype.createSubOption = function(level, current) {
 	}
 
 }
-window.onload = function(selectId) {
+/*window.onload = function(selectId) {
+	console.log(selectId );
 //function changeSelect(){
 //	var ts = new TreeSelector(selectId);//select的id
 	var dataList ;
@@ -70,13 +71,28 @@ window.onload = function(selectId) {
 	selectLoadData("selectTree-defined-parent",dataList,"p") ;
 	selectLoadData("selectTree-update-module",dataList,"m") ;
 	selectLoadData("selectTree-update-parent",dataList,"p") ;
-}
+}*/
 
-function selectLoadData(selectId,data,status){
-	var ts = new TreeSelector(selectId);//select的id
-	$(data).each(function() {
-		ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],status);
-	});
+/**
+ * selectId 	: 下拉框 selected  id
+ * data 		: 加载的List数据
+ * status 		: 状态，一种是value为拼装的信息，一种是value为当前数据ID
+ * treeRootId 	: 设置树结点的最初始的父级结点ID
+ * catType 		: 区分是导航中的树，还是分类中的树
+ */
+function selectLoadData(selectId,data,status,treeRootId,catType){
+	//console.log("selectId:" + selectId )
+	var ts = new TreeSelector(selectId,treeRootId);//select的id  ,
+	if(catType=='nav'){
+		$(data).each(function() {
+			ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],status);
+			
+		});
+	}else if(catType=='cat'){
+		$(data).each(function() {
+			ts.add(this['cateId'],this['navId'], this['cateName'],this['uniqueName'],this['desc'],status);
+		});
+	}
 	//显示
 	ts.createTree();
 }

@@ -26,12 +26,26 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 	
 	private Category ctgry ;
 	
+	/**
+	 * 返回列表
+	 */
 	@Override
 	public String execute() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("cateStatus", category.getCateStatus()) ;
 		cateList = categoryService.findCateByStatus(param) ;
 		return category.getCateStatus() ;
+	}
+	
+	/**
+	 * 通过Json返回指定类型的所有数据
+	 * @return
+	 */
+	public String allNodeData(){
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		param.put("cateStatus", category.getCateStatus()) ;
+		cateList = categoryService.findCateByStatus(param) ;
+		return SUCCESS ;
 	}
 	
 	public String findCategoryInfoById() throws Exception{

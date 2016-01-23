@@ -13,6 +13,12 @@
 			</result>
 		</action>
 		
+		<action name="listAllTreeInfoByCate" method="allNodeData" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="success" type="json">
+				<param name="root">cateList</param>
+			</result>
+		</action>
+		
 		<action name="insertCateAction" method="insertCategory" class="com.tmwrk.voosky.web.action.category.CategoryAction">
 			<result name="success" type="chain" >
 				<param name="actionName">listCategorysInfo</param>

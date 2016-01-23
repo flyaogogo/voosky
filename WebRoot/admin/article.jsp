@@ -21,7 +21,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="${ctx }/ueditor/ueditor.all.js"></script>
 <script type="text/javascript" charset="utf-8" src="${ctx }/ueditor/lang/zh-cn/zh-cn.js"></script>
 
+<script type="text/javascript" src="${ctx}/admin/js/TreeSelector.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/category.js"></script>
+
 </head>
+<script type="text/javascript">
+
+	//对列表数据，拼装Json
+	var tmpData = "[" ;
+	<c:forEach items="${ctgryList}" var="a"> 
+		//console.log("${a.cateName}"); //生成如 array.push(123)的字符串 这样前台拿到后就是js 
+		tmpData = tmpData + "{'cateId':'${a.cateId} ','uniqueName':'${a.uniqueName}','cateName':'${a.cateName}','navId':${a.navId},'desc':'${a.desc}'},"
+	</c:forEach> 
+	tmpData = tmpData.substring(0,tmpData.length-1) ;//去掉最后一个逗号
+	tmpData = tmpData + "]" ;
+	//console.log(tmpData) ;
+	dataList = eval(tmpData) ;
+	
+</script>
 
 
 <body>
@@ -37,11 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h3><a href="javascript:void(0)" class="actionBtn vs-article-add-href-cls">添加文章</a>文章列表</h3>
     <div class="filter">
     <form action="${ctx }/article/listArticlesInfo.htm" method="post">
-     <select name="cateId">
+     <select id="selectTree-parent-category-Id" name="cateId">
       <option value="all" selected="selected">未分类</option>
-      <s:iterator value="ctgryList" var="ctl">
+      <%-- <s:iterator value="ctgryList" var="ctl">
       	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
-      </s:iterator>
+      </s:iterator> --%>
      </select>
      <input name="title" type="text" class="inpMain" value="" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
@@ -101,11 +118,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">分类</td>
        <td>
-        <select name="cateId">
-          <option value="all" selected="selected">未分类</option>
+        <select id="selectTree-parent-category-oper-Id" name="cateId">
+          <%-- <option value="all" selected="selected">未分类</option>
 	      <s:iterator value="ctgryList" var="ctl">
       		<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
-      	 </s:iterator>
+      	 </s:iterator> --%>
         </select>
        </td>
       </tr>

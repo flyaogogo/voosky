@@ -133,3 +133,30 @@ function getNavAjaxFun(vtype){
 		}
 	});
 }
+
+//页面打开时  加载  树节点
+window.onload = function(selectId) {
+	console.log(selectId );
+//function changeSelect(){
+//	var ts = new TreeSelector(selectId);//select的id
+	var dataList ;
+	$.ajax({
+		async:false,
+		type : 'POST',
+		dataType : "json",
+		url : ctx+"/nav/listAllNavInfo.htm",//请求的action路径   
+		error : function() {//请求失败处理函数   
+			alert('请求失败');
+		},
+		success : function(data) { //请求成功后处理函数。
+			dataList = data ;
+		}
+	});
+	
+	//id,父id,名称,跳转到url
+	selectLoadData("selectTree-add-module",dataList,"m",0,"nav") ;
+	selectLoadData("selectTree-add-parent",dataList,"p",0,"nav") ;
+	selectLoadData("selectTree-defined-parent",dataList,"p",0,"nav") ;
+	selectLoadData("selectTree-update-module",dataList,"m",0,"nav") ;
+	selectLoadData("selectTree-update-parent",dataList,"p",0,"nav") ;
+}

@@ -12,14 +12,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>article category</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/TreeSelector.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/category.js"></script>
 
 </head>
 <script type="text/javascript">
-$(function(){
-	//左导航样式
-	$("#vsLeft .vs-pcate").addClass("cur");
-})
+
+	//对列表数据，拼装Json
+	var tmpData = "[" ;
+	<c:forEach items="${cateList}" var="a"> 
+		//console.log("${a.cateName}"); //生成如 array.push(123)的字符串 这样前台拿到后就是js 
+		tmpData = tmpData + "{'cateId':'${a.cateId} ','uniqueName':'${a.uniqueName}','cateName':'${a.cateName}','navId':${a.navId},'desc':'${a.desc}'},"
+	</c:forEach> 
+	tmpData = tmpData.substring(0,tmpData.length-1) ;//去掉最后一个逗号
+	tmpData = tmpData + "]" ;
+	//console.log(tmpData) ;
+	dataList = eval(tmpData) ;
+	
+	$(function(){
+		//左导航样式
+		$("#vsLeft .vs-pcate").addClass("cur");
+		
+		
+	})
 </script>
 
 <body>
@@ -77,9 +92,9 @@ $(function(){
       <tr>
        <td align="right">上级分类</td>
        <td>
-        <select name="navId">
+        <select id="selectTree-parent-category-Id" name="navId">
          <option value="0">无</option>
-         <option value="" selected="selected">空</option>
+         <!-- <option value="" selected="selected">空</option> -->
         </select>
        </td>
       </tr>

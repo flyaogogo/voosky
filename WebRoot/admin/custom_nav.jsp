@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Custom Nav</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
-<script type="text/javascript" src="${ctx}/admin/js/jsMgr/nav.js"></script>
+
 <%-- 
 <link href="${ctx}/admin/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.ztree.core-3.5.js"></script>
@@ -20,6 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  --%>
 
 <script type="text/javascript" src="${ctx}/admin/js/TreeSelector.js"></script>
+
+<script type="text/javascript" src="${ctx}/admin/js/jsMgr/nav.js"></script>
 
 </head>
 
