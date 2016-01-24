@@ -13,5 +13,6 @@
 		<action name="getSPInfoById" method="findSinglePageInfoById" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
 			<result name="success">/public/page.jsp</result>
 		</action>
+		
 	</package>
 </struts>
