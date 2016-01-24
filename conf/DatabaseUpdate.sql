@@ -181,4 +181,6 @@ insert into vs_config values(31,"mail.SSL.security.protocol","2342",50);
 insert into vs_config values(32,"mail.outbox.mailboxes","ss@163.com",50);
 insert into vs_config values(33,"mail.outbox.mail.password","1234567",50);
 
+insert into vs_config values(34,"main.net.address","www.voosky.com",50);
+
 commit ;

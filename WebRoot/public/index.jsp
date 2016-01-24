@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div id="index" class="wrap mb"> 
       <div class="slideShow">
        <ul class="slides">
-        <li><img src="images/lnk.png" /></li>
+        <li><img src="${ctx }/public/images/lnk.png" /></li>
        </ul>
       </div>
       <script type="text/javascript">
@@ -35,7 +35,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="incBox">
        <h3><a href="">产品展示</a></h3>
        <ul class="recommendProduct">
-  
+  		
+  		<s:iterator value="index.proList" var="pro">
+  			<li>
+		        <p class="img"><a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>"><img src="${ctx }/<s:property value="#pro.thumbUrl"/>" width="" height="" /></a></p>
+		        <p class="name"><a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>"><s:property value="#pro.title"/></a></p>
+		        <p class="price">￥<s:property value="#pro.price"/>元</p>
+	        </li>
+  		</s:iterator>
+  		<!-- 
         <li>
         <p class="img"><a href=""><img src="pro_img/12_thumb.jpg" width="" height="" /></a></p>
         <p class="name"><a href="">Pampers帮宝适超薄干爽纸尿裤</a></p>
@@ -54,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <p class="img"><a href=""><img src="pro_img/15_thumb.jpg" width="" height="" /></a></p>
         <p class="name"><a href="">Pampers帮宝适超薄干</a></p>
         <p class="price">￥118.00 元</p>
-        </li>
+        </li> -->
         
        </ul>
       </div>
@@ -76,23 +84,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="incBox">
        <h3><a href="">新闻中心</a></h3>
        <ul class="recommendArticle">
-       
+       <s:iterator value="index.artList" var="art">
+       		<li><b><s:property value="#art.addTime"/></b><a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>"><s:property value="#art.title"/></a></li>
+       </s:iterator>
+       <!-- 
         <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
         <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
         <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
         <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
         <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
-       
+        -->
        </ul>
     </div>
     <div class="contact">
      <h3>联系我们</h3>
      <div class="box">
-      <dl><dt class="address"></dt><dd>公司地址：北京市昌平区沙河镇</dd></dl>
-      <dl><dt class="tel"></dt><dd>销售热线：0596-8888888</dd></dl>
-      <dl><dt class="fax"></dt><dd>传真号码：0596-6666666</dd></dl>
-      <dl><dt class="url"></dt><dd>公司网址：http://www.voosky.cn/</dd></dl>
-      <dl><dt class="email"></dt><dd>电子邮箱：voosky@sina.com</dd></dl>
+      <dl><dt class="address"></dt><dd>公司地址：<s:property value="index.sysconfMap['main.site.address']"/></dd></dl>
+      <dl><dt class="tel"></dt><dd>销售热线：<s:property value="index.sysconfMap['main.site.consumer.hotline']"/></dd></dl>
+      <dl><dt class="fax"></dt><dd>传真号码：<s:property value="index.sysconfMap['main.site.fax']"/></dd></dl>
+      <dl><dt class="url"></dt><dd>公司网址：<s:property value="index.sysconfMap['main.net.address']"/></dd></dl>
+      <dl><dt class="email"></dt><dd>电子邮箱：<s:property value="index.sysconfMap['main.site.mail.address']"/></dd></dl>
      </div>
     </div>
     

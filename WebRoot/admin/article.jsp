@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">缩略图</td>
        <td>
-        <input type="file" name="thumbUrl" size="38" class="inpFlie" />
+        <input type="file" name="imageFile" size="38" class="inpFlie" />
         <img src="${ctx }/admin/images/icon_no.png"></td>
       </tr>
       <tr>

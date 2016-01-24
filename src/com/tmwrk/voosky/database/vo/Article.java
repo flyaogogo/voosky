@@ -7,7 +7,7 @@ import java.util.List;
  * @author wfluo 2015-11-17
  *
  */
-public class Article {
+public class Article extends UploadFileBase{
 	
 	private int id ;
 	private String cateId ;

@@ -36,7 +36,9 @@ public enum SystemEnum {
 	mailsmtpport(30,"mail.smtp.port"),
 	msslsecprotocol(31,"mail.SSL.security.protocol"),
 	mailoutbox(32,"mail.outbox.mailboxes"),
-	mailpassword(33,"mail.outbox.mail.password");
+	mailpassword(33,"mail.outbox.mail.password"),
+	
+	netaddress(34,"main.net.address");
 	
 	private int id ;
 	private String name ;

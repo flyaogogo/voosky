@@ -8,7 +8,7 @@ import java.util.List;
  * @author wfluo 2015-11-17
  *
  */
-public class Product {
+public class Product extends UploadFileBase{
 	private int id ;
 	private String cateId ;
 	private String title ;

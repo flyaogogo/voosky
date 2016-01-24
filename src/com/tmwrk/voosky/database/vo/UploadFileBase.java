@@ -4,11 +4,18 @@ import java.io.File;
 
 /**
  * 结合Struts上传文档类
+ * 
+ * 1、需要继承此类
+ * 2、调用CalcUtil.java中的方法dealUploadInfo
+ * 3、界面配置上传文件name为imageFile
+ * 
  * @author wfluo
  *
  */
 public class UploadFileBase {
-	// 上传file要在action中定义,三者缺一不可。
+	// 上传file要在action中定义,三者缺一不可。    
+	//前台JSP界面name设置为imageFile
+	//<input type="file" name="imageFile" size="38" class="inpFlie" />
 	private File imageFile;
 
 	private String imageFileFileName;

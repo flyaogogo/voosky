@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Article;
 import com.tmwrk.voosky.database.vo.Category;
+import com.tmwrk.voosky.database.vo.UploadFileBase;
+import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.article.ArticleServiceMgr;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
@@ -65,6 +67,16 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	}
 	
 	public String insertArticle() throws Exception{
+		/**/
+		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(false, art, "article", request);
+		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+			article.setStatus(uplFileBase.getStatus());
+			article.setMessage(uplFileBase.getMessage());
+			return ERROR ;
+		}
+		art.setThumbUrl(uplFileBase.getFileRealPath());
+		
+		
 		art.setAddTime(DateUtil.converNowDate());
 		String is = (art.getIsRecommend()==null)?"false":"true" ;
 		art.setIsRecommend(is);
@@ -73,6 +85,14 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	}
 	
 	public String updateArticle() throws Exception{
+		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, art, "article", request);
+		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+			article.setStatus(uplFileBase.getStatus());
+			article.setMessage(uplFileBase.getMessage());
+			return ERROR ;
+		}
+		art.setThumbUrl(uplFileBase.getFileRealPath());
+		
 		String is = (art.getIsRecommend()==null)?"false":"true" ;
 		art.setIsRecommend(is);
 		articleService.updateArticle(art);
