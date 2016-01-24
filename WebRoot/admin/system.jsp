@@ -70,6 +70,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <td><input name="siteaddress" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.address']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
+              <td align="right">公司网址</td>
+              <td><input name="netaddress" type="text" id="textfield" value="<s:property value="mapSysConf['main.net.address']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+            </tr>
+            <tr>
               <td align="right">是否关闭网站</td>
               <td>
               <s:if test="mapSysConf['main.site.whether.close']=='true'">

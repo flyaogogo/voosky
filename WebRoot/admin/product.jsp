@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<option value="<s:property value="#ctl.cateId"/>"><s:property value="#ctl.cateName"/></option>
       </s:iterator> --%>
      </select>
-     <input name="title" type="text" class="inpMain" value="" size="20" />
+     <input name="filterkeywords" type="text" class="inpMain" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
     <span>
@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">缩略图</td>
        <td>
-        <input type="file" name="thumbUrl" size="38" class="inpFlie" />
+        <input type="file" name="imageFile" size="38" class="inpFlie" />
         <img src="${ctx }/admin/images/icon_no.png"></td>
       </tr>
       <tr>

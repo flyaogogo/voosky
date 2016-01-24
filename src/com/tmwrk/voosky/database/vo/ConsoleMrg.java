@@ -14,6 +14,10 @@ public class ConsoleMrg {
 	//单页面集合
 	private List<SinglePage> spList ;
 	
+	private List<Product> proList ;
+	
+	private List<Article> artList ;
+	
 	private int spNum ; //单页面数
 	
 	private int artNum ; //文章总数
@@ -32,6 +36,22 @@ public class ConsoleMrg {
 
 	public void setSpList(List<SinglePage> spList) {
 		this.spList = spList;
+	}
+
+	public List<Product> getProList() {
+		return proList;
+	}
+
+	public void setProList(List<Product> proList) {
+		this.proList = proList;
+	}
+
+	public List<Article> getArtList() {
+		return artList;
+	}
+
+	public void setArtList(List<Article> artList) {
+		this.artList = artList;
 	}
 
 	public int getSpNum() {

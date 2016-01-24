@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Category;
 import com.tmwrk.voosky.database.vo.Product;
+import com.tmwrk.voosky.database.vo.UploadFileBase;
+import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
 import com.tmwrk.voosky.service.product.ProductServiceMgr;
@@ -41,13 +43,13 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	private List<Category> ctgryList ;
 	
 	//关键字查询
-	private String keywords ;
+	private String filterkeywords ;
 
 	@Override
 	public String execute() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
-		if(product.getTitle()!=null){
-			param.put("title", product.getTitle()) ;
+		if(filterkeywords!=null&&!"".equals(filterkeywords.trim())){
+			param.put("filterkey", product.getTitle()) ;
 		}
 		if(product.getIsRecommend()!=null){
 			param.put("isRecommend", product.getIsRecommend()) ;
@@ -77,6 +79,16 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	}
 	
 	public String insertProduct() throws Exception{
+		/**/
+		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(false, product, "product", request);
+		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+			pro.setStatus(uplFileBase.getStatus());
+			pro.setMessage(uplFileBase.getMessage());
+			return ERROR ;
+		}
+		product.setThumbUrl(uplFileBase.getFileRealPath());
+		
+		
 		product.setAddTime(DateUtil.converNowDate());
 		String is = (product.getIsRecommend()==null)?"false":"true" ;
 		product.setIsRecommend(is);
@@ -85,6 +97,16 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	}
 	
 	public String updateProduct() throws Exception{
+		/**/
+		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, product, "product", request);
+		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+			pro.setStatus(uplFileBase.getStatus());
+			pro.setMessage(uplFileBase.getMessage());
+			return ERROR ;
+		}
+		product.setThumbUrl(uplFileBase.getFileRealPath());
+		
+		
 		String is = (product.getIsRecommend()==null)?"false":"true" ;
 		product.setIsRecommend(is);
 		productService.updateProduct(product);
@@ -146,11 +168,12 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		this.ctgryList = ctgryList;
 	}
 
-	public String getKeywords() {
-		return keywords;
+	public String getFilterkeywords() {
+		return filterkeywords;
 	}
 
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
+	public void setFilterkeywords(String filterkeywords) {
+		this.filterkeywords = filterkeywords;
 	}
+
 }

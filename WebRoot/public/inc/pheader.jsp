@@ -17,7 +17,7 @@
     <div id="header">
 	     <div class="wrap clearfix">
 	      <ul class="logo">
-	       <a href=""><img src="images/logo.gif" alt="" title="" /></a>
+	       <a href=""><img src="${ctx }/public/images/logo.gif" alt="" title="" /></a>
 	      </ul>
 	      <ul class="searchBox">
 	       <form name="search" id="search" method="get" action="">
@@ -30,7 +30,7 @@
 		<!-- 导航栏 -->
 	    <div id="mainNav">
 	     <ul class="wrap">
-	      <li class="cur"><a href="index.html" class="first">首页</a></li>
+	      <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
 	      <li class="cur hover"><a href="page.html" target="_blank">公司简介</a> </li>
 	      <li class="cur hover"><a href="product_category.html" target="_blank">产品中心</a> </li>
 	      <li class="cur hover"><a href="article_category.html" target="_blank">文章中心</a> </li>

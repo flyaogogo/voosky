@@ -31,8 +31,8 @@
 			<isNotNull property="cateId">
 				and vsp.cat_id = #cateId#
 			</isNotNull>
-			<isNotNull property="title">
-				and vsp.title like concat('%', #title#, '%')
+			<isNotNull property="filterkey">
+				and vsp.title like concat('%', #filterkey#, '%')
 			</isNotNull>
 	</select>
 	<select id="getProductById" parameterClass="java.util.HashMap" resultMap="productMap">

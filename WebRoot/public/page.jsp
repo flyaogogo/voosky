@@ -36,8 +36,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="pageIn">
     <div class="urHere">当前位置：<a href="#">首页</a><b>></b>企业简介</div>
    <div id="page">
-    <h1>企业简介</h1>
-    <div class="content">公司简介jsp 是一款轻量级企业网站管理系统，基于jsp+Mysql架构的，可运行在Linux、Windows、MacOSX、Solaris等各种平台上，系统搭载Smarty模板引擎，支持自定义伪静态，前台模板采用DIV+CSS设计，后台界面设计简洁明了，功能简单易具有良好的用户体验，稳定性好、扩展性及安全性强，可面向中小型站点提供网站建设解决方案。</div>
+    <h1><s:property value="sp.pageName"/></h1>
+    <div class="content">
+    	<s:property value="sp.content" escape="false"/>
+    </div>
    </div>
   </div>
   <div class="clear"></div>
