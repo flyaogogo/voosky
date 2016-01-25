@@ -32,8 +32,8 @@
 	     <ul class="wrap">
 	      <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
 	      <li class="cur hover"><a href="page.html" target="_blank">公司简介</a> </li>
-	      <li class="cur hover"><a href="product_category.html" target="_blank">产品中心</a> </li>
-	      <li class="cur hover"><a href="article_category.html" target="_blank">文章中心</a> </li>
+	      <li class="cur hover"><a href="${ctx }/web/getProductsInfo.htm" target="_blank">产品中心</a> </li>
+	      <li class="cur hover"><a href="${ctx }/web/getArticlesInfo.htm" target="_blank">文章中心</a> </li>
 	      <li class="cur hover"><a href="page.html" target="_blank">营销网络</a> </li>
 	      <li class="cur hover"><a href="page.html" target="_blank">企业荣誉</a> </li>
 	      <li class="cur hover"><a href="page.html" target="_blank">人才招聘</a> </li>
