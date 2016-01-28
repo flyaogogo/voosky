@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<s:iterator value="cateList" var="cl">
 		<tr>
-	        <td align="left"><input type="hidden" name="cateId" value="<s:property value="#cl.cateId"/>"/><s:property value="#cl.cateName"/></td>
+	        <td align="left"><input type="hidden" name="cateId" value="<s:property value="#cl.cateId"/>"/><s:property value="#cl.guideAliases"/> <s:property value="#cl.cateName"/></td>
 	        <td><s:property value="#cl.uniqueName"/></td>
 	        <td><s:property value="#cl.desc"/></td>
 	        <td align="center"><s:property value="#cl.vsort"/></td>
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">上级分类</td>
        <td>
-        <select id="selectTree-parent-category-Id" name="navId">
+        <select id="selectTree-parent-category-Id" name="parentId">
          <option value="0">无</option>
          <!-- <option value="" selected="selected">空</option> -->
         </select>

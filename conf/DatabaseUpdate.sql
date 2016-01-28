@@ -63,6 +63,7 @@ create table vs_category(
 	description	varchar(25) ,
 	cate_status	varchar(10) not null,
 	nav_id	int not null,
+	guide	varchar(254) ,
 	vsort	int not null,
 	PRIMARY KEY (cat_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;

@@ -19,19 +19,19 @@
 	</resultMap>
 	
 	<select id="getAllNavigations" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav order by parent_id
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav order by vsort asc
 	</select>
 	<select id="getNavigationsByType" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where vtype=#navType#;
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where vtype=#navType# order by vsort asc
 	</select>
 	<select id="getNavigationByTypeId" parameterClass="java.util.HashMap" resultMap="navMap">
 		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where nav_id=#navId#;
 	</select>
 	<select id="getNavigationsByParentId" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#parentId#;
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#parentId#
 	</select>
 	<select id="getNavigationsByModule" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#module#;
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#module# order by vsort asc
 	</select>
 	
 	<insert id="addNav" parameterClass="Navigation">

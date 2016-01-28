@@ -15,26 +15,27 @@
 		<result property="desc" column="description" />
 		<result property="vsort" column="vsort" />
 		<result property="cateStatus" column="cate_status" />
+		<result property="guideAliases" column="guide" />
 		<result property="navId" column="nav_id" />
 	</resultMap>
 	
 	<select id="findCategoryByStatus" parameterClass="java.util.HashMap" resultMap="categoryMap">
-		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,vsort from vs_category 
-			where cate_status = #cateStatus#
+		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
+			where cate_status = #cateStatus# order by vsort asc
 	</select>
 	<select id="findCategoryById" parameterClass="java.util.HashMap" resultMap="categoryMap">
-		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,vsort from vs_category 
+		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
 			where cat_id = #cateId#
 	</select>
 	
 	<insert id="insertCategory" parameterClass="Category">
-		insert into vs_category(cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,vsort) 
+		insert into vs_category(cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort) 
 			values ((select ifnull(LPAD(max(CAST(tvs.cat_id as SIGNED)+1),3,'0'),'001') from vs_category tvs),
-			#uniqueName#,#cateName#,#keywords#,#desc#,#cateStatus#,#navId#,#vsort#)
+			#uniqueName#,#cateName#,#keywords#,#desc#,#cateStatus#,#navId#,#guideAliases#,#vsort#)
 	</insert>
 	
 	<update id="updateCateById" parameterClass="Category">
-		update vs_category set unique_name=#uniqueName#,cat_name=#cateName#,keywords=#keywords#,description=#desc#,nav_id=#navId#,vsort=#vsort# 
+		update vs_category set unique_name=#uniqueName#,cat_name=#cateName#,keywords=#keywords#,description=#desc#,nav_id=#navId#,guide=#guideAliases# vsort=#vsort# 
 			where cat_id = #cateId#
 	</update>
 	

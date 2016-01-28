@@ -58,6 +58,29 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 	}
 	
 	public String insertCategory() throws Exception{
+		String navAlise = null ;
+		String parentId = category.getParentId() ;
+		//处理  父  子  级的 拼装
+		if (parentId == null || "".equals(parentId)) {
+			parentId = "0";
+			navAlise = "";
+		} else {
+			String[] pgs = parentId.split("@");
+
+			parentId = pgs[0].trim();
+			if (pgs.length == 1) {
+				navAlise = "";
+			} else {
+				String level = pgs[1];
+				if ("".equals(level)) {
+					navAlise = "";
+				} else {
+					navAlise = level + "-";
+				}
+			}
+		}
+		category.setGuideAliases(navAlise);
+		category.setNavId(Integer.parseInt(parentId.replaceFirst("^0*", "")));
 		categoryService.insertCategory(category);
 		return SUCCESS ;
 	}

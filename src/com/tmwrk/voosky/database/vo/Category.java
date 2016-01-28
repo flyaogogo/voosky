@@ -17,6 +17,9 @@ public class Category {
 	private int navId ;
 	private int vsort ;
 	
+	private String guideAliases ;
+	private String parentId ;
+	
 	public String getCateId() {
 		return cateId;
 	}
@@ -65,6 +68,18 @@ public class Category {
 	}
 	public void setVsort(int vsort) {
 		this.vsort = vsort;
+	}
+	public String getGuideAliases() {
+		return guideAliases;
+	}
+	public void setGuideAliases(String guideAliases) {
+		this.guideAliases = guideAliases;
+	}
+	public String getParentId() {
+		return parentId;
+	}
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
 	}
 	
 }

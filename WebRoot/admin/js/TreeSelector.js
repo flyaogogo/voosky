@@ -5,13 +5,14 @@ function TreeSelector(item,rootid) {
 	this._rootId = rootid ;// 规定根节点-1
 }
 // 增加一个节点
-TreeSelector.prototype.add = function(_id, _pid, _text,_module, _url,_status) {
+TreeSelector.prototype.add = function(_id, _pid, _text,_module, _url,_levelalias,_status) {
 	this._data[this._data.length] = {
 		id : _id,
-		pid : _pid,
+		pid:_pid,
 		text : _text,
 		module:_module,
 		url : _url,
+		levelalias : _levelalias,
 		status:_status
 	};
 }
@@ -33,10 +34,11 @@ TreeSelector.prototype.createSubOption = function(level, current) {
 		}
 		blank += "├-";
 	}
+	//alert(current.levelalias) ;
 	if(current.status=="m"){
 		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.url));// 添加Option选项    
 	}else if(current.status=="p"){
-		this._item.options.add(new Option(blank + current.text, current.id));// 添加Option选项  上级分类
+		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.levelalias));// 添加Option选项  上级分类
 	}
 
 	for ( var j = 0; j < this._data.length; j++) {
@@ -85,12 +87,12 @@ function selectLoadData(selectId,data,status,treeRootId,catType){
 	var ts = new TreeSelector(selectId,treeRootId);//select的id  ,
 	if(catType=='nav'){
 		$(data).each(function() {
-			ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],status);
+			ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],this['guideAliases'],status);
 			
 		});
 	}else if(catType=='cat'){
 		$(data).each(function() {
-			ts.add(this['cateId'],this['navId'], this['cateName'],this['uniqueName'],this['desc'],status);
+			ts.add(this['cateId'],this['navId'], this['cateName'],this['uniqueName'],this['desc'],this['guideAliases'],status);
 		});
 	}
 	//显示

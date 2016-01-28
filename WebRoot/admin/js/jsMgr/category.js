@@ -34,7 +34,21 @@ $(function(){
 				$(".vs-category-type-btn-cls input[name='cateId']").val(data.cateId) ;
 				$(".vs-category-type-btn-cls input[name='cateName']").val(data.cateName) ;
 				$(".vs-category-type-btn-cls input[name='uniqueName']").val(data.uniqueName) ;
-				$(".vs-category-type-btn-cls select[name='navId']").val(data.navId) ;
+				var gAlias = data.guideAliases ;
+				var pval = "" ;
+				if(gAlias==null||gAlias==''){
+					pval = data.navId ;
+				}else{
+					gAlias = gAlias.substring(0,gAlias.length-1) ;
+					var navIdStr = data.navId + "" ;
+					if(navIdStr.length<3){
+						
+					}
+					pval = data.navId + "@" + gAlias ;
+				}
+				$(".vs-category-type-btn-cls select[name='navId']").val(pval) ;
+				//$(".vs-category-type-btn-cls select[name='navId']").val(data.navId) ;
+				
 				$(".vs-category-type-btn-cls input[name='keywords']").val(data.keywords) ;
 				$(".vs-category-type-btn-cls textarea[name='desc']").val(data.desc) ;
 				$(".vs-category-type-btn-cls input[name='vsort']").val(data.vsort) ;

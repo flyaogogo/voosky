@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<s:iterator value="navList" var ="nav">
       <tr>
-       <td><input type="hidden" name="navId" value="<s:property value="#nav.navId"/>"/><s:property value="#nav.navName"/></td>
+       <td><input type="hidden" name="navId" value="<s:property value="#nav.navId"/>"/><s:property value="#nav.guideAliases"/> <s:property value="#nav.navName"/></td>
        <td><s:property value="#nav.moduleUrl"/></td>
        <td align="center"><s:property value="#nav.vsort"/></td>
        <td align="center"><a href="javascript:void(0)" class="vs-nav-update-href">编辑 | </a><a href="javascript:void(0)" class="vs-nav-delete-href">删除</a></td>
@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td height="35" align="right">上级分类</td>
             <td id="parent">
              <select id="selectTree-add-parent" name="parentId" >
-             	<option value="">无</option>
+             	<option value="0">无</option>
              	<!-- <option value="{$list.id}">简介</option> -->
              </select>
             </td>
@@ -187,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td height="35" align="right">上级分类</td>
             <td id="parent_external">
              <select id="selectTree-defined-parent" name="parentId">
-              <option value="">无</option>
+              <option value="0">无</option>
              
               <!-- <option value="{$list.id}">简介</option> -->
              
@@ -253,7 +253,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td height="35" align="right">上级分类</td>
             <td id="parent">
              <select id="selectTree-update-parent" name="parentId">
-              <option value="">无</option>
+              <option value="0">无</option>
              <!--  <option value="{$list.id}">简介</option> -->
              </select>
             </td>

@@ -73,8 +73,28 @@ public class NavAction extends BaseAction {
 		}
 		navs.setModule(module) ;
 		navs.setModuleUrl(moduleUrl);
+		
+		//parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
+		//处理  父  子  级的 拼装
+		if(parentId==null||"".equals(parentId)){
+			parentId = "0" ;
+			navAlise = "" ;
+		}else{
+			String[] pgs = parentId.split("@") ; 
+			
+			parentId = pgs[0] ;
+			if(pgs.length==1){
+				navAlise = "-" ;
+			}else{
+				String level = pgs[1] ;
+				if("".equals(level)){
+					navAlise = "-" ;
+				}else{
+					navAlise = level + "-" ;
+				}
+			}
+		}
 		navs.setGuideAliases(navAlise);
-		parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
 		navs.setParentId(parentId);
 		navs.setVtype(navType);
 		navs.setVsort(Integer.parseInt(sort));
@@ -105,8 +125,26 @@ public class NavAction extends BaseAction {
 		}
 		navs.setModule(module) ;
 		navs.setModuleUrl(moduleUrl);
+		//parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
+		//处理  父  子  级的 拼装
+		if (parentId == null||"".equals(parentId)) {
+			parentId = "0";
+			navAlise = "";
+		} else {
+			String[] pgs = parentId.split("@");
+			parentId = pgs[0];
+			if(pgs.length==1){
+				navAlise = "-" ;
+			}else{
+				String level = pgs[1] ;
+				if("".equals(level)){
+					navAlise = "-" ;
+				}else{
+					navAlise = level + "-" ;
+				}
+			}
+		}
 		navs.setGuideAliases(navAlise);
-		parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
 		navs.setParentId(parentId);
 		navs.setVtype(navType);
 		navs.setVsort(Integer.parseInt(sort));

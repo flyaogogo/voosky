@@ -86,7 +86,16 @@ $(function(){
 				$(".vs-nav-update-data select[name='navMenu']").val(data.navId+"@"+data.moduleUrl) ;
 				$(".vs-nav-update-data input[name='navName']").val(data.navName) ;
 				$(".vs-nav-update-data input:radio[name='navType'][value='" + data.vtype + "']").attr('checked', 'checked');
-				$(".vs-nav-update-data select[name='parentId']").val(data.parentId) ;
+				var gAlias = data.guideAliases ;
+				var pval = "" ;
+				if(gAlias==null||gAlias==''){
+					pval = data.parentId ;
+				}else{
+					gAlias = gAlias.substring(0,gAlias.length-1) ;
+					pval = data.parentId + "@" + gAlias ;
+				}
+				$(".vs-nav-update-data select[name='parentId']").val(pval) ;
+				//$(".vs-nav-update-data select[name='parentId']").val(data.parentId) ;
 				$(".vs-nav-update-data input[name='sort']").val(data.vsort) ;
 				
 			}
