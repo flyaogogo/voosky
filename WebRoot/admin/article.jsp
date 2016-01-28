@@ -27,16 +27,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <script type="text/javascript">
 
+
 	//对列表数据，拼装Json
 	var tmpData = "[" ;
-	<c:forEach items="${ctgryList}" var="a"> 
-		//console.log("${a.cateName}"); //生成如 array.push(123)的字符串 这样前台拿到后就是js 
-		tmpData = tmpData + "{'cateId':'${a.cateId} ','uniqueName':'${a.uniqueName}','cateName':'${a.cateName}','navId':${a.navId},'desc':'${a.desc}'},"
+	<c:forEach items="${navBean.navList}" var="a"> 
+		tmpData = tmpData + "{'navId':'${a.navId} ','parentId':'${a.parentId}','navName':'${a.navName}','module':'${a.module}','moduleUrl':'${a.moduleUrl}','guideAliases':'${a.guideAliases}'},"
 	</c:forEach> 
-	tmpData = tmpData.substring(0,tmpData.length-1) ;//去掉最后一个逗号
+//	<c:forEach items="${cateList}" var="a"> 
+		//console.log("${a.cateName}"); //生成如 array.push(123)的字符串 这样前台拿到后就是js 
+//		tmpData = tmpData + "{'cateId':'${a.cateId} ','uniqueName':'${a.uniqueName}','cateName':'${a.cateName}','navId':${a.navId},'desc':'${a.desc}','guideAliases':'${a.guideAliases}'},"
+//	</c:forEach> 
+	var tmpdatalen = tmpData.length ;
+	if(tmpdatalen>1){
+		tmpData = tmpData.substring(0,tmpData.length-1) ;//去掉最后一个逗号
+	}
 	tmpData = tmpData + "]" ;
-	//console.log(tmpData) ;
+	console.log(tmpData) ;
 	dataList = eval(tmpData) ;
+	
+	var parentId = '<s:property value="navBean.parentId"/>' ;
 	
 </script>
 

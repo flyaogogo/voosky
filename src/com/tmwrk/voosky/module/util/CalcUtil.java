@@ -31,6 +31,10 @@ public class CalcUtil {
 	 * @return
 	 */
 	public static UploadFileBase dealUploadInfo(boolean isUpdate , UploadFileBase fbase , String fileDirectory , HttpServletRequest request){
+		
+		if(fbase.getImageFile()==null){
+			return null ;
+		}
 		String myFileFileName = "image_" + fbase.getImageFileFileName() ;
 		
 		String slideFilePathStr = "upload/" + fileDirectory + "/" ;
@@ -93,4 +97,39 @@ public class CalcUtil {
 		}
 		
 	}
+	
+	/**
+	 * 处理拼接的字符串
+	 * @param parentId
+	 * @return
+	 */
+	public static String[] dealParentId(String parentId){
+		String[] arr = new String[2] ;
+		
+		String navAlise = null ;
+		//处理  父  子  级的 拼装
+		if (parentId == null || "".equals(parentId) || "0".equals(parentId)) {
+			parentId = "0";
+			navAlise = "";
+		} else {
+			String[] pgs = parentId.split("@");
+
+			parentId = pgs[0].trim();
+			parentId = parentId.replaceFirst("^0*", "");
+			if (pgs.length == 1) {
+				navAlise = "-";
+			} else {
+				String level = pgs[1];
+				if ("".equals(level)) {
+					navAlise = "";
+				} else {
+					navAlise = level + "-";
+				}
+			}
+		}
+		arr[0] = parentId ;
+		arr[1] = navAlise ;
+		return arr ;
+	}
+	
 }

@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Article;
 import com.tmwrk.voosky.database.vo.Category;
+import com.tmwrk.voosky.database.vo.NavBean;
 import com.tmwrk.voosky.database.vo.UploadFileBase;
 import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.article.ArticleServiceMgr;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
+import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
 public class ArticleAction extends BaseAction implements ModelDriven<Article>{
@@ -29,6 +31,9 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	@Autowired
 	private CategoryServiceMgr categoryService ;
 	
+	@Autowired
+	private NavServiceMgr navService ;
+	
 	Article art = new Article() ;
 	
 	private Article article ;
@@ -36,6 +41,8 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	private List<Article> artList ;
 	
 	private List<Category> ctgryList ;
+	
+	private NavBean navBean ;
 	
 	@Override
 	public String execute() throws Exception{
@@ -47,12 +54,14 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 			param.put("isRecommend", art.getIsRecommend()) ;
 		}
 		if(art.getCateId()!=null&& !"all".equals(art.getCateId())){
-			param.put("cateId", art.getCateId()) ;
+			param.put("cateId", CalcUtil.dealParentId(art.getCateId())[0]) ;
+//			param.put("cateId", art.getCateId()) ;
 		}
 		
 		artList = articleService.findAllArticlesInfo(param) ;
 		
-		ctgryList = getProductCategory() ;
+		navBean = navService.getAllNavByParentId("getArticlesInfo") ;
+//		ctgryList = getProductCategory() ;
 		
 		return SUCCESS ;
 	}
@@ -69,13 +78,18 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	public String insertArticle() throws Exception{
 		/**/
 		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(false, art, "article", request);
-		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-			article.setStatus(uplFileBase.getStatus());
-			article.setMessage(uplFileBase.getMessage());
-			return ERROR ;
+		if(uplFileBase==null){
+			art.setThumbUrl("");
+		}else{
+			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+				article.setStatus(uplFileBase.getStatus());
+				article.setMessage(uplFileBase.getMessage());
+				return ERROR ;
+			}
+			art.setThumbUrl(uplFileBase.getFileRealPath());
 		}
-		art.setThumbUrl(uplFileBase.getFileRealPath());
 		
+		art.setCateId(CalcUtil.dealParentId(art.getCateId())[0]);
 		
 		art.setAddTime(DateUtil.converNowDate());
 		String is = (art.getIsRecommend()==null)?"false":"true" ;
@@ -86,12 +100,18 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	
 	public String updateArticle() throws Exception{
 		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, art, "article", request);
-		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-			article.setStatus(uplFileBase.getStatus());
-			article.setMessage(uplFileBase.getMessage());
-			return ERROR ;
+		if(uplFileBase==null){
+			art.setThumbUrl("");
+		}else{
+			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+				article.setStatus(uplFileBase.getStatus());
+				article.setMessage(uplFileBase.getMessage());
+				return ERROR ;
+			}
+			art.setThumbUrl(uplFileBase.getFileRealPath());
 		}
-		art.setThumbUrl(uplFileBase.getFileRealPath());
+		
+		art.setCateId(CalcUtil.dealParentId(art.getCateId())[0]);
 		
 		String is = (art.getIsRecommend()==null)?"false":"true" ;
 		art.setIsRecommend(is);
@@ -149,6 +169,16 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 
 	public void setCtgryList(List<Category> ctgryList) {
 		this.ctgryList = ctgryList;
+	}
+
+
+	public NavBean getNavBean() {
+		return navBean;
+	}
+
+
+	public void setNavBean(NavBean navBean) {
+		this.navBean = navBean;
 	}
 
 }

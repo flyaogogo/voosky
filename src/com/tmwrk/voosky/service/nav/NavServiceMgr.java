@@ -1,5 +1,7 @@
 package com.tmwrk.voosky.service.nav;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tmwrk.voosky.database.dao.impl.NavigationDaoImpl;
+import com.tmwrk.voosky.database.vo.NavBean;
 import com.tmwrk.voosky.database.vo.Navigation;
 
 @Service("navService")
@@ -63,6 +66,44 @@ public class NavServiceMgr {
 		
 		List<Navigation> navList = navDao.getNavigationsByModule(params) ;
 		return navList ;
+	}
+	
+	/**
+	 * 获取指定结点下的所有  子级节点
+	 * @param modelURL
+	 * @return
+	 */
+	public NavBean getAllNavByParentId(String modelURL){
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("murl", modelURL) ;
+		List<Navigation> tmpList = navDao.getNavigateByURLId(params) ;
+		
+		NavBean navbean = new NavBean() ;
+		if(tmpList.size()>0){
+			List<Navigation> navChildList = new ArrayList<Navigation>() ;
+			String parentId = tmpList.get(0).getNavId() + "" ;
+			List<Navigation> navList = navDao.getAllNavigations(null) ;
+			getAllChildByParentId(navList, navChildList, parentId);
+			navbean.setNavList(navChildList);
+			navbean.setParentId(parentId);
+		}
+		return navbean ;
+	}
+	
+	/**
+	 * 递归获取所有子节点
+	 * @param navList
+	 * @param navChildList
+	 * @param parentId
+	 */
+	private void getAllChildByParentId(List<Navigation> navList,List<Navigation> navChildList,String parentId){
+		
+		for(Navigation nav :navList){
+			if(parentId.equals(nav.getParentId())){
+				navChildList.add(nav) ;
+				getAllChildByParentId(navList, navChildList, nav.getNavId()+"");
+			}
+		}
 	}
 	/*
 	public List<TreeNode> getNavTree(String initParentId) {

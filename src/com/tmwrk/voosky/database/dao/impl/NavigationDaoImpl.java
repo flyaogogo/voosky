@@ -77,6 +77,17 @@ public class NavigationDaoImpl extends BaseDao<Navigation>{
 		
 		return navList ;
 	}
+	/**
+	 * 通过URL找到相关信息
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked" })
+	public List<Navigation> getNavigateByURLId(Map<String, Object> params) {
+		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getNavigateByURLId", params) ;
+		
+		return navList ;
+	}
 	
 	/**
 	 * 通过模板名称找到相关的信息

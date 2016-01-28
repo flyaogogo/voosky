@@ -3,13 +3,17 @@
  */
 package com.tmwrk.voosky.service.test;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tmwrk.voosky.database.vo.Navigation;
 import com.tmwrk.voosky.database.vo.User;
 import com.tmwrk.voosky.module.util.DateUtil;
+import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.service.user.UserService;
 
 /**
@@ -20,6 +24,8 @@ public class UserTest
 
 	protected ApplicationContext ctx;
 	private UserService userService;
+	private NavServiceMgr navService ;
+	
 
 	@Before
 	public void init()
@@ -28,6 +34,7 @@ public class UserTest
 		{
 			ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 			userService = (UserService) ctx.getBean("userService");
+			navService = (NavServiceMgr) ctx.getBean("navService");
 		}
 		catch (Exception e)
 		{
@@ -57,5 +64,14 @@ public class UserTest
 		System.out.println("--------user add finish !----------");
 		
 	}
+	
+	@Test
+	public void getNavChild(){
+//		List<Navigation> navChildList = navService.getAllNavByParentId("7") ;
+		
+//		System.out.println(navChildList.size());
+		
+	}
+	
 
 }

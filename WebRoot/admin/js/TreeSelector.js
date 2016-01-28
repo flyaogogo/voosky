@@ -34,10 +34,11 @@ TreeSelector.prototype.createSubOption = function(level, current) {
 		}
 		blank += "├-";
 	}
-	//alert(current.levelalias) ;
+	//alert(current.id) ;001 @
 	if(current.status=="m"){
 		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.url));// 添加Option选项    
 	}else if(current.status=="p"){
+		//console.log(current.id.trim() +"@" + current.levelalias) ;
 		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.levelalias));// 添加Option选项  上级分类
 	}
 
@@ -83,7 +84,7 @@ TreeSelector.prototype.createSubOption = function(level, current) {
  * catType 		: 区分是导航中的树，还是分类中的树
  */
 function selectLoadData(selectId,data,status,treeRootId,catType){
-	//console.log("selectId:" + selectId )
+	console.log("treeRootId:" + treeRootId )
 	var ts = new TreeSelector(selectId,treeRootId);//select的id  ,
 	if(catType=='nav'){
 		$(data).each(function() {
@@ -92,6 +93,7 @@ function selectLoadData(selectId,data,status,treeRootId,catType){
 		});
 	}else if(catType=='cat'){
 		$(data).each(function() {
+			//alert(this['guideAliases']); 
 			ts.add(this['cateId'],this['navId'], this['cateName'],this['uniqueName'],this['desc'],this['guideAliases'],status);
 		});
 	}
@@ -107,3 +109,9 @@ function selectLoadData(selectId,data,status,treeRootId,catType){
 function change(id, choose) {
    document.getElementById(id).value = choose.options[choose.selectedIndex].module;
 }
+
+//删除左右两端的空格
+String.prototype.trim=function(){
+    return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+

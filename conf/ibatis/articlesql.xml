@@ -22,8 +22,8 @@
 	</resultMap>
 	
 	<select id="getAllArticles" parameterClass="java.util.HashMap" resultMap="articleMap">
-		select vsa.id,vsc.cat_name as cat_id,vsa.title,vsa.is_recommend,vsa.content,vsa.thumb_url,vsa.keywords,vsa.description,vsa.clicknum,
-			vsa.add_time,vsa.vsort from vs_article vsa , vs_category vsc where vsa.cat_id=vsc.cat_id 
+		select vsa.id,vsc.nav_name as cat_id,vsa.title,vsa.is_recommend,vsa.content,vsa.thumb_url,vsa.keywords,vsa.description,vsa.clicknum,
+			vsa.add_time,vsa.vsort from vs_article vsa , vs_nav vsc where vsa.cat_id=vsc.nav_id 
 			<isNotNull property="isRecommend">
 				and vsa.is_recommend = #isRecommend#
 			</isNotNull>

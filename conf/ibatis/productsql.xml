@@ -23,8 +23,8 @@
 	</resultMap>
 	
 	<select id="getAllProducts" parameterClass="java.util.HashMap" resultMap="productMap">
-		select vsp.id,vsc.cat_name as cat_id,vsp.title,vsp.is_recommend,vsp.content,vsp.price,vsp.thumb_url,vsp.keywords,vsp.description,vsp.clicknum,
-			vsp.add_time,vsp.vsort from vs_product vsp,vs_category vsc where vsp.cat_id=vsc.cat_id 
+		select vsp.id,vsc.nav_name as cat_id,vsp.title,vsp.is_recommend,vsp.content,vsp.price,vsp.thumb_url,vsp.keywords,vsp.description,vsp.clicknum,
+			vsp.add_time,vsp.vsort from vs_product vsp,vs_nav vsc where vsp.cat_id=vsc.nav_id 
 			<isNotNull property="isRecommend">
 				and vsp.is_recommend = #isRecommend#
 			</isNotNull>

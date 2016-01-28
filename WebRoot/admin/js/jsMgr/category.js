@@ -36,17 +36,26 @@ $(function(){
 				$(".vs-category-type-btn-cls input[name='uniqueName']").val(data.uniqueName) ;
 				var gAlias = data.guideAliases ;
 				var pval = "" ;
-				if(gAlias==null||gAlias==''){
-					pval = data.navId ;
+				var navIdStr = data.navId + "" ;
+				
+				if(navIdStr=='0'){
+					pval = "0" ;
 				}else{
-					gAlias = gAlias.substring(0,gAlias.length-1) ;
-					var navIdStr = data.navId + "" ;
-					if(navIdStr.length<3){
+//					var navIdLen = navIdStr.length ;
+//					for(var i = navIdLen ; i < 3 ; i ++ ){
+//						navIdStr = "0" + navIdStr ;
+//					}
+					
+					if(gAlias==null||gAlias==''){
+						pval = navIdStr + " @-" ;
+					}else{
+						//gAlias = gAlias.substring(0,gAlias.length-1) ;
 						
+						pval = navIdStr + " @-" + gAlias ;
 					}
-					pval = data.navId + "@" + gAlias ;
 				}
-				$(".vs-category-type-btn-cls select[name='navId']").val(pval) ;
+				//alert(pval) ;
+				$(".vs-category-type-btn-cls select[name='parentId']").val(pval) ;
 				//$(".vs-category-type-btn-cls select[name='navId']").val(data.navId) ;
 				
 				$(".vs-category-type-btn-cls input[name='keywords']").val(data.keywords) ;
@@ -92,13 +101,15 @@ window.onload = function(selectId) {
 			//console.log(dataList );
 		}
 	});*/
-	
+//	console.log(dataList );
+//	console.log(parentId );
 	//id,父id,名称,跳转到url
-	selectLoadData("selectTree-parent-category-Id",dataList,"p",0,"cat") ;
+	selectLoadData("selectTree-parent-category-Id",dataList,"p",parentId,"nav") ;
 	
 	//判断添加或修改中的上级分类是否存在
 	if($("#selectTree-parent-category-oper-Id").size()>0){
-		selectLoadData("selectTree-parent-category-oper-Id",dataList,"p",0,"cat") ;
+		selectLoadData("selectTree-parent-category-oper-Id",dataList,"p",parentId,"nav") ;
+		//selectLoadData("selectTree-parent-category-oper-Id",dataList,"p",0,"cat") ;
 	}
 	
 }

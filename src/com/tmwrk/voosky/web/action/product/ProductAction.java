@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Category;
+import com.tmwrk.voosky.database.vo.NavBean;
 import com.tmwrk.voosky.database.vo.Product;
 import com.tmwrk.voosky.database.vo.UploadFileBase;
 import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.module.util.DateUtil;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
+import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.service.product.ProductServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -34,6 +36,9 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	@Autowired
 	private CategoryServiceMgr categoryService ;
 	
+	@Autowired
+	private NavServiceMgr navService ;
+	
 	Product product = new Product() ;
 	
 	private Product pro ;
@@ -42,6 +47,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	
 	private List<Category> ctgryList ;
 	
+	private NavBean navBean ;
 	//关键字查询
 	private String filterkeywords ;
 
@@ -55,11 +61,13 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 			param.put("isRecommend", product.getIsRecommend()) ;
 		}
 		if(product.getCateId()!=null&& !"all".equals(product.getCateId())){
-			param.put("cateId", product.getCateId()) ;
+			param.put("cateId", CalcUtil.dealParentId(product.getCateId())[0]) ;
+//			param.put("cateId", product.getCateId()) ;
 		}
 		proList = productService.findAllProductsInfo(param) ;
 		
-		ctgryList = getProductCategory() ;
+		navBean = navService.getAllNavByParentId("getProductsInfo") ;
+//		ctgryList = getProductCategory() ;
 		
 		return SUCCESS ;
 	}
@@ -81,13 +89,18 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	public String insertProduct() throws Exception{
 		/**/
 		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(false, product, "product", request);
-		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-			pro.setStatus(uplFileBase.getStatus());
-			pro.setMessage(uplFileBase.getMessage());
-			return ERROR ;
+		if(uplFileBase==null){
+			product.setThumbUrl("");
+		}else{
+			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+				pro.setStatus(uplFileBase.getStatus());
+				pro.setMessage(uplFileBase.getMessage());
+				return ERROR ;
+			}
+			product.setThumbUrl(uplFileBase.getFileRealPath());
 		}
-		product.setThumbUrl(uplFileBase.getFileRealPath());
 		
+		product.setCateId(CalcUtil.dealParentId(product.getCateId())[0]);
 		
 		product.setAddTime(DateUtil.converNowDate());
 		String is = (product.getIsRecommend()==null)?"false":"true" ;
@@ -99,13 +112,18 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	public String updateProduct() throws Exception{
 		/**/
 		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, product, "product", request);
-		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-			pro.setStatus(uplFileBase.getStatus());
-			pro.setMessage(uplFileBase.getMessage());
-			return ERROR ;
+		if(uplFileBase==null){
+			product.setThumbUrl("");
+		}else{
+			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+				pro.setStatus(uplFileBase.getStatus());
+				pro.setMessage(uplFileBase.getMessage());
+				return ERROR ;
+			}
+			product.setThumbUrl(uplFileBase.getFileRealPath());
 		}
-		product.setThumbUrl(uplFileBase.getFileRealPath());
 		
+		product.setCateId(CalcUtil.dealParentId(product.getCateId())[0]);
 		
 		String is = (product.getIsRecommend()==null)?"false":"true" ;
 		product.setIsRecommend(is);
@@ -174,6 +192,14 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 
 	public void setFilterkeywords(String filterkeywords) {
 		this.filterkeywords = filterkeywords;
+	}
+
+	public NavBean getNavBean() {
+		return navBean;
+	}
+
+	public void setNavBean(NavBean navBean) {
+		this.navBean = navBean;
 	}
 
 }

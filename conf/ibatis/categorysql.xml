@@ -35,7 +35,7 @@
 	</insert>
 	
 	<update id="updateCateById" parameterClass="Category">
-		update vs_category set unique_name=#uniqueName#,cat_name=#cateName#,keywords=#keywords#,description=#desc#,nav_id=#navId#,guide=#guideAliases# vsort=#vsort# 
+		update vs_category set unique_name=#uniqueName#,cat_name=#cateName#,keywords=#keywords#,description=#desc#,nav_id=#navId#,guide=#guideAliases#,vsort=#vsort# 
 			where cat_id = #cateId#
 	</update>
 	

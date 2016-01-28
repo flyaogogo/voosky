@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.Category;
+import com.tmwrk.voosky.database.vo.NavBean;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
+import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
 public class CategoryAction extends BaseAction implements ModelDriven<Category>{
@@ -21,10 +23,15 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 	@Autowired
 	private CategoryServiceMgr categoryService ;
 	
+	@Autowired
+	private NavServiceMgr navService ;
+	
 	Category category = new Category() ;
 	private List<Category> cateList ;
 	
 	private Category ctgry ;
+	
+	private NavBean navBean ;
 	
 	/**
 	 * 返回列表
@@ -34,6 +41,15 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("cateStatus", category.getCateStatus()) ;
 		cateList = categoryService.findCateByStatus(param) ;
+		
+		//add tree
+		String mURL = null ;
+		if("product".equals(category.getCateStatus())){
+			mURL = "getProductsInfo" ;
+		}else if("article".equals(category.getCateStatus())){
+			mURL = "getArticlesInfo" ;
+		}
+		navBean = navService.getAllNavByParentId(mURL) ;
 		return category.getCateStatus() ;
 	}
 	
@@ -61,31 +77,34 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		String navAlise = null ;
 		String parentId = category.getParentId() ;
 		//处理  父  子  级的 拼装
-		if (parentId == null || "".equals(parentId)) {
-			parentId = "0";
-			navAlise = "";
-		} else {
-			String[] pgs = parentId.split("@");
+		String[] pgs = parentId.split("@");
 
-			parentId = pgs[0].trim();
-			if (pgs.length == 1) {
-				navAlise = "";
-			} else {
-				String level = pgs[1];
-				if ("".equals(level)) {
-					navAlise = "";
-				} else {
-					navAlise = level + "-";
-				}
-			}
-		}
+		parentId = pgs[0].trim();
+		String level = pgs[1];
+		navAlise = level + "-";
+		navAlise = navAlise.substring(0, navAlise.length() - 2);
+		
 		category.setGuideAliases(navAlise);
-		category.setNavId(Integer.parseInt(parentId.replaceFirst("^0*", "")));
+		category.setNavId(Integer.parseInt(parentId));
 		categoryService.insertCategory(category);
 		return SUCCESS ;
 	}
 	
 	public String updateCategory() throws Exception{
+		String navAlise = null ;
+		String parentId = category.getParentId() ;
+		//处理  父  子  级的 拼装
+
+		String[] pgs = parentId.split("@");
+
+		parentId = pgs[0].trim();
+		String level = pgs[1];
+		navAlise = level + "-";
+		navAlise = navAlise.substring(0, navAlise.length() - 2);
+
+		category.setGuideAliases(navAlise);
+		category.setNavId(Integer.parseInt(parentId));
+		
 		categoryService.updateCateById(category);
 		
 		return SUCCESS ;
@@ -116,5 +135,13 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 
 	public void setCateList(List<Category> cateList) {
 		this.cateList = cateList;
+	}
+
+	public NavBean getNavBean() {
+		return navBean;
+	}
+
+	public void setNavBean(NavBean navBean) {
+		this.navBean = navBean;
 	}
 }

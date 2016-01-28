@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.tmwrk.voosky.database.vo.Navigation;
 import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
@@ -32,6 +34,7 @@ public class NavAction extends BaseAction {
 	private String parentId ;
 	private String sort ;
 	
+	@Autowired
 	private NavServiceMgr navService ;
 	
 	private Navigation nav ;
@@ -76,7 +79,7 @@ public class NavAction extends BaseAction {
 		
 		//parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
 		//处理  父  子  级的 拼装
-		if(parentId==null||"".equals(parentId)){
+		if(parentId==null||"".equals(parentId)||"0".equals(parentId)){
 			parentId = "0" ;
 			navAlise = "" ;
 		}else{
@@ -127,7 +130,7 @@ public class NavAction extends BaseAction {
 		navs.setModuleUrl(moduleUrl);
 		//parentId = (parentId==null||"".equals(parentId))?"0":parentId ;
 		//处理  父  子  级的 拼装
-		if (parentId == null||"".equals(parentId)) {
+		if (parentId == null||"".equals(parentId)||"0".equals(parentId)) {
 			parentId = "0";
 			navAlise = "";
 		} else {
