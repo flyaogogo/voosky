@@ -47,11 +47,11 @@ $(function(){
 //					}
 					
 					if(gAlias==null||gAlias==''){
-						pval = navIdStr + " @-" ;
+						pval = navIdStr + "@-" ;
 					}else{
 						//gAlias = gAlias.substring(0,gAlias.length-1) ;
 						
-						pval = navIdStr + " @-" + gAlias ;
+						pval = navIdStr + "@-" + gAlias ;
 					}
 				}
 				//alert(pval) ;

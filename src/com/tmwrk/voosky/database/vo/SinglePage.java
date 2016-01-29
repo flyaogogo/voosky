@@ -13,6 +13,8 @@ public class SinglePage {
 	private String desc ;
 	private int navId ;
 	
+	private String parentId ;
+	private String guideAliases ;
 	
 	public int getPageId() {
 		return pageId;
@@ -55,6 +57,18 @@ public class SinglePage {
 	}
 	public void setNavId(int navId) {
 		this.navId = navId;
+	}
+	public String getParentId() {
+		return parentId;
+	}
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+	public String getGuideAliases() {
+		return guideAliases;
+	}
+	public void setGuideAliases(String guideAliases) {
+		this.guideAliases = guideAliases;
 	}
 	
 }

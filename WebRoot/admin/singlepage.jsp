@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 --%>
 
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/TreeSelector.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/jsMgr/singlepage.js"></script>
 
 <!-- Baidu Ueditor -->
@@ -82,9 +83,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">上级分类</td>
        <td>
-        <select name="navId">
+        <select id="selectTree-parent-category-Id" name="parentId">
          <option value="0">无</option>
-         <option value="" selected="selected">简介</option>
+         <!-- <option value="" selected="selected">简介</option> -->
         </select>
        </td>
       </tr>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.tmwrk.voosky.database.vo.SinglePage;
+import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.service.other.SinglePageServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -42,12 +43,17 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 	}
 	
 	public String insertSinglePage() throws Exception{
+		String[] navStr = CalcUtil.dealParentId(singlePage.getParentId()) ;
+		singlePage.setNavId(Integer.parseInt(navStr[0]));
+		singlePage.setGuideAliases(navStr[1]);
 		singlePageService.addSinglePage(singlePage) ;
 		return SUCCESS ;
 	}
 	
 	public String updateSinglePage() throws Exception{
-		
+		String[] navStr = CalcUtil.dealParentId(singlePage.getParentId()) ;
+		singlePage.setNavId(Integer.parseInt(navStr[0]));
+		singlePage.setGuideAliases(navStr[1]);
 		singlePageService.updateSinglePageById(singlePage) ;
 		return SUCCESS ;
 	}

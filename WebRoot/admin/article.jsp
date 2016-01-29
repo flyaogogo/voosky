@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	//对列表数据，拼装Json
 	var tmpData = "[" ;
 	<c:forEach items="${navBean.navList}" var="a"> 
-		tmpData = tmpData + "{'navId':'${a.navId} ','parentId':'${a.parentId}','navName':'${a.navName}','module':'${a.module}','moduleUrl':'${a.moduleUrl}','guideAliases':'${a.guideAliases}'},"
+		tmpData = tmpData + "{'navId':${a.navId},'parentId':${a.parentId},'navName':'${a.navName}','module':'${a.module}','moduleUrl':'${a.moduleUrl}','guideAliases':'${a.guideAliases}'},"
 	</c:forEach> 
 //	<c:forEach items="${cateList}" var="a"> 
 		//console.log("${a.cateName}"); //生成如 array.push(123)的字符串 这样前台拿到后就是js 

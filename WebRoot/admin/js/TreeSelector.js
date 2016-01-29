@@ -84,7 +84,7 @@ TreeSelector.prototype.createSubOption = function(level, current) {
  * catType 		: 区分是导航中的树，还是分类中的树
  */
 function selectLoadData(selectId,data,status,treeRootId,catType){
-	console.log("treeRootId:" + treeRootId )
+	//console.log("treeRootId:" + treeRootId )
 	var ts = new TreeSelector(selectId,treeRootId);//select的id  ,
 	if(catType=='nav'){
 		$(data).each(function() {

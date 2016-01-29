@@ -46,7 +46,24 @@ $(function(){
 					$(".vs-sp-add-btn-cls input[name='pageName']").val(data.pageName) ;
 					$(".vs-sp-add-btn-cls input[name='uniqueName']").val(data.uniqueName) ;
 	//				$(".vs-sp-add-btn-cls input:radio[name='navType'][value='" + data.vtype + "']").attr('checked', 'checked');
-					$(".vs-sp-add-btn-cls select[name='navId']").val(data.navId) ;
+					
+					var gAlias = data.guideAliases ;
+					var pval = "" ;
+					var navIdStr = data.navId ;
+					
+					if(navIdStr=='0'){
+						pval = "0" ;
+					}else{
+						if(gAlias==null||gAlias==''){
+							pval = navIdStr + "@" ;
+						}else{
+							pval = navIdStr + "@" + gAlias ;
+							pval = pval.substring(0,pval.length-1);
+						}
+					}
+					//console.log(pval) ;
+					$(".vs-sp-add-btn-cls select[name='parentId']").val(pval) ;
+					//$(".vs-sp-add-btn-cls select[name='navId']").val(data.navId) ;
 					
 					$(".vs-sp-add-btn-cls textarea[name='content']").val(ue) ;
 					
@@ -67,3 +84,28 @@ $(function(){
 		window.location.href=ctx+"/singlepage/deleteSPAction.htm?pageId=" + pageId ;
 	});
 })
+
+
+//页面打开时  加载  树节点
+window.onload = function(selectId) {
+
+	var dataList ;
+	$.ajax({
+		async:false,
+		type : 'POST',
+		dataType : "json",
+		url : ctx+"/nav/listAllNavInfo.htm",//请求的action路径   
+		error : function() {//请求失败处理函数   
+			alert('请求失败');
+		},
+		success : function(data) { //请求成功后处理函数。
+			dataList = data ;
+			console.log(dataList );
+		}
+	});
+//	console.log(dataList );
+//	console.log(parentId );
+	//id,父id,名称,跳转到url
+	selectLoadData("selectTree-parent-category-Id",dataList,"p",0,"nav") ;
+	
+}

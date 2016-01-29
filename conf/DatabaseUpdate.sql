@@ -120,6 +120,7 @@ create table vs_singlepage(
 	keywords varchar(254),
 	description	varchar(254),
 	nav_id int not null,
+	guide varchar(254) ,
 	PRIMARY KEY (page_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
 
