@@ -29,9 +29,12 @@ public class SinglePageServiceMgr {
 	
 	public SinglePage getSinglePageById(Map<String, Object> params){
 		SinglePage sp = singlePageDao.findById(params) ;
-		
 		return sp ;
-		
+	}
+	
+	public SinglePage findSiglePageByUniqueName(Map<String, Object> params){
+		SinglePage sp = singlePageDao.findById(params) ;
+		return sp ;
 	}
 	
 	public boolean addSinglePage(SinglePage sp){

@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tmwrk.voosky.database.vo.Article;
 import com.tmwrk.voosky.database.vo.Config;
 import com.tmwrk.voosky.database.vo.ConsoleMrg;
+import com.tmwrk.voosky.database.vo.Navigation;
 import com.tmwrk.voosky.database.vo.Product;
 import com.tmwrk.voosky.database.vo.SinglePage;
 import com.tmwrk.voosky.service.article.ArticleServiceMgr;
+import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.service.other.ConfigServiceMgr;
 import com.tmwrk.voosky.service.other.SinglePageServiceMgr;
 import com.tmwrk.voosky.service.product.ProductServiceMgr;
@@ -43,6 +45,9 @@ public class IndexMgrAction extends BaseAction{
 	@Autowired
 	private ConfigServiceMgr configService ;
 	
+	@Autowired
+	private NavServiceMgr navService ;
+	
 	private ConsoleMrg index = new ConsoleMrg() ;
 	
 	@Override
@@ -69,6 +74,10 @@ public class IndexMgrAction extends BaseAction{
 		
 		index.setArtList(artList);
 		
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("parentId", "0") ;
+		List<Navigation> navList = navService.getNavsByParentId(params) ;
+		index.setNavList(navList);
 //		index.setUser(getSessionUser());
 //		
 //		index.setSecurityStatus("error");

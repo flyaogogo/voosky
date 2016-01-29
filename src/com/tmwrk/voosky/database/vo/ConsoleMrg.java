@@ -29,6 +29,8 @@ public class ConsoleMrg {
 	private HashMap<String, String> sysconfMap = new HashMap<String,String>(); //系统设置相关参数
 	
 	private String securityStatus ; //报警安全状态
+	
+	private List<Navigation> navList ;
 
 	public List<SinglePage> getSpList() {
 		return spList;
@@ -101,5 +103,12 @@ public class ConsoleMrg {
 	public void setSecurityStatus(String securityStatus) {
 		this.securityStatus = securityStatus;
 	}
-	
+
+	public List<Navigation> getNavList() {
+		return navList;
+	}
+
+	public void setNavList(List<Navigation> navList) {
+		this.navList = navList;
+	}
 }

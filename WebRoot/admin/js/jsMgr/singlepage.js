@@ -100,7 +100,7 @@ window.onload = function(selectId) {
 		},
 		success : function(data) { //请求成功后处理函数。
 			dataList = data ;
-			console.log(dataList );
+			//console.log(dataList );
 		}
 	});
 //	console.log(dataList );

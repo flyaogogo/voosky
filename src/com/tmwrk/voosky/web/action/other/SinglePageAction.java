@@ -42,6 +42,18 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 		return SUCCESS ;
 	}
 	
+	/**
+	 * 通过唯一名称获取
+	 * @return
+	 * @throws Exception
+	 */
+	public String findSiglePageByUniqueName() throws Exception{
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("uniqueName", singlePage.getUniqueName()) ;
+		sp = singlePageService.findSiglePageByUniqueName(params) ;
+		return SUCCESS ;
+	}
+	
 	public String insertSinglePage() throws Exception{
 		String[] navStr = CalcUtil.dealParentId(singlePage.getParentId()) ;
 		singlePage.setNavId(Integer.parseInt(navStr[0]));

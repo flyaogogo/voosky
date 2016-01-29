@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="incBox">
        <h3>公司简介</h3>
        <div class="about">
-        <p><img src="images/img_company.jpg" /></p>
+        <p><img src="${ctx }/public/images/img_company.jpg" /></p>
         <dl>
          <dt>Vsjava轻量级企业网站管理系统</dt>
          <dd>VsJava是一款轻量级企业网站管理系统，基于jsp+Mysql架构的，可运行在Linux、Windows、MacOSX、Solaris等各种平台上，系统搭载Smarty模板引擎，支持自定义伪静态，前台模板采用DIV+CSS设计，后台界面设计简洁明了，功能简单易具有良好的用户体验，稳定性好、扩展性及安全性强，可面向中小型站点提供网站建设解决方案。</dd>
@@ -87,13 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <s:iterator value="index.artList" var="art">
        		<li><b><s:property value="#art.addTime"/></b><a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>"><s:property value="#art.title"/></a></li>
        </s:iterator>
-       <!-- 
-        <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
-        <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
-        <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
-        <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
-        <li><b>06-26</b><a href="{$article.url}">移动互联网产品设计的核心要素有哪些？</a></li>
-        -->
        </ul>
     </div>
     <div class="contact">

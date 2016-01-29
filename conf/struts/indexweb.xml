@@ -14,6 +14,10 @@
 			<result name="success">/public/page.jsp</result>
 		</action>
 		
+		<action name="getSPInfoByName" method="findSiglePageByUniqueName" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
+			<result name="success">/public/page.jsp</result>
+		</action>
+		
 		<action name="getProductsInfo" class="com.tmwrk.voosky.web.action.product.ProductAction">
 			<result name="success">/public/productcategory.jsp</result>
 		</action>
@@ -21,5 +25,7 @@
 		<action name="getArticlesInfo" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success">/public/articlecategory.jsp</result>
 		</action>
+		
+		
 	</package>
 </struts>

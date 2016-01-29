@@ -28,6 +28,15 @@ public class SinglePageDaoImpl extends BaseDao<SinglePage> {
 		SinglePage sp = (SinglePage)getSqlMapClientTemplate().queryForObject("singlePage.findSiglePageById", params) ;
 		return sp ;
 	}
+	/**
+	 * 通过唯一标识名获取条目信息
+	 * @param params
+	 * @return
+	 */
+	public SinglePage findSiglePageByUniqueName(Map<String, Object> params) {
+		SinglePage sp = (SinglePage)getSqlMapClientTemplate().queryForObject("singlePage.findSiglePageByUniqueName", params) ;
+		return sp ;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

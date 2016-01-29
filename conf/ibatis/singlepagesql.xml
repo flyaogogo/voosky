@@ -26,6 +26,10 @@
 		select page_id,unique_name,page_name,content,keywords,description,nav_id,guide  
 			from vs_singlepage where page_id = #pageId#
 	</select>
+	<select id="findSiglePageByUniqueName" parameterClass="java.util.HashMap" resultMap="singleMap">
+		select page_id,unique_name,page_name,content,keywords,description,nav_id,guide  
+			from vs_singlepage where unique_name = #uniqueName#
+	</select>
 	
 	<insert id="insertSinglePage" parameterClass="SinglePage">
 		insert into vs_singlepage(page_id,unique_name,page_name,content,keywords,description,nav_id,guide) values 

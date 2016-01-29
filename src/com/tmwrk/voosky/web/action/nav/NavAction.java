@@ -185,9 +185,21 @@ public class NavAction extends BaseAction {
 		return SUCCESS ;
 	}
 	
+	/**
+	 * 列出导航一级菜单
+	 * @return
+	 */
+	public String getParentName(){
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("parentId", "0") ;
+		navList = navService.getNavsByParentId(params) ;
+		return SUCCESS ;
+	}
+	
 	public String getNavType() {
 		return navType;
 	}
+	
 	public void setNavType(String navType) {
 		this.navType = navType;
 	}

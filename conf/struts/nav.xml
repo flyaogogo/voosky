@@ -29,6 +29,12 @@
 			</result>
 		</action>
 		
+		<action name="listAllParentNavInfo" method="getParentName" class="com.tmwrk.voosky.web.action.nav.NavAction">
+			<result name="success" type="json">
+				<param name="root">navList</param>
+			</result>
+		</action>
+		
 	</package>
 	
 </struts>

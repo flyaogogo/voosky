@@ -174,3 +174,23 @@ function post(URL, PARAMS) {
 	temp.submit();
 	return temp;
 }
+
+//页面打开时  加载  导航
+window.onload = function(selectId) {
+	console.log(".... index global..." );
+	var dataList ;
+	$.ajax({
+		async:false,
+		type : 'POST',
+		dataType : "json",
+		url : ctx+"/nav/listAllParentNavInfo.htm",//请求的action路径   
+		error : function() {//请求失败处理函数   
+			alert('请求失败');
+		},
+		success : function(data) { //请求成功后处理函数。
+			dataList = data ;
+			console.log(dataList );
+		}
+	});
+	
+}
