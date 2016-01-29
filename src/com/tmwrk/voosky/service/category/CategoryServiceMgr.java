@@ -31,6 +31,18 @@ public class CategoryServiceMgr {
 	}
 	
 	/**
+	 * 关联vs_nav找到与之对应的URL
+	 * @param cate
+	 * @return
+	 */
+	public List<Category> listCatesUrlByStatus(Map<String, Object> cate){
+		
+		List<Category> cList = categoryDao.listCatesUrlByStatus(cate) ;
+		
+		return cList ;
+	}
+	
+	/**
 	 *  通过分类Id，获取整条数据信息
 	 * @param cate
 	 * @return

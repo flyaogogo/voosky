@@ -28,10 +28,10 @@
 		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where nav_id=#navId#;
 	</select>
 	<select id="getNavigationsByParentId" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#parentId#
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#parentId# order by vsort asc
 	</select>
 	<select id="getNavigateByURLId" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where module_url like concat('%', #murl#, '%')
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where module_url like concat('%', #murl#, '%') order by vsort asc
 	</select>
 	<select id="getNavigationsByModule" parameterClass="java.util.HashMap" resultMap="navMap">
 		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#module# order by vsort asc

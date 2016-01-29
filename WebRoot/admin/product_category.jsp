@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		tmpData = tmpData.substring(0,tmpData.length-1) ;//去掉最后一个逗号
 	}
 	tmpData = tmpData + "]" ;
-	//console.log(tmpData) ;
+	console.log(tmpData) ;
 	dataList = eval(tmpData) ;
 	
 	var parentId = '<s:property value="navBean.parentId"/>' ;

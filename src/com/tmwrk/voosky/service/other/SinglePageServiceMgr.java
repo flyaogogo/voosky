@@ -33,7 +33,7 @@ public class SinglePageServiceMgr {
 	}
 	
 	public SinglePage findSiglePageByUniqueName(Map<String, Object> params){
-		SinglePage sp = singlePageDao.findById(params) ;
+		SinglePage sp = singlePageDao.findSiglePageByUniqueName(params) ;
 		return sp ;
 	}
 	

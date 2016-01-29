@@ -178,6 +178,22 @@ function post(URL, PARAMS) {
 //页面打开时  加载  导航
 window.onload = function(selectId) {
 	console.log(".... index global..." );
+	
+	var ul = document.getElementById("public-header-nav-ul-id");
+	
+	var first_li = document.createElement("li");
+	//设置 li 属性，如 class   <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
+　　　first_li.setAttribute("class", "cur");
+
+	var first_a = document.createElement("a");
+	first_a.setAttribute("href", ctx + "/index.htm");
+	first_a.setAttribute("class", "first");
+	first_a.innerHTML="首页" ;
+	
+	first_li.appendChild(first_a);
+　　　ul.appendChild(first_li);
+	
+	
 	var dataList ;
 	$.ajax({
 		async:false,
@@ -190,6 +206,29 @@ window.onload = function(selectId) {
 		success : function(data) { //请求成功后处理函数。
 			dataList = data ;
 			console.log(dataList );
+			//<li class="cur hover"><a href="${ctx }/web/getProductsInfo.htm" target="_blank">产品中心</a> </li>
+			$.each(data, function(i,item){  
+				//console.log(item.navId+","+item.navName);
+				
+				var middle_li = document.createElement("li");
+				//设置 li 属性，如 class
+			　　　middle_li.setAttribute("class", "cur hover");
+
+				var middle_a = document.createElement("a");
+				middle_a.setAttribute("href", ctx + item.moduleUrl);
+				middle_a.setAttribute("target", "_blank");
+				console.log(i+"----"+ item.module) ;
+				if(i==6){
+					middle_a.setAttribute("class", "last");
+				}
+				
+				middle_a.innerHTML=item.navName ;
+				
+				middle_li.appendChild(middle_a);
+			　　　ul.appendChild(middle_li);
+				
+            });  
+			
 		}
 	});
 	

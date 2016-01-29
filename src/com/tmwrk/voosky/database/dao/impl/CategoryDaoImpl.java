@@ -35,6 +35,12 @@ public class CategoryDaoImpl extends BaseDao<Category> {
 		List<Category> cateList = (List<Category>)getSqlMapClientTemplate().queryForList("category.findCategoryByStatus", params) ;
 		return cateList;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Category> listCatesUrlByStatus(Map<String, Object> params) {
+		List<Category> cateList = (List<Category>)getSqlMapClientTemplate().queryForList("category.listCatesUrlByStatus", params) ;
+		return cateList;
+	}
 
 	public boolean deleteCateById(Category c){
 		getSqlMapClientTemplate().delete("category.deleteCateById", c) ;

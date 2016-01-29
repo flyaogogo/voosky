@@ -26,9 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="treeBox">
      <h3>文章分类</h3>
      <ul>
-     <s:iterator value="ctgryList" var="ctgry">
-     	<li class="cur"><a href="${ctx }/web/getArticlesInfo.htm?cateId=<s:property value="#ctgry.cateId"/>"><s:property value="#ctgry.cateName"/></a></li>
-     </s:iterator>
+     	<s:iterator value="ctgryList" var="ctgry">
+			<li class="cur"><s:property value="#ctgry.guideAliases"/> <a href="${ctx }<s:property value='#ctgry.desc'/>?navId=<s:property value='#ctgry.navId'/>"><s:property value="#ctgry.cateName"/></a></li>
+		</s:iterator>
       <!-- <li class="cur"><a href="">公司动态</a></li>
       <li class="cur"><a href="">行业新闻</a></li> -->
      </ul>

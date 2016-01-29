@@ -26,13 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <h3>产品分类</h3>
        <ul>
 
-        <li class="cur"><a href="">电子数码</a></li>
+		<s:iterator value="pro.cateList" var="ctgry">
+			<li class="cur"><s:property value="#ctgry.guideAliases"/> <a href="${ctx }<s:property value='#ctgry.desc'/>?navId=<s:property value='#ctgry.navId'/>"><s:property value="#ctgry.cateName"/></a></li>
+		</s:iterator>
+        <!-- <li class="cur"><a href="">电子数码</a></li>
         <ul>
          <li class="cur">-<a href="">平板电脑</a></li>
          <li class="cur">-<a href="">智能手机</a></li>
         </ul>
 		<li class="cur"><a href="">家居百货</a></li>
-        <li class="cur"><a href="">母婴用品</a></li>
+        <li class="cur"><a href="">母婴用品</a></li> -->
         
        </ul>
       </div>

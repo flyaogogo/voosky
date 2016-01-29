@@ -38,7 +38,7 @@ TreeSelector.prototype.createSubOption = function(level, current) {
 	if(current.status=="m"){
 		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.url));// 添加Option选项    
 	}else if(current.status=="p"){
-		//console.log(current.id.trim() +"@" + current.levelalias) ;
+		//console.log(current.id +"@" + current.levelalias) ;
 		this._item.options.add(new Option(blank + current.text, current.id + "@" + current.levelalias));// 添加Option选项  上级分类
 	}
 
@@ -88,6 +88,7 @@ function selectLoadData(selectId,data,status,treeRootId,catType){
 	var ts = new TreeSelector(selectId,treeRootId);//select的id  ,
 	if(catType=='nav'){
 		$(data).each(function() {
+			//console.log(this['navName'] );
 			ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],this['guideAliases'],status);
 			
 		});

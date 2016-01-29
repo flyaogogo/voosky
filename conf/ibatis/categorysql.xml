@@ -23,6 +23,12 @@
 		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
 			where cate_status = #cateStatus# order by vsort asc
 	</select>
+	
+	<select id="listCatesUrlByStatus" parameterClass="java.util.HashMap" resultMap="categoryMap">
+		select vsc.cat_id,vsc.unique_name,vsc.cat_name,vsc.keywords,vsc.cate_status,vsc.nav_id,vsc.guide,vsc.vsort,vsn.module_url as description
+ 			from vs_category vsc,vs_nav vsn  where vsc.nav_id=vsn.nav_id and cate_status = #cateStatus# order by vsort asc
+	</select>
+	
 	<select id="findCategoryById" parameterClass="java.util.HashMap" resultMap="categoryMap">
 		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
 			where cat_id = #cateId#

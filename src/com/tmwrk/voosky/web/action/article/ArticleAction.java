@@ -61,7 +61,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		artList = articleService.findAllArticlesInfo(param) ;
 		
 		navBean = navService.getAllNavByParentId("getArticlesInfo") ;
-//		ctgryList = getProductCategory() ;
+		ctgryList = getArticleCategory() ;
 		
 		return SUCCESS ;
 	}
@@ -71,7 +71,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("id", art.getId()) ;
 		article = articleService.findArticleInfoById(param) ;
-		article.setCateList(getProductCategory());
+		article.setCateList(getArticleCategory());
 		return SUCCESS ;
 	}
 	
@@ -135,10 +135,10 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	 * 商品分类
 	 * @return
 	 */
-	private List<Category> getProductCategory(){
+	private List<Category> getArticleCategory(){
 		Map<String, Object> cateMap = new HashMap<String, Object>() ;
 		cateMap.put("cateStatus", "article") ;
-		List<Category> cateList = categoryService.findCateByStatus(cateMap) ;
+		List<Category> cateList = categoryService.listCatesUrlByStatus(cateMap) ;
 		return cateList ;
 	}
 	

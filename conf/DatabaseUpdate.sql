@@ -55,6 +55,28 @@ create table vs_nav(
 	PRIMARY KEY (nav_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
 
+-- ----------------------------
+-- Records of vs_nav
+-- ----------------------------
+INSERT INTO `vs_nav` VALUES ('6', 'm', '电子数码', '-', '/web/getProductsInfo.htm', '5', 'middle', '31');
+INSERT INTO `vs_nav` VALUES ('3', 'devcourse', '发展历程', '-', '/web/getSPInfoByName.htm?uniqueName=devcourse', '1', 'middle', '12');
+INSERT INTO `vs_nav` VALUES ('4', 'contactus', '联系我们', '-', '/web/getSPInfoByName.htm?uniqueName=contactus', '1', 'middle', '13');
+INSERT INTO `vs_nav` VALUES ('5', 'product', '产品中心', '', '/web/getProductsInfo.htm', '0', 'middle', '30');
+INSERT INTO `vs_nav` VALUES ('1', 'about', '公司简介', '', '/web/getSPInfoByName.htm?uniqueName=about', '0', 'middle', '10');
+INSERT INTO `vs_nav` VALUES ('2', 'honor', '企业荣誉', '-', '/web/getSPInfoByName.htm?uniqueName=honor', '1', 'middle', '11');
+INSERT INTO `vs_nav` VALUES ('7', 'm', '智能手机', '--', '/web/getProductsInfo.htm', '6', 'middle', '32');
+INSERT INTO `vs_nav` VALUES ('8', 'm', '平板电脑', '--', '/web/getProductsInfo.htm', '6', 'middle', '33');
+INSERT INTO `vs_nav` VALUES ('9', 'm', '家居百货', '-', '/web/getProductsInfo.htm', '5', 'middle', '34');
+INSERT INTO `vs_nav` VALUES ('10', 'm', '母婴用品', '-', '/web/getProductsInfo.htm', '5', 'middle', '35');
+INSERT INTO `vs_nav` VALUES ('11', 'article', '文章中心', '', '/web/getArticlesInfo.htm', '0', 'middle', '50');
+INSERT INTO `vs_nav` VALUES ('12', 'm', '公司动态', '-', '/web/getArticlesInfo.htm', '11', 'middle', '51');
+INSERT INTO `vs_nav` VALUES ('13', 'm', '行业新闻', '-', '/web/getArticlesInfo.htm', '11', 'middle', '52');
+INSERT INTO `vs_nav` VALUES ('14', 'market', '营销网络', '', '/web/getSPInfoByName.htm?uniqueName=market', '0', 'middle', '60');
+INSERT INTO `vs_nav` VALUES ('15', 'm', '企业荣誉', '', '/web/getSPInfoByName.htm?uniqueName=honor', '0', 'middle', '70');
+INSERT INTO `vs_nav` VALUES ('16', 'job', '人才招聘', '', '/web/getSPInfoByName.htm?uniqueName=job', '0', 'middle', '80');
+INSERT INTO `vs_nav` VALUES ('17', 'm', '联系我们', '', '/web/getSPInfoByName.htm?uniqueName=contactus', '0', 'middle', '90');
+
+
 create table vs_category(
 	cat_id	varchar(10) not null,
 	unique_name	varchar(50) not null,
@@ -68,7 +90,16 @@ create table vs_category(
 	PRIMARY KEY (cat_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
 
-
+-- ----------------------------
+-- Records of vs_category
+-- ----------------------------
+INSERT INTO `vs_category` VALUES ('008', 'ElectronicDigital', '电子数码', '电子 数码', '电子数码', 'product', '6', '', '10');
+INSERT INTO `vs_category` VALUES ('009', 'smartphone', '智能手机', '智能手机', '智能手机', 'product', '7', '-', '11');
+INSERT INTO `vs_category` VALUES ('013', 'CompanyNews', '公司动态', '公司动态', '公司动态', 'article', '12', '', '10');
+INSERT INTO `vs_category` VALUES ('010', 'tablet', '平板电脑', '平板电脑', '平板电脑', 'product', '8', '-', '12');
+INSERT INTO `vs_category` VALUES ('011', 'HomeDepot', '家居百货', '家居百货', '家居百货', 'product', '9', '', '30');
+INSERT INTO `vs_category` VALUES ('012', 'BabyProducts', '母婴用品', '母婴用品', '母婴用品', 'product', '10', '', '40');
+INSERT INTO `vs_category` VALUES ('014', 'IndustryNews', '行业新闻', '行业新闻', '行业新闻', 'article', '13', '', '30');
 
 create table vs_article(
 	id	int not null,
@@ -143,6 +174,17 @@ create table vs_backup(
 	slave_time	varchar(25) not null,
 	PRIMARY KEY (id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
+
+-- ----------------------------
+-- Records of vs_singlepage
+-- ----------------------------
+INSERT INTO `vs_singlepage` VALUES ('1', 'about', '公司简介', '<p><span style=\"color: rgb(153, 153, 153); font-family: &#39;Microsoft Yahei&#39;, 微软雅黑, 宋体, Arial, Lucida, Verdana, Helvetica, sans-serif; font-size: 12px; line-height: 24px; background-color: rgb(244, 244, 244);\">VsJava是一款轻量级企业网站管理系统，基于jsp+Mysql架构的，可运行在Linux、Windows、MacOSX、Solaris等各种平台上，系统搭载Smarty模板引擎，支持自定义伪静态，前台模板采用DIV+CSS设计，后台界面设计简洁明了，功能简单易具有良好的用户体验，稳定性好、扩展性及安全性强，可面向中小型站点提供网站建设解决方案。</span></p>', 'Vsjava   轻量级  企业  网站   管理系统', 'Vsjava轻量级企业网站管理系统', '0', null);
+INSERT INTO `vs_singlepage` VALUES ('2', 'honor', '企业荣誉', '<p>afadfaadsfasdfsa</p>', 'adfad', 'adfd', '2', '--');
+INSERT INTO `vs_singlepage` VALUES ('3', 'devcourse', '发展历程', '<p>sdsadfa</p>', 'a', 'd', '3', '--');
+INSERT INTO `vs_singlepage` VALUES ('4', 'contactus', '联系我们', '<p>sdsa<br/></p>', 'ad', 'ad', '17', '-');
+INSERT INTO `vs_singlepage` VALUES ('5', 'market', '营销网络', '<p>fadss</p>', 'ad', 'df', '14', '-');
+INSERT INTO `vs_singlepage` VALUES ('6', 'job', '人才招聘', '<p>sdsa</p>', 'adf', 'adf', '16', '-');
+
 
 
 insert into vs_config values(1,"main.site.name","voosky",50);

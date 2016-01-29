@@ -67,7 +67,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		proList = productService.findAllProductsInfo(param) ;
 		
 		navBean = navService.getAllNavByParentId("getProductsInfo") ;
-//		ctgryList = getProductCategory() ;
+		ctgryList = getProductCategory() ;
 		
 		return SUCCESS ;
 	}
@@ -150,7 +150,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	private List<Category> getProductCategory(){
 		Map<String, Object> cateMap = new HashMap<String, Object>() ;
 		cateMap.put("cateStatus", "product") ;
-		List<Category> cateList = categoryService.findCateByStatus(cateMap) ;
+		List<Category> cateList = categoryService.listCatesUrlByStatus(cateMap) ;
 		return cateList ;
 	}
 

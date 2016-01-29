@@ -29,7 +29,8 @@
 	     </div>
 		<!-- 导航栏 -->
 	    <div id="mainNav">
-	     <ul class="wrap">
+	     <ul class="wrap" id="public-header-nav-ul-id">
+	     <%-- 
 	      <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
 	      <li class="cur hover"><a href="page.html" target="_blank">公司简介</a> </li>
 	      <li class="cur hover"><a href="${ctx }/web/getProductsInfo.htm" target="_blank">产品中心</a> </li>
@@ -38,6 +39,7 @@
 	      <li class="cur hover"><a href="page.html" target="_blank">企业荣誉</a> </li>
 	      <li class="cur hover"><a href="page.html" target="_blank">人才招聘</a> </li>
 	      <li class="cur hover"><a href="page.html" class="last" target="_blank">联系我们</a> </li>
+	       --%>
 	      <div class="clear"></div>
 	     </ul>
 	    </div>
