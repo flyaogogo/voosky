@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   <div id="pageIn"> <div class="urHere">当前位置：<a href="#">首页</a><b>></b>企业简介</div>
    <div id="product">
-    <div class="productImg"><a href="" target="_blank"><img src="${ctx }/<s:property value="pro.thumbUrl"/>" width="300" /></a></div>
+    <div class="productImg"><a href="" target="_blank"><img src="${ctx }/<s:property value="pro.thumbUrl"/>" width="135" height="135" /></a></div>
     <div class="productInfo">
      <h1><s:property value="pro.title"/></h1>
      <ul>
