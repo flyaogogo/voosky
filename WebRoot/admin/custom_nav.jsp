@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td width="80" height="35" align="right">导航名称</td>
             <td>
-             <input type="text" id="nav_name" name="navName" value="" size="40" class="inpMain" />
+             <input type="text" id="nav_name" name="navName" value="" size="40" class="inpMain" required="required"/>
             </td>
            </tr>
            <tr>
@@ -154,13 +154,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td width="80" height="35" align="right">模板名称</td>
             <td>
-             <input type="text" id="module" name="module" value="" size="40" class="inpMain" />
+             <input type="text" id="module" name="module" value="" size="40" class="inpMain" required="required"/>
             </td>
            </tr>
            <tr>
             <td width="80" height="35" align="right">导航名称</td>
             <td>
-             <input type="text" id="nav_name" name="navName" value="" size="40" class="inpMain" />
+             <input type="text" id="nav_name" name="navName" value="" size="40" class="inpMain" required="required"/>
             </td>
            </tr>
            <tr>
@@ -232,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td width="80" height="35" align="right">导航名称</td>
             <td>
-             <input type="text" id="nav_name" name="navName" value="" size="40" class="inpMain" />
+             <input type="text" id="nav_name" name="navName" value="" size="40" class="inpMain" required="required"/>
             </td>
            </tr>
            <tr>
@@ -252,7 +252,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <tr>
             <td height="35" align="right">上级分类</td>
             <td id="parent">
-             <select id="selectTree-update-parent" name="parentId">
+             <select id="selectTree-update-parent" name="parentId" >
               <option value="0">无</option>
              <!--  <option value="{$list.id}">简介</option> -->
              </select>

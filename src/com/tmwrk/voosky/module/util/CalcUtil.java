@@ -2,6 +2,7 @@ package com.tmwrk.voosky.module.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -35,9 +36,18 @@ public class CalcUtil {
 		if(fbase.getImageFile()==null){
 			return null ;
 		}
+		String os = System.getProperty("os.name") ;
+		String driver = "" ;
+		System.out.println("os 操作系统类型：" + os);
+		if(os.toLowerCase().startsWith("win")){
+			driver = readConfigProperties().getProperty("upload.drive.path") ;
+		}else if(os.toLowerCase().indexOf("linux")>=0){
+			driver = "/" ;
+		}
+		
 		String myFileFileName = "image_" + fbase.getImageFileFileName() ;
 		
-		String slideFilePathStr = "upload/" + fileDirectory + "/" ;
+		String slideFilePathStr = driver + "vooskyupload/" + fileDirectory + "/" ;
 		
 		String imageFilePath = slideFilePathStr + myFileFileName;
 		
@@ -52,9 +62,15 @@ public class CalcUtil {
 				fb.setMessage(retStatus);
 				return fb ;
 			}
+			
 			// 创建文件
-			ServletContext context = request.getSession().getServletContext();
-			String destPath = context.getRealPath("/") + slideFilePathStr ;
+			String destPath = null ;
+			if("".equals(driver)){
+				ServletContext context = request.getSession().getServletContext();
+				destPath = context.getRealPath("/") + slideFilePathStr ;
+			}else{
+				destPath = slideFilePathStr ;
+			}
 			
 			File destFile = new File(destPath, myFileFileName);
 			if (destFile.exists()) {
@@ -132,4 +148,18 @@ public class CalcUtil {
 		return arr ;
 	}
 	
+	/**
+	 * wfluo 2015.07.23 add
+	 * 读取系统config.properties配置文件
+	 * @return
+	 */
+	public static Properties readConfigProperties() {
+		Properties props = new Properties();
+		try {
+			props.load(CalcUtil.class.getClassLoader().getResourceAsStream("config.properties"));
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		return props ;
+	}
 }

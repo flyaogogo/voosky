@@ -22,7 +22,7 @@ $(function(){
 		$(".spage").css("display", "none");
 		$(".vs-sp-add-btn-cls").css("display", "block");
 		var ue = UE.getEditor('content');
-		console.log(pageId) ;
+		//console.log(pageId) ;
 		if(typeof(pageId) == "undefined"){
 			$(".vs-sp-add-btn-cls input[name='pageName']").val("公司简介") ;
 			$(".vs-sp-add-btn-cls input[name='uniqueName']").val("about") ;

@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td width="90" align="right">文章名称</td>
        <td>
         <input type="hidden" name="id" />
-        <input type="text" name="title" value="" size="80" class="inpMain" />
+        <input type="text" name="title" value="" size="80" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>

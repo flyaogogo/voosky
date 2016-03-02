@@ -177,7 +177,7 @@ function post(URL, PARAMS) {
 
 //页面打开时  加载  导航
 window.onload = function(selectId) {
-	console.log(".... index global..." );
+	//console.log(".... index global..." );
 	
 	var ul = document.getElementById("public-header-nav-ul-id");
 	
@@ -205,7 +205,7 @@ window.onload = function(selectId) {
 		},
 		success : function(data) { //请求成功后处理函数。
 			dataList = data ;
-			console.log(dataList );
+			//console.log(dataList );
 			//<li class="cur hover"><a href="${ctx }/web/getProductsInfo.htm" target="_blank">产品中心</a> </li>
 			$.each(data, function(i,item){  
 				//console.log(item.navId+","+item.navName);
@@ -217,7 +217,7 @@ window.onload = function(selectId) {
 				var middle_a = document.createElement("a");
 				middle_a.setAttribute("href", ctx + item.moduleUrl);
 				middle_a.setAttribute("target", "_blank");
-				console.log(i+"----"+ item.module) ;
+				//console.log(i+"----"+ item.module) ;
 				if(i==6){
 					middle_a.setAttribute("class", "last");
 				}

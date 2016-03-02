@@ -29,7 +29,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="indexBox">
           <div class="boxTitle">单页面快速管理</div>
           <ul class="ipage">
-           <a href="">公司简</a><a href="">介企业荣誉</a><a href="">发展历程</a><a href="">联系我们</a><a href="">人才招聘</a><a href="">营销网络</a> 
+           <s:iterator value="console.spList" var="sp">
+           	 <div>
+	          	<a href="javascript:void(0);" class="vs-sp-update-cls"><s:property value="#sp.pageName"/></a>
+	          	<input type="hidden" name="pageId" value="<s:property value="#sp.pageId"/>" id="hidden-singlepage-id"/>
+          	 </div>
+           </s:iterator>
+           <!-- <a href="">公司简</a><a href="">介企业荣誉</a><a href="">发展历程</a><a href="">联系我们</a><a href="">人才招聘</a><a href="">营销网络</a>  -->
            <div class="clear"></div>
           </ul>
         </div>

@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td width="100" align="right">管理员名称</td>
        <td>
-        <input type="text" name="userName" size="40" class="inpMain" />
+        <input type="text" name="userName" size="40" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>
@@ -71,13 +71,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">密码</td>
        <td>
-        <input type="password" name="password" size="40" class="inpMain" />
+        <input type="password" name="password" size="40" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>
        <td align="right">确认密码</td>
        <td>
-        <input type="password" name="password_confirm" size="40" class="inpMain" />
+        <input type="password" name="password_confirm" size="40" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>

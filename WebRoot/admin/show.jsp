@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <tr>
           <td><strong>幻灯名称</strong>
           <input type="hidden" name="id" />
-          <input type="text" name="showName" value="" size="20" class="inpMain" />
+          <input type="text" name="showName" value="" size="20" class="inpMain" required="required"/>
           </td>
          </tr>
          <tr>

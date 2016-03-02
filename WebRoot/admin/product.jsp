@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td width="90" align="right">商品名称</td>
        <td>
         <input type="hidden" name="id" />
-        <input type="text" name="title" value="" size="80" class="inpMain" />
+        <input type="text" name="title" value="" size="80" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>
@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">商品价格</td>
        <td>
-        <input type="text" name="price" value="" size="20" class="inpMain" />
+        <input type="text" name="price" value="" size="20" class="inpMain" required="required"/>
        </td>
       </tr>
 

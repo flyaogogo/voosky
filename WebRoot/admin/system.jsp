@@ -47,11 +47,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <tr>
               <td align="right">站点名称</td>
               <td>
-                <input name="sitename" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.name']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+                <input name="sitename" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.name']"/>" required="required" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
               <td align="right">站点标题</td>
-              <td><input name="sitetitle" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.title']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
+              <td><input name="sitetitle" type="text" id="textfield" value="<s:property value="mapSysConf['main.site.title']"/>" required="required" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;"></td>
             </tr>
             <tr>
               <td align="right">站点关键字</td>

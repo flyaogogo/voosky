@@ -71,13 +71,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td width="80" align="right">单页面标题</td>
        <td>
         <input type="hidden" name="pageId"/>
-        <input type="text" name="pageName" value="" size="40" class="inpMain" />
+        <input type="text" name="pageName" value="" size="40" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>
        <td align="right">别名</td>
        <td>
-        <input type="text" name="uniqueName" value="" size="40" class="inpMain" />
+        <input type="text" name="uniqueName" value="" size="40" class="inpMain" required="required"/>
        </td>
       </tr>
       <tr>
