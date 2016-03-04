@@ -46,7 +46,12 @@ $(function(){
 			async:true,
 			success:function(data){
 				//设置编辑器的内容
-			    ue.setContent(data.content);
+				if(data.content==null){
+					ue.setContent("");
+				}else{
+					ue.setContent(data.content);
+				}
+			    
 				$(".vs-article-type-oper-cls input[name='id']").val(data.id) ;
 				$(".vs-article-type-oper-cls input[name='title']").val(data.title) ;
 				

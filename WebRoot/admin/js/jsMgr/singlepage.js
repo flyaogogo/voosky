@@ -41,7 +41,11 @@ $(function(){
 				async:true,
 				success:function(data){
 					//设置编辑器的内容
-				    ue.setContent(data.content);
+					if(data.content==null){
+						ue.setContent("");
+					}else{
+						ue.setContent(data.content);
+					}
 					$(".vs-sp-add-btn-cls input[name='pageId']").val(data.pageId) ;
 					$(".vs-sp-add-btn-cls input[name='pageName']").val(data.pageName) ;
 					$(".vs-sp-add-btn-cls input[name='uniqueName']").val(data.uniqueName) ;

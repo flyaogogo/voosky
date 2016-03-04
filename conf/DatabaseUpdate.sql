@@ -107,7 +107,7 @@ create table vs_article(
 	title	varchar(254) not null,
 	is_recommend	varchar(10) not null,
 	content		Varchar(3000) ,
-	thumb_url	Varchar(15) ,
+	thumb_url	Varchar(254) ,
 	keywords	varchar(254) ,
 	description	varchar(254) ,
 	clicknum	int not null,

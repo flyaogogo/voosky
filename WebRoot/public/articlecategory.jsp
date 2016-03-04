@@ -43,19 +43,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 
   </div>
-  <div id="pageIn"> <div class="urHere">当前位置：<a href="#">首页</a><b>></b>企业简介</div>
+  <div id="pageIn"> <div class="urHere">当前位置：<a href="#">首页</a><b>></b>文章中心</div>
    <div id="articleList"> 
    
    <s:iterator value="artList" var="art">
     <dl class="last">
-    <div class="numDate"> <em>100</em>
+    <div class="numDate"> <em><s:property value="#art.clickNum"/></em>
      <p><s:property value="#art.addTime"/></p>
     </div>
     <dt><a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>"><s:property value="#art.title"/></a></dt>
     <dd>
      <p class="img"><img src="" height="42"></p>
    
-     <p class="desc"><s:property value="#art.content" escape="false"/></p>
+     <p class="desc">
+     	<s:if test="#art.content.length()>30">
+         	<s:property value="#art.content.substring(0,30)" escape="false"/> ... ...
+         </s:if>
+         <s:else>
+         	<s:property value="#art.content" escape="false"/>
+         </s:else>
+     </p>
     </dd>
     </dl>
     </s:iterator>

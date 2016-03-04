@@ -12,7 +12,7 @@
  </div>
 </div>
  <div class="wrap">
-  <div class="footNav"><a href="">© vsjsp轻量级企业网站管理系统 2015 All Rights Reserved. Powered by vs</a></div>
+  <div class="footNav"><a href="">© vsjsp轻量级企业网站管理系统 2016 All Rights Reserved. Powered by vs</a></div>
   
   </div>
 </div>

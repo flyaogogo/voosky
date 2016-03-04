@@ -216,7 +216,7 @@ window.onload = function(selectId) {
 
 				var middle_a = document.createElement("a");
 				middle_a.setAttribute("href", ctx + item.moduleUrl);
-				middle_a.setAttribute("target", "_blank");
+				//middle_a.setAttribute("target", "_blank");
 				//console.log(i+"----"+ item.module) ;
 				if(i==6){
 					middle_a.setAttribute("class", "last");

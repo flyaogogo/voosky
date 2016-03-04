@@ -82,7 +82,16 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		param.put("id", product.getId()) ;
 		pro = productService.findProductInfoById(param) ;
 		
+		//商品左侧导航
+		List<Category> cateList = getProductCategory() ;
 		pro.setCateList(getProductCategory());
+		
+		for(Category c : cateList){
+			if(pro.getCateId().equals(c.getNavId()+"")){
+				pro.setMessage(c.getCateName());
+				break ;
+			}
+		}
 		return SUCCESS ;
 	}
 	

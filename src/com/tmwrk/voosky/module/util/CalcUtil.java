@@ -36,6 +36,7 @@ public class CalcUtil {
 		if(fbase.getImageFile()==null){
 			return null ;
 		}
+		/*
 		String os = System.getProperty("os.name") ;
 		String driver = "" ;
 		System.out.println("os 操作系统类型：" + os);
@@ -44,10 +45,11 @@ public class CalcUtil {
 		}else if(os.toLowerCase().indexOf("linux")>=0){
 			driver = "/" ;
 		}
-		
+		*/
 		String myFileFileName = "image_" + fbase.getImageFileFileName() ;
 		
-		String slideFilePathStr = driver + "vooskyupload/" + fileDirectory + "/" ;
+		//String slideFilePathStr = driver + "vooskyupload/" + fileDirectory + "/" ;
+		String slideFilePathStr = "upload/" + fileDirectory + "/" ;
 		
 		String imageFilePath = slideFilePathStr + myFileFileName;
 		
@@ -65,12 +67,16 @@ public class CalcUtil {
 			
 			// 创建文件
 			String destPath = null ;
+			/*
 			if("".equals(driver)){
 				ServletContext context = request.getSession().getServletContext();
 				destPath = context.getRealPath("/") + slideFilePathStr ;
 			}else{
 				destPath = slideFilePathStr ;
 			}
+			*/
+			ServletContext context = request.getSession().getServletContext();
+			destPath = context.getRealPath("/") + slideFilePathStr ;
 			
 			File destFile = new File(destPath, myFileFileName);
 			if (destFile.exists()) {

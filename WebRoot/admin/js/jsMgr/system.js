@@ -101,7 +101,7 @@ $(function(){
 	    $.each($('#upload_file')[0].files, function(i, file) {
 	        data.append('imageFile', file);
 	    });
-	    console.log(data) ;
+	    //console.log(data) ;
 	    $.ajax({
 	        url:fileUrl,
 	        type:'POST',
@@ -122,7 +122,7 @@ $(function(){
 	        		$(".upload_file_mark_msg_cls").append(pDom);         // 追加新元素
 	        	}
 	        	
-	            console.log(data.fileRealPath) ;
+	            //console.log(data.fileRealPath) ;
 	            
 	        }
 	    });

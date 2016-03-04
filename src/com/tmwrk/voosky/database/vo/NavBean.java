@@ -5,6 +5,7 @@ import java.util.List;
 public class NavBean {
 	private List<Navigation> navList ;
 	private String parentId ;
+	private String curStatus ;
 	
 	public List<Navigation> getNavList() {
 		return navList;
@@ -17,6 +18,12 @@ public class NavBean {
 	}
 	public void setParentId(String parentId) {
 		this.parentId = parentId;
+	}
+	public String getCurStatus() {
+		return curStatus;
+	}
+	public void setCurStatus(String curStatus) {
+		this.curStatus = curStatus;
 	}
 	
 }

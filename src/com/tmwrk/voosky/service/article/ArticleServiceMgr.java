@@ -40,6 +40,10 @@ public class ArticleServiceMgr {
 		articleDao.update(p) ;
 	}
 	
+	public void updateClickNumber(Article p){
+		articleDao.updateClickNumber(p) ;
+	}
+	
 	public boolean deleteArticleById(Article p){
 		return articleDao.deleteArticleById(p) ;
 	}

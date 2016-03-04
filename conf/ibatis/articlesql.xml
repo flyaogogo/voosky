@@ -53,6 +53,9 @@
 	<update id="updateShowFirstPageById" parameterClass="Article">
 		update vs_article set is_recommend=#isRecommend# where id=#id#
 	</update>
+	<update id="updateClickNumber" parameterClass="Article">
+		update vs_article set clicknum=#clickNum# where id=#id#
+	</update>
 	
 	<delete id="deleteById" parameterClass="Article">
 		delete from vs_article where id=#id#

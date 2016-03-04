@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ModelDriven;
+import com.tmwrk.voosky.database.vo.NavBean;
 import com.tmwrk.voosky.database.vo.SinglePage;
 import com.tmwrk.voosky.module.util.CalcUtil;
+import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.service.other.SinglePageServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -22,11 +24,15 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 	@Autowired
 	private SinglePageServiceMgr singlePageService ;
 	
+	@Autowired
+	private NavServiceMgr navService ;
 	
 	private List<SinglePage> spList ;
 	private SinglePage sp ;
 	
 	SinglePage singlePage = new SinglePage() ;
+	
+	private NavBean navBean ;
 	
 	@Override
 	public String execute() throws Exception{
@@ -39,6 +45,7 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 		Map<String, Object> params = new HashMap<String, Object>() ;
 		params.put("pageId", singlePage.getPageId()) ;
 		sp = singlePageService.getSinglePageById(params) ;
+		
 		return SUCCESS ;
 	}
 	
@@ -51,6 +58,10 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 		Map<String, Object> params = new HashMap<String, Object>() ;
 		params.put("uniqueName", singlePage.getUniqueName()) ;
 		sp = singlePageService.findSiglePageByUniqueName(params) ;
+		
+		//单页面左侧导航
+		navBean = navService.getSinglePageNavBySp(singlePage.getUniqueName()) ;
+		
 		return SUCCESS ;
 	}
 	
@@ -99,6 +110,16 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 
 	public void setSpList(List<SinglePage> spList) {
 		this.spList = spList;
+	}
+
+
+	public NavBean getNavBean() {
+		return navBean;
+	}
+
+
+	public void setNavBean(NavBean navBean) {
+		this.navBean = navBean;
 	}
 
 }

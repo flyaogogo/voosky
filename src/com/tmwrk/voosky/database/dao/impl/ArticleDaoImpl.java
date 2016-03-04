@@ -23,6 +23,11 @@ public class ArticleDaoImpl extends BaseDao<Article>{
 		return null;
 	}
 
+	public Article updateClickNumber(Article params) {
+		getSqlMapClientTemplate().update("article.updateClickNumber", params) ;
+		return null;
+	}
+	
 	public Article updateShowFirstPageById(Article params) {
 		getSqlMapClientTemplate().update("article.updateShowFirstPageById", params) ;
 		return null;

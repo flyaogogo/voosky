@@ -39,7 +39,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<s:iterator value="index.proList" var="pro">
   			<li>
 		        <p class="img"><a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>"><img src="${ctx }/<s:property value="#pro.thumbUrl"/>" width="135" height="135" /></a></p>
-		        <p class="name"><a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>"><s:property value="#pro.title"/></a></p>
+		        <p class="name">
+			        <a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>">
+			        	
+			        	<s:if test="#pro.title.length()>30">
+		       		 		<s:property value="#pro.title.substring(0,30)"/> ... ...
+			       		 </s:if>
+			       		 <s:else>
+			       		 	<s:property value="#pro.title"/>
+			       		 </s:else>
+			        </a>
+		        </p>
 		        <p class="price">￥<s:property value="#pro.price"/>元</p>
 	        </li>
   		</s:iterator>
@@ -71,11 +81,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="about">
         <p><img src="${ctx }/public/images/img_company.jpg" /></p>
         <dl>
-         <dt>Vsjava轻量级企业网站管理系统</dt>
-         <dd>VsJava是一款轻量级企业网站管理系统，基于jsp+Mysql架构的，可运行在Linux、Windows、MacOSX、Solaris等各种平台上，系统搭载Smarty模板引擎，支持自定义伪静态，前台模板采用DIV+CSS设计，后台界面设计简洁明了，功能简单易具有良好的用户体验，稳定性好、扩展性及安全性强，可面向中小型站点提供网站建设解决方案。</dd>
+         <dt><s:property value="index.spAbout.desc"/></dt>
+         <dd>
+         <s:if test="index.spAbout.content.length()>100">
+         	<s:property value="index.spAbout.content.substring(0,100)" escape="false"/> ... ...
+         </s:if>
+         <s:else>
+         	<s:property value="index.spAbout.content" escape="false"/>
+         </s:else>
+         
+         </dd>
         </dl>
         <div class="clear"></div>
-        <a href="" class="aboutBtn">查看公司详细简介</a>
+        <a href="${ctx }/web/getSPInfoByName.htm?uniqueName=about" class="aboutBtn">查看公司详细简介</a>
        </div>
       </div>
     </div>
@@ -85,7 +103,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <h3><a href="">新闻中心</a></h3>
        <ul class="recommendArticle">
        <s:iterator value="index.artList" var="art">
-       		<li><b><s:property value="#art.addTime"/></b><a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>"><s:property value="#art.title"/></a></li>
+       		<li>
+       		<b><s:property value="#art.addTime"/></b>
+       		<a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>">
+       		 <s:if test="#art.title.length()>30">
+       		 	<s:property value="#art.title.substring(0,30)"/> ... ...
+       		 </s:if>
+       		 <s:else>
+       		 	<s:property value="#art.title"/>
+       		 </s:else>
+       		</a></li>
        </s:iterator>
        </ul>
     </div>

@@ -50,7 +50,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <dt><a href=""><img src="${ctx }/<s:property value="#pro.thumbUrl"/>" alt="" width="" height="" /></a></dt>
 	    <dd>
 	     <p class="name"><a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>" title=""><s:property value="#pro.title"/></a></p>
-	     <p class="brief"><s:property value="#pro.content" escape="false"/></p>
+	     <p class="brief">
+		     <s:if test="#pro.content.length()>40">
+			 	<s:property value="#pro.content.substring(0,40)" escape="false"/> ... ...
+			 </s:if>
+			 <s:else>
+				<s:property value="#pro.content" escape="false"/>
+			 </s:else>
+	     </p>
 	     <p class="price">价格：￥<s:property value="#pro.price"/> 元</p>
 	   
 	    </dd>

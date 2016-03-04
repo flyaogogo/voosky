@@ -81,10 +81,25 @@ public class IndexMgrAction extends BaseAction{
 //		index.setUser(getSessionUser());
 //		
 //		index.setSecurityStatus("error");
-		
+		index.setSpAbout(getSinglePageAbout(spList));
 		return SUCCESS ;
 	}
 
+	/**
+	 * 获取  about 页面
+	 * @param spList
+	 * @return
+	 */
+	private SinglePage getSinglePageAbout(List<SinglePage> spList){
+		SinglePage spAbout = null ;
+		for(SinglePage sp : spList){
+			if(sp.getUniqueName().equals("about")){
+				spAbout = sp ;
+				break ;
+			}
+		}
+		return spAbout ;
+	}
 	
 	public String findProductInfoById() throws Exception {
 		

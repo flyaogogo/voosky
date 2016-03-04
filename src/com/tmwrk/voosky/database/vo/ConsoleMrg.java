@@ -31,6 +31,8 @@ public class ConsoleMrg {
 	private String securityStatus ; //报警安全状态
 	
 	private List<Navigation> navList ;
+	
+	private SinglePage spAbout ;
 
 	public List<SinglePage> getSpList() {
 		return spList;
@@ -110,5 +112,13 @@ public class ConsoleMrg {
 
 	public void setNavList(List<Navigation> navList) {
 		this.navList = navList;
+	}
+
+	public SinglePage getSpAbout() {
+		return spAbout;
+	}
+
+	public void setSpAbout(SinglePage spAbout) {
+		this.spAbout = spAbout;
 	}
 }

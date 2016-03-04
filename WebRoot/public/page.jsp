@@ -26,15 +26,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="treeBox">
     <h3>关于我们</h3>
     <ul>
+    <s:iterator value="navBean.navList" var="nav">
+    	<s:if test="#nav.moduleUrl.contains(navBean.curStatus)">
+    		<li class="cur"><a href="${ctx }<s:property value='#nav.moduleUrl'/>"><s:property value="#nav.navName"/></a></li>
+    	</s:if>
+    	<s:else>
+    		<li ><a href="${ctx }<s:property value='#nav.moduleUrl'/>"><s:property value="#nav.navName"/></a></li>
+    	</s:else>
+    	
+    </s:iterator>
+    <!-- 
     <li class="cur"><a href="">公司简介</a></li>
     <li><a href="">企业荣誉</a></li>
     <li><a href="">发展历程</a></li>
     <li><a href="">联系我们</a></li>
+     -->
     </ul>
     </div>
   </div>
   <div id="pageIn">
-    <div class="urHere">当前位置：<a href="#">首页</a><b>></b>企业简介</div>
+    <div class="urHere">当前位置：<a href="#">首页</a><b>></b><s:property value="sp.pageName"/></div>
    <div id="page">
     <h1><s:property value="sp.pageName"/></h1>
     <div class="content">

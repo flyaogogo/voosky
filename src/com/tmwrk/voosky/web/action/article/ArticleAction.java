@@ -71,7 +71,22 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("id", art.getId()) ;
 		article = articleService.findArticleInfoById(param) ;
-		article.setCateList(getArticleCategory());
+		
+		//文章左侧导航
+		List<Category> cateList = getArticleCategory() ;
+		article.setCateList(cateList);
+		
+		for(Category c : cateList){
+			if(article.getCateId().equals(c.getNavId()+"")){
+				article.setMessage(c.getCateName());
+				break ;
+			}
+		}
+		
+		//查看时，修改点击次数
+		article.setClickNum(article.getClickNum()+1);
+		articleService.updateClickNumber(article);
+		
 		return SUCCESS ;
 	}
 	

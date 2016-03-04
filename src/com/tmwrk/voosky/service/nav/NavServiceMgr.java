@@ -105,6 +105,33 @@ public class NavServiceMgr {
 			}
 		}
 	}
+	
+	/**
+	 * 获取导航不重复的单页面
+	 * @param modelURL
+	 * @return
+	 */
+	public NavBean getSinglePageNavBySp(String status){
+		String modelURL = "getSPInfoByName" ;
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("murl", modelURL) ;
+		List<Navigation> tmpList = navDao.getNavigateByURLId(params) ;
+		
+		NavBean navbean = new NavBean() ;
+		//为去重
+		HashMap<String, String> map = new HashMap<String, String>();
+		for(int i=0;i<tmpList.size();i++){
+			if(map.get(tmpList.get(i).getModuleUrl())!=null){
+				tmpList.remove(tmpList.get(i));
+            } else {
+                map.put(tmpList.get(i).getModuleUrl(), "OK");
+            }
+		}
+		navbean.setNavList(tmpList);
+		navbean.setCurStatus(status);
+		return navbean ;
+	}
+	
 	/*
 	public List<TreeNode> getNavTree(String initParentId) {
 		List<TreeNode> trees = new ArrayList<TreeNode>() ;
