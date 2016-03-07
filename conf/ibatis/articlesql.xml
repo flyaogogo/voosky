@@ -28,7 +28,7 @@
 				and vsa.is_recommend = #isRecommend#
 			</isNotNull>
 			<isNotNull property="cateId">
-				and vsa.cat_id = #cateId#
+				and vsc.nav_id = #cateId#
 			</isNotNull>
 			<isNotNull property="title">
 				and vsa.title like concat('%', #title#, '%')
