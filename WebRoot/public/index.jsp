@@ -106,8 +106,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		<li>
        		<b><s:property value="#art.addTime"/></b>
        		<a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>">
-       		 <s:if test="#art.title.length()>30">
-       		 	<s:property value="#art.title.substring(0,30)"/> ... ...
+       		 <s:if test="#art.title.length()>15">
+       		 	<s:property value="#art.title.substring(0,15)"/> ... ...
        		 </s:if>
        		 <s:else>
        		 	<s:property value="#art.title"/>

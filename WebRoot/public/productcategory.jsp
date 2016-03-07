@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     <s:iterator value="proList" var="pro">
 	    <dl class="last">
-	    <dt><a href=""><img src="${ctx }/<s:property value="#pro.thumbUrl"/>" alt="" width="" height="" /></a></dt>
+	    <dt><a href=""><img src="${ctx }/<s:property value="#pro.thumbUrl"/>" alt="" width="135" height="135" /></a></dt>
 	    <dd>
 	     <p class="name"><a href="${ctx }/web/getProInfoById.htm?id=<s:property value="#pro.id"/>" title=""><s:property value="#pro.title"/></a></p>
 	     <p class="brief">

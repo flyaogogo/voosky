@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <h3>文章分类</h3>
      <ul>
      	<s:iterator value="ctgryList" var="ctgry">
-			<li class="cur"><s:property value="#ctgry.guideAliases"/> <a href="${ctx }<s:property value='#ctgry.desc'/>?navId=<s:property value='#ctgry.navId'/>"><s:property value="#ctgry.cateName"/></a></li>
+			<li class="cur"><s:property value="#ctgry.guideAliases"/> <a href="${ctx }<s:property value='#ctgry.desc'/>?cateId=<s:property value='#ctgry.navId'/>"><s:property value="#ctgry.cateName"/></a></li>
 		</s:iterator>
       <!-- <li class="cur"><a href="">公司动态</a></li>
       <li class="cur"><a href="">行业新闻</a></li> -->
@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form name="search" id="search" method="get" action="">
        <input type="hidden" name="module" value="article">
        <label for="keyword"></label>
-       <input name="s" type="text" class="keyword" title="}" autocomplete="off" maxlength="128" value="" onclick="">
+       <input name="s" type="text" class="keyword" title="" autocomplete="off" maxlength="128" value="" onclick="">
        <input type="submit" class="btnSearch" value="">
       </form>
      </ul>
@@ -56,11 +56,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <p class="img"><img src="" height="42"></p>
    
      <p class="desc">
-     	<s:if test="#art.content.length()>30">
-         	<s:property value="#art.content.substring(0,30)" escape="false"/> ... ...
+     	<s:if test="#art.desc.length()>30">
+         	<s:property value="#art.desc.substring(0,30)" /> ... ...
          </s:if>
          <s:else>
-         	<s:property value="#art.content" escape="false"/>
+         	<s:property value="#art.desc"/>
          </s:else>
      </p>
     </dd>
