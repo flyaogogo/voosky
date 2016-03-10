@@ -74,15 +74,18 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 	}
 	
 	public String insertCategory() throws Exception{
-		String navAlise = null ;
+		String navAlise = "" ;
 		String parentId = category.getParentId() ;
 		//处理  父  子  级的 拼装
 		String[] pgs = parentId.split("@");
 
 		parentId = pgs[0].trim();
-		String level = pgs[1];
-		navAlise = level + "-";
-		navAlise = navAlise.substring(0, navAlise.length() - 2);
+		String level = "" ;
+		if(pgs.length==2){
+			level = pgs[1];
+			navAlise = level + "-";
+			navAlise = navAlise.substring(0, navAlise.length() - 2);
+		}
 		
 		category.setGuideAliases(navAlise);
 		category.setNavId(Integer.parseInt(parentId));

@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
        <td align="right">商品价格</td>
        <td>
-        <input type="text" name="price" value="" size="20" class="inpMain" required="required"/>
+        <input type="text" name="price" value="" size="20" class="inpMain" required="required" onkeyup="value=value.replace(/[^\d.]/g,'')"/>
        </td>
       </tr>
 
