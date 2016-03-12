@@ -21,6 +21,10 @@ $(function(){
 				$(".vs-slide-type-oper-cls input[name='id']").val(data.id) ;
 				$(".vs-slide-type-oper-cls input[name='showName']").val(data.showName) ;
 //				$(".vs-slide-type-oper-cls input[name='showImg']").val(data.showImg) ;
+				
+				$(".vs-slide-type-oper-cls input[name='fileRealPath']").val(data.showImg) ;
+				$(".vs-slide-type-oper-cls img[name='imageShow']").attr("src",ctx + "/" + data.showImg) ;
+				
 				$(".vs-slide-type-oper-cls input[name='showLink']").val(data.showLink) ;
 				$(".vs-slide-type-oper-cls input[name='vsort']").val(data.vsort) ;
 			}

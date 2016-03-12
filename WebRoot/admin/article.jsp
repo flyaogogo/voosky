@@ -27,9 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <script type="text/javascript">
 
-
+	var tmpData = "" ;
 	//对列表数据，拼装Json
-	var tmpData = "[" ;
+	tmpData = "[" ;
 	<c:forEach items="${navBean.navList}" var="a"> 
 		tmpData = tmpData + "{'navId':${a.navId},'parentId':${a.parentId},'navName':'${a.navName}','module':'${a.module}','moduleUrl':'${a.moduleUrl}','guideAliases':'${a.guideAliases}'},"
 	</c:forEach> 
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		tmpData = tmpData.substring(0,tmpData.length-1) ;//去掉最后一个逗号
 	}
 	tmpData = tmpData + "]" ;
-	console.log(tmpData) ;
+	//console.log(tmpData) ;
 	dataList = eval(tmpData) ;
 	
 	var parentId = '<s:property value="navBean.parentId"/>' ;
@@ -153,7 +153,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td align="right">缩略图</td>
        <td>
         <input type="file" name="imageFile" size="38" class="inpFlie" />
-        <img src="${ctx }/admin/images/icon_no.png"></td>
+        <input type="hidden" name="fileRealPath" />
+        <img name="imageShow" width="20" height="20"></td>
       </tr>
       <tr>
        <td align="right">关键字</td>

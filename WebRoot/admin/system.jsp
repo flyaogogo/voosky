@@ -63,7 +63,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             <tr>
 	              <td align="right">站点标志</td>
-	              <td><input name="msmark" type="file" id="upload_file">&nbsp;<div class="upload_file_mark_msg_cls"></div></td>
+	              <td><input name="msmark" type="file" id="upload_file">&nbsp;
+	              <div class="upload_file_mark_msg_cls">
+					<img src="../<s:property value="mapSysConf['main.site.mark']"/>" width="15" height="15">	              	
+	              </div></td>
             </tr>
             <tr>
               <td align="right">公司地址</td>

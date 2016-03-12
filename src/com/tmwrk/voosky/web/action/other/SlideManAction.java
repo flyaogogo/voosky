@@ -63,13 +63,17 @@ public class SlideManAction extends BaseAction implements ModelDriven<Show>{
 	
 	public String updateSlide() throws Exception{
 		
-		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, show, "slide", request);
-		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-			slide.setStatus(uplFileBase.getStatus());
-			slide.setMessage(uplFileBase.getMessage());
-			return ERROR ;
+		if(show.getFileRealPath()==null||"".equals(show.getFileRealPath().trim())){
+			UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, show, "slide", request);
+			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+				slide.setStatus(uplFileBase.getStatus());
+				slide.setMessage(uplFileBase.getMessage());
+				return ERROR ;
+			}
+			show.setShowImg(uplFileBase.getFileRealPath());
+		}else{
+			show.setShowImg(show.getFileRealPath());
 		}
-		show.setShowImg(uplFileBase.getFileRealPath());
 		showService.updateSlide(show);
 		return SUCCESS ;
 	}

@@ -1,5 +1,6 @@
 package com.tmwrk.voosky.web.action.product;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,14 +85,16 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		
 		//商品左侧导航
 		List<Category> cateList = getProductCategory() ;
-		pro.setCateList(getProductCategory());
 		
 		for(Category c : cateList){
 			if(pro.getCateId().equals(c.getNavId()+"")){
-				pro.setMessage(c.getCateName());
+				List<Category> cateTmpList = new ArrayList<Category>() ;
+				cateTmpList.add(c) ;
+				pro.setCateList(cateTmpList);
 				break ;
 			}
 		}
+		
 		return SUCCESS ;
 	}
 	
@@ -120,16 +123,20 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	
 	public String updateProduct() throws Exception{
 		/**/
-		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, product, "product", request);
-		if(uplFileBase==null){
-			product.setThumbUrl("");
-		}else{
-			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-				pro.setStatus(uplFileBase.getStatus());
-				pro.setMessage(uplFileBase.getMessage());
-				return ERROR ;
+		if(product.getFileRealPath()==null||"".equals(product.getFileRealPath().trim())){
+			UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, product, "product", request);
+			if(uplFileBase==null){
+				product.setThumbUrl("");
+			}else{
+				if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+					pro.setStatus(uplFileBase.getStatus());
+					pro.setMessage(uplFileBase.getMessage());
+					return ERROR ;
+				}
+				product.setThumbUrl(uplFileBase.getFileRealPath());
 			}
-			product.setThumbUrl(uplFileBase.getFileRealPath());
+		}else{
+			product.setThumbUrl(product.getFileRealPath());
 		}
 		
 		product.setCateId(CalcUtil.dealParentId(product.getCateId())[0]);

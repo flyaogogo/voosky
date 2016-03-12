@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
    <div class="vs-category-type-btn-cls" style="display: none;">
     <!-- 分类添加或编辑 -->
-    <h3><a href="javascript:void(0)" class="actionBtn returnActionBtn">商品分类</a><span class="vs-category-title-name-cls">添加</span>商品分类</h3>
+    <h3><a href="javascript:void(0)" class="actionBtn returnCateActionBtn">商品分类</a><span class="vs-category-title-name-cls">添加</span>商品分类</h3>
     <form name="category-type-form" action="${ctx }/category/insertCateAction.htm" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>

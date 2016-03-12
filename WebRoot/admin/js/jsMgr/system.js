@@ -112,11 +112,13 @@ $(function(){
 	        success:function(data){
 	        	var status = data.status ;
 	        	if("success"==status){
+	        		$(".upload_file_mark_msg_cls img").remove();
 	        		var imgDom=document.createElement("img");  // 以 DOM 创建新元素
 	        		imgDom.src = "../" + data.fileRealPath ;
 	        		imgDom.width = 30 ;
 	        		$(".upload_file_mark_msg_cls").append(imgDom);         // 追加新元素
 	        	}else{
+	        		$(".upload_file_mark_msg_cls p").remove();
 	        		var pDom=document.createElement("p");  // 以 DOM 创建新元素
 	        		pDom.innerHTML = data.message ;
 	        		$(".upload_file_mark_msg_cls").append(pDom);         // 追加新元素

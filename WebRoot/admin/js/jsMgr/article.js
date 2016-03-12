@@ -56,19 +56,30 @@ $(function(){
 				$(".vs-article-type-oper-cls input[name='title']").val(data.title) ;
 				
 				//console.log(data.cateList);
+				var pval = "" ;
 				$(data.cateList).each(function() {
-					var selObj = $(".vs-article-type-oper-cls select[name='cateId']") ;
-					if(this['cateId']==data.cateId){
-						selObj.append("<option value='"+this['cateId']+"' selected='selected'>"+this['cateName']+"</option>");
+					var gAlias = this['guideAliases'] ;
+					var navIdStr = this['navId'] + "" ;
+					if(navIdStr=='0'){
+						pval = "0" ;
 					}else{
-						selObj.append("<option value='"+this['cateId']+"'>"+this['cateName']+"</option>");
+						if(gAlias==null||gAlias==''){
+							pval = navIdStr + "@-" ;
+						}else{
+							pval = navIdStr + "@-" + gAlias ;
+						}
 					}
+					//console.log(pval);
 				});
+				$(".vs-article-type-oper-cls select[name='cateId']").val(pval) ;
 				
 				$(".vs-article-type-oper-cls script[name='content']").val(ue.getContent()) ;
 //				$(".vs-article-type-oper-cls textarea[name='content']").val(ue.getAllHtml()) ;
 				
 //				$(".vs-article-type-oper-cls input[name='thumbUrl']").val(data.thumbUrl) ;
+				$(".vs-article-type-oper-cls input[name='fileRealPath']").val(data.thumbUrl) ;
+				$(".vs-article-type-oper-cls img[name='imageShow']").attr("src",ctx + "/" + data.thumbUrl) ;
+				
 				$(".vs-article-type-oper-cls input[name='keywords']").val(data.keywords) ;
 				$(".vs-article-type-oper-cls input[name='desc']").val(data.desc) ;
 				$(".vs-article-type-oper-cls input[name='vsort']").val(data.vsort) ;

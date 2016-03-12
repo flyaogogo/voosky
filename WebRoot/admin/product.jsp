@@ -44,6 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	tmpData = tmpData + "]" ;
 	//console.log(tmpData) ;
 	dataList = eval(tmpData) ;
+	//console.log(dataList) ;
 	var parentId = '<s:property value="navBean.parentId"/>' ;
 	
 </script>
@@ -157,7 +158,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td align="right">缩略图</td>
        <td>
         <input type="file" name="imageFile" size="38" class="inpFlie" />
-        <img src="${ctx }/admin/images/icon_no.png"></td>
+        <input type="hidden" name="fileRealPath" />
+        <img name="imageShow" width="20" height="20"></td>
       </tr>
       <tr>
        <td align="right">关键字</td>

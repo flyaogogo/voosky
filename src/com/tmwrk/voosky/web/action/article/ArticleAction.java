@@ -1,5 +1,6 @@
 package com.tmwrk.voosky.web.action.article;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,11 +75,13 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		
 		//文章左侧导航
 		List<Category> cateList = getArticleCategory() ;
-		article.setCateList(cateList);
+		//article.setCateList(cateList);
 		
 		for(Category c : cateList){
 			if(article.getCateId().equals(c.getNavId()+"")){
-				article.setMessage(c.getCateName());
+				List<Category> cateTmpList = new ArrayList<Category>() ;
+				cateTmpList.add(c) ;
+				article.setCateList(cateTmpList);
 				break ;
 			}
 		}
@@ -114,16 +117,20 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	}
 	
 	public String updateArticle() throws Exception{
-		UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, art, "article", request);
-		if(uplFileBase==null){
-			art.setThumbUrl("");
-		}else{
-			if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
-				article.setStatus(uplFileBase.getStatus());
-				article.setMessage(uplFileBase.getMessage());
-				return ERROR ;
+		if(art.getFileRealPath()==null||"".equals(art.getFileRealPath().trim())){
+			UploadFileBase uplFileBase = CalcUtil.dealUploadInfo(true, art, "article", request);
+			if(uplFileBase==null){
+				art.setThumbUrl("");
+			}else{
+				if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
+					article.setStatus(uplFileBase.getStatus());
+					article.setMessage(uplFileBase.getMessage());
+					return ERROR ;
+				}
+				art.setThumbUrl(uplFileBase.getFileRealPath());
 			}
-			art.setThumbUrl(uplFileBase.getFileRealPath());
+		}else{
+			art.setThumbUrl(art.getFileRealPath());
 		}
 		
 		art.setCateId(CalcUtil.dealParentId(art.getCateId())[0]);

@@ -47,6 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td><strong>幻灯图片</strong>
             <input type="file" name="imageFile" class="inpFlie" onchange="extensionOnchange(this)" accept="image/jpeg,image/gif,image/png,image/bmp,image/jpg" />
 <!--             <input type="file" name="imageFile" class="inpFlie" accept=".jpeg,.gif,.png,.bmp,.jpg"/> -->
+			<input type="hidden" name="fileRealPath" />
+        	<img name="imageShow" width="20" height="20"></td>
           </td>
          </tr>
          <tr>

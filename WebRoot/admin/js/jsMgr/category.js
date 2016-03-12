@@ -6,7 +6,7 @@ $(function(){
 	});
 	
 	//返回自定义导航列表
-	$(".returnActionBtn").bind("click",function(){
+	$(".returnCateActionBtn").bind("click",function(){
 		var type = $(".vs-category-hidden-input-val").val() ;
 		window.location.href=ctx+"/category/listCategorysInfo.htm?cateStatus=" + type ;
 	});
