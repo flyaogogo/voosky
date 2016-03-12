@@ -101,10 +101,11 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		String[] pgs = parentId.split("@");
 
 		parentId = pgs[0].trim();
-		String level = pgs[1];
-		navAlise = level + "-";
-		navAlise = navAlise.substring(0, navAlise.length() - 2);
-
+		if(pgs.length==2){
+			String level = pgs[1];
+			navAlise = level + "-";
+			navAlise = navAlise.substring(0, navAlise.length() - 2);
+		}
 		category.setGuideAliases(navAlise);
 		category.setNavId(Integer.parseInt(parentId));
 		
