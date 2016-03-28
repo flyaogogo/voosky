@@ -33,6 +33,9 @@ public class CommonUtil
 
 	private static final Log log = LogFactory.getLog(CommonUtil.class);
 	
+	/** 默认的错误提示信息*/
+	public static final String DEFAULT_ERROR_MSG = "系统错误，请稍后再试！";
+	
 	private static final String LOCAL_IP = "0:0:0:0:0:0:0:1" ;
 
 	/**

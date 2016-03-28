@@ -62,14 +62,14 @@
 	   	    
 		<!-- 全局result -->
 		<global-results>
-			<result name="login" type="dispatcher">/login.jsp</result>
-			<result name="error" type="dispatcher">/error.jsp</result>
+			<result name="login" type="dispatcher">/admin/login.jsp</result>
+			<result name="error" type="dispatcher">/admin/error.jsp</result>
 		</global-results>
 		
-		<!-- <action name="error" class="com.travelsky.monitor.web.action.ErrorAction">
+		<action name="error" class="com.travelsky.monitor.web.action.ErrorAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success">/error.jsp</result>
-		</action> -->
+			<result name="success">/admin/error.jsp</result>
+		</action>
 		<action name="index" class="com.tmwrk.voosky.web.action.pubweb.IndexMgrAction">
 			<result name="success">/public/index.jsp</result>
 		</action>
