@@ -8,6 +8,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.tmwrk.voosky.database.vo.UploadFileBase;
 
@@ -16,6 +18,9 @@ public class CalcUtil {
 	
 	public static String FILE_UPDATE_STATUS_ERROR = "error" ;
 	public static String FILE_UPDATE_STATUS_SUCCESS = "success" ;
+	
+	
+	private static final Log log = LogFactory.getLog(CalcUtil.class);
 	
 	public static void main(String[] args) {
 		int a = Integer.parseInt("001") ;
@@ -109,12 +114,15 @@ public class CalcUtil {
 			imageFilePath = imageFilePath.replace("\\", "/") ;
 			fb.setStatus(FILE_UPDATE_STATUS_SUCCESS);
 			fb.setFileRealPath(imageFilePath);
+			retStatus = "图片上传成功！" ;
+			log.info(retStatus);
 			return fb;
 		} catch (IOException e) {
 			e.printStackTrace();
 			retStatus = "图片上传失败！" ;
 			fb.setStatus(FILE_UPDATE_STATUS_ERROR);
 			fb.setMessage(retStatus);
+			log.error(retStatus + " : " + e);
 			return fb;
 		}
 		

@@ -37,7 +37,7 @@
 	<appender name="DAILY_TRACE" class="org.apache.log4j.DailyRollingFileAppender">
 	  	<param name="Encoding" value="utf-8" />
 	  	<param name="DatePattern" value=".yyyyMMdd" />
-	  	<param name="File" value="E:/tomcatlog/logs/schedule_trace.log" />
+	  	<param name="File" value="./logs/schedule_trace.log" />
 	  	<param name="Append" value="true" />
 	  	<layout class="org.apache.log4j.PatternLayout">
 	   		<param name="ConversionPattern"
@@ -53,7 +53,7 @@
 	<appender name="DAILY_ALARM" class="org.apache.log4j.DailyRollingFileAppender">
 	  	<param name="Encoding" value="utf-8" />
 	  	<param name="DatePattern" value=".yyyyMMdd" />
-	  	<param name="File" value="E:/tomcatlog/logs/schedule_error.log" />
+	  	<param name="File" value="./logs/schedule_error.log" />
 	  	<param name="Append" value="true" />
 	  	<layout class="org.apache.log4j.PatternLayout">
 	   		<param name="ConversionPattern"
@@ -67,7 +67,7 @@
 	
 	<appender name="quartz" class="org.apache.log4j.RollingFileAppender">
 		<param name="Encoding" value="utf-8" />
-	  	<param name="File" value="E:/tomcatlog/logs/schedule_quartz.log" />
+	  	<param name="File" value="./logs/schedule_quartz.log" />
 	  	<layout class="org.apache.log4j.PatternLayout">
 	   		<param name="ConversionPattern"
 	    		value="[%-d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5p]%m%n"/>
@@ -77,12 +77,12 @@
 		   <param name="LevelMax" value="FATAL" />
 	  	</filter>
 	</appender>
-	<!-- set fire java package,eg: com.travelsky.common.LogWriter-->
+	<!-- set fire java package,eg: com.tmwrk.voosky.module.log.LogWriter-->
 	<logger name="org.quartz" additivity="false">  
     	<level value="INFO" />  
     	<appender-ref ref="quartz" />
 	</logger> 
-	<logger name="com.travelsky.common.LogWriter"> 
+	<logger name="com.tmwrk.voosky.module.log.LogWriter"> 
 		<level value="INFO" /> 
 		<appender-ref ref="DAILY_DEBUG" />
 		<appender-ref ref="DAILY_INFO" />

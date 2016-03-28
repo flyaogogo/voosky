@@ -13,9 +13,11 @@
 		</action>
 		<action name="insrtArtAction" method="insertArticle" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success" type="chain" >listArticlesInfo</result>
+			<result name="error" type="chain" >listArticlesInfo</result>
 		</action>
 		<action name="updateArtAction" method="updateArticle" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success" type="chain" >listArticlesInfo</result>
+			<result name="error" type="chain" >listArticlesInfo</result>
 		</action>
 		<action name="setShowPageAction" method="updateShowFirstPageById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success" type="chain" >listArticlesInfo</result>

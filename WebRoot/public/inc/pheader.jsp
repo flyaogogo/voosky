@@ -8,6 +8,7 @@
  	<div id="top">
      <div class="wrap">
       <ul class="topNav">
+       <li><a href="${ctx }/admin/login.jsp" target="_blank">后台</a><s></s></li>
        <li><a href="" target="_blank">手机</a><s></s></li>
        <li><a href="javascript:AddFavorite('', '')">收藏</a></li>
       </ul>
