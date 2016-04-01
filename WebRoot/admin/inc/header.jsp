@@ -10,11 +10,10 @@
     <div class="logo"><a href="index.php"><img src="${ctx}/admin/images/vslogo.gif" alt="logo"></a></div>
     <div class="nav">
      <ul>
-      <li class="M"><a href="${ctx }/index.htm" class="topAdd">前台首页</a></li>
+      <li><a href="${ctx }/index.htm" target="_blank">前台首页</a></li>
       <li><a href="#" target="_blank">查看站点</a></li>
       <li><a href="#">清除缓存</a></li>
       <li><a href="#" target="_blank">帮助</a></li>
-      <li class="noRight"><a href="#">vsPHP+</a></li>
      </ul>
      <ul class="navRight">
       <li class="M noLeft"><a href="#">您好，${sessionScope.user.userName }</a>
