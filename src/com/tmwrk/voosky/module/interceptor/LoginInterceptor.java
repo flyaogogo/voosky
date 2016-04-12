@@ -30,7 +30,7 @@ public class LoginInterceptor extends AbstractInterceptor
 		
 		String actionName = invocation.getProxy().getActionName();
 		if (actionName.equals("verifyAccount") || actionName.equals("IndexMgrAction") || actionName.equals("getProInfoById")
-				|| actionName.equals("getArticleInfoById") || actionName.equals("getSPInfoById")
+				|| actionName.equals("getArticleInfoById") || actionName.equals("getSPInfoById")|| actionName.equals("index")
 				|| actionName.equals("getSPInfoByName")||actionName.equals("getProductsInfo")||actionName.endsWith("getArticlesInfo"))
 			return invocation.invoke();
 
