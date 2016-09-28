@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h1><s:property value="article.title"/></h1>
     <div class="info">发布时间：<s:property value="article.addTime"/> 点击数：<s:property value="article.clickNum"/> </div>
     <s:if test="#article.thumbUrl!=null">
-    <div class="info"><img src="${ctx }/<s:property value="article.thumbUrl"/>" width="500" height="400"/></div>
+    <div class="info"><img src="${ctx_img }/<s:property value="article.thumbUrl"/>" width="500" height="400"/></div>
     </s:if>
     <div class="content">
     	<s:property value="article.content" escape="false"/>
