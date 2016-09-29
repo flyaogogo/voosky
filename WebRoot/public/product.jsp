@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="<s:property value="pro.keywords"/>" />
 <meta name="description" content="<s:property value="pro.desc"/>" />
-<title></title>
+<title>产品</title>
 <link href="${ctx}/admin/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
