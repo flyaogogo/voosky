@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import sun.net.www.protocol.http.HttpURLConnection;
 
 import com.tmwrk.voosky.database.vo.UploadFileBase;
 
@@ -320,10 +321,23 @@ public class CalcUtil {
 			dirFile.mkdir();
 		}
 		// 从服务器上获取图片并保存
-		URLConnection connection = theURL.openConnection();
-		connection.setRequestProperty("contentType", encode);
+		HttpURLConnection connection =(HttpURLConnection) theURL.openConnection();
+		//System.out.println("get Encode : " + connection.getContentEncoding());
+		connection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+		connection.setRequestProperty("Accept","*/*");
+		//connection.setRequestProperty("contentType", encode);
 		connection.setConnectTimeout(5 * 1000);  
-        
+		connection.setRequestProperty("Accept-Language", "zh-CN");  
+		connection.setDoOutput(true);
+        connection.setDoInput(true);
+        connection.setInstanceFollowRedirects(false); 
+        connection.setRequestMethod("POST"); 
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
+        connection.setRequestProperty("charset", "utf-8");
+        connection.setUseCaches (false);
+
+		
+		
 		InputStream in = connection.getInputStream();
 		FileOutputStream os = new FileOutputStream(filePath + "/" + fileName);
 		byte[] buffer = new byte[4 * 1024];
