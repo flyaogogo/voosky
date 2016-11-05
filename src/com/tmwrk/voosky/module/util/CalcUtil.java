@@ -220,7 +220,7 @@ public class CalcUtil {
 		
 		File dirFile = new File(filePath);
 		if (!dirFile.exists()) {// 文件路径不存在时，自动创建目录
-			dirFile.mkdir();
+			dirFile.mkdirs();  // 多级目录创建
 		}
 		// 从服务器上获取图片并保存
 		HttpURLConnection connection = (HttpURLConnection)theURL.openConnection();
