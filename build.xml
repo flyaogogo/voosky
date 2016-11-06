@@ -2,7 +2,7 @@
 <project name="ROOT" default="war" basedir=".">
 	<property file="build.properties" />
 
-	<property name="webcontext" value="vooskycms" />
+	<property name="webcontext" value="ROOT" />
 	<property name="warfile" value="${webcontext}.war" />
 	<property name="dir.lib" value="${basedir}/WebRoot/WEB-INF/lib" />
 		

@@ -83,6 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td width="80" align="right">分类名称</td>
        <td>
         <input type="hidden" name="cateId" />
+        <input type="hidden" name="navId" />
         <input type="hidden" name="cateStatus" value="article" class="vs-category-hidden-input-val" />
         <input type="text" name="cateName" value="" size="40" class="inpMain" required="required"/>
        </td>

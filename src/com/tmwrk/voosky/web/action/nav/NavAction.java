@@ -7,7 +7,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tmwrk.voosky.database.vo.Category;
 import com.tmwrk.voosky.database.vo.Navigation;
+import com.tmwrk.voosky.service.category.CategoryServiceMgr;
 import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
 
@@ -36,6 +38,9 @@ public class NavAction extends BaseAction {
 	
 	@Autowired
 	private NavServiceMgr navService ;
+	
+	@Autowired
+	private CategoryServiceMgr categoryService ;
 	
 	private Navigation nav ;
 	private List<Navigation> navList ;
@@ -160,10 +165,15 @@ public class NavAction extends BaseAction {
 	 * @return
 	 */
 	public String deleteNavByNavId(){
+		//第一步，先查找Category表中的是否有数据，如没有，进行下一步，否则暂时处理错误；第二步，再删除导航栏中的数据
+//		boolean f = navService.deleteCateByNavId(Integer.parseInt(navId)) ;
+		Category cate = categoryService.findCategoryByNavId(Integer.parseInt(navId)) ;
+		if(cate != null){
+			return ERROR ;
+		}
 		Navigation navs = new Navigation() ;
 		navs.setNavId(Integer.parseInt(navId));
 		navService.deteleNavByNavId(navs) ;
-		
 		return SUCCESS ;
 	}
 	
@@ -268,6 +278,12 @@ public class NavAction extends BaseAction {
 	}
 	public void setParentId(String parentId) {
 		this.parentId = parentId;
+	}
+	public CategoryServiceMgr getCategoryService() {
+		return categoryService;
+	}
+	public void setCategoryService(CategoryServiceMgr categoryService) {
+		this.categoryService = categoryService;
 	}
 	
 }

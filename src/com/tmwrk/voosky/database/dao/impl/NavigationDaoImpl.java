@@ -44,6 +44,14 @@ public class NavigationDaoImpl extends BaseDao<Navigation>{
 		return null ;
 	}
 	/**
+	 * 2016.11.06 通过导航Id删除分类中对航的目录
+	 * @param params
+	 * @return
+	 */
+	public void deleteCateByNavId(int navId) {
+		getSqlMapClientTemplate().delete("navigation.deleteCateByNavId", navId) ;
+	}
+	/**
 	 * 通过导航类型找到相关信息
 	 * @param params
 	 * @return
@@ -97,6 +105,18 @@ public class NavigationDaoImpl extends BaseDao<Navigation>{
 	@SuppressWarnings({ "unchecked" })
 	public List<Navigation> getNavigationsByModule(Map<String, Object> params) {
 		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getNavigationsByModule", params) ;
+		
+		return navList ;
+	}
+	
+	/**
+	 * 2016.11.06 通过导航名称找到相关信息
+	 * @param params
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked" })
+	public List<Navigation> getNavigationsByName(Map<String, Object> params) {
+		List<Navigation> navList = (List<Navigation>)getSqlMapClientTemplate().queryForList("navigation.getNavigationsByName", params) ;
 		
 		return navList ;
 	}

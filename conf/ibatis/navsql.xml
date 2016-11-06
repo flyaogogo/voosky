@@ -34,7 +34,11 @@
 		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where module_url like concat('%', #murl#, '%') order by vsort asc
 	</select>
 	<select id="getNavigationsByModule" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where parent_id=#module# order by vsort asc
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where module=#module# and parent_id=#parentId# order by vsort asc
+	</select>
+	<!-- 2016.11.06 -->
+	<select id="getNavigationsByName" parameterClass="java.util.HashMap" resultMap="navMap">
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where nav_name=#navName# and parent_id=#parentId# order by vsort asc
 	</select>
 	
 	<insert id="addNav" parameterClass="Navigation">
@@ -49,5 +53,9 @@
 	
 	<delete id="deleteNavByNavId" parameterClass="Navigation">
 		delete from vs_nav where nav_id=#navId#;
+	</delete>
+	<!-- 2016.11.06 -->
+	<delete id="deleteCateByNavId" parameterClass="int">
+		delete from vs_category where nav_id = #navId#
 	</delete>
 </sqlMap>

@@ -28,6 +28,24 @@ public class CategoryDaoImpl extends BaseDao<Category> {
 		Category c = (Category)getSqlMapClientTemplate().queryForObject("category.findCategoryById", params) ;
 		return c ;
 	}
+	/**
+	 * 2016.11.06 找出对应的Nav父ID
+	 * @param params
+	 * @return
+	 */
+	public Category findCategoryAndNavParentIdByCateId(Map<String, Object> params) {
+		Category c = (Category)getSqlMapClientTemplate().queryForObject("category.findCategoryAndNavParentIdByCateId", params) ;
+		return c ;
+	}
+	/**
+	 * 2016.11.06 
+	 * @param params
+	 * @return
+	 */
+	public Category findCategoryByNavId(int navId) {
+		Category c = (Category)getSqlMapClientTemplate().queryForObject("category.findCategoryByNavId", navId) ;
+		return c ;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -44,6 +62,16 @@ public class CategoryDaoImpl extends BaseDao<Category> {
 
 	public boolean deleteCateById(Category c){
 		getSqlMapClientTemplate().delete("category.deleteCateById", c) ;
+		return true ;
+	}
+	
+	/**
+	 * 2016.11.06 
+	 * @param params
+	 * @return
+	 */
+	public boolean deleteCateByNavId(int navId){
+		getSqlMapClientTemplate().delete("category.deleteCateByNavId", navId) ;
 		return true ;
 	}
 

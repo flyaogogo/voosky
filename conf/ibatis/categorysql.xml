@@ -18,6 +18,18 @@
 		<result property="guideAliases" column="guide" />
 		<result property="navId" column="nav_id" />
 	</resultMap>
+	<resultMap id="categoryNavPMap" class="Category">
+		<result property="cateId" column="cat_id" />
+		<result property="uniqueName" column="unique_name" />
+		<result property="cateName" column="cat_name" />
+		<result property="keywords" column="keywords" />
+		<result property="desc" column="description" />
+		<result property="vsort" column="vsort" />
+		<result property="cateStatus" column="cate_status" />
+		<result property="guideAliases" column="guide" />
+		<result property="navId" column="nav_id" />
+		<result property="parentId" column="parent_id" />
+	</resultMap>
 	
 	<select id="findCategoryByStatus" parameterClass="java.util.HashMap" resultMap="categoryMap">
 		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
@@ -33,6 +45,16 @@
 		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
 			where cat_id = #cateId#
 	</select>
+	<!-- 2016.11.06  -->
+	<select id="findCategoryAndNavParentIdByCateId" parameterClass="java.util.HashMap" resultMap="categoryNavPMap">
+		select cat_id,unique_name,cat_name,keywords,description,cate_status,c.nav_id,c.guide,c.vsort,n.parent_id from vs_category c left join vs_nav n on c.nav_id = n.nav_id
+			where cat_id = #cateId#
+	</select>
+	<!-- 2016.11.06  -->
+	<select id="findCategoryByNavId" parameterClass="int" resultMap="categoryMap">
+		select cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort from vs_category 
+			where nav_id = #navId#
+	</select>
 	
 	<insert id="insertCategory" parameterClass="Category">
 		insert into vs_category(cat_id,unique_name,cat_name,keywords,description,cate_status,nav_id,guide,vsort) 
@@ -47,5 +69,8 @@
 	
 	<delete id="deleteCateById" parameterClass="Category">
 		delete from vs_category where cat_id = #cateId#
+	</delete>
+	<delete id="deleteCateByNavId" parameterClass="int">
+		delete from vs_category where nav_id = #navId#
 	</delete>
 </sqlMap>

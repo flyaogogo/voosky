@@ -34,6 +34,16 @@ public class NavServiceMgr {
 		return true ;
 	}
 	
+	/**
+	 * 2016.11.06 通过导航Id删除分类中对航的目录
+	 * @param navId
+	 * @return
+	 */
+	public boolean deleteCateByNavId(int navId){
+		navDao.deleteCateByNavId(navId);
+		return true ;
+	}
+	
 	public List<Navigation> getNavsByType(Map<String, String> params){
 		List<Navigation> navList = navDao.getNavigationsByType(params) ;
 		return navList ;
@@ -65,6 +75,17 @@ public class NavServiceMgr {
 	public List<Navigation> getNavigationsByModule(Map<String, Object> params) {
 		
 		List<Navigation> navList = navDao.getNavigationsByModule(params) ;
+		return navList ;
+	}
+	
+	/**
+	 * 2016.11.06 根据导航名称找到相关信息
+	 * @param params
+	 * @return
+	 */
+	public List<Navigation> getNavigationsByName(Map<String, Object> params) {
+		
+		List<Navigation> navList = navDao.getNavigationsByName(params) ;
 		return navList ;
 	}
 	

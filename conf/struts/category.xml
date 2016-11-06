@@ -12,6 +12,12 @@
 				<param name="root">ctgry</param>
 			</result>
 		</action>
+		<!-- 2016.11.06 -->
+		<action name="listCategoryAndNavParentIdByCateId" method="findCategoryAndNavParentIdByCateId" class="com.tmwrk.voosky.web.action.category.CategoryAction">
+			<result name="success" type="json">
+				<param name="root">ctgry</param>
+			</result>
+		</action>
 		
 		<action name="listAllTreeInfoByCate" method="allNodeData" class="com.tmwrk.voosky.web.action.category.CategoryAction">
 			<result name="success" type="json">

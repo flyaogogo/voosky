@@ -25,18 +25,19 @@ $(function(){
 		//alert(cateId);
 		var param = {cateId: cateId} ;
 		$.ajax({
-			url:ctx+"/category/listCategoryInfoById.htm",
+			url:ctx+"/category/listCategoryAndNavParentIdByCateId.htm",
 			type:"post",
 			data:param,
 			dataType:"json",
 			async:true,
 			success:function(data){
 				$(".vs-category-type-btn-cls input[name='cateId']").val(data.cateId) ;
+				$(".vs-category-type-btn-cls input[name='navId']").val(data.navId) ;
 				$(".vs-category-type-btn-cls input[name='cateName']").val(data.cateName) ;
 				$(".vs-category-type-btn-cls input[name='uniqueName']").val(data.uniqueName) ;
 				var gAlias = data.guideAliases ;
 				var pval = "" ;
-				var navIdStr = data.navId + "" ;
+				var navIdStr = data.parentId ;
 				
 				if(navIdStr=='0'){
 					pval = "0" ;
@@ -47,11 +48,11 @@ $(function(){
 //					}
 					
 					if(gAlias==null||gAlias==''){
-						pval = navIdStr + "@-" ;
+						pval = navIdStr + "@" ;
 					}else{
 						//gAlias = gAlias.substring(0,gAlias.length-1) ;
 						
-						pval = navIdStr + "@-" + gAlias ;
+						pval = navIdStr + "@" + gAlias ;
 					}
 				}
 				//alert(pval) ;

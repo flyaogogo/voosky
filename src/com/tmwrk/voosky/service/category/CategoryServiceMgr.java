@@ -52,6 +52,25 @@ public class CategoryServiceMgr {
 		return c ;
 	}
 	
+	/**
+	 *  2016.11.06  通过分类Id，获取整条数据信息
+	 * @param cate
+	 * @return
+	 */
+	public Category findCategoryAndNavParentIdByCateId(Map<String, Object> cate){
+		Category c = categoryDao.findCategoryAndNavParentIdByCateId(cate) ;
+		return c ;
+	}
+	/**
+	 *  2016.11.06 通过Nav Id，获取整条数据信息
+	 * @param cate
+	 * @return
+	 */
+	public Category findCategoryByNavId(int navId){
+		Category c = categoryDao.findCategoryByNavId(navId) ;
+		return c ;
+	}
+	
 	public void insertCategory(Category c) {
 		
 		categoryDao.add(c) ;
@@ -63,5 +82,14 @@ public class CategoryServiceMgr {
 	
 	public boolean deleteCateById(Category c){
 		return categoryDao.deleteCateById(c) ;
+	}
+	
+	/**
+	 * 2016.11.06 通过Nav Id 删除分类
+	 * @param navId
+	 * @return
+	 */
+	public boolean deleteCateByNavId(int navId){
+		return categoryDao.deleteCateByNavId(navId) ;
 	}
 }
