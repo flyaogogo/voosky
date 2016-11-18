@@ -121,25 +121,26 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		String navAlise = null ;
 		String cateParentId = category.getParentId() ;
 		
-		//处理  父  子  级的 拼装
-
-		String[] pgs = cateParentId.split("@");
-
-		cateParentId = pgs[0].trim();
-		
-		if(pgs.length==2){
-			String level = pgs[1];
-			//2016.11.06 不知道之前的处理方式，暂且注释
-			//navAlise = level + "-";
-			//navAlise = navAlise.substring(0, navAlise.length() - 2);
-			navAlise = level ;
+		if(cateParentId !=null){
+			//处理  父  子  级的 拼装
+			
+			String[] pgs = cateParentId.split("@");
+	
+			cateParentId = pgs[0].trim();
+			
+			if(pgs.length==2){
+				String level = pgs[1];
+				//2016.11.06 不知道之前的处理方式，暂且注释
+				//navAlise = level + "-";
+				//navAlise = navAlise.substring(0, navAlise.length() - 2);
+				navAlise = level ;
+			}
 		}
-		
 		//2016.11.06 修改导航栏
 		Map<String, Object> params = new HashMap<String, Object>() ;
 		params.put("navId", category.getNavId()) ;
 		Navigation cateNav = navService.getNavByNavId(params) ;
-		if(cateParentId.equals(cateNav.getParentId())){
+		if(cateParentId ==null || "0".equals(cateParentId) || cateParentId.equals(cateNav.getParentId()) ){
 			//如果上级分类没有修改，则只修改名称即可
 			cateNav.setNavName(category.getCateName());
 			navService.updateNavByNavId(cateNav) ;

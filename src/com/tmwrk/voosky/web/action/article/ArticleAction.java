@@ -112,6 +112,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		art.setAddTime(DateUtil.converNowDate());
 		String is = (art.getIsRecommend()==null)?"false":"true" ;
 		art.setIsRecommend(is);
+		art.setAuthor(getSessionUser().getUserName());
 		articleService.insertArticle(art);
 		return SUCCESS ;
 	}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="bohen" extends="tmwrk-default" namespace="/bohen">
+		<action name="getCaseInfoById" method="findProductInfoById" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success">/bohen/engineeringcase_detail.jsp</result>
+		</action>
+		
+		<action name="getCaseductsInfo" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success">/bohen/engineeringcase.jsp</result>
+		</action>
+		
+		<action name="getNewInfoById" method="findArticleInfoById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success">/bohen/news.jsp</result>
+		</action>
+		
+		<action name="getNewsInfo" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+			<result name="success">/bohen/news_detail.jsp</result>
+		</action>
+	</package>
+</struts>

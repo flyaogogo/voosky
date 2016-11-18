@@ -70,8 +70,14 @@
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">/admin/error.jsp</result>
 		</action>
+		
+		<!-- 
 		<action name="index" class="com.tmwrk.voosky.web.action.pubweb.IndexMgrAction">
 			<result name="success">/public/index.jsp</result>
+		</action>
+		 -->
+		<action name="index" class="com.tmwrk.voosky.web.action.pubweb.IndexMgrAction">
+			<result name="success">/bohen/index.jsp</result>
 		</action>
 	</package>
 	

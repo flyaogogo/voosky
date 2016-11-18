@@ -7,6 +7,22 @@
 	<typeAlias alias="Article"
 		type="com.tmwrk.voosky.database.vo.Article" />
 
+	<resultMap id="articlesMap" class="Article">
+		<result property="id" column="id" />
+		<result property="navName" column="nav_name" />
+		<result property="navId" column="nav_id" />
+		<result property="title" column="title" />
+		<result property="isRecommend" column="is_recommend" />
+		<result property="content" column="content" />
+		<result property="thumbUrl" column="thumb_url" />
+		<result property="keywords" column="keywords" />
+		<result property="desc" column="description" />
+		<result property="author" column="author" />
+		<result property="clickNum" column="clicknum" />
+		<result property="addTime" column="add_time" />
+		<result property="vsort" column="vsort" />
+	</resultMap>
+	
 	<resultMap id="articleMap" class="Article">
 		<result property="id" column="id" />
 		<result property="cateId" column="cat_id" />
@@ -16,19 +32,23 @@
 		<result property="thumbUrl" column="thumb_url" />
 		<result property="keywords" column="keywords" />
 		<result property="desc" column="description" />
+		<result property="author" column="author" />
 		<result property="clickNum" column="clicknum" />
 		<result property="addTime" column="add_time" />
 		<result property="vsort" column="vsort" />
 	</resultMap>
 	
-	<select id="getAllArticles" parameterClass="java.util.HashMap" resultMap="articleMap">
-		select vsa.id,vsc.nav_name as cat_id,vsa.title,vsa.is_recommend,vsa.content,vsa.thumb_url,vsa.keywords,vsa.description,vsa.clicknum,
-			vsa.add_time,vsa.vsort from vs_article vsa , vs_nav vsc where vsa.cat_id=vsc.nav_id 
+	<select id="getAllArticles" parameterClass="java.util.HashMap" resultMap="articlesMap">
+		select vsa.id,vsn.nav_name ,vsn.nav_id,vsa.title,vsa.is_recommend,vsa.content,vsa.thumb_url,vsa.keywords,vsa.description,vsa.clicknum,
+			vsa.add_time,vsa.vsort,author from vs_article vsa , vs_nav vsn where vsa.cat_id=vsn.nav_id
 			<isNotNull property="isRecommend">
 				and vsa.is_recommend = #isRecommend#
 			</isNotNull>
 			<isNotNull property="cateId">
-				and vsc.nav_id = #cateId#
+				and vsa.cat_id = #cateId#
+			</isNotNull>
+			<isNotNull property="firstType">
+				and vsa.firstType = #firstType#
 			</isNotNull>
 			<isNotNull property="title">
 				and vsa.title like concat('%', #title#, '%')
@@ -36,13 +56,13 @@
 	</select>
 	<select id="getArticleById" parameterClass="java.util.HashMap" resultMap="articleMap">
 		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,
-			add_time,vsort from vs_article where id=#id#
+			add_time,vsort,author from vs_article where id=#id#
 	</select>
 	
 	<insert id="addArticle" parameterClass="Article">
-		insert into vs_article(id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,add_time,vsort) 
+		insert into vs_article(id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,add_time,vsort,author,firstType) 
 		values ((select ifnull(max(vsp.id)+1,1) from vs_article vsp),#cateId#,#title#,#isRecommend#,#content#,#thumbUrl#,
-			#keywords#,#desc#,#clickNum#,#addTime#,#vsort#)
+			#keywords#,#desc#,#clickNum#,#addTime#,#vsort#,#author#,#firstType#)
 	</insert>
 	
 	<update id="updateById" parameterClass="Article">

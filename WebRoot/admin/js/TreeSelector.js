@@ -89,13 +89,13 @@ function selectLoadData(selectId,data,status,treeRootId,catType){
 	if(catType=='nav'){
 		$(data).each(function() {
 			//console.log(this['navName'] );
-			ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],this['guideAliases'],status);
+			ts.add(this['navId'],this['parentId'], this['navName'],this['module'],this['moduleUrl'],this['guideAliases'].trim(),status);
 			
 		});
 	}else if(catType=='cat'){
 		$(data).each(function() {
 			//alert(this['guideAliases']); 
-			ts.add(this['cateId'],this['navId'], this['cateName'],this['uniqueName'],this['desc'],this['guideAliases'],status);
+			ts.add(this['cateId'],this['navId'], this['cateName'],this['uniqueName'],this['desc'],this['guideAliases'].trim(),status);
 		});
 	}
 	//显示

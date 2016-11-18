@@ -102,9 +102,11 @@ public class NavServiceMgr {
 		NavBean navbean = new NavBean() ;
 		if(tmpList.size()>0){
 			List<Navigation> navChildList = new ArrayList<Navigation>() ;
-			String parentId = tmpList.get(0).getNavId() + "" ;
-			List<Navigation> navList = navDao.getAllNavigations(null) ;
-			getAllChildByParentId(navList, navChildList, parentId);
+			String parentId = "0" ;//导航第一栏
+			//String parentId = tmpList.get(0).getNavId() + "" ;
+			//List<Navigation> navList = navDao.getAllNavigations(null) ;
+			//getAllChildByParentId(navList, navChildList, parentId);
+			getAllChildByParentId(tmpList, navChildList, parentId);
 			navbean.setNavList(navChildList);
 			navbean.setParentId(parentId);
 		}

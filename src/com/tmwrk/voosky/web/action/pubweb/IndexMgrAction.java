@@ -75,7 +75,8 @@ public class IndexMgrAction extends BaseAction{
 		index.setArtList(artList);
 		
 		Map<String, Object> params = new HashMap<String, Object>() ;
-		params.put("parentId", "0") ;
+		params.put("parentId", "5") ;
+//		params.put("parentId", "0") ;
 		List<Navigation> navList = navService.getNavsByParentId(params) ;
 		index.setNavList(navList);
 //		index.setUser(getSessionUser());
@@ -93,7 +94,7 @@ public class IndexMgrAction extends BaseAction{
 	private SinglePage getSinglePageAbout(List<SinglePage> spList){
 		SinglePage spAbout = null ;
 		for(SinglePage sp : spList){
-			if(sp.getUniqueName().equals("about")){
+			if(sp.getUniqueName().equals("summary")){
 				spAbout = sp ;
 				break ;
 			}

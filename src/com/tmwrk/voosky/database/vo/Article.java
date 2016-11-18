@@ -21,6 +21,12 @@ public class Article extends UploadFileBase{
 	private String addTime ;
 	private int vsort ;
 	
+	//2016.11.18 为更好区分数据的来源
+	private String navName ; 
+	private String navId ;
+	private String author ;
+	private String firstType ;//相同类型中区分大类
+		
 	private List<Category> cateList ;
 	
 	public int getId() {
@@ -94,6 +100,30 @@ public class Article extends UploadFileBase{
 	}
 	public void setCateList(List<Category> cateList) {
 		this.cateList = cateList;
+	}
+	public String getNavName() {
+		return navName;
+	}
+	public void setNavName(String navName) {
+		this.navName = navName;
+	}
+	public String getNavId() {
+		return navId;
+	}
+	public void setNavId(String navId) {
+		this.navId = navId;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getFirstType() {
+		return firstType;
+	}
+	public void setFirstType(String firstType) {
+		this.firstType = firstType;
 	}
 	
 }

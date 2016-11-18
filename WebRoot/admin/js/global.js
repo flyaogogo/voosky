@@ -212,7 +212,7 @@ window.onload = function(selectId) {
 				
 				var middle_li = document.createElement("li");
 				//设置 li 属性，如 class
-			　　　middle_li.setAttribute("class", "cur hover");
+			　　　middle_li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
 
 				var middle_a = document.createElement("a");
 				middle_a.setAttribute("href", ctx + item.moduleUrl);
@@ -232,4 +232,13 @@ window.onload = function(selectId) {
 		}
 	});
 	
+}
+
+// 鼠标 悬浮 触发事件 2016.11.17
+window.onmouseover = function(selectId) {
+	//console.log($("#public-header-nav-ul-id li").hasClass('mouseoverclass'))
+	//var liId = $("#public-header-nav-ul-id") ;
+	if($("#public-header-nav-ul-id li").hasClass('mouseoverclass')){
+		//alert(1);
+	}
 }

@@ -121,6 +121,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		product.setAddTime(DateUtil.converNowDate());
 		String is = (product.getIsRecommend()==null)?"false":"true" ;
 		product.setIsRecommend(is);
+		product.setAuthor(getSessionUser().getUserName());
 		productService.insertProduct(product);
 		return SUCCESS ;
 	}

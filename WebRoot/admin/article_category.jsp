@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <td align="right">上级分类</td>
        <td>
         <select id="selectTree-parent-category-Id" name="parentId">
-         <option value="0">无</option>
+         <!-- <option value="0">无</option> -->
          <!-- <option value="" selected="selected">空</option> -->
         </select>
        </td>

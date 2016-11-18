@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td align="center"><input type="checkbox" name="checkbox[]" value="<s:property value="#pro.id"/>" /></td>
         <td align="center"><s:property value="#pro.id"/></td>
         <td><a href="javascript:void(0)" class="vs-product-title-href-cls"><s:property value="#pro.title"/></a></td>
-        <td align="center"><a href="javascript:void(0)" class="vs-product-query-href-cls"><s:property value="#pro.cateId"/></a></td>
+        <td align="center"><a href="javascript:void(0)" class="vs-product-query-href-cls"><s:property value="#pro.navName"/></a></td>
         <td align="center"><s:property value="#pro.addTime"/></td>
         <td align="center">
         	<a href="javascript:void(0)" class="vs-product-edit-href-cls">编辑 |</a> 

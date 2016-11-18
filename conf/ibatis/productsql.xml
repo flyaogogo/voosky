@@ -7,6 +7,23 @@
 	<typeAlias alias="Product"
 		type="com.tmwrk.voosky.database.vo.Product" />
 
+	<resultMap id="productsMap" class="Product">
+		<result property="id" column="id" />
+		<result property="navName" column="nav_name" />
+		<result property="navId" column="nav_id" />
+		<result property="title" column="title" />
+		<result property="isRecommend" column="is_recommend" />
+		<result property="content" column="content" />
+		<result property="price" column="price" />
+		<result property="thumbUrl" column="thumb_url" />
+		<result property="keywords" column="keywords" />
+		<result property="desc" column="description" />
+		<result property="author" column="author" />
+		<result property="clickNum" column="clicknum" />
+		<result property="addTime" column="add_time" />
+		<result property="vsort" column="vsort" />
+	</resultMap>
+	
 	<resultMap id="productMap" class="Product">
 		<result property="id" column="id" />
 		<result property="cateId" column="cat_id" />
@@ -17,19 +34,23 @@
 		<result property="thumbUrl" column="thumb_url" />
 		<result property="keywords" column="keywords" />
 		<result property="desc" column="description" />
+		<result property="author" column="author" />
 		<result property="clickNum" column="clicknum" />
 		<result property="addTime" column="add_time" />
 		<result property="vsort" column="vsort" />
 	</resultMap>
 	
-	<select id="getAllProducts" parameterClass="java.util.HashMap" resultMap="productMap">
-		select vsp.id,vsc.nav_name as cat_id,vsp.title,vsp.is_recommend,vsp.content,vsp.price,vsp.thumb_url,vsp.keywords,vsp.description,vsp.clicknum,
-			vsp.add_time,vsp.vsort from vs_product vsp,vs_nav vsc where vsp.cat_id=vsc.nav_id 
+	<select id="getAllProducts" parameterClass="java.util.HashMap" resultMap="productsMap">
+		select vsp.id,vsn.nav_name , vsn.nav_id,vsp.title,vsp.is_recommend,vsp.content,vsp.price,vsp.thumb_url,vsp.keywords,vsp.description,vsp.clicknum,
+			vsp.add_time,vsp.vsort,author from vs_product vsp,vs_nav vsn where vsp.cat_id=vsn.nav_id
 			<isNotNull property="isRecommend">
 				and vsp.is_recommend = #isRecommend#
 			</isNotNull>
 			<isNotNull property="cateId">
 				and vsp.cat_id = #cateId#
+			</isNotNull>
+			<isNotNull property="firstType">
+				and vsp.firstType = #firstType#
 			</isNotNull>
 			<isNotNull property="filterkey">
 				and vsp.title like concat('%', #filterkey#, '%')
@@ -37,13 +58,13 @@
 	</select>
 	<select id="getProductById" parameterClass="java.util.HashMap" resultMap="productMap">
 		select id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,
-			add_time,vsort from vs_product where id=#id#
+			add_time,vsort,author from vs_product where id=#id#
 	</select>
 	
 	<insert id="addProduct" parameterClass="Product">
-		insert into vs_product(id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,add_time,vsort) 
+		insert into vs_product(id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,add_time,vsort,author,firstType) 
 		values ((select ifnull(max(vsp.id)+1,1) from vs_product vsp),#cateId#,#title#,#isRecommend#,#content#,#price#,#thumbUrl#,
-			#keywords#,#desc#,#clickNum#,#addTime#,#vsort#)
+			#keywords#,#desc#,#clickNum#,#addTime#,#vsort#,#author#,#firstType#)
 	</insert>
 	
 	<update id="updateById" parameterClass="Product">

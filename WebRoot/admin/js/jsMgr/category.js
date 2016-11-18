@@ -47,7 +47,7 @@ $(function(){
 //						navIdStr = "0" + navIdStr ;
 //					}
 					
-					if(gAlias==null||gAlias==''){
+					if(gAlias==null||gAlias.trim()==''){
 						pval = navIdStr + "@" ;
 					}else{
 						//gAlias = gAlias.substring(0,gAlias.length-1) ;
