@@ -55,6 +55,9 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	private NavBean navBean ;
 	//关键字查询
 	private String filterkeywords ;
+	
+	//2016-11-19 记录标识，上一篇，下一篇
+	private String record ;
 
 	@Override
 	public String execute() throws Exception{
@@ -85,6 +88,10 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	public String findProductInfoById() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("id", product.getId()) ;
+		//处理上一条,下一条记录
+		if(record!=null){
+			param.put("record", record) ;
+		}
 		pro = productService.findProductInfoById(param) ;
 		
 		//商品左侧导航
@@ -221,6 +228,14 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 
 	public void setNavBean(NavBean navBean) {
 		this.navBean = navBean;
+	}
+
+	public String getRecord() {
+		return record;
+	}
+
+	public void setRecord(String record) {
+		this.record = record;
 	}
 
 }

@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="generator" content="voosky1.0" data-variable="" />
 		<meta name="description" content="模板建站和纯手工建站的区别在于：模板是“成衣”，你只需要去服装店挑选，而所谓的纯手工建站是裁缝师傅给你定制。功能和稳定性模板+成熟的CMS管理后台大大优于“裁缝店”。" />
 		<meta name="keywords" content="博恒建设公司网站模板|博恒建设企业网站模板" />
-		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 		<link rel="stylesheet" href="${ctx}/bohen/fontawesome/font-awesome-4.6.3/css/font-awesome.css">
 		
@@ -61,16 +61,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-9 met-shownews-body">
 				<div class="row">
 					<div class="met-shownews-header">
-						<h1>中建博恒建设规范用工成“香饽饽”</h1>
+						<h1><s:property value="article.title"/></h1>
 						<div class="info">
 							<span>
-								2016-02-26 10:54:52
+								<s:property value="article.addTime"/>
 							</span>
 							<span>
-								admin
+								<s:property value="article.author"/>
 							</span>
 							<span>
-								<i class="icon wb-eye margin-right-5" aria-hidden="true"></i>154
+								<i class="icon wb-eye margin-right-5" aria-hidden="true"></i><s:property value="article.clickNum"/>
 							</span>
 						</div>
 					</div>
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div><p>
 	&nbsp;</p>
 <div>
-	<span style="font-size:13px;">&nbsp; &nbsp; &nbsp; &nbsp; 中建博恒建设鄂尔多斯项目部成了当地劳务工争相竞聘的&ldquo;香饽饽&rdquo;。据悉，为规范项目用工、合理保护劳务工权益，中建博恒建设与北京泛华人力资源管理咨询有限公司签订协议，通过劳务派遣合理规范使用劳务工，与劳务工签订劳动合同，发放工资卡，工资定期发放不拖欠，并为劳务工办理养老医疗保险，全方位保障劳务工的权益。截至目前，鄂尔多斯项目部经过验证、试车、试用等多种途径与120名劳务工签订了用工合同，实现了项目劳务用工签订合同率100%，合同覆盖率100%。</span></div>
+	<span style="font-size:13px;"><s:property value="article.content" escape="false"/></span></div>
 <div>
 	&nbsp;</div>
 <div id="metinfo_additional"></div></div>
@@ -88,13 +88,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<ul class="pager pager-round">
 							<li class="previous ">
-								<a href="" title="成功打下矿山二期第一钻">
+								<a href="${ctx }/web/getArticleInfoById.htm?record='last'&id=<s:property value="#art.id"/>" title="成功打下矿山二期第一钻">
 									上一篇
 									<span aria-hidden="true" class='hidden-xs hidden-sm'>：成功打下矿山二期第一钻</span> 
 								</a>
 							</li>
 							<li class="next ">
-								<a href="" title="卡维中学项目保修期即将结束">
+								<a href="${ctx }/web/getArticleInfoById.htm?record='next'&id=<s:property value="#art.id"/>" title="卡维中学项目保修期即将结束">
 									下一篇
 									<span aria-hidden="true" class='hidden-xs hidden-sm'>：卡维中学项目保修期即将结束</span>
 								</a>

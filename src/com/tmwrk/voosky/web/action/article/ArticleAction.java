@@ -45,6 +45,9 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	
 	private NavBean navBean ;
 	
+	//2016-11-19 记录标识，上一篇，下一篇
+	private String record ;
+	
 	@Override
 	public String execute() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
@@ -71,6 +74,10 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	public String findArticleInfoById() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("id", art.getId()) ;
+		//处理上一条,下一条记录
+		if (record != null) {
+			param.put("record", record);
+		}
 		article = articleService.findArticleInfoById(param) ;
 		
 		//文章左侧导航
@@ -202,6 +209,16 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 
 	public void setNavBean(NavBean navBean) {
 		this.navBean = navBean;
+	}
+
+
+	public String getRecord() {
+		return record;
+	}
+
+
+	public void setRecord(String record) {
+		this.record = record;
 	}
 
 }

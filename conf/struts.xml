@@ -71,7 +71,7 @@
 			<result name="success">/admin/error.jsp</result>
 		</action>
 		
-		<!-- 
+		<!-- 原始编写界面
 		<action name="index" class="com.tmwrk.voosky.web.action.pubweb.IndexMgrAction">
 			<result name="success">/public/index.jsp</result>
 		</action>

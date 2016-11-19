@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="generator" content="voosky1.0" data-variable="" />
 		<meta name="description" content="模板建站和纯手工建站的区别在于：模板是“成衣”，你只需要去服装店挑选，而所谓的纯手工建站是裁缝师傅给你定制。功能和稳定性模板+成熟的CMS管理后台大大优于“裁缝店”。" />
 		<meta name="keywords" content="博恒建设公司网站模板|博恒建设企业网站模板" />
-		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 		<link rel="stylesheet" href="${ctx}/bohen/fontawesome/font-awesome-4.6.3/css/font-awesome.css">
 		

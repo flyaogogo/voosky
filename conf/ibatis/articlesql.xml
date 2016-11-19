@@ -38,9 +38,10 @@
 		<result property="vsort" column="vsort" />
 	</resultMap>
 	
+	
 	<select id="getAllArticles" parameterClass="java.util.HashMap" resultMap="articlesMap">
-		select vsa.id,vsn.nav_name ,vsn.nav_id,vsa.title,vsa.is_recommend,vsa.content,vsa.thumb_url,vsa.keywords,vsa.description,vsa.clicknum,
-			vsa.add_time,vsa.vsort,author from vs_article vsa , vs_nav vsn where vsa.cat_id=vsn.nav_id
+		select vsa.id,vsn.nav_name ,vsn.nav_id,vsa.title,vsa.is_recommend,vsa.content,vsa.thumb_url,vsa.keywords,vsa.description,vsa.author,vsa.clicknum,
+			vsa.add_time,vsa.vsort from vs_article vsa , vs_nav vsn where vsa.cat_id=vsn.nav_id
 			<isNotNull property="isRecommend">
 				and vsa.is_recommend = #isRecommend#
 			</isNotNull>
@@ -55,8 +56,8 @@
 			</isNotNull>
 	</select>
 	<select id="getArticleById" parameterClass="java.util.HashMap" resultMap="articleMap">
-		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,clicknum,
-			add_time,vsort,author from vs_article where id=#id#
+		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,author,clicknum,
+			add_time,vsort from vs_article where id=#id#
 	</select>
 	
 	<insert id="addArticle" parameterClass="Article">

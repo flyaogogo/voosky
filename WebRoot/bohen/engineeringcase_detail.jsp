@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="generator" content="voosky1.0" data-variable="" />
 		<meta name="description" content="模板建站和纯手工建站的区别在于：模板是“成衣”，你只需要去服装店挑选，而所谓的纯手工建站是裁缝师傅给你定制。功能和稳定性模板+成熟的CMS管理后台大大优于“裁缝店”。" />
 		<meta name="keywords" content="博恒建设公司网站模板|博恒建设企业网站模板" />
-		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 		<link rel="stylesheet" href="${ctx}/bohen/fontawesome/font-awesome-4.6.3/css/font-awesome.css">
 		
@@ -115,18 +115,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="ad-nav"> 
 						<div class="ad-thumbs"> 
 							<ul class="ad-thumb-list" id="lightgallery"> 
-								<li data-src="upload/1385370162.jpg" data-exthumbimage="upload/1385370162.jpg">
-									<a href="upload/1385370162.jpg"> 
-										<img src="upload/1385370162.jpg" width="64" height="64"  class="img-responsive" alt="阿布扎环路项目     " />
+								<li data-src="${ctx_img }/<s:property value="pro.thumbUrl"/>" data-exthumbimage="${ctx_img }/<s:property value="pro.thumbUrl"/>">
+									<a href="${ctx_img }/<s:property value="pro.thumbUrl"/>"> 
+										<img src="${ctx_img }/<s:property value="pro.thumbUrl"/>" width="64" height="64"  class="img-responsive" alt="<s:property value="pro.title"/>" />
 									</a> 
 								</li> 
-
+<!-- 
 								<li data-src="../upload/201311/1385370224.jpg" data-exthumbimage="upload/1385370224.jpg">
 									<a href="upload/1385370224.jpg"> 
 										<img src="upload/1385370224.jpg" width="64" height="64" class="img-responsive" alt="展示" />
 									</a> 
 								</li> 
-
+ -->
 							</ul> 
 						</div> 
 					</div> 
@@ -134,21 +134,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="visible-xs-block visible-sm-block height-20"></div>
 			<div class="col-md-5 product-intro">
-				<h1>阿布扎环路项目     </h1>
+				<h1><s:property value="pro.title"/></h1>
 
-				<p class="description">“阿布扎环路049号合同”项目，位于阿联酋首都扎比的主要通道上，是扎比门户立交枢纽。
-
-项目主要工程内容：一座1，365延米的箱型截面预应力钢筋混凝土连续梁桥和一条510延米的地下行车道</p>
+				<p class="description"><s:property value="pro.desc"/></p>
 	
 				<div class="para">
 					<div class="row">
 						
 						<div class="col-md-6 col-sm-6 col-xs-6 margin-bottom-15 blue-grey-500">
-							项目名称 : 
+							项目名称 : <s:property value="pro.title"/>
 						</div>
 						
 						<div class="col-md-6 col-sm-6 col-xs-6 margin-bottom-15 blue-grey-500">
-							开工时间 : 
+							开工时间 : <s:property value="pro.addTime"/>
 						</div>
 	
 					</div>
@@ -175,45 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane met-editor lazyload clearfix animation-fade active" id="product-details">
-									<div><p>
-	<span style="font-size: 13px;">&ldquo;阿布扎环路049号合同&rdquo;项目，位于阿联酋首都扎比的主要通道上，是扎比门户立交枢纽。</span></p>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">项目主要工程内容：一座1，365延米的箱型截面预应力钢筋混凝土连续梁桥和一条510延米的地下行车道</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">业主：扎比市政厅</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">合作（总包）公司：ADM</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">合同额：480.44万美元</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">开工日期：2004年5月6日</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">竣工日期：2005年12月6日</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">总工期：31个月</span></div>
-<div>
-	&nbsp;</div>
-<div>
-	<span style="font-size:13px;">&nbsp; &nbsp; &nbsp; &nbsp; 049项目是阿代处首次以承包机制进行自营实施的项目，也是迄今在阿规模最大、技术最复杂的工程项目，049项&nbsp;目的顺利实施，为公司在阿市场创出了声誉，树立了承包桥梁工程的良好形象。</span></div>
-<div>
-	&nbsp;</div>
-<p>
-	&nbsp;</p>
-<div id="metinfo_additional"></div></div>
+									<s:property value="pro.content" escape="false"/>
 								</div>
 
 							</div>

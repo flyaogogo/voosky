@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="generator" content="voosky1.0" data-variable="" />
 		<meta name="description" content="模板建站和纯手工建站的区别在于：模板是“成衣”，你只需要去服装店挑选，而所谓的纯手工建站是裁缝师傅给你定制。功能和稳定性模板+成熟的CMS管理后台大大优于“裁缝店”。" />
 		<meta name="keywords" content="博恒建设公司网站模板|博恒建设企业网站模板" />
+		<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 		<link rel="stylesheet" href="${ctx}/bohen/fontawesome/font-awesome-4.6.3/css/font-awesome.css">
 		
@@ -73,21 +74,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <ul class="met-page-ajax">
 
-
+<s:iterator value="artList" var="art">
 	<li>
 		<h4>
-			<a href="" title="中建土木公司规范用工成“香饽饽”" target='_self'>
-				中建土木公司规范用工成“香饽饽”
+			<a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'>
+				<s:property value="#art.title"/>
 			</a>
 		</h4>
-		<p class="des"> 中建土木公司鄂尔多斯项目部成了当地劳务工争相竞聘的“香饽饽”。...</p>
+		<p class="des"><s:property value="#art.desc"/></p>
 		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>154</span>
+			<span><s:property value="#art.addTime"/></span>
+			<span class="margin-left-10"><s:property value="#art.author"/></span>
+			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i><s:property value="#art.clickNum"/></span>
 		</p>
 	</li>
-
+</s:iterator>
+<%-- 
 	<li>
 		<h4>
 			<a href="" title="卡维中学项目保修期即将结束" target='_self'>
@@ -185,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>19</span>
 		</p>
 	</li>
- 
+  --%>
 
 </ul>
 
