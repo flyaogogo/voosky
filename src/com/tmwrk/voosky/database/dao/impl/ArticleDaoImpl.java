@@ -33,10 +33,11 @@ public class ArticleDaoImpl extends BaseDao<Article>{
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Article findById(Map<String, Object> params) {
-		Article p = (Article)getSqlMapClientTemplate().queryForObject("article.getArticleById", params) ;
-		return p ;
+		List<Article> prList = (List<Article>)getSqlMapClientTemplate().queryForList("article.getArticleById", params) ;
+		return prList.get(0) ;
 	}
 
 	@SuppressWarnings("unchecked")

@@ -35,6 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.layeranimation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.navigation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.parallax.min.js"></script>
+
+    <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 	</head>
 
 
@@ -88,13 +90,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<ul class="pager pager-round">
 							<li class="previous ">
-								<a href="${ctx }/web/getArticleInfoById.htm?record='last'&id=<s:property value="#art.id"/>" title="成功打下矿山二期第一钻">
+								<a href="${ctx }/bohen/getNewInfoById.htm?record='last'&id=<s:property value="article.id"/>" title="成功打下矿山二期第一钻">
 									上一篇
 									<span aria-hidden="true" class='hidden-xs hidden-sm'>：成功打下矿山二期第一钻</span> 
 								</a>
 							</li>
 							<li class="next ">
-								<a href="${ctx }/web/getArticleInfoById.htm?record='next'&id=<s:property value="#art.id"/>" title="卡维中学项目保修期即将结束">
+								<a href="${ctx }/bohen/getNewInfoById.htm?record='next'&id=<s:property value="article.id"/>" title="卡维中学项目保修期即将结束">
 									下一篇
 									<span aria-hidden="true" class='hidden-xs hidden-sm'>：卡维中学项目保修期即将结束</span>
 								</a>

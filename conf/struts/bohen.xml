@@ -11,11 +11,11 @@
 		</action>
 		
 		<action name="getNewInfoById" method="findArticleInfoById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
-			<result name="success">/bohen/news.jsp</result>
+			<result name="success">/bohen/news_detail.jsp</result>
 		</action>
 		
 		<action name="getNewsInfo" class="com.tmwrk.voosky.web.action.article.ArticleAction">
-			<result name="success">/bohen/news_detail.jsp</result>
+			<result name="success">/bohen/news.jsp</result>
 		</action>
 	</package>
 </struts>

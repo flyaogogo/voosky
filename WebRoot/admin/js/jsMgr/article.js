@@ -75,10 +75,10 @@ $(function(){
 				
 				$(".vs-article-type-oper-cls script[name='content']").val(ue.getContent()) ;
 //				$(".vs-article-type-oper-cls textarea[name='content']").val(ue.getAllHtml()) ;
-				
+				alert(ctx_img);
 //				$(".vs-article-type-oper-cls input[name='thumbUrl']").val(data.thumbUrl) ;
 				$(".vs-article-type-oper-cls input[name='fileRealPath']").val(data.thumbUrl) ;
-				$(".vs-article-type-oper-cls img[name='imageShow']").attr("src",ctx + "/" + data.thumbUrl) ;
+				$(".vs-article-type-oper-cls img[name='imageShow']").attr("src",ctx_img + "/" + data.thumbUrl) ;
 				
 				$(".vs-article-type-oper-cls input[name='keywords']").val(data.keywords) ;
 				$(".vs-article-type-oper-cls input[name='desc']").val(data.desc) ;

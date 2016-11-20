@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<h1>工程案例</h1>
 					</div>
 					<div class="breadcumb col-sm-6 pull-right">
-						<i class="fa fa-home"></i> <a href="" title="首页">首页</a> &gt; <a href= >工程案例</a>
+						<i class="fa fa-home"></i> <a href="${ctx}/index.htm" title="首页">首页</a> &gt; <a href= >工程案例</a>
 					</div>
 				</div>
 			</div>

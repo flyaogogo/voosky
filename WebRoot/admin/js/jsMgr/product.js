@@ -76,7 +76,7 @@ $(function(){
 //				$(".vs-product-type-oper-cls textarea[name='content']").val(ue) ;
 				
 				$(".vs-product-type-oper-cls input[name='fileRealPath']").val(data.thumbUrl) ;
-				$(".vs-product-type-oper-cls img[name='imageShow']").attr("src",ctx + "/" + data.thumbUrl) ;
+				$(".vs-product-type-oper-cls img[name='imageShow']").attr("src",ctx_img + "/" + data.thumbUrl) ;
 				
 				$(".vs-product-type-oper-cls input[name='keywords']").val(data.keywords) ;
 				$(".vs-product-type-oper-cls input[name='desc']").val(data.desc) ;

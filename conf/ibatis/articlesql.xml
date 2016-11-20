@@ -54,10 +54,24 @@
 			<isNotNull property="title">
 				and vsa.title like concat('%', #title#, '%')
 			</isNotNull>
+			order by add_time desc
 	</select>
 	<select id="getArticleById" parameterClass="java.util.HashMap" resultMap="articleMap">
 		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,author,clicknum,
-			add_time,vsort from vs_article where id=#id#
+			add_time,vsort from vs_article where 1=1  
+			<isEqual property="record" compareValue="last">
+				<![CDATA[
+				and id<#id# order by id desc limit 0,1 
+				]]>
+			</isEqual>
+			<isEqual property="record" compareValue="next">
+			<![CDATA[
+				and id>#id# order by id desc limit 0,1 
+				]]>
+			</isEqual>
+			<isNull property="record">
+				and id=#id#
+			</isNull>
 	</select>
 	
 	<insert id="addArticle" parameterClass="Article">

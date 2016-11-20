@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row">
 			<ol class="breadcrumb">
 				<li>
-					<a href="" title="首页">
+					<a href="${ctx}/index.htm" title="首页">
 						<i class="icon wb-home" aria-hidden="true"></i>首页
 					</a>
 				</li>

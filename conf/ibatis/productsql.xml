@@ -57,16 +57,21 @@
 			</isNotNull>
 	</select>
 	<select id="getProductById" parameterClass="java.util.HashMap" resultMap="productMap">
+	
 		select id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,
-			add_time,vsort,author from vs_product where 1=1 and 
+			add_time,vsort,author from vs_product where 1=1  
 			<isEqual property="record" compareValue="last">
-				id<#id# order by id desc limit 0,1 
+				<![CDATA[
+				and id<#id# order by id desc limit 0,1 
+				]]>
 			</isEqual>
 			<isEqual property="record" compareValue="next">
-				id>#id# order by id desc limit 0,1 
+			<![CDATA[
+				and id>#id# order by id desc limit 0,1 
+				]]>
 			</isEqual>
 			<isNull property="record">
-				id=#id#
+				and id=#id#
 			</isNull>
 	</select>
 	
