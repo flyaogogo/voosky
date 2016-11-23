@@ -45,36 +45,21 @@
 							</div>
 							<div class="col-md-3 col-sm-4 col-xs-12 list ecoinfo text-left">
 								<h4>公司新闻</h4>
-								<ul>
+								<ul id="common-footer-news-id">
 
-									<li>
+									<!-- <li>
 										<a href="" target='_self' title="中建土木公司规范用工">中建土木公司规范用工</a>
 									</li>
-
-									<li>
-										<a href="new/shownews.php?lang=cn&id=4" target='_self' title="卡维中学项目保修期即">卡维中学项目保修期即</a>
-									</li>
-
-									<li>
-										<a href="new/shownews.php?lang=cn&id=3" target='_self' title="董事长访问墨西哥">董事长访问墨西哥</a>
-									</li>
-
-									<li>
-										<a href="new/shownews.php?lang=cn&id=1" target='_self' title="公司再次入选ENR排">公司再次入选ENR排</a>
-									</li>
-
-									<li>
-										<a href="new/shownews.php?lang=cn&id=2" target='_self' title="公司党委举办组工干部">公司党委举办组工干部</a>
-									</li>
+									 -->
 
 								</ul>
 							</div>
 
 							<div class="col-md-3 col-sm-4 col-xs-12 list  text-left">
 								<h4>联系我们</h4>
-								<ul class="contact-info">
+								<ul class="contact-info" id="common-footer-contact-us-id">
 
-									<li><a><i class="fa fa-map-marker"></i>&nbsp;北京大兴区</a></li>
+									<!-- <li><a><i class="fa fa-map-marker"></i>&nbsp;北京大兴区</a></li>
 
 									<li>
 										<a href="tel:86-12345678901" title="86-12345678901"><i class="fa fa-phone"></i>&nbsp;86-12345678901</a>
@@ -82,7 +67,7 @@
 
 									<li><a><i class="fa fa-envelope"></i>&nbsp;123456789@qq.com</a></li>
 
-									<li><a><i class="fa fa-globe"></i>&nbsp;www.spademo.com</a></li>
+									<li><a><i class="fa fa-globe"></i>&nbsp;www.spademo.com</a></li> -->
 
 								</ul>
 							</div>

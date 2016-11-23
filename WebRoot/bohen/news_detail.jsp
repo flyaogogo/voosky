@@ -29,13 +29,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="${ctx}/bohen/js/classList.min.js"></script> 
 
 <![endif]-->
-<script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.video.min.js"></script>
-<script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.actions.min.js"></script>
-<script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.navigation.min.js"></script>
-<script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.parallax.min.js"></script>
-
+    <script type="text/javascript" src="${ctx}/bohen/js/jquery.js"></script>
+    
+<%-- <script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.video.min.js"></script>
+<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.parallax.min.js"></script>
+ --%>
     <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 	</head>
 

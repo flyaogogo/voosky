@@ -85,7 +85,7 @@
 						</div>
 						<div class="collapse navbar-collapse navbar-collapse-toolbar" id="example-navbar-default-collapse">
 
-							<ul class="nav navbar-nav navbar-right navlist" id="public-header-nav-ul-id">
+							<ul class="nav navbar-nav navbar-right navlist bohengcls" id="public-header-nav-ul-id">
 								<!-- <li>
 									<a href="ndex.html" title="首页" class="link active">首页</a>
 								</li>

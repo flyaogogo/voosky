@@ -1,7 +1,9 @@
 package com.tmwrk.voosky.database.vo;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 登陆首页实体类
@@ -9,7 +11,13 @@ import java.util.List;
  * @author wfluo
  *
  */
-public class ConsoleMrg {
+public class ConsoleMrg implements Serializable{
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2887400622965432809L;
 
 	//单页面集合
 	private List<SinglePage> spList ;
@@ -33,6 +41,9 @@ public class ConsoleMrg {
 	private List<Navigation> navList ;
 	
 	private SinglePage spAbout ;
+	
+	//对父ID进行分组
+	private Map<String, List<Navigation>> navListMap = new HashMap<String, List<Navigation>>() ;
 
 	public List<SinglePage> getSpList() {
 		return spList;
@@ -121,4 +132,13 @@ public class ConsoleMrg {
 	public void setSpAbout(SinglePage spAbout) {
 		this.spAbout = spAbout;
 	}
+
+	public Map<String, List<Navigation>> getNavListMap() {
+		return navListMap;
+	}
+
+	public void setNavListMap(Map<String, List<Navigation>> navListMap) {
+		this.navListMap = navListMap;
+	}
+
 }

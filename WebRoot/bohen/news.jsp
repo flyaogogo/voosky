@@ -30,6 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <![endif]-->
 	<%-- <script src="${ctx}/bohen/js/13b4293ffe964f00.js"></script> --%>
 	
+    <script type="text/javascript" src="${ctx}/bohen/js/jquery.js"></script>
     <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 	</head>
 

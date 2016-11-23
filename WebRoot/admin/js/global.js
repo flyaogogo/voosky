@@ -193,13 +193,265 @@ window.onload = function(selectId) {
 	first_li.appendChild(first_a);
 　　　ul.appendChild(first_li);
 	
+	var dataList ;
+	if($("#public-header-nav-ul-id").hasClass('bohengcls')){
+		
+		dataList = setTopAndFooter(ul);
+		//dataList = setNavigation(ul) 
+	}else{
+		dataList = setNavigation(ul) 
+	}
 	
+	//console.log(dataList) 
+}
+
+/**
+ * 通过递归找到子节点
+ * @param tmpul		:上一层的ul标签
+ * @param map		:通过父结点组成的一个集合Map
+ * @param mapValue	:通过key，获得的集合
+ * @param p_url		:父的url
+ * @param p_name	:父的导航名称
+ * @param flag		:处理第二级的样式
+ * @param flag		:处理无限子结点的样式
+ */
+function findChild(tmpul,map,mapValue,p_url,p_name,flag,flag2) {
+	
+	if(flag==true){
+		var child_all_li = document.createElement("li");
+		//设置 li 属性，如 class
+		child_all_li.setAttribute("class", "visible-xs-block");
+		
+		var child_all_a = document.createElement("a");
+		child_all_a.setAttribute("href", ctx + p_url);
+		//child_a.setAttribute("target", "_blank");
+		//console.log(i+"----"+ item.module) ;
+		
+		child_all_a.innerHTML="全部" ;
+		
+		child_all_li.appendChild(child_all_a);
+		tmpul.appendChild(child_all_li);
+	}
+	
+	$.each(mapValue, function(i,item){
+		
+		var child_li = document.createElement("li");
+		
+		var child_a = document.createElement("a");
+		if(flag2 == true){
+			child_li.setAttribute("class", "presentation");
+			child_a.setAttribute("role", "menuitem");
+			child_a.setAttribute("tabindex", "-1");
+		}
+		
+		child_a.setAttribute("href", ctx + item.moduleUrl);
+		child_a.setAttribute("title", item.navName);
+		child_a.innerHTML=item.navName ;
+		
+		//console.log("child -- " + item.navId) ;
+		var tmp_v = map[item.navId];
+		if(tmp_v != undefined){
+			//设置 li 属性，如 class
+			child_li.setAttribute("class", "dropdown-submenu");
+			
+			var p_child_ul = document.createElement("ul");
+			p_child_ul.setAttribute("class", "dropdown-menu animate");
+			p_child_ul.setAttribute("role", "menu");
+			
+			findChild(p_child_ul,map,tmp_v,item.moduleUrl,item.navName,false,true);
+			child_li.appendChild(p_child_ul);
+		}
+		child_li.appendChild(child_a);
+		
+		tmpul.appendChild(child_li);
+		
+		
+	});
+}
+
+//创建a标签
+function create_header_a(li,url,name,i) {
+	
+	var p_middle_first_a = document.createElement("a");
+	//<a class="dropdown-toggle link " data-toggle="dropdown" data-hover="dropdown" href="success.html" 
+	//aria-expanded="false" role="button" title="工程案例">工程案例 <span class="caret"></span></a>
+	p_middle_first_a.setAttribute("href", ctx + url);
+	p_middle_first_a.setAttribute("title", name);
+	if(i==1){
+		li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
+		p_middle_first_a.setAttribute("class", "dropdown-toggle link");
+		p_middle_first_a.setAttribute("data-toggle", "dropdown");
+		p_middle_first_a.setAttribute("data-hover", "dropdown");
+		p_middle_first_a.setAttribute("aria-expanded", "false");
+		p_middle_first_a.setAttribute("role", "button");
+		
+		var child_first_span_cls = document.createElement("span");
+		child_first_span_cls.setAttribute("class", "caret");
+		p_middle_first_a.appendChild(child_first_span_cls);
+	}else if(i==2){
+		li.setAttribute("class", "cur hover margin-left-0 mouseoverclass");
+		p_middle_first_a.setAttribute("class", "link");
+	}
+	
+	var child_first_span = document.createElement("span");
+	child_first_span.innerHTML = name ;
+	
+	p_middle_first_a.appendChild(child_first_span);
+	
+	li.appendChild(p_middle_first_a) ;
+	
+}
+
+/**
+ * 对新增页面的设置公共的头及底
+ * @param ul
+ */
+function setTopAndFooter(ul) {
+	var urls = ctx+"/bohen/getTopFooterInfo.htm" ;
+	//alert(urls);
+	var dataList ;
+	$.ajax({
+		type : 'POST',
+		dataType : "json",
+		url : urls,//请求的action路径   
+		error : function(XMLHttpRequest, textStatus, errorThrown) {//请求失败处理函数   
+			alert('请求失败!');
+			//console.log(XMLHttpRequest) 
+			//console.log(textStatus) 
+			//console.log(errorThrown) 
+		},
+		success : function(data) { //请求成功后处理函数。
+			//alert('success data!');
+			//console.log(data) ;
+			var navListMap = data.navListMap ;
+			var artList = data.artList ;
+			//找出第一级显示栏
+			dataList = navListMap["0"] ;
+			
+			$.each(dataList, function(i,item){
+				var middle_li = document.createElement("li");
+				
+				//console.log("0000 -- " + item.navId) ;
+				var tmp_v = navListMap[item.navId];
+				
+				if(tmp_v != undefined){
+					//middle_li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
+					create_header_a(middle_li,item.moduleUrl,item.navName,1) ;
+					
+					var p_middle_ul = document.createElement("ul");
+					p_middle_ul.setAttribute("class", "dropdown-menu dropdown-menu-left bullet");
+					p_middle_ul.setAttribute("role", "menu");
+					
+					
+					findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,true,false);
+					middle_li.appendChild(p_middle_ul) ;
+					//console.log("ok") ;
+				}else{
+					//middle_li.setAttribute("class", "cur hover margin-left-0 mouseoverclass");
+					create_header_a(middle_li,item.moduleUrl,item.navName,2) ;
+				}
+				
+				ul.appendChild(middle_li);
+				
+				
+			});
+
+			//公司简介
+			//TODO
+			
+			//底部新闻
+			$.each(artList, function(i,item){
+				//只显示最新5条
+				if(i>5){
+					return false ;
+				}
+				var footer_ul = document.getElementById("common-footer-news-id");
+				var first_footer_li = document.createElement("li");
+				//设置 li 属性，如 class   <li ><a href="" target='_self' title="中建土木公司规范用工">中建土木公司规范用工</a></li>
+				var first_footer_a = document.createElement("a");
+				first_footer_a.setAttribute("href", ctx + "/bohen/getCaseInfoById.htm?id=" + item.id);
+				first_footer_a.setAttribute("target", "_self");
+				first_footer_a.setAttribute("title", item.title);
+				first_footer_a.innerHTML=item.title ;
+				
+				first_footer_li.appendChild(first_footer_a);
+			　　　footer_ul.appendChild(first_footer_li);
+			});
+			
+			//联系我们
+			var contact_ul = document.getElementById("common-footer-contact-us-id");
+			contact_ul.setAttribute("class", "contact-info");
+			/*地址*/
+			var contact_marker_li = document.createElement("li");
+			//设置 li 属性，如 class   <li><a><i class="fa fa-map-marker"></i>&nbsp;北京大兴区</a></li>
+			var contact_marker_a = document.createElement("a");
+			var contact_marker_i = document.createElement("i");
+			contact_marker_i.setAttribute("class", "fa fa-map-marker");
+			var contact_marker_span = document.createElement("span");
+			contact_marker_span.innerHTML="&nbsp;北京大兴区" ;
+			contact_marker_a.appendChild(contact_marker_i);
+			contact_marker_a.appendChild(contact_marker_span);
+			//contact_marker_a.innerHTML="&nbsp;北京大兴区" ;
+			contact_marker_li.appendChild(contact_marker_a);
+			
+			/*电话*/
+			var contact_phone_li = document.createElement("li");
+			//设置 li 属性，如 class   <a href="tel:86-12345678901" title="86-12345678901"><i class="fa fa-phone"></i>&nbsp;86-12345678901</a>
+			var contact_phone_a = document.createElement("a");
+			var contact_phone_i = document.createElement("i");
+			contact_phone_i.setAttribute("class", "fa fa-phone");
+			var contact_phone_span = document.createElement("span");
+			contact_phone_span.innerHTML="&nbsp;86-12345678901" ;
+			contact_phone_a.appendChild(contact_phone_i);
+			contact_phone_a.appendChild(contact_phone_span);
+			//contact_phone_a.innerHTML="&nbsp;86-12345678901" ;
+			
+			contact_phone_li.appendChild(contact_phone_a);
+			/*邮件*/
+			var contact_mail_li = document.createElement("li");
+			//设置 li 属性，如 class   <li><a><i class="fa fa-envelope"></i>&nbsp;123456789@qq.com</a></li>
+			var contact_mail_a = document.createElement("a");
+			var contact_mail_i = document.createElement("i");
+			contact_mail_i.setAttribute("class", "fa-envelope");
+			var contact_mail_span = document.createElement("span");
+			contact_mail_span.innerHTML="&nbsp;123456789@qq.com" ;
+			
+			contact_mail_a.appendChild(contact_mail_i);
+			contact_mail_a.appendChild(contact_mail_span);
+			//contact_mail_a.innerHTML="&nbsp;123456789@qq.com" ;
+			contact_mail_li.appendChild(contact_mail_a);
+			
+			/*域名*/
+			var contact_globe_li = document.createElement("li");
+			//设置 li 属性，如 class   <li><a><i class="fa fa-globe"></i>&nbsp;www.spademo.com</a></li>
+			var contact_globe_a = document.createElement("a");
+			var contact_globe_i = document.createElement("i");
+			contact_globe_i.setAttribute("class", "fa-globe");
+			var contact_globe_span = document.createElement("span");
+			contact_globe_span.innerHTML="&nbsp;www.spademo.com" ;
+			contact_globe_a.appendChild(contact_globe_i);
+			contact_globe_a.appendChild(contact_globe_span);
+			//contact_globe_a.innerHTML="&nbsp;www.spademo.com" ;
+			contact_globe_li.appendChild(contact_globe_a);
+			
+			////
+		　　　contact_ul.appendChild(contact_marker_li);
+			contact_ul.appendChild(contact_phone_li);
+			contact_ul.appendChild(contact_mail_li);
+			contact_ul.appendChild(contact_globe_li);
+			
+		}
+	});
+}
+
+
+function setNavigation(ul) {
 	var dataList ;
 	$.ajax({
 		async:false,
 		type : 'POST',
 		dataType : "json",
-		url : ctx+"/nav/listAllParentNavInfo.htm",//请求的action路径   
+		url : ctx+"/nav/listAllParentNavInfo.htm",//请求的action路径    第一版请求方式，Public
 		error : function() {//请求失败处理函数   
 			alert('请求失败');
 		},
@@ -212,8 +464,8 @@ window.onload = function(selectId) {
 				
 				var middle_li = document.createElement("li");
 				//设置 li 属性，如 class
-			　　　middle_li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
-
+				middle_li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
+				
 				var middle_a = document.createElement("a");
 				middle_a.setAttribute("href", ctx + item.moduleUrl);
 				//middle_a.setAttribute("target", "_blank");
@@ -225,14 +477,14 @@ window.onload = function(selectId) {
 				middle_a.innerHTML=item.navName ;
 				
 				middle_li.appendChild(middle_a);
-			　　　ul.appendChild(middle_li);
+				ul.appendChild(middle_li);
 				
-            });  
+			});  
 			
 		}
 	});
-	
 }
+
 
 // 鼠标 悬浮 触发事件 2016.11.17
 window.onmouseover = function(selectId) {

@@ -32,7 +32,8 @@ public class LoginInterceptor extends AbstractInterceptor
 		if (actionName.equals("verifyAccount") || actionName.equals("IndexMgrAction") || actionName.equals("getProInfoById")
 				|| actionName.equals("getArticleInfoById") || actionName.equals("getSPInfoById")|| actionName.equals("index")|| actionName.equals("listAllParentNavInfo")
 				|| actionName.equals("getSPInfoByName")||actionName.equals("getProductsInfo")||actionName.endsWith("getArticlesInfo")
-				|| actionName.endsWith("getCaseInfoById")||actionName.endsWith("getCaseductsInfo")||actionName.endsWith("getNewInfoById")||actionName.endsWith("getNewsInfo"))
+				|| actionName.endsWith("getCaseInfoById")||actionName.endsWith("getCaseductsInfo")||actionName.endsWith("getNewInfoById")
+				|| actionName.endsWith("getNewsInfo")|| actionName.endsWith("getTopFooterInfo"))
 			return invocation.invoke();
 
 		if (request.getSession().getAttribute("user") == null) {

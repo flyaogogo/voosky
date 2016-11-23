@@ -25202,10 +25202,8 @@ h4.example-title {
 @font-face {
 	font-family: 'Web Icons';
 	font-style: normal;
-	font-weight: 400;
-	src: url(../../../app/system/include/static/fonts/web-icons/web-icons.eot?v=0.2.3);
-	src: url(../../../app/system/include/static/fonts/web-icons/web-icons.eot?#iefix&v=0.2.3) format('embedded-opentype'), url(../../../app/system/include/static/fonts/web-icons/web-icons.woff2?v=0.2.3) format('woff2'), url(../../../app/system/include/static/fonts/web-icons/web-icons.woff?v=0.2.3) format('woff'), url(../../../app/system/include/static/fonts/web-icons/web-icons.ttf?v=0.2.3) format('truetype'), url(../../../app/system/include/static/fonts/web-icons/web-icons.svg?v=0.2.3#web-icons) format('svg')
-}
+	font-weight: 400
+	}
 
 [class*=" wb-"],
 [class^=wb-] {
