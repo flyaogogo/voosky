@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>article category</title>
+<title>product category</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/TreeSelector.js"></script>

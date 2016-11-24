@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <s:iterator value="artList" var="art">
 	<li>
 		<h4>
-			<a href="${ctx }/web/getArticleInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'>
+			<a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'>
 				<s:property value="#art.title"/>
 			</a>
 		</h4>
@@ -92,105 +92,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</p>
 	</li>
 </s:iterator>
-<%-- 
-	<li>
-		<h4>
-			<a href="" title="卡维中学项目保修期即将结束" target='_self'>
-				卡维中学项目保修期即将结束
-			</a>
-		</h4>
-		<p class="des">近日，公司在卡维高级中学项目竣工交验后为期一年的保修期即将结束，目前学校各类设施运行良好。...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>96</span>
-		</p>
-	</li>
-
-	<li>
-		<h4>
-			<a href="" title="董事长访问墨西哥" target='_self'>
-				董事长访问墨西哥
-			</a>
-		</h4>
-		<p class="des">为配合主席访问墨西哥，公司董事长于6月3日至10日参加了由中国贸促会组织的经贸代表团访问墨西哥。...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>45</span>
-		</p>
-	</li>
-
-	<li>
-		<h4>
-			<a href="" title="公司再次入选ENR排名榜" target='_self'>
-				公司再次入选ENR排名榜
-			</a>
-		</h4>
-		<p class="des">8 月 23 日，美国《工程新闻记录》（Engineering News Record，简称 ENR） 杂志官网发布了 2013 年度 ENR“最大 250 家国际承包商”排名榜。...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>33</span>
-		</p>
-	</li>
-
-	<li>
-		<h4>
-			<a href="" title="公司党委举办组工干部培训班" target='_self'>
-				公司党委举办组工干部培训班
-			</a>
-		</h4>
-		<p class="des">6月4日至8日,公司党委举办组工干部培训班，公司各部门、各事业部、境内各单位及部分境外单位的组织委员或具体负责组织工作的同志共计34人参加了培训。公司党委副书记、纪委书记到会作总结讲话。...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>29</span>
-		</p>
-	</li>
-
-	<li>
-		<h4>
-			<a href="" title="成功打下矿山二期第一钻" target='_self'>
-				成功打下矿山二期第一钻
-			</a>
-		</h4>
-		<p class="des">中建新疆宝明油页岩项目成功打下矿山二期第一钻！...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>20</span>
-		</p>
-	</li>
-
-	<li>
-		<h4>
-			<a href="p?lang=cn&id=7" title="别样的幸福 " target='_self'>
-				别样的幸福 
-			</a>
-		</h4>
-		<p class="des">莎士比亚有句脍炙人口的谚语：“一千个读者就有有一千个哈姆雷特”，同样，对于幸福“仁者见仁，智者见智”，一千个人就有一千个不同的理解。 ...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>22</span>
-		</p>
-	</li>
-
-	<li>
-		<h4>
-			<a href="" title="爆破现场清场 家属服务队“上阵”" target='_self'>
-				爆破现场清场 家属服务队“上阵”
-			</a>
-		</h4>
-		<p class="des">土木公司海南项目...</p>
-		<p class="info">
-			<span>2016-02-26</span>
-			<span class="margin-left-10">admin</span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>19</span>
-		</p>
-	</li>
-  --%>
 
 </ul>
 
@@ -219,8 +120,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="recommend news-list-md">
 							<h3>为您推荐</h3>
 							<ul class="list-group list-group-bordered">
-
-								<li class="list-group-item"><a href="" title="中建土木公司规范用工成“香饽饽”" target='_self'>中建土木公司规范用工成“香饽饽”</a></li>
+								<s:iterator value="artList" var="art" status = "status">
+									<s:if test="#status.index<5">
+									<li class="list-group-item"><a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'><s:property value="#art.title"/></a></li>
+									</s:if>
+								</s:iterator>
+								<!-- <li class="list-group-item"><a href="" title="中建土木公司规范用工成“香饽饽”" target='_self'>中建土木公司规范用工成“香饽饽”</a></li>
 
 								<li class="list-group-item"><a href="../" title="卡维中学项目保修期即将结束" target='_self'>卡维中学项目保修期即将结束</a></li>
 
@@ -228,18 +133,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 								<li class="list-group-item"><a href="" title="公司再次入选ENR排名榜" target='_self'>公司再次入选ENR排名榜</a></li>
 
-								<li class="list-group-item"><a href="" title="公司党委举办组工干部培训班" target='_self'>公司党委举办组工干部培训班</a></li>
+								<li class="list-group-item"><a href="" title="公司党委举办组工干部培训班" target='_self'>公司党委举办组工干部培训班</a></li> -->
 
 							</ul>
 						</div>
 
                         <ul class="column">
-                            <li><a href="../" title="所有文章" target='_self'>所有文章</a></li>
-
+                            <li><a href="${ctx }/bohen/getNewsInfo.htm" title="所有文章" target='_self'>所有文章</a></li>
+							<s:iterator value="ctgryList" var="ctgry">
+								<li><a href="${ctx }/bohen/getNewsInfo.htm?cateId=<s:property value="#ctgry.navId"/>"  title="<s:property value="#ctgry.cateName"/>"><s:property value="#ctgry.cateName"/></a></li>
+							</s:iterator>
+							<!-- 
                             <li><a href=""  title="公司新闻">公司新闻</a></li>
-
-
-                            <li><a href=""  title="媒体报道">媒体报道</a></li>
+                            <li><a href=""  title="媒体报道">媒体报道</a></li> -->
 
 
                         </ul>

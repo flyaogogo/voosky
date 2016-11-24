@@ -46,9 +46,11 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		//add tree
 		String mURL = null ;
 		if("product".equals(category.getCateStatus())){
-			mURL = "getProductsInfo" ;
+			//mURL = "getProductsInfo" ;
+			mURL = "getCaseductsInfo" ;
 		}else if("article".equals(category.getCateStatus())){
-			mURL = "getArticlesInfo" ;
+			//mURL = "getArticlesInfo" ;
+			mURL = "getNewsInfo" ;
 		}
 		navBean = navService.getAllNavByParentId(mURL) ;
 		return category.getCateStatus() ;

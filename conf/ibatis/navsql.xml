@@ -19,7 +19,7 @@
 	</resultMap>
 	
 	<select id="getAllNavigations" parameterClass="java.util.HashMap" resultMap="navMap">
-		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav order by vsort asc
+		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where vtype = 'middle' order by vsort asc
 	</select>
 	<select id="getNavigationsByType" parameterClass="java.util.HashMap" resultMap="navMap">
 		select nav_id,module,nav_name,guide,module_url,parent_id,vtype,vsort from vs_nav where vtype=#navType# order by vsort asc

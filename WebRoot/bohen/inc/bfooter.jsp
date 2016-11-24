@@ -15,13 +15,15 @@
 								<img class="positioned wow cover-image" data-original="${ctx}/bohen/upload/weima.png" data-plugin="appear" data-animate="slide-left">
 							</div>
 							<div class="col-md-3 col-sm-4 col-xs-12 list text-left">
-								<h4>公司简介</h4>
+								<!-- <h4>公司简介</h4>
 								<p>
 									<p>博恒建设公司， 1979年经国务院批准成立，是中国最早进入国际市场的外经企业之一，目前已发展成为拥有中国铁路工程施工总承包特级资质的大型国有企业，连续多年入选全球最大225家国际承包商百强行列。</p>
 								</p>
 
 								<a href="" title="公司简介" target='_self' class="read-more">查看详细简介<i class="fa fa-arrow-circle-right"></i></a>
-
+ 								-->
+ 								<div id="common-footer-company-id">
+ 								</div>
 								<ul class="social">
 
 									<li>

@@ -226,6 +226,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!-- <p class="desc invisible" data-plugin="appear" data-animate="fade" data-repeat="false">最新公司动态</p> -->
 					<div class="owl-carousel owl-theme">
 
+						<s:iterator value="index.artList" var="art">
+						<s:if test="#art.navId=='20'">
+						<div class="item">
+							<div class="single-testimonial-construct clearfix">
+								<div class="img-holder hvr-rectangle-out">
+									<a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>"><img class="owl-lazy" data-src="${ctx_img }/<s:property value="#art.thumbUrl"/>" alt="<s:property value="#art.title"/>"></a>
+								</div>
+								<div class="content">
+									<div class="content2">
+										<h3 class="ohto wn"><a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>"><s:property value="#art.title"/></a></h3>
+										<p class="ohto"><s:property value="#art.content" escape="false"/></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						</s:if>
+						</s:iterator>
+						<%-- 
 						<div class="item">
 							<div class="single-testimonial-construct clearfix">
 								<div class="img-holder hvr-rectangle-out">
@@ -308,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 
 					</div>
 				</div>
@@ -323,6 +341,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul class="blocks blocks-2">
 						
 						<s:iterator value="index.artList" var="art">
+						<s:if test="#art.navId!='20'">
 						<li class="invisible" data-plugin="appear" data-animate="slide-bottom" data-repeat="false">
 							<div class="media media-lg">
 								<div class="media-left">
@@ -352,6 +371,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</div>
 						</li>
+						</s:if>
 						</s:iterator>
 						
 

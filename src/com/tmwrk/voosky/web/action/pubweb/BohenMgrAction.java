@@ -61,14 +61,17 @@ public class BohenMgrAction extends BaseAction{
 		
 		List<Article> artList = articleService.findAllArticlesInfo(param) ;
 		
-		
+		Map<String, Object> params = new HashMap<String, Object>() ;
+		params.put("parentId", "5") ;
+		List<Navigation> navList = navService.getNavsByParentId(params) ;
+		index.setNavList(navList);
 		
 		index.setSpList(spList);
 		
 		index.setProList(proList);
 		
 		index.setArtList(artList);
-		
+		index.setSpAbout(getSinglePageAbout());
 		
 		return SUCCESS ;
 	}

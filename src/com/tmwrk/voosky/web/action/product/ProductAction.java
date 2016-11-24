@@ -74,7 +74,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		}
 		proList = productService.findAllProductsInfo(param) ;
 		
-		navBean = navService.getAllNavByParentId("getProductsInfo") ;
+		navBean = navService.getAllNavByParentId("getCaseductsInfo") ; //getProductsInfo
 		ctgryList = getProductCategory() ;
 		
 		return SUCCESS ;

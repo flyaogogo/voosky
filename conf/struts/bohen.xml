@@ -10,7 +10,7 @@
 			<result name="success">/bohen/engineeringcase.jsp</result>
 		</action>
 		
-		<action name="getNewInfoById" method="findArticleInfoById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
+		<action name="getNewInfoById" method="findNewsInfoById" class="com.tmwrk.voosky.web.action.article.ArticleAction">
 			<result name="success">/bohen/news_detail.jsp</result>
 		</action>
 		
@@ -19,11 +19,11 @@
 		</action>
 		
 		<action name="getSPInfoById" method="findSinglePageInfoById" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
-			<result name="success">/bohen/page.jsp</result>
+			<result name="success">/bohen/about.jsp</result>
 		</action>
 		
 		<action name="getSPInfoByName" method="findSiglePageByUniqueName" class="com.tmwrk.voosky.web.action.other.SinglePageAction">
-			<result name="success">/bohen/page.jsp</result>
+			<result name="success">/bohen/about.jsp</result>
 		</action>
 		
 		<action name="getTopFooterInfo" method="topAndFooterValue" class="com.tmwrk.voosky.web.action.pubweb.BohenMgrAction">

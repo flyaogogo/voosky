@@ -92,16 +92,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<ul class="pager pager-round">
 							<li class="previous ">
-								<a href="${ctx }/bohen/getNewInfoById.htm?record='last'&id=<s:property value="article.id"/>" title="成功打下矿山二期第一钻">
+								<s:if test="articleLast!=null">
+								<a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="articleLast.id"/>" title="<s:property value="articleLast.title"/>">
 									上一篇
-									<span aria-hidden="true" class='hidden-xs hidden-sm'>：成功打下矿山二期第一钻</span> 
+									<span aria-hidden="true" class='hidden-xs hidden-sm'>：<s:property value="articleLast.title"/></span> 
 								</a>
+								</s:if>
+								
 							</li>
 							<li class="next ">
-								<a href="${ctx }/bohen/getNewInfoById.htm?record='next'&id=<s:property value="article.id"/>" title="卡维中学项目保修期即将结束">
+								
+								<s:if test="articleNext!=null">
+								<a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="articleNext.id"/>" title="<s:property value="articleNext.title"/>">
 									下一篇
-									<span aria-hidden="true" class='hidden-xs hidden-sm'>：卡维中学项目保修期即将结束</span>
+									<span aria-hidden="true" class='hidden-xs hidden-sm'>：<s:property value="articleNext.title"/></span>
 								</a>
+								</s:if>
+								
 							</li>
 						</ul>
 					</div>
@@ -117,7 +124,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="recommend news-list-md">
 							<h3>为您推荐</h3>
 							<ul class="list-group list-group-bordered">
-
+								<s:iterator value="artList" var="art" status = "status">
+									<s:if test="#status.index<5">
+									<li class="list-group-item"><a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'><s:property value="#art.title"/></a></li>
+									</s:if>
+								</s:iterator>
+								<!-- 
 								<li class="list-group-item"><a href="../" title="中建博恒建设规范用工成“香饽饽”" target='_self'>中建博恒建设规范用工成“香饽饽”</a></li>
 
 								<li class="list-group-item"><a href="../" title="卡维中学项目保修期即将结束" target='_self'>卡维中学项目保修期即将结束</a></li>
@@ -127,17 +139,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li class="list-group-item"><a href="../" title="公司再次入选ENR排名榜" target='_self'>公司再次入选ENR排名榜</a></li>
 
 								<li class="list-group-item"><a href="../" title="公司党委举办组工干部培训班" target='_self'>公司党委举办组工干部培训班</a></li>
-
+ -->
 							</ul>
 						</div>
 
                         <ul class="column">
-                            <li><a href="../" title="所有文章" target='_self'>所有文章</a></li>
-
-                            <li><a href=""  title="公司新闻">公司新闻</a></li>
-
-
-                            <li><a href="" class="active" title="媒体报道">媒体报道</a></li>
+                            <li><a href="${ctx }/bohen/getNewsInfo.htm" title="所有文章" target='_self'>所有文章</a></li>
+							<s:iterator value="article.cateList" var="ctgry">
+								<li><a href="${ctx }/bohen/getNewsInfo.htm?cateId=<s:property value="#ctgry.navId"/>"  title="<s:property value="#ctgry.cateName"/>"><s:property value="#ctgry.cateName"/></a></li>
+							</s:iterator>
 
 
                         </ul>

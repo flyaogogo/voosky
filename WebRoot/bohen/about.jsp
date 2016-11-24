@@ -28,12 +28,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="${ctx}/bohen/js/classList.min.js"></script> 
 
 <![endif]-->
-<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.video.min.js"></script>
+<%-- <script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.video.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.slideanims.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.actions.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.layeranimation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.navigation.min.js"></script>
-<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="${ctx}/bohen/js/revolution.extension.parallax.min.js"></script> --%>
+<script type="text/javascript" src="${ctx}/bohen/js/jquery.js"></script>
+<script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 	</head>
 
 
@@ -81,14 +83,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="row">
 							<ul class="met-column-nav-ul">
 	
-							<li><a href="" class="link"  title="关于我们">关于我们</a></li>
-
-					<li class="dropdown">
-
-						<a href="" title="公司简介" class="link ">公司简介</a>
-
-					</li>
-
+							<%-- <li><a href="${ctx }/bohen/getSPInfoByName.htm?uniqueName=about" class="link"  title="关于我们">关于我们</a></li>
+							 --%>
+							<s:iterator value="navBean.navList" var="nav">
+								<s:if test="#nav.moduleUrl.contains(navBean.curStatus)">
+						    		<li class="dropdown cur"><a href="${ctx }<s:property value='#nav.moduleUrl'/>"><s:property value="#nav.navName"/></a></li>
+						    	</s:if>
+						    	<s:else>
+						    		<li ><a href="${ctx }<s:property value='#nav.moduleUrl'/>" class="link "><s:property value="#nav.navName"/></a></li>
+						    	</s:else>
+							</s:iterator>
+					<!-- 
+						<li class="dropdown">
+	
+							<a href="" title="公司简介" class="link ">公司简介</a>
+	
+						</li>
+					
 					<li class="dropdown">
 
 						<a href="" title="经营区域" class="link ">经营区域</a>
@@ -105,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<a href="" title="联系我们" class="link ">联系我们</a>
 
-					</li>
+					</li> -->
 
 						</ul>
 						</div>
@@ -119,8 +130,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <section class="met-show animsition">
 	<div class="container">
 		<div class="row">
+		<h1><s:property value="sp.pageName"/></h1>
 			<div class="met-editor lazyload clearfix">
-				<div></div>
+				<div><s:property value="sp.content" escape="false"/></div>
 			</div>
 		</div>
 	</div>

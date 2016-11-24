@@ -47,6 +47,8 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	
 	//2016-11-19 记录标识，上一篇，下一篇
 	private String record ;
+	private Article articleLast ;
+	private Article articleNext ;
 	
 	@Override
 	public String execute() throws Exception{
@@ -64,7 +66,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		
 		artList = articleService.findAllArticlesInfo(param) ;
 		
-		navBean = navService.getAllNavByParentId("getArticlesInfo") ;
+		navBean = navService.getAllNavByParentId("getNewsInfo") ;//获取导航
 		ctgryList = getArticleCategory() ;
 		
 		return SUCCESS ;
@@ -98,6 +100,80 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		articleService.updateClickNumber(article);
 		
 		return SUCCESS ;
+	}
+	
+	/**
+	 * 单为bohen做的修改 
+	 * @return
+	 * @throws Exception
+	 */
+	public String findNewsInfoById() throws Exception{
+//		Map<String, Object> param = new HashMap<String, Object>() ;
+//		param.put("id", art.getId()) ;
+//		
+//		article = articleService.findArticleInfoById(param) ;
+		
+		
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		if(art.getIsRecommend()!=null){
+			param.put("isRecommend", art.getIsRecommend()) ;
+		}
+		
+		artList = articleService.findAllArticlesInfo(param) ;
+		setSingleArticleAtrr(art.getId());
+		
+		//文章左侧导航
+		List<Category> cateList = getArticleCategory() ;
+		article.setCateList(cateList);
+		
+//		for(Category c : cateList){
+//			if(article.getNavId().equals(c.getNavId()+"")){
+//				List<Category> cateTmpList = new ArrayList<Category>() ;
+//				cateTmpList.add(c) ;
+//				article.setCateList(cateTmpList);
+//				break ;
+//			}
+//		}
+		
+		//查看时，修改点击次数
+		article.setClickNum(article.getClickNum()+1);
+		articleService.updateClickNumber(article);
+		
+		return SUCCESS ;
+	}
+	
+	private void setSingleArticleAtrr(int artId){
+		Article cur = null ;
+		int artlen = artList.size() ;
+		for(int i=artlen-1;i<=artlen;i--){
+			cur = (Article)artList.get(i) ;
+			if(cur.getId() == artId){
+				article = cur ;
+				artList.remove(i) ;
+				
+				if(i==0){
+					if(i<artlen){
+						articleLast = (Article)artList.get(i) ;
+					}else{
+						articleLast = null ;
+					}
+					articleNext = null ;
+				}else if(i>=1){
+					articleNext = (Article)artList.get(i-1) ;
+					if(i<artlen-2){
+						
+						articleLast = (Article)artList.get(i+1) ;
+					}else if(i==artlen-2){
+						articleLast = (Article)artList.get(i) ;
+					}else{
+						articleLast = null ;
+					}
+				}
+				break ;
+			}else{
+				cur = null ;
+			}
+		}
 	}
 	
 	public String insertArticle() throws Exception{
@@ -219,6 +295,26 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 
 	public void setRecord(String record) {
 		this.record = record;
+	}
+
+
+	public Article getArticleLast() {
+		return articleLast;
+	}
+
+
+	public void setArticleLast(Article articleLast) {
+		this.articleLast = articleLast;
+	}
+
+
+	public Article getArticleNext() {
+		return articleNext;
+	}
+
+
+	public void setArticleNext(Article articleNext) {
+		this.articleNext = articleNext;
 	}
 
 }

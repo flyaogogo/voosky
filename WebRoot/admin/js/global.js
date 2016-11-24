@@ -220,7 +220,7 @@ function findChild(tmpul,map,mapValue,p_url,p_name,flag,flag2) {
 	if(flag==true){
 		var child_all_li = document.createElement("li");
 		//设置 li 属性，如 class
-		child_all_li.setAttribute("class", "visible-xs-block");
+		//child_all_li.setAttribute("class", "visible-xs-block");
 		
 		var child_all_a = document.createElement("a");
 		child_all_a.setAttribute("href", ctx + p_url);
@@ -243,8 +243,13 @@ function findChild(tmpul,map,mapValue,p_url,p_name,flag,flag2) {
 			child_a.setAttribute("role", "menuitem");
 			child_a.setAttribute("tabindex", "-1");
 		}
-		
-		child_a.setAttribute("href", ctx + item.moduleUrl);
+		//console.log(item.navId + "  ---  " + ((item.moduleUrl).indexOf("?")>0))
+		if((item.moduleUrl).indexOf("?")>0){
+			
+			child_a.setAttribute("href", ctx + item.moduleUrl + "&cateId=" + item.navId);
+		}else{
+			child_a.setAttribute("href", ctx + item.moduleUrl + "?cateId=" + item.navId);
+		}
 		child_a.setAttribute("title", item.navName);
 		child_a.innerHTML=item.navName ;
 		
@@ -277,6 +282,12 @@ function create_header_a(li,url,name,i) {
 	//aria-expanded="false" role="button" title="工程案例">工程案例 <span class="caret"></span></a>
 	p_middle_first_a.setAttribute("href", ctx + url);
 	p_middle_first_a.setAttribute("title", name);
+	
+	var child_first_span = document.createElement("span");
+	child_first_span.innerHTML = name ;
+	
+	p_middle_first_a.appendChild(child_first_span);
+	
 	if(i==1){
 		li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
 		p_middle_first_a.setAttribute("class", "dropdown-toggle link");
@@ -293,10 +304,7 @@ function create_header_a(li,url,name,i) {
 		p_middle_first_a.setAttribute("class", "link");
 	}
 	
-	var child_first_span = document.createElement("span");
-	child_first_span.innerHTML = name ;
 	
-	p_middle_first_a.appendChild(child_first_span);
 	
 	li.appendChild(p_middle_first_a) ;
 	
@@ -358,11 +366,38 @@ function setTopAndFooter(ul) {
 
 			//公司简介
 			//TODO
+			var company_footer_div = document.getElementById("common-footer-company-id");
+			var company_footer_h4 = document.createElement("h4");
+			company_footer_h4.innerHTML = "公司简介" ;
+			company_footer_div.appendChild(company_footer_h4) ;
+			
+			var company_footer_p1 = document.createElement("p");
+			var company_footer_p2 = document.createElement("p");
+			company_footer_p2.innerHTML = data.spAbout.content ;
+			company_footer_p1.appendChild(company_footer_p2) ;
+			company_footer_div.appendChild(company_footer_p1) ;
+			//<a href="" title="公司简介" target='_self' class="read-more">查看详细简介<i class="fa fa-arrow-circle-right"></i></a>
+			var company_footer_a = document.createElement("a");
+			company_footer_a.setAttribute("href", ctx + "/bohen/getSPInfoByName.htm?uniqueName=summary");
+			company_footer_a.setAttribute("class", "read-more");
+			company_footer_a.setAttribute("target", "_self");
+			company_footer_a.setAttribute("title", data.spAbout.pageName);
+			
+			var company_footer_span = document.createElement("span");
+			company_footer_span.innerHTML="查看详细简介" ;
+			company_footer_a.appendChild(company_footer_span);
+			
+			var company_footer_li = document.createElement("li");
+			company_footer_li.setAttribute("class", "fa fa-arrow-circle-right");
+			company_footer_a.appendChild(company_footer_li);
+			
+			company_footer_div.appendChild(company_footer_a);
+			
 			
 			//底部新闻
 			$.each(artList, function(i,item){
 				//只显示最新5条
-				if(i>5){
+				if(i>4){
 					return false ;
 				}
 				var footer_ul = document.getElementById("common-footer-news-id");

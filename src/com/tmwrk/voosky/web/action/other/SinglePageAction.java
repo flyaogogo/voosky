@@ -36,12 +36,16 @@ public class SinglePageAction extends BaseAction implements ModelDriven<SinglePa
 	
 	@Override
 	public String execute() throws Exception{
+		//单页面左侧导航
+		navBean = navService.getSinglePageNavBySp(singlePage.getUniqueName()) ;
 		spList = singlePageService.getAllSinglePage() ;
 		return SUCCESS ;
 	}
 	
 	
 	public String findSinglePageInfoById() throws Exception{
+		//单页面左侧导航
+		navBean = navService.getSinglePageNavBySp(singlePage.getUniqueName()) ;
 		Map<String, Object> params = new HashMap<String, Object>() ;
 		params.put("pageId", singlePage.getPageId()) ;
 		sp = singlePageService.getSinglePageById(params) ;
