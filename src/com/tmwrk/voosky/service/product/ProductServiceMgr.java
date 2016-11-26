@@ -48,4 +48,8 @@ public class ProductServiceMgr {
 	public void updateShowFirstPageById(Product params) {
 		productDao.updateShowFirstPageById(params) ;
 	}
+	
+	public void updateClickNumber(Product p){
+		productDao.updateClickNumber(p) ;
+	}
 }

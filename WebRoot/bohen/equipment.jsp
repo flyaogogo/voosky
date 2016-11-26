@@ -29,12 +29,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="${ctx}/bohen/js/classList.min.js"></script> 
 
 <![endif]-->
+<%-- 
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.video.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.actions.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.layeranimation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.navigation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.parallax.min.js"></script>
+ --%>
+	<script type="text/javascript" src="${ctx}/bohen/js/jquery.js"></script>
+    <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 	</head>
 
 
@@ -60,24 +64,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row">
 			<div class="blocks no-space blocks-100 blocks-xlg-3 blocks-md-2 met-page-ajax">
 
-
+<s:iterator value="proList" var="pro">
 <li class="widget ">
 	<div class="cover overlay overlay-hover">
-		<img class="cover-image overlay-scale" data-original="upload/1385445580.jpg" style='height:350px;' alt="露天钻机 "/>
+		<img class="cover-image overlay-scale" data-original="${ctx_img }/<s:property value="#pro.thumbUrl"/>" style='height:350px;' alt="<s:property value="#pro.title"/> "/>
 		<div class="overlay-panel overlay-fade overlay-background overlay-background-fixed text-center vertical-align">
 			<div class="vertical-align-middle">
 				<div class="widget-time widget-divider">
-					<span>2013-11-26</span>
+					<span><s:property value="#pro.addTime"/></span>
 				</div>
-				<h3 class="widget-title margin-bottom-20">露天钻机 </h3>
+				<h3 class="widget-title margin-bottom-20"><s:property value="#pro.title"/> </h3>
 
-				<a href='' title='露天钻机 ' class="btn btn-outline btn-inverse" target='_self'>查看详情</a>
+				<a href="${ctx }/bohen/getMachineInfoById.htm?id=<s:property value="#pro.id"/>" title="<s:property value="#pro.title"/>" class="btn btn-outline btn-inverse" target='_self'>查看详情</a>
 
 			</div>
 		</div>
 	</div>
 </li>
 
+</s:iterator>
+
+<%-- 
 <li class="widget ">
 	<div class="cover overlay overlay-hover">
 		<img class="cover-image overlay-scale" data-original="upload/1385445580.jpg" style='height:350px;' alt="露天钻机 "/>
@@ -332,7 +339,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 </li>
- 
+  --%>
 
 			</div>
 

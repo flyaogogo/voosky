@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.tmwrk.voosky.database.dao.BaseDao;
+import com.tmwrk.voosky.database.vo.Article;
 import com.tmwrk.voosky.database.vo.Product;
 
 @Repository("productDao")
@@ -27,7 +28,11 @@ public class ProductDaoImpl extends BaseDao<Product> {
 		getSqlMapClientTemplate().update("product.updateShowFirstPageById", params) ;
 		return null;
 	}
-
+	
+	public Article updateClickNumber(Product params) {
+		getSqlMapClientTemplate().update("product.updateClickNumber", params) ;
+		return null;
+	}
 	@Override
 	public Product findById(Map<String, Object> params) {
 		Product p = (Product)getSqlMapClientTemplate().queryForObject("product.getProductById", params) ;

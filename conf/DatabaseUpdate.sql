@@ -52,6 +52,11 @@ create table vs_nav(
 	parent_id	int not null,
 	vtype	varchar(15) not null,
 	vsort	int	 not null,
+	
+	nav_type	varchar(30) ,
+	cate_type	varchar(30) ,
+	param		varchar() ,
+	note	varchar(50) ,
 	PRIMARY KEY (nav_id)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8	;
 

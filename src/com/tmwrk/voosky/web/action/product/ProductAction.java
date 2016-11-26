@@ -58,6 +58,8 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	
 	//2016-11-19 记录标识，上一篇，下一篇
 	private String record ;
+	private Product proLast ;
+	private Product proNext ;
 
 	@Override
 	public String execute() throws Exception{
@@ -74,7 +76,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		}
 		proList = productService.findAllProductsInfo(param) ;
 		
-		navBean = navService.getAllNavByParentId("getCaseductsInfo") ; //getProductsInfo
+		navBean = navService.getAllNavByParentId("ductsInfo") ; //getProductsInfo
 		ctgryList = getProductCategory() ;
 		
 		return SUCCESS ;
@@ -106,6 +108,9 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 			}
 		}
 		
+		//查看时，修改点击次数
+		pro.setClickNum(pro.getClickNum()+1);
+		productService.updateClickNumber(pro);
 		return SUCCESS ;
 	}
 	
@@ -181,6 +186,111 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		List<Category> cateList = categoryService.listCatesUrlByStatus(cateMap) ;
 		return cateList ;
 	}
+	
+	/**
+	 * 为博恒定制开发 2016-11-25
+	 * @return
+	 * @throws Exception
+	 */
+	public String findMachineInfoShow() throws Exception{
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		if(filterkeywords!=null&&!"".equals(filterkeywords.trim())){
+			param.put("filterkey", product.getTitle()) ;
+		}
+		if(product.getIsRecommend()!=null){
+			param.put("isRecommend", product.getIsRecommend()) ;
+		}
+		if(product.getCateId()!=null&& !"all".equals(product.getCateId())){
+			param.put("cateId", CalcUtil.dealParentId(product.getCateId())[0]) ;
+		}
+		proList = productService.findAllProductsInfo(param) ;
+		
+		return SUCCESS ;
+	}
+	
+	/**
+	 * 为博恒定制开发 2016-11-25
+	 * @return
+	 * @throws Exception
+	 */
+	public String findCaseInfoShowById() throws Exception{
+		
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		
+		if(product.getIsRecommend()!=null){
+			param.put("isRecommend", product.getIsRecommend()) ;
+		}
+		proList = productService.findAllProductsInfo(param) ;
+		
+		setSingleProductAtrr(product.getId());
+		
+		//商品左侧导航
+		List<Category> cateList = getProductCategory() ;
+		pro.setCateList(cateList);
+		//查看时，修改点击次数
+		pro.setClickNum(pro.getClickNum()+1);
+		productService.updateClickNumber(pro);
+		
+		return SUCCESS ;
+	}
+	/**
+	 * 为博恒定制开发 2016-11-25
+	 * @return
+	 * @throws Exception
+	 */
+	public String findMachineInfoShowById() throws Exception{
+		
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		
+		if(product.getIsRecommend()!=null){
+			param.put("isRecommend", product.getIsRecommend()) ;
+		}
+		param.put("cateId", "14") ;
+		proList = productService.findAllProductsInfo(param) ;
+		
+		setSingleProductAtrr(product.getId());
+		
+		//查看时，修改点击次数
+		pro.setClickNum(pro.getClickNum()+1);
+		productService.updateClickNumber(pro);
+		
+		return SUCCESS ;
+	}
+	
+
+	private void setSingleProductAtrr(int proId){
+		Product cur = null ;
+		int artlen = proList.size() ;
+		for(int i=artlen-1;i<=artlen;i--){
+			cur = (Product)proList.get(i) ;
+			if(cur.getId() == proId){
+				pro = cur ;
+				proList.remove(i) ;
+				
+				if(i==0){
+					if(i<(artlen-1)){
+						proLast = (Product)proList.get(i) ;
+					}else{
+						proLast = null ;
+					}
+					proNext = null ;
+				}else if(i>=1){
+					proNext = (Product)proList.get(i-1) ;
+					if(i<artlen-2){
+						
+						proLast = (Product)proList.get(i+1) ;
+					}else if(i==artlen-2){
+						proLast = (Product)proList.get(i) ;
+					}else{
+						proLast = null ;
+					}
+				}
+				break ;
+			}else{
+				cur = null ;
+			}
+		}
+	}
 
 	@Override
 	public Product getModel() {
@@ -236,6 +346,22 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 
 	public void setRecord(String record) {
 		this.record = record;
+	}
+
+	public Product getProLast() {
+		return proLast;
+	}
+
+	public void setProLast(Product proLast) {
+		this.proLast = proLast;
+	}
+
+	public Product getProNext() {
+		return proNext;
+	}
+
+	public void setProNext(Product proNext) {
+		this.proNext = proNext;
 	}
 
 }

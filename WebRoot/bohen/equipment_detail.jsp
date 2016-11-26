@@ -29,12 +29,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="${ctx}/bohen/js/classList.min.js"></script> 
 
 <![endif]-->
+
+<%-- 
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.video.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.actions.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.layeranimation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.navigation.min.js"></script>
 <script type="text/javascript" src="${ctx}/bohen/js/extensions/revolution.extension.parallax.min.js"></script>
+
+ --%>
+ 	<script type="text/javascript" src="${ctx}/bohen/js/jquery.js"></script>
+    <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
 	</head>
 
 
@@ -61,25 +67,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-9 met-shownews-body">
 				<div class="row">
 					<div class="met-shownews-header">
-						<h1>露天钻机 </h1>
+						<h1><s:property value="pro.title"/></h1>
 						<div class="info">
 							<span>
-								2013-11-26 13:51:14
+								<s:property value="pro.addTime"/>
 							</span>
 							<span>
-								admin
+								<s:property value="pro.author"/>
 							</span>
 							<span>
-								<i class="icon wb-eye margin-right-5" aria-hidden="true"></i>11
+								<i class="icon wb-eye margin-right-5" aria-hidden="true"></i><s:property value="pro.clickNum"/>
 							</span>
 						</div>
 					</div>
 					<div class="met-editor lazyload clearfix">
 
 					<p class='text-center'>
-						<img data-original="upload/1385445580.jpg" alt='露天钻机 '/>
+						<img data-original="${ctx_img }/<s:property value="pro.thumbUrl"/>" alt='<s:property value="pro.title"/>'/>
 					</p>
-					<p class='text-center'>露天钻机 </p>
+					<p class='text-center'><s:property value="pro.title"/></p>
 
 						
 						<div class="center-block met_tools_code"></div>
@@ -88,16 +94,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<ul class="pager pager-round">
 							<li class="previous ">
-								<a href="" title="水泥沥青砂浆车 ">
+								<s:if test="proLast!=null">
+								<a href="${ctx }/bohen/getMachineInfoById.htm?id=<s:property value="proLast.id"/>" title="<s:property value="proLast.title"/>">
 									上一篇
-									<span aria-hidden="true" class='hidden-xs hidden-sm'>：水泥沥青砂浆车 </span> 
+									<span aria-hidden="true" class='hidden-xs hidden-sm'>：<s:property value="proLast.title"/> </span> 
 								</a>
+								</s:if>
 							</li>
 							<li class="next ">
-								<a href="" title="露天钻机 ">
+								<s:if test="proNext!=null">
+								<a href="${ctx }/bohen/getMachineInfoById.htm?id=<s:property value="proNext.id"/>" title="<s:property value="proNext.title"/>">
 									下一篇
-									<span aria-hidden="true" class='hidden-xs hidden-sm'>：露天钻机 </span>
+									<span aria-hidden="true" class='hidden-xs hidden-sm'>：<s:property value="proNext.title"/> </span>
 								</a>
+								</s:if>
 							</li>
 						</ul>
 					</div>
@@ -112,7 +122,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="recommend news-list-md">
 							<h3>为您推荐</h3>
 							<ul class="list-group list-group-bordered">
-
+								<s:iterator value="proList" var="prod" status = "status">
+									<s:if test="#status.index<5">
+									<li class="list-group-item"><a href="${ctx }/bohen/getMachineInfoById.htm?id=<s:property value="#prod.id"/>" title="<s:property value="#prod.title"/>" target='_self'><s:property value="#prod.title"/></a></li>
+									</s:if>
+								</s:iterator>
+								<!-- 
 								<li class="list-group-item"><a href="" title="露天钻机 " target='_self'>露天钻机 </a></li>
 
 								<li class="list-group-item"><a href="" title="露天钻机 " target='_self'>露天钻机 </a></li>
@@ -122,12 +137,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li class="list-group-item"><a href="" title="水泥沥青砂浆车 " target='_self'>水泥沥青砂浆车 </a></li>
 
 								<li class="list-group-item"><a href="" title="造桥机" target='_self'>造桥机</a></li>
-
+ -->
 							</ul>
 						</div>
 
                         <ul class="column">
-                            <li><a href="" title="所有案例" target='_self'>所有案例</a></li>
+                            <li><a href="${ctx }/bohen/getMachineductsInfo.htm?cateId=14" title="所有案例" target='_self'>所有案例</a></li>
 
                         </ul>
 

@@ -37,7 +37,12 @@ public class CommonUtil
 	public static final String DEFAULT_ERROR_MSG = "系统错误，请稍后再试！";
 	
 	private static final String LOCAL_IP = "0:0:0:0:0:0:0:1" ;
+	
+	//nav 后台默认字段数据
+	public static final String DEFAULT_BACK_TYPE_ARTICLE = "article" ;
+	public static final String DEFAULT_BACK_TYPE_PRODUCT = "product" ;
 
+	
 	/**
 	 * 
 	 * 对序列号进行初始化，如果>8位则不管，如果<8位，则左补0

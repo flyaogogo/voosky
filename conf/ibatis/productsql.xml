@@ -93,4 +93,8 @@
 		delete from vs_product where id=#id#
 	</delete>
 	
+	<update id="updateClickNumber" parameterClass="Product">
+		update vs_product set clicknum=#clickNum# where id=#id#
+	</update>
+	
 </sqlMap>

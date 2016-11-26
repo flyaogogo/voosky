@@ -47,7 +47,7 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 		String mURL = null ;
 		if("product".equals(category.getCateStatus())){
 			//mURL = "getProductsInfo" ;
-			mURL = "getCaseductsInfo" ;
+			mURL = "ductsInfo" ;
 		}else if("article".equals(category.getCateStatus())){
 			//mURL = "getArticlesInfo" ;
 			mURL = "getNewsInfo" ;

@@ -2,12 +2,20 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="bohen" extends="tmwrk-default" namespace="/bohen">
-		<action name="getCaseInfoById" method="findProductInfoById" class="com.tmwrk.voosky.web.action.product.ProductAction">
+		<action name="getCaseInfoById" method="findCaseInfoShowById" class="com.tmwrk.voosky.web.action.product.ProductAction">
 			<result name="success">/bohen/engineeringcase_detail.jsp</result>
 		</action>
 		
 		<action name="getCaseductsInfo" class="com.tmwrk.voosky.web.action.product.ProductAction">
 			<result name="success">/bohen/engineeringcase.jsp</result>
+		</action>
+		
+		<action name="getMachineInfoById" method="findMachineInfoShowById" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success">/bohen/equipment_detail.jsp</result>
+		</action>
+		
+		<action name="getMachineductsInfo" method="findMachineInfoShow" class="com.tmwrk.voosky.web.action.product.ProductAction">
+			<result name="success">/bohen/equipment.jsp</result>
 		</action>
 		
 		<action name="getNewInfoById" method="findNewsInfoById" class="com.tmwrk.voosky.web.action.article.ArticleAction">

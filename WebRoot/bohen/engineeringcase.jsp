@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html class='nicescroll'>
 
 	<head>
-		<title>博恒建设公司网站模板|博恒建设企业网站模板-博恒建设</title>
+		<title>博恒建设公司网站-博恒建设</title>
 		<meta name="renderer" content="webkit">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -59,7 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 	<div class="met-banner-econy"  style="background-color:;" >
-	<img src="upload/1456471567.jpg">
 	  <div class="econynr">
 		<div class="container">
 			<div class="row">                
@@ -87,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="" class="link"  title="全部">全部</a></li>
 	
 
-					<li class="dropdown">
+					<%--  <li class="dropdown">
 
 						<a href="" title="铁路" class="link " data-toggle="dropdown">
 							铁路 <span class="caret"></span>
@@ -104,7 +103,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 
 					</li>
-
+					--%>
+					
+					<s:iterator value="ctgryList" var="ctgry">
+						<s:if test="#ctgry.guideAliases == null || #ctgry.guideAliases.trim() == ''">
+							<li class="dropdown">
+							<a href="${ctx }/bohen/getCaseductsInfo.htm?cateId=<s:property value="#ctgry.navId"/>" class="link "  title="<s:property value="#ctgry.cateName"/>"><s:property value="#ctgry.cateName"/></a>
+							</li>
+						</s:if>
+					</s:iterator>
+					
+					<!-- 
 					<li class="dropdown">
 
 						<a href="" title="公路" class="link ">公路</a>
@@ -128,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="" title="铁路" class="link ">铁路</a>
 
 					</li>
-
+ -->
 						</ul>
 						</div>
 					</div>
@@ -182,202 +191,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				  </li>
 				</s:iterator>
-				<!-- 
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="库高等法院大楼  " target='_self'>
-								<img class="cover-image" src="upload/1385371348.jpg" height='350' alt="库高等法院大楼  ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="库高等法院大楼  " target='_self'>库高等法院大楼  </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="阿布扎环路项目     " target='_self'>
-								<img class="cover-image" src="upload/1385370162.jpg" height='350' alt="阿布扎环路项目     ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="阿布扎环路项目     " target='_self'>阿布扎环路项目     </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="塞拉矿山铁路  " target='_self'>
-								<img class="cover-image" src="upload/1385341412.jpg" height='350' alt="塞拉矿山铁路  ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="塞拉矿山铁路  " target='_self'>塞拉矿山铁路  </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="沙特南北铁路C项目" target='_self'>
-								<img class="cover-image" src="upload/1385342128.jpg" height='350' alt="沙特南北铁路C项目">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="沙特南北铁路C项目" target='_self'>沙特南北铁路C项目</a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="0" title="尼日利亚铁路现代化项目  " target='_self'>
-								<img class="cover-image" data-original="upload/1385365613.jpg" height='350' alt="尼日利亚铁路现代化项目  ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="0" title="尼日利亚铁路现代化项目  " target='_self'>尼日利亚铁路现代化项目  </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="坦140公里铁路更新改造项目" target='_self'>
-								<img class="cover-image" data-original="upload/1385365456.jpg" height='350' alt="坦140公里铁路更新改造项目">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="坦140公里铁路更新改造项目" target='_self'>坦140公里铁路更新改造项目</a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="博茨瓦纳帕塞公路  " target='_self'>
-								<img class="cover-image" data-original="upload/1385364997.jpg" height='350' alt="博茨瓦纳帕塞公路  ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="博茨瓦纳帕塞公路  " target='_self'>博茨瓦纳帕塞公路  </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="尼日利亚N公路" target='_self'>
-								<img class="cover-image" data-original="upload/1385365428.jpg" height='350' alt="尼日利亚N公路">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="尼日利亚N公路" target='_self'>尼日利亚N公路</a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="尼泊尔波公路  " target='_self'>
-								<img class="cover-image" data-original="upload/1385365009.jpg" height='350' alt="尼泊尔波公路  ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="尼泊尔波公路  " target='_self'>尼泊尔波公路  </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="尼日利亚四小镇公路项目 " target='_self'>
-								<img class="cover-image" data-original="upload/1385365937.jpg" height='350' alt="尼日利亚四小镇公路项目 ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="尼日利亚四小镇公路项目 " target='_self'>尼日利亚四小镇公路项目 </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="阿布扎环路项目     " target='_self'>
-								<img class="cover-image" data-original="upload/1385370162.jpg" height='350' alt="阿布扎环路项目     ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="阿布扎环路项目     " target='_self'>阿布扎环路项目     </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="丁大桥      " target='_self'>
-								<img class="cover-image" data-original="upload/1385370071.jpg" height='350' alt="丁大桥      ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="丁大桥      " target='_self'>丁大桥      </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="库高等法院大楼  " target='_self'>
-								<img class="cover-image" data-original="upload/1385371348.jpg" height='350' alt="库高等法院大楼  ">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="库高等法院大楼  " target='_self'>库高等法院大楼  </a>
-							
-						</h4>
-					</div>
-				</li>
-
-				<li class="masonry-item ">
-					<div class="widget widget-shadow">
-						<figure class="widget-header cover">
-							<a href="" title="吉工商学校项目" target='_self'>
-								<img class="cover-image" data-original="upload/1385371075.jpg" height='350' alt="吉工商学校项目">
-							</a>
-						</figure>
-						<h4 class="widget-title">
-							<a href="" title="吉工商学校项目" target='_self'>吉工商学校项目</a>
-							
-						</h4>
-					</div>
-				</li> -->
 
 
 			</ul>
