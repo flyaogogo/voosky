@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<s:property value="pro.author"/>
 							</span>
 							<span>
-								<i class="icon wb-eye margin-right-5" aria-hidden="true"></i><s:property value="pro.clickNum"/>
+								<i class="icon fa fa-eye margin-right-5" aria-hidden="true"></i><s:property value="pro.clickNum"/>
 							</span>
 						</div>
 					</div>

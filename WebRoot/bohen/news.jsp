@@ -78,6 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <ul class="met-page-ajax">
 
 <s:iterator value="artList" var="art">
+<s:if test="#art.navId!='20'">
 	<li>
 		<h4>
 			<a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'>
@@ -88,9 +89,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="info">
 			<span><s:property value="#art.addTime"/></span>
 			<span class="margin-left-10"><s:property value="#art.author"/></span>
-			<span class="margin-left-10"><i class="icon wb-eye margin-right-5" aria-hidden="true"></i><s:property value="#art.clickNum"/></span>
+			<span class="margin-left-10"><i class="icon fa fa-eye margin-right-5" aria-hidden="true"></i><s:property value="#art.clickNum"/></span>
 		</p>
 	</li>
+</s:if>
 </s:iterator>
 
 </ul>
@@ -121,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<h3>为您推荐</h3>
 							<ul class="list-group list-group-bordered">
 								<s:iterator value="artList" var="art" status = "status">
-									<s:if test="#status.index<5">
+									<s:if test="#art.navId!='20' ">
 									<li class="list-group-item"><a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'><s:property value="#art.title"/></a></li>
 									</s:if>
 								</s:iterator>

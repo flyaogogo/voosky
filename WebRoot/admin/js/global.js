@@ -331,12 +331,28 @@ function setTopAndFooter(ul) {
 		success : function(data) { //请求成功后处理函数。
 			//alert('success data!');
 			//console.log(data) ;
+			
+			//top
+			var top_header_ul = document.getElementById("common-header-top-id");
+			
+			var common_header_top_marker_a = document.getElementById("common-header-top-marker-id");
+			common_header_top_marker_a.innerHTML = (data.sysconfMap['main.site.address']).trim() ;
+			
+			var common_header_top_envelope_a = document.getElementById("common-header-top-envelope-id");
+			common_header_top_envelope_a.innerHTML = (data.sysconfMap['main.site.mail.address']).trim() ;
+			
+			var common_header_top_phone_a = document.getElementById("common-header-top-phone-id");
+			common_header_top_phone_a.innerHTML = (data.sysconfMap['main.site.consumer.hotline']).trim() ;
+			
+			///-----------top end----------------------
+			
 			var navListMap = data.navListMap ;
 			var artList = data.artList ;
 			//找出第一级显示栏
 			dataList = navListMap["0"] ;
 			
 			$.each(dataList, function(i,item){
+				
 				var middle_li = document.createElement("li");
 				
 				//console.log("0000 -- " + item.navId) ;
@@ -395,11 +411,14 @@ function setTopAndFooter(ul) {
 			
 			
 			//底部新闻
+			var footerInt = 0 ;
 			$.each(artList, function(i,item){
 				//只显示最新5条
-				if(i>4){
-					return false ;
-				}
+				if(item.navId!="20" && footerInt<5){
+				
+				
+				
+				footerInt ++ ;
 				var footer_ul = document.getElementById("common-footer-news-id");
 				var first_footer_li = document.createElement("li");
 				//设置 li 属性，如 class   <li ><a href="" target='_self' title="中建土木公司规范用工">中建土木公司规范用工</a></li>
@@ -411,6 +430,7 @@ function setTopAndFooter(ul) {
 				
 				first_footer_li.appendChild(first_footer_a);
 			　　　footer_ul.appendChild(first_footer_li);
+				}
 			});
 			
 			//联系我们

@@ -21,7 +21,7 @@
 								</li>
 
 								<li>
-									<a href="http://wpa.qq.com/msgrd?v=3&uin=1234567890&site=qq&menu=yes" target="_blank"><i class="fa fa-qq"></i></a>
+									<a href="http://wpa.qq.com/msgrd?v=3&uin=<s:property value="index.sysconfMap['main.site.qq.num']"/>&site=qq&menu=yes" target="_blank"><i class="fa fa-qq"></i></a>
 								</li>
 
 								<li>
@@ -35,21 +35,21 @@
 							</ul>
 
 						</div>
-						<div class="contact-info pull-left">
-							<ul>
-
+						<div class="contact-info pull-left" >
+							<ul id="common-header-top-id">
+  
 								<li>
-									<a href="javascript:;" style="cursor:default"><i class="fa fa-map-marker"></i> 北京大兴区</a>
+									<a href="javascript:;" style="cursor:default"><i class="fa fa-map-marker"></i><span id="common-header-top-marker-id"></span></a>
 								</li>
 
 								<li>
-									<a href="javascript:;" style="cursor:default"><i class="fa fa-envelope"></i> 123456789@qq.com</a>
+									<a href="javascript:;" style="cursor:default"><i class="fa fa-envelope"></i><span id="common-header-top-envelope-id"></span></a>
 								</li>
 
 								<li>
-									<a href="javascript:;" style="cursor:default"><i class="fa fa-phone"></i> 12345678910</a>
+									<a href="javascript:;" style="cursor:default"><i class="fa fa-phone"></i><span id="common-header-top-phone-id"></a>
 								</li>
-
+ <!---->
 							</ul>
 						</div>
 					</div>

@@ -52,59 +52,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 <!-- banner幻灯片效果开始 -->
 
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
 
-			<div class="main-slider met-banner" style="background: url(${ctx}/bohen/upload/1456467317.jpg) 50% 50% no-repeat; background-size: cover;transition: all 0.3s;">
-				<div class="rev_slider_wrapper">
-					<div class="tp-banner" >
-                <ul>
-                    <!-- SLIDE  -->
-                    <li  data-transition="slideleft" data-slotamount="14">
-                        <!-- MAIN IMAGE -->
-                        <img src="${ctx}/bohen/images/bg1.jpg" alt="Rev Full">
-                            <div class="caption sfb" data-x="693" data-y="75" data-speed="700" data-start="0"data-easing="easeOutBack">
-                                <img src="${ctx}/bohen/images/mobile.png" alt=""/>
-                            </div>
-
-                            <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
-                                <a href="#" class="button btn-flat">More Info</a>
-                            </div>   
-                    </li>
-                    <!-- SLIDE  -->
-                    <li data-transition="boxslide" data-slotamount="7" data-masterspeed="300" >
-                        <!-- MAIN IMAGE -->
-                        <img src="${ctx}/bohen/images/bg2.jpg"  alt="darkblurbg"   data-fullwidthcentering="on">
-                            <!-- LAYERS -->
-                            <div class="tp-caption lft stb stl"
-                                 data-x="650"
-                                 data-y="93"
-                                 data-speed="500"
-                                 data-start="500"
-                                 data-easing="easeOutExpo" data-end="6000" data-endspeed="500"><img src="${ctx}/bohen/images/imac.png" alt="Image 1"></div>
-
-                            <div class="tp-caption lfb stb stl"
-                                 data-x="616"
-                                 data-y="194"
-                                 data-speed="500"
-                                 data-start="700"
-                                 data-easing="easeOutExpo" data-end="6000" data-endspeed="500"><img src="${ctx}/bohen/images/ipad.png" alt="Image 1"></div>
-
-                            <div class="tp-caption lfr stb stl"
-                                 data-x="751"
-                                 data-y="290"
-                                 data-speed="1000"
-                                 data-start="1000"
-                                 data-easing="easeOutExpo" data-end="6000" data-endspeed="500"><img src="${ctx}/bohen/images/iphone.png" alt="Image 1"></div>
-
-                            <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
-                                <a href="#" class="button btn-flat">More Info</a>
-                            </div>  
-                    </li>
-                </ul>
-                <div class="tp-bannertimer"></div>
-            </div>
-				</div>
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			<div class="item active">
+			  <a href=""><img src="${ctx}/bohen/img/banner.jpg" alt="..."></a>
+			  <div class="carousel-caption baner_adv">
+				众观全城，世界有我！
+			  </div>
 			</div>
+			<div class="item">
+			  <a href=""><img src="${ctx}/bohen/img/banner1.jpg" alt="..."></a>
+			  <div class="carousel-caption baner_adv">
+				唯美是艺术追求!
+			  </div>
+			</div>
+			<div class="item">
+			  <a href=""><img src="${ctx}/bohen/img/banner1.jpg" alt="..."></a>
+			  <div class="carousel-caption baner_adv">
+				造就艺术那就是你!
+			  </div>
+			</div>
+		  </div>
 
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+		</div>
        
 		
 <!-- 工程案例模块开始-->

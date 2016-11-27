@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="row">
 							<ul class="met-column-nav-ul">
 	
-							<li><a href="" class="link"  title="全部">全部</a></li>
+							<li><a href="${ctx }/bohen/getCaseductsInfo.htm" class="link"  title="全部">全部</a></li>
 	
 
 					<%--  <li class="dropdown">
