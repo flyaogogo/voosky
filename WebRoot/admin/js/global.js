@@ -174,14 +174,11 @@ function post(URL, PARAMS) {
 	temp.submit();
 	return temp;
 }
-
-//页面打开时  加载  导航
-window.onload = function(selectId) {
-	//console.log(".... index global..." );
-	
-	var ul = document.getElementById("public-header-nav-ul-id");
-	var m_ul = document.getElementById("public-header-mobile-nav-ul-id");
-	
+/**
+ * 首页
+ * @param ul
+ */
+function setFirst(ul) {
 	var first_li = document.createElement("li");
 	//设置 li 属性，如 class   <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
 　　　first_li.setAttribute("class", "cur");
@@ -193,7 +190,30 @@ window.onload = function(selectId) {
 	
 	first_li.appendChild(first_a);
 　　　ul.appendChild(first_li);
-	m_ul.appendChild(first_li);
+}
+
+//页面打开时  加载  导航
+window.onload = function(selectId) {
+	//console.log(".... index global..." );
+	
+	var ul = document.getElementById("public-header-nav-ul-id");
+	var m_ul = document.getElementById("public-header-mobile-nav-ul-id");
+	
+	/*var first_li = document.createElement("li");
+	//设置 li 属性，如 class   <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
+　　　first_li.setAttribute("class", "cur");
+
+	var first_a = document.createElement("a");
+	first_a.setAttribute("href", ctx + "/index.htm");
+	first_a.setAttribute("class", "first");
+	first_a.innerHTML="首页" ;
+	
+	first_li.appendChild(first_a);
+　　　ul.appendChild(first_li);*/
+	//m_ul.appendChild(first_li);
+	
+	setFirst(ul) ;
+	setFirst(m_ul) ;
 	
 	var dataList ;
 	if($("#public-header-nav-ul-id").hasClass('bohengcls')||

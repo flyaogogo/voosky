@@ -24,6 +24,15 @@ public class ArticleServiceMgr {
 		List<Article> prList = articleDao.findAll(param) ;
 		return prList ;
 	}
+	/**
+	 * 求总数
+	 * @param params
+	 * @return
+	 */
+	public int getAllArticlesCount(Map<String, Object> params){
+		int count = articleDao.getAllArticlesCount(params) ;
+		return count ;
+	}
 	
 	public Article findArticleInfoById(Map<String, Object> param){
 		Article p = articleDao.findById(param) ;

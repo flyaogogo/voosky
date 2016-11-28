@@ -47,6 +47,11 @@ public class ArticleDaoImpl extends BaseDao<Article>{
 		return prList;
 	}
 	
+	public int getAllArticlesCount(Map<String, Object> params) {
+		Integer artCount = (Integer)getSqlMapClientTemplate().queryForObject("article.getAllArticlesCount",params) ;
+		return artCount ;
+	}
+	
 	public boolean deleteArticleById(Article p){
 		getSqlMapClientTemplate().delete("article.deleteById", p) ;
 		return true ;

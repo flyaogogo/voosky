@@ -48,6 +48,33 @@
 			<isNotNull property="cateId">
 				and vsa.cat_id = #cateId#
 			</isNotNull>
+			<isNotNull property="notNavId">
+				and vsn.nav_id != #notNavId#
+			</isNotNull>
+			<isNotNull property="firstType">
+				and vsa.firstType = #firstType#
+			</isNotNull>
+			<isNotNull property="title">
+				and vsa.title like concat('%', #title#, '%')
+			</isNotNull>
+			order by add_time desc
+			<isNotNull property="startNum">
+				limit #startNum#,#pageSize#
+			</isNotNull>
+			
+	</select>
+	
+	<select id="getAllArticlesCount" parameterClass="java.util.HashMap" resultClass="int">
+		select count(vsa.id) from vs_article vsa , vs_nav vsn where vsa.cat_id=vsn.nav_id
+			<isNotNull property="isRecommend">
+				and vsa.is_recommend = #isRecommend#
+			</isNotNull>
+			<isNotNull property="cateId">
+				and vsa.cat_id = #cateId#
+			</isNotNull>
+			<isNotNull property="notNavId">
+				and vsn.nav_id != #notNavId#
+			</isNotNull>
 			<isNotNull property="firstType">
 				and vsa.firstType = #firstType#
 			</isNotNull>
@@ -56,6 +83,7 @@
 			</isNotNull>
 			order by add_time desc
 	</select>
+	
 	<select id="getArticleById" parameterClass="java.util.HashMap" resultMap="articleMap">
 		select id,cat_id,title,is_recommend,content,thumb_url,keywords,description,author,clicknum,
 			add_time,vsort from vs_article where 1=1  

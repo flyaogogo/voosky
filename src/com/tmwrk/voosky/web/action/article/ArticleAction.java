@@ -14,6 +14,7 @@ import com.tmwrk.voosky.database.vo.NavBean;
 import com.tmwrk.voosky.database.vo.UploadFileBase;
 import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.module.util.DateUtil;
+import com.tmwrk.voosky.module.util.PageBean;
 import com.tmwrk.voosky.service.article.ArticleServiceMgr;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
 import com.tmwrk.voosky.service.nav.NavServiceMgr;
@@ -50,6 +51,10 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 	private Article articleLast ;
 	private Article articleNext ;
 	
+	private PageBean page ;
+	// 项目案例导航ID
+	private String caseNavId = "20" ;
+	
 	@Override
 	public String execute() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
@@ -63,6 +68,28 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 			param.put("cateId", CalcUtil.dealParentId(art.getCateId())[0]) ;
 //			param.put("cateId", art.getCateId()) ;
 		}
+		
+		// 特注  ： 专为博恒处理
+		param.put("notNavId", caseNavId) ;
+		
+		int pageSize = 3; 
+		
+		String pageId = request.getParameter("pageId"); 
+		if (pageId == null || pageId.equals("")) { 
+			pageId = "1"; 
+		}
+		int currentPage = Integer.parseInt(pageId); 
+		
+		//从服务层里得到用户的总记录数 
+		int totalRows = articleService.getAllArticlesCount(param) ;
+		// 处理分页
+		
+		page = new PageBean(pageSize, currentPage, totalRows); 
+		
+		param.put("startNum", page.getStartNum()) ;
+		param.put("pageSize", page.getPageSize()) ;
+		
+		
 		
 		artList = articleService.findAllArticlesInfo(param) ;
 		
@@ -118,6 +145,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		if(art.getIsRecommend()!=null){
 			param.put("isRecommend", art.getIsRecommend()) ;
 		}
+		param.put("notNavId", caseNavId) ;//特注：去除业务项目相关的数据条目
 		
 		artList = articleService.findAllArticlesInfo(param) ;
 		setSingleArticleAtrr(art.getId());
@@ -315,6 +343,16 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 
 	public void setArticleNext(Article articleNext) {
 		this.articleNext = articleNext;
+	}
+
+
+	public PageBean getPage() {
+		return page;
+	}
+
+
+	public void setPage(PageBean page) {
+		this.page = page;
 	}
 
 }

@@ -78,7 +78,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <ul class="met-page-ajax">
 
 <s:iterator value="artList" var="art">
+<%-- 
 <s:if test="#art.navId!='20'">
+</s:if>
+ --%>
 	<li>
 		<h4>
 			<a href="${ctx }/bohen/getNewInfoById.htm?id=<s:property value="#art.id"/>" title="<s:property value="#art.title"/>" target='_self'>
@@ -92,17 +95,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span class="margin-left-10"><i class="icon fa fa-eye margin-right-5" aria-hidden="true"></i><s:property value="#art.clickNum"/></span>
 		</p>
 	</li>
-</s:if>
+
 </s:iterator>
 
 </ul>
 
 <div class="hidden-xs">
 		    <div class='met_pager'>
-			<span class='PreSpan'>上一页</span><a href=../ class='Ahover'>1</a><a href= >2</a><a href="" class='NextA'>下一页</a>
+			    <s:if test="page.hasPreviousPage==true">
+			    	<a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.previousPage"/>" class="PreSpan">上一页</a>
+			    	<a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.previousPage"/>"><s:property value="page.previousPage"/></a>
+			    </s:if>
+			    <a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.previousPage"/>" class="Ahover"><s:property value="page.currentPage"/></a>
+			    <s:if test="page.hasNextPage==true">
+				    <a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.nextPage"/>"><s:property value="page.nextPage"/></a>
+			    	<a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.nextPage"/>" class="NextA">下一页</a>
+			    </s:if>
+			    
 			    <span class='PageText'>转至第</span>
 			    <input type='text' id='metPageT' data-pageurl='' value='1' />
 			    <input type='button' id='metPageB' value='页' />
+			    
+			    <%-- 
+				<span class='PreSpan'>上一页</span><a href=../ class='Ahover'>1</a><a href= >2</a><a href="" class='NextA'>下一页</a>
+			    <span class='PageText'>转至第</span>
+			    <input type='text' id='metPageT' data-pageurl='' value='1' />
+			    <input type='button' id='metPageB' value='页' />
+			     --%>
 		    </div>
 		</div>
 <div class="met-page-ajax-body visible-xs-block">

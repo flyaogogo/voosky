@@ -144,7 +144,8 @@ public class NavServiceMgr {
 		//为去重
 		HashMap<String, String> map = new HashMap<String, String>();
 		for(int i=0;i<tmpList.size();i++){
-			if(map.get(tmpList.get(i).getModuleUrl())!=null){
+			if(map.get(tmpList.get(i).getModuleUrl())!=null ||
+					(tmpList.get(i).getModuleUrl().contains("about")&&"0".equals(tmpList.get(i).getParentId()))){
 				tmpList.remove(tmpList.get(i));
             } else {
                 map.put(tmpList.get(i).getModuleUrl(), "OK");
