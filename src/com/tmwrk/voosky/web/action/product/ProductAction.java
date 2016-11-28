@@ -65,7 +65,7 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	public String execute() throws Exception{
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		if(filterkeywords!=null&&!"".equals(filterkeywords.trim())){
-			param.put("filterkey", product.getTitle()) ;
+			param.put("filterkey", filterkeywords) ;
 		}
 		if(product.getIsRecommend()!=null){
 			param.put("isRecommend", product.getIsRecommend()) ;

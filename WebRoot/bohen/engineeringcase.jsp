@@ -145,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 					<div class="col-md-3 product_search ">
 						<div class="row">
-						<form method="get" action="">
+						<form method="post" action="${ctx }/bohen/getCaseductsInfo.htm">
 							<input type="hidden" name="search" value="search">
 							<input type="hidden" name="lang" value="cn">
 							<input type="hidden" name="class1" value="6">
@@ -155,9 +155,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input 
 										type="text" 
 										class="form-control" 
-										name="content" 
+										name="filterkeywords" 
 										value=""
-										placeholder="Search"
+										placeholder="请输入标题查询"
 									>
 								</div>
 							</div>

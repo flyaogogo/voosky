@@ -7,8 +7,8 @@
 <body>
 
 <nav id="mobileNav" style="display:none;">
-			<ul>
-				<li class="active">
+			<ul class="bohengcls" id="public-header-mobile-nav-ul-id">
+				<!-- <li class="active">
 					<a href="index.html" title="首页">首页</a>
 				</li>
 
@@ -131,7 +131,7 @@
 				<li>
 					<a href="" title="联系我们">联系我们</a>
 
-				</li>
+				</li> -->
 
 			</ul>
 		</nav>

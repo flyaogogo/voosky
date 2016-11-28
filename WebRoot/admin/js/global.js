@@ -180,6 +180,7 @@ window.onload = function(selectId) {
 	//console.log(".... index global..." );
 	
 	var ul = document.getElementById("public-header-nav-ul-id");
+	var m_ul = document.getElementById("public-header-mobile-nav-ul-id");
 	
 	var first_li = document.createElement("li");
 	//设置 li 属性，如 class   <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
@@ -192,11 +193,13 @@ window.onload = function(selectId) {
 	
 	first_li.appendChild(first_a);
 　　　ul.appendChild(first_li);
+	m_ul.appendChild(first_li);
 	
 	var dataList ;
-	if($("#public-header-nav-ul-id").hasClass('bohengcls')){
+	if($("#public-header-nav-ul-id").hasClass('bohengcls')||
+			$("public-header-mobile-nav-ul-id").hasClass('bohengcls')){
 		
-		dataList = setTopAndFooter(ul);
+		dataList = setTopAndFooter(ul,m_ul);
 		//dataList = setNavigation(ul) 
 	}else{
 		dataList = setNavigation(ul) 
@@ -314,7 +317,7 @@ function create_header_a(li,url,name,i) {
  * 对新增页面的设置公共的头及底
  * @param ul
  */
-function setTopAndFooter(ul) {
+function setTopAndFooter(ul,m_ul) {
 	var urls = ctx+"/bohen/getTopFooterInfo.htm" ;
 	//alert(urls);
 	var dataList ;
@@ -353,7 +356,7 @@ function setTopAndFooter(ul) {
 			
 			$.each(dataList, function(i,item){
 				
-				var middle_li = document.createElement("li");
+				/*var middle_li = document.createElement("li");
 				
 				//console.log("0000 -- " + item.navId) ;
 				var tmp_v = navListMap[item.navId];
@@ -376,7 +379,9 @@ function setTopAndFooter(ul) {
 				}
 				
 				ul.appendChild(middle_li);
-				
+				*/
+				setPcNavigation(ul,navListMap,item)
+				setMobileNavigation(m_ul,navListMap,item)
 				
 			});
 
@@ -499,6 +504,69 @@ function setTopAndFooter(ul) {
 	});
 }
 
+/**
+ * 电脑端 导航栏
+ * @param ul
+ * @param navListMap
+ * @param item
+ */
+function setPcNavigation(ul,navListMap,item){
+	var middle_li = document.createElement("li");
+	
+	//console.log("0000 -- " + item.navId) ;
+	var tmp_v = navListMap[item.navId];
+	
+	if(tmp_v != undefined){
+		//middle_li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
+		create_header_a(middle_li,item.moduleUrl,item.navName,1) ;
+		
+		var p_middle_ul = document.createElement("ul");
+		p_middle_ul.setAttribute("class", "dropdown-menu dropdown-menu-left bullet");
+		p_middle_ul.setAttribute("role", "menu");
+		
+		
+		findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,true,false);
+		middle_li.appendChild(p_middle_ul) ;
+		//console.log("ok") ;
+	}else{
+		//middle_li.setAttribute("class", "cur hover margin-left-0 mouseoverclass");
+		create_header_a(middle_li,item.moduleUrl,item.navName,2) ;
+	}
+	
+	ul.appendChild(middle_li);
+}
+
+/**
+ * 手机端 导航栏
+ * @param ul
+ * @param navListMap
+ * @param item
+ */
+function setMobileNavigation(ul,navListMap,item){
+	var middle_li = document.createElement("li");
+	
+	//console.log("0000 -- " + item.navId) ;
+	var tmp_v = navListMap[item.navId];
+	
+	if(tmp_v != undefined){
+		//middle_li.setAttribute("class", "cur hover dropdown margin-left-0 mouseoverclass");
+		create_header_a(middle_li,item.moduleUrl,item.navName,1) ;
+		
+		var p_middle_ul = document.createElement("ul");
+		p_middle_ul.setAttribute("class", "dropdown-menu dropdown-menu-left bullet");
+		p_middle_ul.setAttribute("role", "menu");
+		
+		
+		findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,true,false);
+		middle_li.appendChild(p_middle_ul) ;
+		//console.log("ok") ;
+	}else{
+		//middle_li.setAttribute("class", "cur hover margin-left-0 mouseoverclass");
+		create_header_a(middle_li,item.moduleUrl,item.navName,2) ;
+	}
+	
+	ul.appendChild(middle_li);
+}
 
 function setNavigation(ul) {
 	var dataList ;
