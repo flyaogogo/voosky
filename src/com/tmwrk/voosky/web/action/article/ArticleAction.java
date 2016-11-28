@@ -72,7 +72,7 @@ public class ArticleAction extends BaseAction implements ModelDriven<Article>{
 		// 特注  ： 专为博恒处理
 		param.put("notNavId", caseNavId) ;
 		
-		int pageSize = 3; 
+		int pageSize = 10; 
 		
 		String pageId = request.getParameter("pageId"); 
 		if (pageId == null || pageId.equals("")) { 
