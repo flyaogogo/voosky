@@ -16,6 +16,7 @@ import com.tmwrk.voosky.database.vo.Product;
 import com.tmwrk.voosky.database.vo.UploadFileBase;
 import com.tmwrk.voosky.module.util.CalcUtil;
 import com.tmwrk.voosky.module.util.DateUtil;
+import com.tmwrk.voosky.module.util.PageBean;
 import com.tmwrk.voosky.service.category.CategoryServiceMgr;
 import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.service.product.ProductServiceMgr;
@@ -60,6 +61,10 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 	private String record ;
 	private Product proLast ;
 	private Product proNext ;
+	
+	private PageBean page ;
+	// 项目案例导航ID
+	private String caseNavId = "14" ;
 
 	@Override
 	public String execute() throws Exception{
@@ -187,6 +192,50 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 		return cateList ;
 	}
 	
+	/**
+	 * 为博恒定制开发 2016-11-29
+	 * @return
+	 * @throws Exception
+	 */
+	public String findCaseInfo() throws Exception{
+		Map<String, Object> param = new HashMap<String, Object>() ;
+		if(filterkeywords!=null&&!"".equals(filterkeywords.trim())){
+			param.put("filterkey", filterkeywords) ;
+		}
+		if(product.getIsRecommend()!=null){
+			param.put("isRecommend", product.getIsRecommend()) ;
+		}
+		if(product.getCateId()!=null&& !"all".equals(product.getCateId())){
+			param.put("cateId", CalcUtil.dealParentId(product.getCateId())[0]) ;
+//			param.put("cateId", product.getCateId()) ;
+		}
+		// 特注  ： 专为博恒处理
+		param.put("notNavId", caseNavId);
+
+		int pageSize = 12;
+
+		String pageId = request.getParameter("pageId");
+		if (pageId == null || pageId.equals("")) {
+			pageId = "1";
+		}
+		int currentPage = Integer.parseInt(pageId);
+
+		// 从服务层里得到用户的总记录数
+		int totalRows = productService.getAllProductsCount(param);
+		// 处理分页
+
+		page = new PageBean(pageSize, currentPage, totalRows);
+
+		param.put("startNum", page.getStartNum());
+		param.put("pageSize", page.getPageSize());
+				
+		proList = productService.findAllProductsInfo(param) ;
+		
+		navBean = navService.getAllNavByParentId("ductsInfo") ; //getProductsInfo
+		ctgryList = getProductCategory() ;
+		
+		return SUCCESS ;
+	}
 	/**
 	 * 为博恒定制开发 2016-11-25
 	 * @return
@@ -362,6 +411,14 @@ public class ProductAction extends BaseAction implements ModelDriven<Product>{
 
 	public void setProNext(Product proNext) {
 		this.proNext = proNext;
+	}
+
+	public PageBean getPage() {
+		return page;
+	}
+
+	public void setPage(PageBean page) {
+		this.page = page;
 	}
 
 }

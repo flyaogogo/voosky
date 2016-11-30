@@ -197,7 +197,7 @@ window.onload = function(selectId) {
 	//console.log(".... index global..." );
 	
 	var ul = document.getElementById("public-header-nav-ul-id");
-	var m_ul = document.getElementById("public-header-mobile-nav-ul-id");
+//	var m_ul = document.getElementById("public-header-mobile-nav-ul-id");
 	
 	/*var first_li = document.createElement("li");
 	//设置 li 属性，如 class   <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
@@ -213,13 +213,13 @@ window.onload = function(selectId) {
 	//m_ul.appendChild(first_li);
 	
 	setFirst(ul) ;
-	setFirst(m_ul) ;
+//	setFirst(m_ul) ;
 	
 	var dataList ;
 	if($("#public-header-nav-ul-id").hasClass('bohengcls')||
 			$("public-header-mobile-nav-ul-id").hasClass('bohengcls')){
 		
-		dataList = setTopAndFooter(ul,m_ul);
+		dataList = setTopAndFooter(ul,"");
 		//dataList = setNavigation(ul) 
 	}else{
 		dataList = setNavigation(ul) 
@@ -235,12 +235,12 @@ window.onload = function(selectId) {
  * @param mapValue	:通过key，获得的集合
  * @param p_url		:父的url
  * @param p_name	:父的导航名称
- * @param flag		:处理第二级的样式
- * @param flag		:处理无限子结点的样式
+ * @param flag		:处理第二级的样式   0:代表所有无样式,1:代表二级样式,2:代表处理无限子结点样式
+ * @param type		:类形：PC OR Mobile
  */
-function findChild(tmpul,map,mapValue,p_url,p_name,flag,flag2) {
+function findChild(tmpul,map,mapValue,p_url,p_name,flag,type) {
 	
-	if(flag==true){
+	if(flag=='1'){
 		var child_all_li = document.createElement("li");
 		//设置 li 属性，如 class
 		//child_all_li.setAttribute("class", "visible-xs-block");
@@ -261,7 +261,8 @@ function findChild(tmpul,map,mapValue,p_url,p_name,flag,flag2) {
 		var child_li = document.createElement("li");
 		
 		var child_a = document.createElement("a");
-		if(flag2 == true){
+		if(flag == '2'){
+//			if(flag == '2'&&type=='pc'){
 			child_li.setAttribute("class", "presentation");
 			child_a.setAttribute("role", "menuitem");
 			child_a.setAttribute("tabindex", "-1");
@@ -280,13 +281,14 @@ function findChild(tmpul,map,mapValue,p_url,p_name,flag,flag2) {
 		var tmp_v = map[item.navId];
 		if(tmp_v != undefined){
 			//设置 li 属性，如 class
-			child_li.setAttribute("class", "dropdown-submenu");
-			
 			var p_child_ul = document.createElement("ul");
-			p_child_ul.setAttribute("class", "dropdown-menu animate");
-			p_child_ul.setAttribute("role", "menu");
+//			if(type=='pc'){
+				child_li.setAttribute("class", "dropdown-submenu");
+				p_child_ul.setAttribute("class", "dropdown-menu animate");
+				p_child_ul.setAttribute("role", "menu");
+//			}
 			
-			findChild(p_child_ul,map,tmp_v,item.moduleUrl,item.navName,false,true);
+			findChild(p_child_ul,map,tmp_v,item.moduleUrl,item.navName,'2','pc');
 			child_li.appendChild(p_child_ul);
 		}
 		child_li.appendChild(child_a);
@@ -401,7 +403,7 @@ function setTopAndFooter(ul,m_ul) {
 				ul.appendChild(middle_li);
 				*/
 				setPcNavigation(ul,navListMap,item)
-				setMobileNavigation(m_ul,navListMap,item)
+//				setMobileNavigation(m_ul,navListMap,item)
 				
 			});
 
@@ -545,7 +547,7 @@ function setPcNavigation(ul,navListMap,item){
 		p_middle_ul.setAttribute("role", "menu");
 		
 		
-		findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,true,false);
+		findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,"1","pc");
 		middle_li.appendChild(p_middle_ul) ;
 		//console.log("ok") ;
 	}else{
@@ -573,11 +575,9 @@ function setMobileNavigation(ul,navListMap,item){
 		create_header_a(middle_li,item.moduleUrl,item.navName,1) ;
 		
 		var p_middle_ul = document.createElement("ul");
-		p_middle_ul.setAttribute("class", "dropdown-menu dropdown-menu-left bullet");
-		p_middle_ul.setAttribute("role", "menu");
 		
 		
-		findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,true,false);
+		findChild(p_middle_ul,navListMap,tmp_v,item.moduleUrl,item.navName,"1","mobile");
 		middle_li.appendChild(p_middle_ul) ;
 		//console.log("ok") ;
 	}else{

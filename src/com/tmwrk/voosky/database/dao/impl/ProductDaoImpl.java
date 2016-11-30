@@ -45,6 +45,11 @@ public class ProductDaoImpl extends BaseDao<Product> {
 		List<Product> prList = (List<Product>)getSqlMapClientTemplate().queryForList("product.getAllProducts", params) ;
 		return prList;
 	}
+	
+	public int getAllProductsCount(Map<String, Object> params) {
+		Integer count = (Integer)getSqlMapClientTemplate().queryForObject("product.getAllProductsCount", params) ;
+		return count;
+	}
 
 	public boolean deleteProductById(Product p){
 		getSqlMapClientTemplate().delete("product.deleteById", p) ;

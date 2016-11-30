@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    	<a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.previousPage"/>" class="PreSpan">上一页</a>
 			    	<a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.previousPage"/>"><s:property value="page.previousPage"/></a>
 			    </s:if>
-			    <a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.previousPage"/>" class="Ahover"><s:property value="page.currentPage"/></a>
+			    <a href="javascript:void(0);" class="Ahover"><s:property value="page.currentPage"/></a>
 			    <s:if test="page.hasNextPage==true">
 				    <a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.nextPage"/>"><s:property value="page.nextPage"/></a>
 			    	<a href="${ctx }/bohen/getNewsInfo.htm?pageId=<s:property value="page.nextPage"/>" class="NextA">下一页</a>

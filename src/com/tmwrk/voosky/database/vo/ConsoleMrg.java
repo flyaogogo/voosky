@@ -26,6 +26,8 @@ public class ConsoleMrg implements Serializable{
 	
 	private List<Article> artList ;
 	
+	private List<Show> slideList ;
+	
 	private int spNum ; //单页面数
 	
 	private int artNum ; //文章总数
@@ -139,6 +141,14 @@ public class ConsoleMrg implements Serializable{
 
 	public void setNavListMap(Map<String, List<Navigation>> navListMap) {
 		this.navListMap = navListMap;
+	}
+
+	public List<Show> getSlideList() {
+		return slideList;
+	}
+
+	public void setSlideList(List<Show> slideList) {
+		this.slideList = slideList;
 	}
 
 }

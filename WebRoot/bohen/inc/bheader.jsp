@@ -68,20 +68,24 @@
 						</div>
 
 						<div class="pull-right econav">
-							<!--<ul>
-
+							<ul>
+							<!--
 								<li>
 									<button type="button" data-target="#site-navbar-search" data-toggle="modal">
                                <span class="sr-only">Toggle Search</span>
                                <i class="icon wb-search"></i>
                          </button>
 								</li>
-
+							-->
 								<li class="ecommnenu">
-									<button type="button" class="mobileMenuBtn" href="#mobileNav"><span class="icon fa-bars"></span></button>
+									<button type="button" class="navbar-toggle hamburger hamburger-close collapsed"
+									data-target="#example-navbar-default-collapse" data-toggle="collapse">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="hamburger-bar"></span>
+									</button>
 								</li>
 
-							</ul>-->
+							</ul>
 						</div>
 						<div class="collapse navbar-collapse navbar-collapse-toolbar" id="example-navbar-default-collapse">
 

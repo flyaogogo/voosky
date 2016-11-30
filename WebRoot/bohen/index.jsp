@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <html class='nicescroll'>
 <head>
-	<title>博恒建设公司网站模板|博恒建设企业网站模板-博恒建设</title>
+	<title>博恒建设公司网站 -博恒建设</title>
 	<meta name="renderer" content="webkit">
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -62,6 +62,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
+		  <s:iterator value="index.slideList" var="slide" status="status">
+		  	<s:if test="#status.index == 0">
+			  	<div class="item active">
+				  <a href=""><img src="${ctx_img }/<s:property value="#slide.showImg"/>" alt="<s:property value="#slide.showName"/>"></a>
+				  <div class="carousel-caption baner_adv">
+					<s:property value="#slide.showName"/>
+				  </div>
+				</div>
+		  	</s:if>
+		  	<s:else>
+			  	<div class="item">
+				  <a href=""><img src="${ctx_img }/<s:property value="#slide.showImg"/>" alt="<s:property value="#slide.showName"/>"></a>
+				  <div class="carousel-caption baner_adv">
+					<s:property value="#slide.showName"/>
+				  </div>
+				</div>
+		  	</s:else>
+		  </s:iterator>
+		  <%-- 
 			<div class="item active">
 			  <a href=""><img src="${ctx}/bohen/img/banner.jpg" alt="..."></a>
 			  <div class="carousel-caption baner_adv">
@@ -80,6 +99,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				造就艺术那就是你!
 			  </div>
 			</div>
+			 --%>
+			
 		  </div>
 
 		  <!-- Controls -->

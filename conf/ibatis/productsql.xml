@@ -49,6 +49,31 @@
 			<isNotNull property="cateId">
 				and vsp.cat_id = #cateId#
 			</isNotNull>
+			<isNotNull property="notNavId">
+				and vsn.nav_id != #notNavId#
+			</isNotNull>
+			<isNotNull property="firstType">
+				and vsp.firstType = #firstType#
+			</isNotNull>
+			<isNotNull property="filterkey">
+				and vsp.title like concat('%', #filterkey#, '%')
+			</isNotNull>
+			<isNotNull property="startNum">
+				limit #startNum#,#pageSize#
+			</isNotNull>
+	</select>
+	
+	<select id="getAllProductsCount" parameterClass="java.util.HashMap" resultClass="int">
+		select count(vsp.id) from vs_product vsp,vs_nav vsn where vsp.cat_id=vsn.nav_id
+			<isNotNull property="isRecommend">
+				and vsp.is_recommend = #isRecommend#
+			</isNotNull>
+			<isNotNull property="cateId">
+				and vsp.cat_id = #cateId#
+			</isNotNull>
+			<isNotNull property="notNavId">
+				and vsn.nav_id != #notNavId#
+			</isNotNull>
 			<isNotNull property="firstType">
 				and vsp.firstType = #firstType#
 			</isNotNull>
@@ -56,6 +81,7 @@
 				and vsp.title like concat('%', #filterkey#, '%')
 			</isNotNull>
 	</select>
+	
 	<select id="getProductById" parameterClass="java.util.HashMap" resultMap="productMap">
 	
 		select id,cat_id,title,is_recommend,content,price,thumb_url,keywords,description,clicknum,

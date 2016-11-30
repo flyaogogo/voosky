@@ -23,6 +23,11 @@ public class ProductServiceMgr {
 		return prList ;
 	}
 	
+	public int getAllProductsCount(Map<String, Object> params) {
+		int count = productDao.getAllProductsCount(params) ;
+		return count ;
+	}
+	
 	public Product findProductInfoById(Map<String, Object> param){
 		Product p = productDao.findById(param) ;
 		

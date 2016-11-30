@@ -12,10 +12,12 @@ import com.tmwrk.voosky.database.vo.Config;
 import com.tmwrk.voosky.database.vo.ConsoleMrg;
 import com.tmwrk.voosky.database.vo.Navigation;
 import com.tmwrk.voosky.database.vo.Product;
+import com.tmwrk.voosky.database.vo.Show;
 import com.tmwrk.voosky.database.vo.SinglePage;
 import com.tmwrk.voosky.service.article.ArticleServiceMgr;
 import com.tmwrk.voosky.service.nav.NavServiceMgr;
 import com.tmwrk.voosky.service.other.ConfigServiceMgr;
+import com.tmwrk.voosky.service.other.ShowServiceMgr;
 import com.tmwrk.voosky.service.other.SinglePageServiceMgr;
 import com.tmwrk.voosky.service.product.ProductServiceMgr;
 import com.tmwrk.voosky.web.action.BaseAction;
@@ -47,6 +49,9 @@ public class BohenMgrAction extends BaseAction{
 	@Autowired
 	private NavServiceMgr navService ;
 	
+	@Autowired
+	private ShowServiceMgr showService ;
+	
 	private ConsoleMrg index = new ConsoleMrg() ;
 	
 	private ConsoleMrg topFooterInfo ;
@@ -54,6 +59,8 @@ public class BohenMgrAction extends BaseAction{
 	@Override
 	public String execute() throws Exception{
 		List<SinglePage> spList = singlePageService.getAllSinglePage() ;
+		
+		List<Show> slideList = showService.listAllSlidePage(null) ;
 		
 		Map<String, Object> param = new HashMap<String, Object>() ;
 		param.put("isRecommend", "true") ;//取出推荐显示在首页的数据
@@ -72,7 +79,7 @@ public class BohenMgrAction extends BaseAction{
 		
 		index.setArtList(artList);
 		index.setSpAbout(getSinglePageAbout());
-		
+		index.setSlideList(slideList);
 		return SUCCESS ;
 	}
 	
