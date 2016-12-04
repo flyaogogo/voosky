@@ -38,7 +38,11 @@ public enum SystemEnum {
 	mailoutbox(32,"mail.outbox.mailboxes"),
 	mailpassword(33,"mail.outbox.mail.password"),
 	
-	netaddress(34,"main.net.address");
+	netaddress(34,"main.net.address"),
+	
+	defweixin(35,"defined.weixin.pic.url"),
+	defqqwburl(36,"defined.qq.weibo.url"),
+	defsinawburl(37,"defined.sina.weibo.url");
 	
 	private int id ;
 	private String name ;

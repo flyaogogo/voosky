@@ -90,8 +90,9 @@ $(function(){
 //		}
 //	});
 	
-	
+	/*
 	$("#upload_file").change(function(){
+		
 		var fileUrl = ctx + "/sysconfig/updateMarkConfig.htm" ;
 		
 	    //创建FormData对象
@@ -128,8 +129,69 @@ $(function(){
 	            
 	        }
 	    });
+	   
+	    
+	    
 	});
+	
+	 */
+	$("#upload_file").change(function(){
+		uploadImage($("#upload_file"),"upload_file_mark_msg_cls","msmark") ;
+	});
+	$("#upload_file_weixin").change(function(){
+		
+		uploadImage($("#upload_file_weixin"),"upload_file_weixin_msg_cls","weixin") ;
+	});
+	
 })
+
+/**
+ * 
+ * @param ids
+ * @param uploadcls
+ */
+function uploadImage(ids,uploadcls,type){
+	
+	var fileUrl = ctx + "/sysconfig/updateMarkConfig.htm" ;
+	
+    //创建FormData对象
+    var data = new FormData();
+    //为FormData对象添加数据
+    //
+    $.each(ids[0].files, function(i, file) {
+//    	$.each($('#upload_file')[0].files, function(i, file) {
+        data.append('imageFile', file);
+    });
+    data.append('status',type) ;
+    //console.log(data) ;
+    $.ajax({
+        url:fileUrl,
+        type:'POST',
+        data:data,
+        cache: false,
+        contentType: false,    //不可缺
+        processData: false,    //不可缺
+        success:function(data){
+        	var status = data.status ;
+        	if("success"==status){
+        		$("."+ uploadcls +" img").remove();
+        		var imgDom=document.createElement("img");  // 以 DOM 创建新元素
+        		imgDom.src = "../" + data.fileRealPath ;
+        		imgDom.width = 30 ;
+        		$("."+ uploadcls).append(imgDom);         // 追加新元素
+        	}else{
+        		$("."+ uploadcls +" p").remove();
+        		var pDom=document.createElement("p");  // 以 DOM 创建新元素
+        		pDom.innerHTML = data.message ;
+        		$("."+ uploadcls).append(pDom);         // 追加新元素
+        	}
+        	
+            //console.log(data.fileRealPath) ;
+            
+        }
+    });
+    
+}
 
 // 常规  系统 配置更新
 function mainUpdate(url,tabType){
@@ -191,9 +253,12 @@ function displayUpdate(url,tabType){
 function definedUpdate(url,tabType){
 	var defartattr = $("#defined input[name='defartattr']").val() ;
 	var defproductattr = $("#defined input[name='defproductattr']").val() ;
+	var defqqwburl = $("#defined input[name='defqqwburl']").val() ;
+	var defsinawburl = $("#defined input[name='defsinawburl']").val() ;
 	
 	
-	var arrValue = "defartattr::" + defartattr + ",defproductattr::" + defproductattr ; 
+	var arrValue = "defartattr::" + defartattr + ",defproductattr::" + defproductattr 
+					+ ",defqqwburl::" + defqqwburl + ",defsinawburl::" + defsinawburl  ; 
 	var param = {value:arrValue,nameType:tabType} ;
 	
 	post(url,param) ;

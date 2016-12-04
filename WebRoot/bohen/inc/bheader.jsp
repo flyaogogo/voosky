@@ -16,20 +16,20 @@
 								<li>
 									<a id="met-weixint"><i class="fa fa-weixin "></i></a>
 									<div id="met-weixint-content" class="hide">
-										<div class="text-center met-weixin-img"><img src="${ctx}/bohen/upload/1456466357.png" /></div>
+										<div class="text-center met-weixin-img" ><img id="common-header-top-contactus-img-id"/></div>
 									</div>
 								</li>
 
 								<li>
-									<a href="http://wpa.qq.com/msgrd?v=3&uin=<s:property value="index.sysconfMap['main.site.qq.num']"/>&site=qq&menu=yes" target="_blank"><i class="fa fa-qq"></i></a>
+									<a id="common-header-top-contactus-qq-a-id" target="_blank"><i class="fa fa-qq"></i></a>
 								</li>
 
 								<li>
-									<a href="#" target="_blank"><i class="fa fa-tencent-weibo"></i></a>
+									<a id="common-header-top-contactus-qqwb-a-id" target="_blank"><i class="fa fa-tencent-weibo"></i></a>
 								</li>
 
 								<li>
-									<a href="#" target="_blank"><i class="fa fa-weibo"></i></a>
+									<a id="common-header-top-contactus-sina-a-id" target="_blank"><i class="fa fa-weibo"></i></a>
 								</li>
 
 							</ul>
@@ -39,15 +39,15 @@
 							<ul id="common-header-top-id">
   
 								<li>
-									<a href="javascript:;" style="cursor:default"><i class="fa fa-map-marker"></i><span id="common-header-top-marker-id"></span></a>
+									<a href="javascript:void(0);" style="cursor:default"><i class="fa fa-map-marker"></i><span id="common-header-top-marker-id"></span></a>
 								</li>
 
 								<li>
-									<a href="javascript:;" style="cursor:default"><i class="fa fa-envelope"></i><span id="common-header-top-envelope-id"></span></a>
+									<a href="javascript:void(0);" style="cursor:default"><i class="fa fa-envelope"></i><span id="common-header-top-envelope-id"></span></a>
 								</li>
 
 								<li>
-									<a href="javascript:;" style="cursor:default"><i class="fa fa-phone"></i><span id="common-header-top-phone-id"></a>
+									<a href="javascript:void(0);" style="cursor:default"><i class="fa fa-phone"></i><span id="common-header-top-phone-id"></a>
 								</li>
  <!---->
 							</ul>
@@ -61,7 +61,7 @@
 					<div class="row">
 						<div class="navbar-header">
 
-							<a href="" class="navbar-logo" title="博恒建设">
+							<a href="javascript:void(0);" class="navbar-logo" title="博恒建设">
 								<div class="vertical-align-middle"><img src="${ctx}/bohen/upload/1456465413.png" alt="博恒建设" title="博恒建设" /></div>
 							</a>
 

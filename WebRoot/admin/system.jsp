@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>article category</title>
+<title>系统设置</title>
 <link href="${ctx}/admin/css/public.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="${ctx}/admin/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx}/admin/js/global.js"></script>
@@ -260,7 +260,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
           </td>
          </tr>
-        
+         
+          <tr>
+	              <td align="right">微信二维码</td>
+	              <td><input name="defweixin" type="file" id="upload_file_weixin">&nbsp;
+	              <div class="upload_file_weixin_msg_cls">
+					<img src="../<s:property value="mapSysConf['defined.weixin.pic.url']"/>" width="15" height="15">	              	
+	              </div></td>
+            </tr>
+        <tr>
+          <td align="right">腾讯微博URL</td>
+          <td>
+           <input name="defqqwburl" type="text" id="textfield" value="<s:property value="mapSysConf['defined.qq.weibo.url']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+          </td>
+         </tr>
+         <tr>
+          <td align="right">新浪微博URL</td>
+          <td>
+           <input name="defsinawburl" type="text" id="textfield" value="<s:property value="mapSysConf['defined.sina.weibo.url']"/>" size="80" maxlength="200"  style="border:1px solid #CCC; height:30px; vertical-align:middle; color:#999;">
+          </td>
+         </tr>
         </table>
         </div>
         

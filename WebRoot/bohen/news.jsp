@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <html class='nicescroll'>
 <head>
-		<title>博恒建设公司网站模板|博恒建设企业网站模板-博恒建设</title>
+		<title>博恒建设公司网站 |博恒建设</title>
 		<meta name="renderer" content="webkit">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

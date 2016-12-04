@@ -12,7 +12,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-xs hidden-sm" align="center">
-								<img class="positioned wow cover-image" data-original="${ctx}/bohen/upload/weima.png" data-plugin="appear" data-animate="slide-left">
+								<img id="common-footer-contactus-img-id" class="positioned wow cover-image" data-plugin="appear" data-animate="slide-left">
 							</div>
 							<div class="col-md-3 col-sm-4 col-xs-12 list text-left">
 								<!-- <h4>公司简介</h4>
@@ -27,19 +27,19 @@
 								<ul class="social">
 
 									<li>
-										<a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" rel="nofollow" target="_blank" class="hvr-radial-out">
+										<a id="common-footer-contactus-qq-a-id" rel="nofollow" target="_blank" class="hvr-radial-out">
 											<i class="fa fa-qq"></i>
 										</a>
 									</li>
 
 									<li>
-										<a href="" rel="nofollow" target="_blank" class="hvr-radial-out"><i class="fa fa-weibo"></i></a>
+										<a id="common-footer-contactus-sina-weibo-a-id"rel="nofollow" target="_blank" class="hvr-radial-out"><i class="fa fa-weibo"></i></a>
 									</li>
 
-									<li class="dropup">
+									<li class="dropup" >
 										<a id="met-weixin"><i class="fa fa-weixin "></i></a>
 										<div id="met-weixin-content" class="hide">
-											<div class="text-center met-weixin-img"><img src="${ctx}/bohen/upload/1456466357.png" /></div>
+											<div class="text-center met-weixin-img" id="common-footer-contactus-weixin-img-div"></div>
 										</div>
 									</li>
 

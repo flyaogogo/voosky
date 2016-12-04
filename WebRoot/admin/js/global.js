@@ -179,6 +179,8 @@ function post(URL, PARAMS) {
  * @param ul
  */
 function setFirst(ul) {
+	if(ul == undefined)
+		return ;
 	var first_li = document.createElement("li");
 	//设置 li 属性，如 class   <li class="cur"><a href="${ctx }/index.htm" class="first">首页</a></li>
 　　　first_li.setAttribute("class", "cur");
@@ -369,6 +371,22 @@ function setTopAndFooter(ul,m_ul) {
 			var common_header_top_phone_a = document.getElementById("common-header-top-phone-id");
 			common_header_top_phone_a.innerHTML = (data.sysconfMap['main.site.consumer.hotline']).trim() ;
 			
+			//微博二维码
+			var common_header_top_contactus_img = document.getElementById("common-header-top-contactus-img-id");
+			common_header_top_contactus_img.setAttribute("src", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
+			console.log(ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
+			//QQ
+			var common_header_top_contactus_qq_li_a = document.getElementById("common-header-top-contactus-qq-a-id");
+			//href="http://wpa.qq.com/msgrd?v=3&uin=<s:property value="index.sysconfMap['main.site.qq.num']"/>&site=qq&menu=yes"
+			common_header_top_contactus_qq_li_a.setAttribute("href", "http://wpa.qq.com/msgrd?v=3&uin=" + data.sysconfMap['main.site.qq.num'] + "&site=qq&menu=yes");
+			//qq weibo
+			var common_header_top_contactus_qqwb_li_a = document.getElementById("common-header-top-contactus-qqwb-a-id");
+			common_header_top_contactus_qqwb_li_a.setAttribute("href",data.sysconfMap['defined.qq.weibo.url']) ;
+			
+			//sina weibo
+			var common_header_top_contactus_sinawb_li_a = document.getElementById("common-header-top-contactus-sina-a-id");
+			common_header_top_contactus_sinawb_li_a.setAttribute("href",data.sysconfMap['defined.sina.weibo.url']) ;
+			
 			///-----------top end----------------------
 			
 			var navListMap = data.navListMap ;
@@ -460,6 +478,52 @@ function setTopAndFooter(ul,m_ul) {
 				}
 			});
 			
+			//--------footer-----------
+			//微博二维码
+			var common_footer_contactus_img = document.getElementById("common-footer-contactus-img-id");
+			common_footer_contactus_img.setAttribute("src", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
+//			common_footer_contactus_img.setAttribute("data-original", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
+			//QQ
+			var common_footer_contactus_qq_li_a = document.getElementById("common-footer-contactus-qq-a-id");
+			//href="http://wpa.qq.com/msgrd?v=3&uin=<s:property value="index.sysconfMap['main.site.qq.num']"/>&site=qq&menu=yes"
+			common_footer_contactus_qq_li_a.setAttribute("href", "http://wpa.qq.com/msgrd?v=3&uin=" + data.sysconfMap['main.site.qq.num'] + "&site=qq&menu=yes");
+			//qq weibo
+//			var common_footer_contactus_qqwx_li_a = document.getElementById("common-footer-contactus-weixin-img-id");
+//			common_footer_contactus_qqwx_li_a.setAttribute("src",ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
+			
+			var common_footer_contactus_qqwx_div = document.getElementById("common-footer-contactus-weixin-img-div");
+			var common_footer_contactus_qqwx_div_img = document.createElement("img");
+			common_footer_contactus_qqwx_div_img.setAttribute("src",ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
+			common_footer_contactus_qqwx_div.appendChild(common_footer_contactus_qqwx_div_img) ;
+			
+			/*
+			var common_footer_contactus_weixin_img_li = document.getElementById("common-footer-contactus-weixin-img-li");
+			var common_footer_contactus_weixin_img_li_a = document.createElement("a");
+			common_footer_contactus_weixin_img_li_a.setAttribute("id","met-weixin") ;
+			var common_footer_contactus_weixin_img_li_a_li = document.createElement("li");
+			common_footer_contactus_weixin_img_li_a_li.setAttribute("class","fa fa-weixin") ;
+			common_footer_contactus_weixin_img_li_a.appendChild(common_footer_contactus_weixin_img_li_a_li);
+			
+			var common_footer_contactus_weixin_img_li_div = document.createElement("div");
+			common_footer_contactus_weixin_img_li_div.setAttribute("id","met-weixin-conten") ;
+			common_footer_contactus_weixin_img_li_div.setAttribute("class","hide") ;
+			
+			var common_footer_contactus_weixin_img_li_div_div = document.createElement("div");
+			common_footer_contactus_weixin_img_li_div_div.setAttribute("class","text-center met-weixin-img") ;
+			
+			var common_footer_contactus_weixin_img_li_div_div_img = document.createElement("img");
+			common_footer_contactus_weixin_img_li_div_div_img.setAttribute("src",ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
+			
+			common_footer_contactus_weixin_img_li_div_div.appendChild(common_footer_contactus_weixin_img_li_div_div_img) ;
+			common_footer_contactus_weixin_img_li_div.appendChild(common_footer_contactus_weixin_img_li_div_div) ;
+			common_footer_contactus_weixin_img_li.appendChild(common_footer_contactus_weixin_img_li_div) ;
+			common_footer_contactus_weixin_img_li.appendChild(common_footer_contactus_weixin_img_li_a) ;
+			*/
+			//sina weibo
+			var common_footer_contactus_sinawb_li_a = document.getElementById("common-footer-contactus-sina-weibo-a-id");
+			common_footer_contactus_sinawb_li_a.setAttribute("href",data.sysconfMap['defined.sina.weibo.url']) ;
+			
+			//-------------------
 			//联系我们
 			var contact_ul = document.getElementById("common-footer-contact-us-id");
 			contact_ul.setAttribute("class", "contact-info");
@@ -470,7 +534,7 @@ function setTopAndFooter(ul,m_ul) {
 			var contact_marker_i = document.createElement("i");
 			contact_marker_i.setAttribute("class", "fa fa-map-marker");
 			var contact_marker_span = document.createElement("span");
-			contact_marker_span.innerHTML="&nbsp;北京大兴区" ;
+			contact_marker_span.innerHTML= (data.sysconfMap['main.site.address']).trim() ;
 			contact_marker_a.appendChild(contact_marker_i);
 			contact_marker_a.appendChild(contact_marker_span);
 			//contact_marker_a.innerHTML="&nbsp;北京大兴区" ;
@@ -483,7 +547,7 @@ function setTopAndFooter(ul,m_ul) {
 			var contact_phone_i = document.createElement("i");
 			contact_phone_i.setAttribute("class", "fa fa-phone");
 			var contact_phone_span = document.createElement("span");
-			contact_phone_span.innerHTML="&nbsp;86-12345678901" ;
+			contact_phone_span.innerHTML="&nbsp;" + (data.sysconfMap['main.site.consumer.hotline']).trim() ;
 			contact_phone_a.appendChild(contact_phone_i);
 			contact_phone_a.appendChild(contact_phone_span);
 			//contact_phone_a.innerHTML="&nbsp;86-12345678901" ;
@@ -496,7 +560,7 @@ function setTopAndFooter(ul,m_ul) {
 			var contact_mail_i = document.createElement("i");
 			contact_mail_i.setAttribute("class", "fa-envelope");
 			var contact_mail_span = document.createElement("span");
-			contact_mail_span.innerHTML="&nbsp;123456789@qq.com" ;
+			contact_mail_span.innerHTML="&nbsp;" + (data.sysconfMap['main.site.mail.address']).trim() ;
 			
 			contact_mail_a.appendChild(contact_mail_i);
 			contact_mail_a.appendChild(contact_mail_span);
@@ -510,7 +574,7 @@ function setTopAndFooter(ul,m_ul) {
 			var contact_globe_i = document.createElement("i");
 			contact_globe_i.setAttribute("class", "fa-globe");
 			var contact_globe_span = document.createElement("span");
-			contact_globe_span.innerHTML="&nbsp;www.spademo.com" ;
+			contact_globe_span.innerHTML="&nbsp;" + (data.sysconfMap['main.net.address']).trim() ;
 			contact_globe_a.appendChild(contact_globe_i);
 			contact_globe_a.appendChild(contact_globe_span);
 			//contact_globe_a.innerHTML="&nbsp;www.spademo.com" ;
@@ -589,6 +653,8 @@ function setMobileNavigation(ul,navListMap,item){
 }
 
 function setNavigation(ul) {
+	if(ul == undefined)
+		return ;
 	var dataList ;
 	$.ajax({
 		async:false,

@@ -64,7 +64,8 @@ public class SystemConfigAction extends BaseAction implements ModelDriven<Config
 			}
 			String typeKey = item[0] ;
 			String typeVal = item[1] ;
-			if(SystemEnum.msmark.toString().equals(typeKey)){
+			if(SystemEnum.msmark.toString().equals(typeKey)||
+					SystemEnum.defweixin.toString().equals(typeKey)){
 				continue ;
 			}
 			SystemEnum sysEnum = SystemEnum.valueOf(typeKey) ;
@@ -94,7 +95,13 @@ public class SystemConfigAction extends BaseAction implements ModelDriven<Config
 		if(CalcUtil.FILE_UPDATE_STATUS_ERROR.equals(uplFileBase.getStatus())){
 			return SUCCESS ;
 		}
-		SystemEnum sysEnum = SystemEnum.valueOf(SystemEnum.msmark.toString()) ;
+		SystemEnum sysEnum = null ;
+		if("msmark".equals(config.getStatus())){
+			sysEnum = SystemEnum.valueOf(SystemEnum.msmark.toString()) ;
+		}else if("weixin".equals(config.getStatus())){
+			sysEnum = SystemEnum.valueOf(SystemEnum.defweixin.toString()) ;
+		}
+		//SystemEnum sysEnum = SystemEnum.valueOf(SystemEnum.msmark.toString()) ;
 		Config tmpConf = new Config() ;
 		tmpConf.setId(sysEnum.getId());
 		tmpConf.setName(sysEnum.getName());

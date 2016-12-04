@@ -15,8 +15,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 	<meta name="generator" content="voosky1.0" data-variable="" />
 	<meta name="description"
-		content="模板建站和纯手工建站的区别在于：模板是“成衣”，你只需要去服装店挑选，而所谓的纯手工建站是裁缝师傅给你定制。功能和稳定性模板+成熟的CMS管理后台大大优于“裁缝店”。" />
-	<meta name="keywords" content="博恒建设公司网站模板|博恒建设企业网站模板" />
+		content="" />
+	<meta name="keywords" content="博恒建设公司网站|博恒建设企业网站" />
 	<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 	<link rel="stylesheet" href="${ctx}/bohen/css/wstyle.css">
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <s:iterator value="index.slideList" var="slide" status="status">
 		  	<s:if test="#status.index == 0">
 			  	<div class="item active">
-				  <a href=""><img src="${ctx_img }/<s:property value="#slide.showImg"/>" alt="<s:property value="#slide.showName"/>"></a>
+				  <a href="javascript:void(0);"><img src="${ctx_img }/<s:property value="#slide.showImg"/>" alt="<s:property value="#slide.showName"/>"></a>
 				  <div class="carousel-caption baner_adv">
 					<s:property value="#slide.showName"/>
 				  </div>
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	</s:if>
 		  	<s:else>
 			  	<div class="item">
-				  <a href=""><img src="${ctx_img }/<s:property value="#slide.showImg"/>" alt="<s:property value="#slide.showName"/>"></a>
+				  <a href="javascript:void(0);"><img src="${ctx_img }/<s:property value="#slide.showImg"/>" alt="<s:property value="#slide.showName"/>"></a>
 				  <div class="carousel-caption baner_adv">
 					<s:property value="#slide.showName"/>
 				  </div>
@@ -182,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="met-editor lazyload clearfix invisible" data-plugin="appear" data-animate="slide-bottom" data-repeat="false">
 						<div class="video-preview">
                            <div class="con_shipin">
-						   <a href="">
+						   <a href="${ctx}/bohen/getSPInfoByName.htm?uniqueName=summary">
 							<img data-original="${ctx}/bohen/upload/1456453179.jpg" class="cover-image" style='opacity:1;'><i></i>
 							</a>
                             </div>
@@ -199,7 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						         </s:else>
 								</p>
 							</p>
-							<a href="" class="contact-us hvr-bounce-to-right">联系我们</a>
+							<a href="${ctx}/bohen/getSPInfoByName.htm?uniqueName=contactus" class="contact-us hvr-bounce-to-right">联系我们</a>
 						</div>
 					</div>
 				</div>

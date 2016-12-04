@@ -236,4 +236,8 @@ insert into vs_config values(33,"mail.outbox.mail.password","1234567",50);
 
 insert into vs_config values(34,"main.net.address","www.voosky.com",50);
 
+insert into vs_config values(35,"defined.weixin.pic.url","pic.url",50);
+insert into vs_config values(36,"defined.qq.weibo.url","/qq/weibo/url",50);
+insert into vs_config values(37,"defined.sina.weibo.url","/sina/weibo/url",50);
+
 commit ;
