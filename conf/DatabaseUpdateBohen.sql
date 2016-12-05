@@ -183,6 +183,9 @@ INSERT INTO `vs_config` VALUES ('31', 'mail.SSL.security.protocol', '2342', '50'
 INSERT INTO `vs_config` VALUES ('32', 'mail.outbox.mailboxes', 'ss@163.com', '50');
 INSERT INTO `vs_config` VALUES ('33', 'mail.outbox.mail.password', '1234567', '50');
 INSERT INTO `vs_config` VALUES ('34', 'main.net.address', 'www.voosky.com', '50');
+insert into `vs_config` values ('35',"defined.weixin.pic.url","pic.url",50);
+insert into `vs_config` values ('36',"defined.qq.weibo.url","/qq/weibo/url",50);
+insert into `vs_config` values ('37',"defined.sina.weibo.url","/sina/weibo/url",50);
 
 -- ----------------------------
 -- Table structure for `vs_nav`

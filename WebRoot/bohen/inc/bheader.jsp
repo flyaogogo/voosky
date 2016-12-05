@@ -14,8 +14,8 @@
 							<ul class="social-icons">
 
 								<li>
-									<a id="met-weixint"><i class="fa fa-weixin "></i></a>
-									<div id="met-weixint-content" class="hide">
+									<a id="met-weixint1"><i class="fa fa-weixin "></i></a>
+									<div id="met-weixint-content1" class="hide">
 										<div class="text-center met-weixin-img" ><img id="common-header-top-contactus-img-id"/></div>
 									</div>
 								</li>

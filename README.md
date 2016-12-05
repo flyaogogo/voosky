@@ -22,3 +22,28 @@ upload.service.disk=d://vooskyimage
 			redirectPort="8443" 
 			URIEncoding="UTF-8"/>
     
+4、Mysql配置
+
+[mysql]
+
+default-character-set=utf8
+... ...
+
+[mysqld]
+...
+max_allowed_packet = 256M
+character_set_server= utf8
+...
+
+If you are unable to stop your database, you can alternatively set the value of the max allowed packet parameter dynamically. To do so:
+Log in as a root user.
+You'll need to set the value as an integer, rather than '256M'. 256M is equivalent to 256*1024*1024, or 268435456.
+mysql> SET GLOBAL max_allowed_packet=268435456;
+To check that this has been applied:
+
+Relogin to your mysql client.
+
+mysql> SELECT @@max_allowed_packet;
+
+
+

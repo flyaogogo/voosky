@@ -36,9 +36,9 @@
 										<a id="common-footer-contactus-sina-weibo-a-id"rel="nofollow" target="_blank" class="hvr-radial-out"><i class="fa fa-weibo"></i></a>
 									</li>
 
-									<li class="dropup" >
-										<a id="met-weixin"><i class="fa fa-weixin "></i></a>
-										<div id="met-weixin-content" class="hide">
+									<li class="dropup footer-pic-load-cls" >
+										<a id="met-weixin1"><i class="fa fa-weixin "></i></a>
+										<div id="met-weixin-content1" class="hide">
 											<div class="text-center met-weixin-img" id="common-footer-contactus-weixin-img-div"></div>
 										</div>
 									</li>

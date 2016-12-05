@@ -373,8 +373,23 @@ function setTopAndFooter(ul,m_ul) {
 			
 			//微博二维码
 			var common_header_top_contactus_img = document.getElementById("common-header-top-contactus-img-id");
-			common_header_top_contactus_img.setAttribute("src", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
-			console.log(ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
+			var img_url_header = ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url'] + "?t="+ "&" + Math.random() ;
+			common_header_top_contactus_img.setAttribute("src", img_url_header);
+			var t1 = $("#met-weixint-content1").html().trim() ;
+	        
+	        var i1 = {
+	            title: "",
+	            content: t1,
+	            placement: "bottom",
+	            trigger: "hover",
+	            width: 162,
+	            padding: !1,
+	            offsetTop: 10,
+	            animation: "pop"
+	        };
+	        //console.log(i) ;
+	        $("#met-weixint1").webuiPopover(i1) ;
+			//console.log(ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
 			//QQ
 			var common_header_top_contactus_qq_li_a = document.getElementById("common-header-top-contactus-qq-a-id");
 			//href="http://wpa.qq.com/msgrd?v=3&uin=<s:property value="index.sysconfMap['main.site.qq.num']"/>&site=qq&menu=yes"
@@ -478,7 +493,9 @@ function setTopAndFooter(ul,m_ul) {
 			//--------footer-----------
 			//微博二维码
 			var common_footer_contactus_img = document.getElementById("common-footer-contactus-img-id");
-			common_footer_contactus_img.setAttribute("src", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
+			var img_url_footer = ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url'] ;
+			common_footer_contactus_img.src = img_url_footer ;
+			//common_footer_contactus_img.setAttribute("src", img_url_footer);
 //			common_footer_contactus_img.setAttribute("data-original", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
 			//QQ
 			var common_footer_contactus_qq_li_a = document.getElementById("common-footer-contactus-qq-a-id");
@@ -487,11 +504,34 @@ function setTopAndFooter(ul,m_ul) {
 			//qq weibo
 //			var common_footer_contactus_qqwx_li_a = document.getElementById("common-footer-contactus-weixin-img-id");
 //			common_footer_contactus_qqwx_li_a.setAttribute("src",ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
-			
+			//微信二维码 隐藏与显示
+			//alert($("#met-weixin").length);
 			var common_footer_contactus_qqwx_div = document.getElementById("common-footer-contactus-weixin-img-div");
 			var common_footer_contactus_qqwx_div_img = document.createElement("img");
-			common_footer_contactus_qqwx_div_img.setAttribute("src",ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']) ;
+			var img_url_footer_1 = ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url'] + "?t="+ "&" + Math.random() ;
+//			common_footer_contactus_qqwx_div_img.setAttribute("src","http://localhost:8080/static_img/upload/sysconf/image_weima.png") ;
+			common_footer_contactus_qqwx_div_img.setAttribute("src",img_url_footer_1) ;
+//			common_footer_contactus_qqwx_div_img.setAttribute("width","200") ;
+//			common_footer_contactus_qqwx_div_img.setAttribute("height","200") ;
+//			common_footer_contactus_qqwx_div.empty() ;
 			common_footer_contactus_qqwx_div.appendChild(common_footer_contactus_qqwx_div_img) ;
+			
+			//$(".footer-pic-load-cls a").webuiPopover({title:'Title',content:'Content'});
+			//var e = $.components.getDefaults("webuiPopover") ;
+	        var t = $("#met-weixin-content1").html().trim() ;
+	        
+	        var i = {
+	            title: "",
+	            content: t,
+	            placement: "bottom",
+	            trigger: "hover",
+	            width: 162,
+	            padding: !1,
+	            offsetTop: 10,
+	            animation: "pop"
+	        };
+	        //console.log(i) ;
+	        $("#met-weixin1").webuiPopover(i) ;
 			
 			/*
 			var common_footer_contactus_weixin_img_li = document.getElementById("common-footer-contactus-weixin-img-li");
