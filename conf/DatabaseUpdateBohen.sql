@@ -227,7 +227,7 @@ INSERT INTO `vs_nav` VALUES ('15', 'm', '房建', '-', '/bohen/getCaseductsInfo.
 INSERT INTO `vs_nav` VALUES ('16', 'job', '招贤纳士', '', '/bohen/getSPInfoByName.htm?uniqueName=job', '0', 'middle', '800', null, null, null);
 INSERT INTO `vs_nav` VALUES ('17', 'm', '联系我们', '', '/bohen/getSPInfoByName.htm?uniqueName=contactus', '0', 'middle', '900', null, null, null);
 INSERT INTO `vs_nav` VALUES ('18', 'm', '企业荣誉', '-', '/bohen/getSPInfoByName.htm?uniqueName=honor', '1', 'middle', '130', null, null, null);
-INSERT INTO `vs_nav` VALUES ('20', 'm', '业务项目', '', '/bohen/getNewsInfo.htm', '0', 'top', '50', null, null, null);
+INSERT INTO `vs_nav` VALUES ('20', 'm', '业务项目', '', '/bohen/getNewsInfo.htm', '0', 'middleshow', '50', null, null, null);
 
 -- ----------------------------
 -- Table structure for `vs_product`
