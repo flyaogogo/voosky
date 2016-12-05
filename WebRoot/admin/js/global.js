@@ -434,7 +434,7 @@ function setTopAndFooter(ul,m_ul) {
 			
 			var company_footer_p1 = document.createElement("p");
 			var company_footer_p2 = document.createElement("p");
-			company_footer_p2.innerHTML = data.spAbout.content ;
+			company_footer_p2.innerHTML = data.spAbout.desc ;
 			company_footer_p1.appendChild(company_footer_p2) ;
 			company_footer_div.appendChild(company_footer_p1) ;
 			//<a href="" title="公司简介" target='_self' class="read-more">查看详细简介<i class="fa fa-arrow-circle-right"></i></a>
@@ -460,21 +460,18 @@ function setTopAndFooter(ul,m_ul) {
 			$.each(artList, function(i,item){
 				//只显示最新5条
 				if(item.navId!="20" && footerInt<5){
-				
-				
-				
-				footerInt ++ ;
-				var footer_ul = document.getElementById("common-footer-news-id");
-				var first_footer_li = document.createElement("li");
-				//设置 li 属性，如 class   <li ><a href="" target='_self' title="中建土木公司规范用工">中建土木公司规范用工</a></li>
-				var first_footer_a = document.createElement("a");
-				first_footer_a.setAttribute("href", ctx + "/bohen/getCaseInfoById.htm?id=" + item.id);
-				first_footer_a.setAttribute("target", "_self");
-				first_footer_a.setAttribute("title", item.title);
-				first_footer_a.innerHTML=item.title ;
-				
-				first_footer_li.appendChild(first_footer_a);
-			　　　footer_ul.appendChild(first_footer_li);
+					footerInt ++ ;
+					var footer_ul = document.getElementById("common-footer-news-id");
+					var first_footer_li = document.createElement("li");
+					//设置 li 属性，如 class   <li ><a href="" target='_self' title="中建土木公司规范用工">中建土木公司规范用工</a></li>
+					var first_footer_a = document.createElement("a");
+					first_footer_a.setAttribute("href", ctx + "/bohen/getCaseInfoById.htm?id=" + item.id);
+					first_footer_a.setAttribute("target", "_self");
+					first_footer_a.setAttribute("title", item.title);
+					first_footer_a.innerHTML=item.title ;
+					
+					first_footer_li.appendChild(first_footer_a);
+				　　　footer_ul.appendChild(first_footer_li);
 				}
 			});
 			
