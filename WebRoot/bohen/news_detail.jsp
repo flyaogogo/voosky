@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</s:if>
 								</s:iterator>
 								<!-- 
-								<li class="list-group-item"><a href="../" title="中建博恒建设规范用工成“香饽饽”" target='_self'>中建博恒建设规范用工成“香饽饽”</a></li>
+								<li class="list-group-item"><a href="../" title="中建搏恒建设规范用工成“香饽饽”" target='_self'>中建搏恒建设规范用工成“香饽饽”</a></li>
 
 								<li class="list-group-item"><a href="../" title="卡维中学项目保修期即将结束" target='_self'>卡维中学项目保修期即将结束</a></li>
 

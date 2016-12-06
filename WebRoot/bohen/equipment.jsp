@@ -9,14 +9,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html class='nicescroll'>
 
 	<head>
-		<title>博恒建设公司网站模板|博恒建设企业网站模板-博恒建设</title>
+		<title>搏恒建设公司网站模板|搏恒建设企业网站模板-搏恒建设</title>
 		<meta name="renderer" content="webkit">
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 		<meta name="generator" content="voosky1.0" data-variable="" />
 		<meta name="description" content="模板建站和纯手工建站的区别在于：模板是“成衣”，你只需要去服装店挑选，而所谓的纯手工建站是裁缝师傅给你定制。功能和稳定性模板+成熟的CMS管理后台大大优于“裁缝店”。" />
-		<meta name="keywords" content="博恒建设公司网站模板|博恒建设企业网站模板" />
+		<meta name="keywords" content="搏恒建设公司网站模板|搏恒建设企业网站模板" />
 		<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 		<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 		<link rel="stylesheet" href="${ctx}/bohen/fontawesome/font-awesome-4.6.3/css/font-awesome.css">

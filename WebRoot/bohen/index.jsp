@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <html class='nicescroll'>
 <head>
-	<title>博恒建设公司网站 -博恒建设</title>
+	<title>搏恒建设公司网站 -搏恒建设</title>
 	<meta name="renderer" content="webkit">
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="generator" content="voosky1.0" data-variable="" />
 	<meta name="description"
 		content="" />
-	<meta name="keywords" content="博恒建设公司网站|博恒建设企业网站" />
+	<meta name="keywords" content="搏恒建设公司网站|搏恒建设企业网站" />
 	<link href="${ctx}/bohen/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" href="${ctx}/bohen/css/boheng.css">
 	<link rel="stylesheet" href="${ctx}/bohen/css/wstyle.css">
