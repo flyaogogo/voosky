@@ -505,6 +505,8 @@ function setTopAndFooter(ul,m_ul) {
 			var common_footer_contactus_img = document.getElementById("common-footer-contactus-img-id");
 			var img_url_footer = ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url'] ;
 			common_footer_contactus_img.src = img_url_footer ;
+			common_footer_contactus_img.width = "200" ;
+			common_footer_contactus_img.height = "200" ;
 			//common_footer_contactus_img.setAttribute("src", img_url_footer);
 //			common_footer_contactus_img.setAttribute("data-original", ctx_img + "/" + data.sysconfMap['defined.weixin.pic.url']);
 			//QQ
