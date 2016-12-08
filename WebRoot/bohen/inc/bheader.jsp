@@ -61,8 +61,8 @@
 					<div class="row">
 						<div class="navbar-header">
 
-							<a href="javascript:void(0);" class="navbar-logo" title="博恒建设">
-								<div class="vertical-align-middle"><img src="${ctx}/bohen/upload/1456465413.png" alt="博恒建设" title="博恒建设" /></div>
+							<a href="javascript:void(0);" class="navbar-logo" title="搏恒建设">
+								<div class="vertical-align-middle" id="navbar-header-logo-id"><%-- <img src="${ctx}/bohen/upload/1456465413.png" alt="搏恒建设" title="搏恒建设" /> --%></div>
 							</a>
 
 						</div>

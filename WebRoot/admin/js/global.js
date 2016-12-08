@@ -403,6 +403,16 @@ function setTopAndFooter(ul,m_ul) {
 			common_header_top_contactus_sinawb_li_a.setAttribute("href",data.sysconfMap['defined.sina.weibo.url']) ;
 			
 			///-----------top end----------------------
+			///-----------navbar logo start----------------------
+			
+			var common_header_navbar_logo_div = document.getElementById("navbar-header-logo-id");
+			var common_header_navbar_logo_div_img = document.createElement("img");
+			var img_url_header_logo = ctx_img + "/" + data.sysconfMap['main.site.mark'] + "?t="+ "&" + Math.random() ;
+			common_header_navbar_logo_div_img.setAttribute("src",img_url_header_logo) ;
+			common_header_navbar_logo_div_img.setAttribute("title",data.sysconfMap['main.site.title']) ;
+			common_header_navbar_logo_div_img.setAttribute("alt",data.sysconfMap['main.site.title']) ;
+			common_header_navbar_logo_div.appendChild(common_header_navbar_logo_div_img) ;
+			///-----------logo end----------------------
 			
 			var navListMap = data.navListMap ;
 			var artList = data.artList ;

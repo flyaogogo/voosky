@@ -86,12 +86,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<%-- <li><a href="${ctx }/bohen/getSPInfoByName.htm?uniqueName=about" class="link"  title="关于我们">关于我们</a></li>
 							 --%>
 							<s:iterator value="navBean.navList" var="nav">
+								<%-- 为处理当前点击效果
 								<s:if test="#nav.moduleUrl.contains(navBean.curStatus)">
-						    		<li class="dropdown cur"><a href="${ctx }<s:property value='#nav.moduleUrl'/>"><s:property value="#nav.navName"/></a></li>
+						    		<li class=""><a href="${ctx }<s:property value='#nav.moduleUrl'/>"><s:property value="#nav.navName"/></a></li>
 						    	</s:if>
-						    	<s:else>
+						    	<s:else> --%>
 						    		<li ><a href="${ctx }<s:property value='#nav.moduleUrl'/>" class="link "><s:property value="#nav.navName"/></a></li>
-						    	</s:else>
+						    	<%-- </s:else> --%>
 							</s:iterator>
 					<!-- 
 						<li class="dropdown">
