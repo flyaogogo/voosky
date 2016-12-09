@@ -8,11 +8,9 @@ img {
 table {
 	border-collapse: collapse
 }
-
 .clearboth{
 	clear:both;
 }
-
 body,
 figure {
 	margin: 0
@@ -296,6 +294,23 @@ th {
 		border: 1px solid #ddd!important
 	}
 }
+.contact-info-con li{
+	height:15px;
+	line-height:15px;
+	margin-bottom:20px;
+}
+.contact-info-con i{
+	float:left;
+	margin-right:5px;
+	color:#fff;
+}
+.contact-info-con a{
+	float:left;
+}
+.weixinhao{
+	color:#fff;
+}
+
 
 .dropdown-menu,
 .modal-content {
@@ -25206,8 +25221,10 @@ h4.example-title {
 @font-face {
 	font-family: 'Web Icons';
 	font-style: normal;
-	font-weight: 400
-	}
+	font-weight: 400;
+	src: url(../../../app/system/include/static/fonts/web-icons/web-icons.eot?v=0.2.3);
+	src: url(../../../app/system/include/static/fonts/web-icons/web-icons.eot?#iefix&v=0.2.3) format('embedded-opentype'), url(../../../app/system/include/static/fonts/web-icons/web-icons.woff2?v=0.2.3) format('woff2'), url(../../../app/system/include/static/fonts/web-icons/web-icons.woff?v=0.2.3) format('woff'), url(../../../app/system/include/static/fonts/web-icons/web-icons.ttf?v=0.2.3) format('truetype'), url(../../../app/system/include/static/fonts/web-icons/web-icons.svg?v=0.2.3#web-icons) format('svg')
+}
 
 [class*=" wb-"],
 [class^=wb-] {
@@ -31469,12 +31486,12 @@ button.swiper-pagination-bullet {
 
 .ad-gallery .ad-image-wrapper .ad-next,
 .ad-gallery .ad-image-wrapper .ad-prev {
-	background: url()\9
+	background: url(../../../templates/M1089007/min/widget/ad-gallery/non-existing.jpg)\9
 }
 
 .ad-gallery .ad-image-wrapper .ad-next .ad-next-image,
 .ad-gallery .ad-image-wrapper .ad-prev .ad-prev-image {
-	background: url() no-repeat;
+	background: url(../../../templates/M1089007/min/widget/ad-gallery/icon-arrowbtn.png) no-repeat;
 	width: 24px;
 	height: 48px;
 	display: block!important;
@@ -31486,7 +31503,7 @@ button.swiper-pagination-bullet {
 }
 
 .ad-gallery .ad-image-wrapper .ad-next .ad-next-image {
-	background: url() 0 -50px no-repeat;
+	background: url(../../../templates/M1089007/min/widget/ad-gallery/icon-arrowbtn.png) 0 -50px no-repeat;
 	width: 24px;
 	height: 48px;
 	right: 50%;
@@ -31517,6 +31534,7 @@ button.swiper-pagination-bullet {
 	text-align: left;
 	width: 100%;
 	z-index: 2;
+	background: url(../../../templates/M1089007/min/widget/ad-gallery/opa75.png);
 	color: #000
 }
 
@@ -32043,15 +32061,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-vimeo .lg-video-play {
-	
+	background: url(../../../templates/M1089007/min/widget/LightBox/css/../img/vimeo-play.png) no-repeat
 }
 
 .lg-outer .lg-has-vimeo:hover .lg-video-play {
-	
+	background: url(../../../templates/M1089007/min/widget/LightBox/css/../img/vimeo-play.png) 0 -58px no-repeat
 }
 
 .lg-outer .lg-has-html5 .lg-video-play {
-	
+	background: url(../../../templates/M1089007/min/widget/LightBox/css/../img/video-play.png) no-repeat;
 	height: 64px;
 	margin-left: -32px;
 	margin-top: -32px;
@@ -32064,11 +32082,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-youtube .lg-video-play {
-	
+	background: url(../../../templates/M1089007/min/widget/LightBox/css/../img/youtube-play.png) no-repeat
 }
 
 .lg-outer .lg-has-youtube:hover .lg-video-play {
-	
+	background: url(../../../templates/M1089007/min/widget/LightBox/css/../img/youtube-play.png) 0 -60px no-repeat
 }
 
 .lg-outer .lg-video-object {
@@ -36477,7 +36495,7 @@ html.mm-opening .mm-menu.mm-offcanvas.mm-next {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #2098d1;
+	background: #8fc519;
 	-webkit-transform: scaleX(0);
 	transform: scaleX(0);
 	-webkit-transform-origin: 0 50%;
@@ -43041,7 +43059,7 @@ html.mm-opening .mm-menu.mm-offcanvas.mm-next {
 	top: 50%;
 	margin-left: -40px;
 	margin-top: -40px;
-	background: url() no-repeat;
+	background: url(../../../templates/M1089007/min/widget/carousel/../img/owl/owl.video.play.png) no-repeat;
 	cursor: pointer;
 	z-index: 1;
 	-webkit-backface-visibility: hidden;
@@ -43838,19 +43856,19 @@ img.tp-slider-alternative-image {
 }
 
 .tp-dottedoverlay.twoxtwo {
-	background: url()
+	background: url(../../../templates/M1089007/min/widget/revslider/css/../assets/gridtile.png)
 }
 
 .tp-dottedoverlay.twoxtwowhite {
-	background: url()
+	background: url(../../../templates/M1089007/min/widget/revslider/css/../assets/gridtile_white.png)
 }
 
 .tp-dottedoverlay.threexthree {
-	background: url()
+	background: url(../../../templates/M1089007/min/widget/revslider/css/../assets/gridtile_3x3.png)
 }
 
 .tp-dottedoverlay.threexthreewhite {
-	background: url()
+	background: url(../../../templates/M1089007/min/widget/revslider/css/../assets/gridtile_3x3_white.png)
 }
 
 .tp-shadowcover {
@@ -44444,11 +44462,11 @@ a:hover {
 .tp-caption.slidelink a div {
 	width: 3000px;
 	height: 1500px;
-	background: url()
+	background: url(../../../templates/M1089007/min/widget/revslider/css/../assets/coloredbg.png)
 }
 
 .tp-caption.slidelink a span {
-	background: url()
+	background: url(../../../templates/M1089007/min/widget/revslider/css/../assets/coloredbg.png)
 }
 
 .tp-shape {
@@ -47077,6 +47095,7 @@ a:hover {
 		top: 0;
 		height: 110%;
 		display: block;
+		background: url(../../../templates/M1089007/min/css/../img/header-v5-bg.png) no-repeat #8fc519;
 		-webkit-background-size: cover;
 		-ms-background-size: cover;
 		-moz-background-size: cover;
@@ -47292,6 +47311,7 @@ body.met-navfixed {
 	float: left
 }
 
+
 .topbar .contact-info ul li a {
 	display: inline-block;
 	font-size: 13px;
@@ -47315,7 +47335,8 @@ body.met-navfixed {
 }
 
 button.mobileMenuBtn {
-	border-radius: 10px!important
+	/* border-radius: 10px!important */
+	border:1px solid #fff
 }
 
 .ecommnenu {
@@ -47915,7 +47936,7 @@ footer p {
 
 .ecofootbg {
 	padding-top: 40px;
-	background: #013f1a
+	background: #7fb508
 }
 
 .ecofootbg a {
@@ -47925,7 +47946,7 @@ footer p {
 
 .ecofootbg .met-footnav {
 	border: 0;
-	background: #161616
+	background: #8fc519
 }
 
 .ecofootbg .met-footnav h4 {
@@ -47946,7 +47967,7 @@ footer p {
 
 .ecofootbg .met-footnav em a,
 .ecofootbg .met-footnav ul a {
-	color: #636363
+	color: #5bf599
 }
 
 .ecofootbg .met-footnav em a:hover,
@@ -47962,7 +47983,7 @@ footer p {
 }
 
 .ecofootbg .met-footnav p {
-	color: #636363
+	color: #000
 }
 
 .ecofootbg .met-footnav .info i {
@@ -48044,7 +48065,7 @@ footer p {
 	content: '';
 	width: 45px;
 	height: 2px;
-	background: #8fc519;
+	background: #fff;
 	position: absolute;
 	bottom: 0
 }
@@ -48059,7 +48080,7 @@ footer p {
 }
 
 .ecofootbg .met-footnav-eco .list p {
-	color: #18793f
+	color: #000
 }
 
 .ecofootbg .met-footnav-eco .list a.read-more {
@@ -48092,10 +48113,10 @@ footer p {
 	height: 30px;
 	border-radius: 50%;
 	background: 0 0;
-	border: 1px solid #8fc519;
+	border: 1px solid #fff;
 	text-align: center;
 	line-height: 30px;
-	color: #8fc519;
+	color: #fff;
 	font-size: 16px;
 	margin-right: 2px;
 	-webkit-transition: all .3s ease;
@@ -48131,13 +48152,13 @@ footer p {
 }
 
 .ecofootbg .met-footnav-eco ul li a {
-	color: #18793f;
+	color: #000;
 	display: block;
 	margin-bottom: 15px
 }
 
 .ecofootbg .met-footnav-eco ul li a:hover {
-	color: #8fc519
+	color: #fff;
 }
 
 .ecofootbg .met-footnav-eco .contact-info li {
@@ -48146,7 +48167,7 @@ footer p {
 	margin-bottom: 18px;
 	width: 100%;
 	float: left;
-	color: #636363
+	color: #000
 }
 
 .ecofootbg .met-footnav-eco .contact-info li a {
@@ -51446,6 +51467,7 @@ footer p {
 .pe-airplay:before {
 	content: "\e67f"
 }
+
 /* 幻灯片样式设置 */
 
 .carousel {
@@ -51675,7 +51697,16 @@ footer p {
 .carousel-inner > .item > a > img {
   display: block;
   max-width: 100%;
-  height: 400px;
+  height:auto;
+}
+
+@media (min-width:320px){
+	.carousel-inner > .item > img,
+	.carousel-inner > .item > a > img {
+  display: block;
+  min-height:300px;
+}
+	
 }
 
 .sr-only {
