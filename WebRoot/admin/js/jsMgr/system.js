@@ -201,6 +201,7 @@ function mainUpdate(url,tabType){
 	var sitedesc = $("#main input[name='sitedesc']").val() ;
 	var msmark = $("#main input[name='msmark']").val() ;
 	var siteaddress = $("#main input[name='siteaddress']").val() ;
+	var netaddress = $("#main input[name='netaddress']").val() ;
 	var mswhetherclose = $("#main input[name='mswhetherclose']:checked").val() ;
 	var siteipcrecord = $("#main input[name='siteipcrecord']").val() ;
 	var siteconsumerhotline = $("#main input[name='siteconsumerhotline']").val() ;
@@ -213,11 +214,11 @@ function mainUpdate(url,tabType){
 	var mscaptcha = $("#main input[name='mscaptcha']:checked").val() ;
 	var msmsgforceboard = $("#main input[name='msmsgforceboard']:checked").val() ;
 	var mscodecall = $("#main textarea[name='mscodecall']").val() ;
-	
+
 	
 	var arrValue = "sitename::" + sitename + ",sitetitle::" + sitetitle 
 			+ ",sitekeywords::" + sitekeywords+ ",sitedesc::" + sitedesc
-			+ ",msmark::" + msmark + ",siteaddress::" + siteaddress 
+			+ ",msmark::" + msmark + ",siteaddress::" + siteaddress + ",netaddress::" + netaddress 
 			+ ",mswhetherclose::" + mswhetherclose + ",siteipcrecord::" + siteipcrecord 
 			+ ",siteconsumerhotline::" + siteconsumerhotline + ",sitefax::" + sitefax 
 			+ ",siteqqnum::" + siteqqnum + ",sitemail::" + sitemail 

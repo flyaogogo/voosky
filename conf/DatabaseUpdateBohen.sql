@@ -228,6 +228,7 @@ INSERT INTO `vs_nav` VALUES ('16', 'job', '招贤纳士', '', '/bohen/getSPInfoB
 INSERT INTO `vs_nav` VALUES ('17', 'm', '联系我们', '', '/bohen/getSPInfoByName.htm?uniqueName=contactus', '0', 'middle', '900', null, null, null);
 INSERT INTO `vs_nav` VALUES ('18', 'm', '企业荣誉', '-', '/bohen/getSPInfoByName.htm?uniqueName=honor', '1', 'middle', '130', null, null, null);
 INSERT INTO `vs_nav` VALUES ('20', 'm', '业务项目', '', '/bohen/getNewsInfo.htm', '0', 'middleshow', '50', null, null, null);
+INSERT INTO `vs_nav` VALUES ('21', 'm', '企业视屏', '', '/bohen/getSPInfoByName.htm?uniqueName=qiyeshipin', '1', 'middle', '135', null, null, null);
 
 -- ----------------------------
 -- Table structure for `vs_product`
@@ -303,6 +304,7 @@ CREATE TABLE `vs_singlepage` (
 -- ----------------------------
 INSERT INTO `vs_singlepage` VALUES ('1', 'summary', '公司简介', '<p>1979年经国务院批准成立，是中国最早进入国际市场的外经企业之一，目前已发展成为拥有中国铁路工程施工总承包特级资质的大型国有企业，连续多年入选全球最大225家国际承包商百强行列。</p>', 'Vsjava   轻量级  企业  网站   管理系统', 'Vsjava轻量级企业网站管理系统', '2', '--');
 INSERT INTO `vs_singlepage` VALUES ('2', 'honor', '企业荣誉', '<p>荣誉荣誉荣誉荣誉荣誉荣誉</p>', '荣誉', '荣誉', '18', '--');
-INSERT INTO `vs_singlepage` VALUES ('3', 'region', '经营区域', '<p>经营区域经营区域经营区域经营区域经营区域经营区域经营区域</p>', '经营区域', '经营区域', '3', '--');
+INSERT INTO `vs_singlepage` VALUES ('3', 'region', '经营范围', '<p>经营区域经营区域经营区域经营区域经营区域经营区域经营区域</p>', '经营区域', '经营区域', '3', '--');
 INSERT INTO `vs_singlepage` VALUES ('4', 'contactus', '联系我们', '<p>sdsa<br/></p>', 'ad', 'ad', '17', '-');
 INSERT INTO `vs_singlepage` VALUES ('6', 'job', '人才招聘', '<p>sdsa</p>', 'adf', 'adf', '16', '-');
+INSERT INTO `vs_singlepage` VALUES ('7', 'qiyeshipin', '企业视屏', '<p>sdsa</p>', 'adf', 'adf', '21', '--');

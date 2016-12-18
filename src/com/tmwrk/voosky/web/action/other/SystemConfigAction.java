@@ -63,7 +63,7 @@ public class SystemConfigAction extends BaseAction implements ModelDriven<Config
 				continue ;
 			}
 			String typeKey = item[0] ;
-			String typeVal = item[1] ;
+			String typeVal = item[1].trim() ;
 			if(SystemEnum.msmark.toString().equals(typeKey)||
 					SystemEnum.defweixin.toString().equals(typeKey)){
 				continue ;

@@ -165,9 +165,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tr>
             <tr>
               <td align="right">统计/客服代码调用</td>
-              <td><textarea name="mscodecall" cols="80" rows="60" id="textfield" style="border:1px solid #CCC; height:80px; vertical-align:middle; color:#999;">
-              <s:property value="mapSysConf['main.site.statistics.or.service.code.calls']"/>
-              </textarea></td>
+              <td>
+              <textarea name="mscodecall" cols="80" rows="60" id="textfield" style="border:1px solid #CCC; height:80px; vertical-align:middle; color:#999;"><s:property value="mapSysConf['main.site.statistics.or.service.code.calls']"/></textarea>
+              </td>
             </tr>
           </table>
         </div>
