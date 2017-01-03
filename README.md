@@ -45,5 +45,9 @@ Relogin to your mysql client.
 
 mysql> SELECT @@max_allowed_packet;
 
+5、urlrewrite跳转
+	A、web.xml中注释UrlRewriteFilter
+	B、urlrewrite.xml注释头部信息
+	
 
 

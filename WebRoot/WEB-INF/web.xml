@@ -33,7 +33,7 @@
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter> 
     -->
-    <!-- 动态地址静态化 -->
+    <!-- 动态地址静态化
 	<filter>
 		<filter-name>UrlRewriteFilter</filter-name>
 		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
@@ -42,14 +42,16 @@
 			<param-value>WARN</param-value>
 		</init-param>
 	</filter>
-	<!-- 如果使用Urlrewrite，要指定filter-mapping的dispatcher方式 -->
+	-->
+	<!-- 如果使用Urlrewrite，要指定filter-mapping的dispatcher方式
     <filter-mapping>
        <filter-name>UrlRewriteFilter</filter-name>
        <url-pattern>/*</url-pattern>
        <dispatcher>REQUEST</dispatcher>
        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-    
+     -->
+     
 	<filter>
         <filter-name>struts2</filter-name>
         <filter-class>com.tmwrk.voosky.web.filter.EditorStrutsFilter</filter-class>
